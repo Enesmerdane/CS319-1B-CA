@@ -15,3 +15,5 @@ We will implement this game using Java.
 Google Docs Links:
 
 Meeting Schedule: https://docs.google.com/document/d/1mj6myGd8StsufM98sZFAz4_Zc0bZ1pyuhizUyIXhvSA/edit?usp=sharing
+
+First Iteration Analysis Report: https://docs.google.com/document/d/1Yc3Le2G_wbUrfOFEBRwgip0ZqssVStf_yGCa4HaIYz8/edit?usp=sharing
