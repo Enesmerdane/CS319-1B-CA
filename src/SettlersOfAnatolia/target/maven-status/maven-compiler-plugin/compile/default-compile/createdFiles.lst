@@ -1,0 +1,6 @@
+com\groupb\soa\MainApp.class
+com\groupb\soa\FXMLController.class
+com\groupb\soa\business\models\GameModel.class
+com\groupb\soa\data\DataManager.class
+com\groupb\soa\business\controller\GameController.class
+com\groupb\soa\presentation\MainMenuScreen.class
