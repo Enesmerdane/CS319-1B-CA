@@ -77,7 +77,7 @@ public class Vertex {
         }
     }
     
-    public boolean build(boolean first, int playerColor) // boolean build(Player p)
+    public boolean build(boolean first, int playerColor, PlayerList pl) // boolean build(Player p)
     {
         // condition check
             // if not first, player must have a road in the neighboring edges
@@ -94,17 +94,26 @@ public class Vertex {
                    return false;
            }
             // if not first, player must have enough resources to build
-            
-            /// TO-DO
+            if( !first)
+            {
+                // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
+                boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
+                        && pl.getPlayerWithColor(playerColor).getSourceNo(2) >= 1 // check for lumber
+                        && pl.getPlayerWithColor(playerColor).getSourceNo(3) >= 1 // check for wool
+                        && pl.getPlayerWithColor(playerColor).getSourceNo(1) >= 1; // check for grain
+                if( !hasEnough)
+                    return false;
+            }
             
             // the vertex must not be occupied or blocked
         if( level != 0)
             return false;
         // if all above conditions are true, then
         // subtract resources
-        
-        /// TO-DO
-        
+        pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
+        pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
+        pl.getPlayerWithColor(playerColor).subSource(3, 1); // subtract 1 wool
+        pl.getPlayerWithColor(playerColor).subSource(1, 1); // subtract 1 grain
         // change the proper values
         occupied = true;
         level = 1;
@@ -113,18 +122,23 @@ public class Vertex {
         return true;
     }
     
-    public boolean upgrade(int playerColor)
+    public boolean upgrade(int playerColor, PlayerList pl)
     {
         // condition check
-            // player must have enough resources to build
-            /// TO-DO
-        
-            // player must have a settlement in this vertex
-            if( occupColor != playerColor)
-                return false;
+        // player must have enough resources to build
+        // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
+        // we need 3 ore & 2 grain
+        boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(0) >= 3 // check for ore
+                        && pl.getPlayerWithColor(playerColor).getSourceNo(1) >= 2; // check for grain
+        if( !hasEnough)
+            return false;
+        // player must have a settlement in this vertex
+        if( occupColor != playerColor)
+            return false;
         // if all above conditions are true, then
         // subtract resources
-            /// TO-DO
+        pl.getPlayerWithColor(playerColor).subSource(0, 3); // subtract 3 ore
+        pl.getPlayerWithColor(playerColor).subSource(1, 2); // subtract 2 grain
         // change the proper values
         level = 2;
         // award victory points?? (do we award them here?)

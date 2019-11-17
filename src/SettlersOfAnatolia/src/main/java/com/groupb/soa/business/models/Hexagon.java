@@ -109,10 +109,7 @@ public class Hexagon {
         {
             if( v.isOccupied())
             {
-                for( int i = 0; i < v.getLevel(); i++ )
-                {
-                    playerList.getPlayerWithColor( v.getOccupColor()).addSource(sourceType);
-                }
+                playerList.getPlayerWithColor( v.getOccupColor()).addSource(sourceType, v.getLevel());
             }
         }
         return true;

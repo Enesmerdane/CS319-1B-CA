@@ -39,7 +39,7 @@ public class Edge {
         return occupied;
     }
     
-    public boolean build( boolean first, int playerColor)
+    public boolean build( boolean first, int playerColor, PlayerList pl)
     {
         // condition check
             // there mustn't be a road in this edge
@@ -70,17 +70,24 @@ public class Edge {
         // player must have enough resources
         if( !first)
         {
-            // TO_DO
+            // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
+            // we need 1 brick & 1 lumber
+            boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick 
+                            && pl.getPlayerWithColor(playerColor).getSource(2) >= 1; // check for lumber
+            
+            if( !hasEnough)
+                return false;
         }
         
         // if all conditions are met, then
         
         // get resources from player
-        // TO_DO
-        
+        pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
+        pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
         // initialize proper variables
         occupied = true;
         occupColor = playerColor;
+        // check for longest road?
         return true;               
     }
 }
