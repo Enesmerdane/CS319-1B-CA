@@ -12,29 +12,31 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 
+
+/**
+ *
+ * @author Enes Merdane
+ */
 public class MainApp extends Application {
     
     private ImageView background_image_view;
     private Image background_image;
     private Button continue_game_button;
+    private Button new_game_button;
+    private Button settings_button;
+    private Button exit_game_button;
+    
     
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
         
-        setButtons();
-        
-        Group group = new Group();
-        
-        group.getChildren().add(continue_game_button);
-        
-        Scene scene = new Scene(group, 500, 400);
+        Scene scene = new Scene(root);
         
         scene.getStylesheets().add("/styles/Styles.css");
         
-        setBackgroundImage(scene);
         
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Settlers of Catan");
         stage.setScene(scene);
         stage.setFullScreen(true);
         stage.show();
@@ -77,14 +79,29 @@ public class MainApp extends Application {
         
     }
     
-    private void setButtons(){
+    private void setButtons(Group buttonsGroup){
+        int ButX = 300;
+        int ButY = 400;
         continue_game_button = new Button("Continue Game");
         
         continue_game_button.setStyle("-fx-border-radius: 30;");
         continue_game_button.setScaleX(2);
         continue_game_button.setScaleY(2);
-        continue_game_button.setLayoutX(300);
-        continue_game_button.setLayoutY(400);
-
+        continue_game_button.setLayoutX(ButX);
+        continue_game_button.setLayoutY(ButY);
+        
+        ButY += 150;
+        
+        new_game_button = new Button("New Game");
+        
+        new_game_button.setStyle("-fx-border-radius: 30;");
+        new_game_button.setScaleX(2);
+        new_game_button.setScaleY(2);
+        new_game_button.setLayoutX(ButX);
+        new_game_button.setLayoutY(ButY);
+        
+        buttonsGroup.getChildren().add(continue_game_button);
+        buttonsGroup.getChildren().add(new_game_button);
+        
     }
 }
