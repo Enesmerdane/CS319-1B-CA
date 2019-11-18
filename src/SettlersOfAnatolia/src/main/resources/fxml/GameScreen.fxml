@@ -23,7 +23,7 @@
             <Image url="@../images/wooden_background.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="exit_game_button" layoutX="29.0" layoutY="922.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
+      <Button fx:id="open_game_menu_button" layoutX="29.0" layoutY="922.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
          <font>
             <Font size="35.0" />
          </font>
@@ -91,7 +91,7 @@
             <Image url="@../images/road_image.JPG" />
          </image>
       </ImageView>
-      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1670.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+      <Button fx:id="buy_upgrade_card_button" layoutX="1670.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -107,7 +107,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button id="trade_with_bank_button" fx:id="exit_game_button21" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+      <Button fx:id="trade_with_bank_button" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -115,7 +115,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button id="trade-with_players_button" fx:id="exit_game_button211" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+      <Button fx:id="trade_with_players_button" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -141,17 +141,17 @@
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <ImageView id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1605.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" style="visibility: false;">
+      <ImageView fx:id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1605.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
       </ImageView>
-      <ImageView id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="503.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" style="visibility: false;">
+      <ImageView fx:id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="503.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
       </ImageView>
-      <ImageView id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="211.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0" style="visibility: false;">
+      <ImageView fx:id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="211.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
@@ -298,12 +298,12 @@
             <Font size="70.0" />
          </font>
       </Text>
-      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
+      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" onAction="#changeMusicState" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
+      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" onAction="#changeSoundState" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
          <font>
             <Font size="35.0" />
          </font>
@@ -318,7 +318,7 @@
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Exit Game">
+      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Exit Game">
          <font>
             <Font size="35.0" />
          </font>

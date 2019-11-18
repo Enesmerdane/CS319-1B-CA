@@ -8,6 +8,8 @@ package com.groupb.soa.presentation;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -72,6 +74,15 @@ public class GameScreen implements Initializable {
     @FXML
     private Text your_turn_text;
     
+    @FXML
+    private ImageView next_player_1;
+    
+    @FXML
+    private ImageView next_player_2;
+    
+    @FXML
+    private ImageView next_player_3;
+    
     private boolean gameSound = true;
     private boolean gameMusic = true;
     // Constructors
@@ -91,7 +102,9 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         construct_type = Constrcution_type.EMPTY;
-        
+        next_player_1.setStyle("visibility:false");
+        next_player_2.setStyle("visibility:false");
+        next_player_3.setStyle("visibility:false");
         
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
@@ -241,5 +254,83 @@ public class GameScreen implements Initializable {
     private void endTurn(ActionEvent event) throws IOException{
         your_turn_rectangle.setStyle("visibility:false");
         your_turn_text.setStyle("visibility:false");
+        next_player_1.setStyle("visibility:true");
+        Task<Void> sleeper = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                System.out.println("thread1 girdi.");
+                your_turn_rectangle.setStyle("visibility:false");
+                your_turn_text.setStyle("visibility:false");
+                next_player_1.setVisible(false);
+                next_player_2.setVisible(true);
+                next_player_1.setStyle("visibility:false");
+                next_player_2.setStyle("visibility:true");
+            }
+        });
+        Task<Void> sleeper2 = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                your_turn_rectangle.setStyle("visibility:false");
+                your_turn_text.setStyle("visibility:false");
+                next_player_2.setStyle("visibility:false");
+                next_player_3.setStyle("visibility:true");
+            }
+        });
+        Task<Void> sleeper3 = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        };
+        new Thread(sleeper).start();
+        
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                your_turn_rectangle.setStyle("visibility:false");
+                your_turn_text.setStyle("visibility:false");
+                next_player_2.setStyle("visibility:false");
+                next_player_3.setStyle("visibility:true");
+            }
+        });
+        
+        new Thread(sleeper).start();
+        
+        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                next_player_3.setStyle("visibility:false");
+                your_turn_rectangle.setStyle("visibility:true");
+                your_turn_text.setStyle("visibility:true");
+            }
+        });
+        
+        new Thread(sleeper).start();
     }
 }
