@@ -20,7 +20,7 @@
             <Image url="@../images/wooden_background.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="exit_game_button" layoutX="64.0" layoutY="910.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
+      <Button fx:id="exit_game_button" layoutX="29.0" layoutY="922.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
          <font>
             <Font size="35.0" />
          </font>
@@ -28,7 +28,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="exit_game_button1" layoutX="359.0" layoutY="910.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
+      <Button fx:id="exit_game_button1" layoutX="322.0" layoutY="921.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
          <font>
             <Font size="35.0" />
          </font>
@@ -44,24 +44,76 @@
       </ImageView>
       <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="715.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/grain_image.jpg" />
+            <Image url="@../images/woods_image.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="795.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/grain_image.jpg" />
+            <Image url="@../images/sheep_image.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="875.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/grain_image.jpg" />
+            <Image url="@../images/iron_image.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="955.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/grain_image.jpg" />
+            <Image url="@../images/brick_image.jpg" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1226.0" layoutY="823.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
+      <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1482.0" layoutY="932.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1682.0" layoutY="934.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1277.0" layoutY="931.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1291.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settlement_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="city_image_button" fitHeight="87.0" fitWidth="130.0" layoutX="1498.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/city_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="road_image_button" fitHeight="96.0" fitWidth="130.0" layoutX="1693.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/road_image.JPG" />
+         </image>
+      </ImageView>
+      <Button fx:id="exit_game_button2111" layoutX="1670.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="exit_game_button2" layoutX="439.0" layoutY="693.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="98.0" prefWidth="142.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Roll Dice">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="exit_game_button21" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="exit_game_button211" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="642.0" layoutX="601.0" layoutY="172.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="764.0" />
       <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
       <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
       <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
