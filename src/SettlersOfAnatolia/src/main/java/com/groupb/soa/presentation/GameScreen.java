@@ -66,6 +66,14 @@ public class GameScreen implements Initializable {
         EMPTY, SETTLEMENT, CITY, ROAD
     }
     
+    @FXML
+    private Rectangle your_turn_rectangle;
+    
+    @FXML
+    private Text your_turn_text;
+    
+    private boolean gameSound = true;
+    private boolean gameMusic = true;
     // Constructors
     /**
      *  @initiatedDate 17.11.2019
@@ -180,8 +188,58 @@ public class GameScreen implements Initializable {
         game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
     }
     
+    @FXML
+    private void terminateGame(ActionEvent event) throws IOException{
+        System.exit(0);
+    }
+    
     // Getter & Setter methods
     public Constrcution_type getConstruct_type(){
         return construct_type;
+    }
+    
+    @FXML
+    private void rollDice(ActionEvent event) throws IOException{
+        // roll dice operations ve dice değerinin ekrana yazdırılması -çizdirilmesi(?)-
+    }
+    
+    @FXML
+    private void goBackToGame(ActionEvent event) throws IOException{
+        game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_game_sound.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_back_to_main_menu.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_back_to_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+        game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
+    }
+    
+    @FXML
+    private void changeSoundState(ActionEvent event) throws IOException{
+        if(gameSound){
+            game_menu_game_sound.setText("Game Sound: OFF");
+            gameSound = false;
+        } else {
+            game_menu_game_sound.setText("Game Sound: ON");
+            gameSound = true;
+        }
+    }
+    
+    @FXML
+    private void changeMusicState(ActionEvent event) throws IOException{
+        if(gameMusic){
+            game_menu_game_music.setText("Game Music: OFF");
+            gameMusic = false;
+        } else {
+            game_menu_game_music.setText("Game Music: ON");
+            gameMusic = true;
+        }
+    }
+    
+    @FXML
+    private void endTurn(ActionEvent event) throws IOException{
+        your_turn_rectangle.setStyle("visibility:false");
+        your_turn_text.setStyle("visibility:false");
     }
 }
