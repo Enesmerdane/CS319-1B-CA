@@ -5,11 +5,14 @@
  */
 package com.groupb.soa.presentation;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 
 /**
  *
@@ -17,17 +20,22 @@ import javafx.fxml.Initializable;
  */
 public class MainMenuScreen implements Initializable{
     // Properties
-    
+    @FXML
+    private AnchorPane rootPane;
     // Constructor
     
     // Methods
-    @FXML
-    private void goNewGame(ActionEvent event){
-        System.out.println("You clicked me!");
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    @FXML
+    private void goNewGame(ActionEvent event) throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
+        rootPane.getChildren().setAll(pane);
+        
+        System.out.println("You clicked me!");
+    }
+
+    
 }
