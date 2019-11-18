@@ -34,7 +34,7 @@
             <Font name="System Bold" size="35.0" />
          </font>
       </Button>
-      <Button fx:id="exit_game_button" layoutX="160.0" layoutY="810.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Exit Game" textFill="WHITE">
+      <Button fx:id="exit_game_button" layoutX="160.0" layoutY="810.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Exit Game" textFill="WHITE">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>

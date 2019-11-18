@@ -36,6 +36,9 @@ public class MainMenuScreen implements Initializable{
         
         System.out.println("You clicked me!");
     }
-
     
+    @FXML
+    private void terminateGame(ActionEvent event) throws IOException{
+        System.exit(0);
+    }
 }
