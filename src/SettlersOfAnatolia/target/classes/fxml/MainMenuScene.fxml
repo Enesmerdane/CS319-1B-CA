@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupb.soa.presentation.MainMenuScreen">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/main_menu_scene_background.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="continue_game_button" layoutX="160.0" layoutY="330.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Continue Game" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="new_game_button" layoutX="160.0" layoutY="450.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goNewGame" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="New Game" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="settings_button" layoutX="160.0" layoutY="570.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Settings" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="how_to_play_button" layoutX="160.0" layoutY="690.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="How to Play" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="exit_game_button" layoutX="160.0" layoutY="810.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="93.0" prefWidth="412.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Exit Game" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+   </children>
+</AnchorPane>

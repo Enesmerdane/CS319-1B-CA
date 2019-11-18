@@ -1,1 +1,6 @@
 .vscode/*
+<<<<<<< HEAD
+/target/
+=======
+.md/*
+>>>>>>> 2aae1b11fe9a7cd728e276ce73581d960abad70b

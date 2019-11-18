@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupb.soa.presentation.GameScreen">
+    <stylesheets>
+        <URL value="@/styles/gamescreen.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="2500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/wooden_background.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="open_game_menu_button" layoutX="29.0" layoutY="922.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="end_turn_button" layoutX="322.0" layoutY="921.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#endTurn" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="144.0" layoutX="614.0" layoutY="857.0" stroke="BLACK" strokeType="INSIDE" width="420.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="599.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="635.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/grain_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="715.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/woods_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="795.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/sheep_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="875.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/iron_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="955.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/brick_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="608.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1226.0" layoutY="823.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
+      <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1482.0" layoutY="932.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1682.0" layoutY="934.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1277.0" layoutY="931.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1049.0" layoutY="849.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1291.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settlement_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="city_image_button" fitHeight="87.0" fitWidth="130.0" layoutX="1498.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/city_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="road_image_button" fitHeight="96.0" fitWidth="130.0" layoutX="1693.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/road_image.JPG" />
+         </image>
+      </ImageView>
+      <Button fx:id="buy_upgrade_card_button" layoutX="1670.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="roll_dice_button" layoutX="439.0" layoutY="693.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="98.0" prefWidth="142.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Roll Dice">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="trade_with_bank_button" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="trade_with_players_button" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="642.0" layoutX="601.0" layoutY="184.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="764.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1694.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1703.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="156.0" layoutX="58.0" layoutY="620.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="67.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1058.0" layoutY="858.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1605.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/next_player_indicator.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="503.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/next_player_indicator.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="211.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0">
+         <image>
+            <Image url="@../images/next_player_indicator.png" />
+         </image>
+         <rotationAxis>
+            <Point3D z="-1.0" />
+         </rotationAxis>
+      </ImageView>
+      <Rectangle fx:id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="1406.0" layoutY="730.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
+      <Text fx:id="your_turn_text" fill="RED" layoutX="1426.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Text>
+      <Circle fx:id="vertex5" fill="DODGERBLUE" layoutX="920.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex1" fill="DODGERBLUE" layoutX="849.0" layoutY="200.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex4" fill="DODGERBLUE" layoutX="773.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex8" fill="DODGERBLUE" layoutX="773.0" layoutY="310.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex9" fill="DODGERBLUE" layoutX="920.0" layoutY="310.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex13" fill="DODGERBLUE" layoutX="849.0" layoutY="353.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex2" fill="DODGERBLUE" layoutX="993.0" layoutY="200.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex6" fill="DODGERBLUE" layoutX="1062.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex10" fill="DODGERBLUE" layoutX="1062.0" layoutY="310.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex14" fill="DODGERBLUE" layoutX="993.0" layoutY="353.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex3" fill="DODGERBLUE" layoutX="1139.0" layoutY="200.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex7" fill="DODGERBLUE" layoutX="1210.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex11" fill="DODGERBLUE" layoutX="1210.0" layoutY="310.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex15" fill="DODGERBLUE" layoutX="1139.0" layoutY="353.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex45" fill="DODGERBLUE" layoutX="920.0" layoutY="698.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex40" fill="DODGERBLUE" layoutX="849.0" layoutY="653.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex44" fill="DODGERBLUE" layoutX="773.0" layoutY="698.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex48" fill="DODGERBLUE" layoutX="773.0" layoutY="769.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex49" fill="DODGERBLUE" layoutX="920.0" layoutY="769.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex52" fill="DODGERBLUE" layoutX="849.0" layoutY="811.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex41" fill="DODGERBLUE" layoutX="993.0" layoutY="653.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex46" fill="DODGERBLUE" layoutX="1062.0" layoutY="698.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex50" fill="DODGERBLUE" layoutX="1062.0" layoutY="769.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex53" fill="DODGERBLUE" layoutX="993.0" layoutY="811.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex42" fill="DODGERBLUE" layoutX="1139.0" layoutY="653.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex47" fill="DODGERBLUE" layoutX="1210.0" layoutY="698.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex51" fill="DODGERBLUE" layoutX="1210.0" layoutY="769.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex54" fill="DODGERBLUE" layoutX="1139.0" layoutY="811.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex35" fill="DODGERBLUE" layoutX="849.0" layoutY="583.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex29" fill="DODGERBLUE" layoutX="773.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex34" fill="DODGERBLUE" layoutX="701.0" layoutY="583.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex30" fill="DODGERBLUE" layoutX="920.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex36" fill="DODGERBLUE" layoutX="993.0" layoutY="583.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex31" fill="DODGERBLUE" layoutX="1062.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex37" fill="DODGERBLUE" layoutX="1139.0" layoutY="583.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex39" fill="DODGERBLUE" layoutX="701.0" layoutY="653.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex32" fill="DODGERBLUE" layoutX="1210.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex38" fill="DODGERBLUE" layoutX="1280.0" layoutY="583.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex43" fill="DODGERBLUE" layoutX="1280.0" layoutY="653.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex23" fill="DODGERBLUE" layoutX="773.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex17" fill="DODGERBLUE" layoutX="701.0" layoutY="428.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex22" fill="DODGERBLUE" layoutX="629.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex18" fill="DODGERBLUE" layoutX="849.0" layoutY="428.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex24" fill="DODGERBLUE" layoutX="920.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex19" fill="DODGERBLUE" layoutX="993.0" layoutY="428.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex25" fill="DODGERBLUE" layoutX="1062.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex20" fill="DODGERBLUE" layoutX="1139.0" layoutY="428.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex26" fill="DODGERBLUE" layoutX="1210.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex28" fill="DODGERBLUE" layoutX="629.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex16" fill="DODGERBLUE" layoutX="1280.0" layoutY="353.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex21" fill="DODGERBLUE" layoutX="1280.0" layoutY="428.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex27" fill="DODGERBLUE" layoutX="1351.0" layoutY="467.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex33" fill="DODGERBLUE" layoutX="1351.0" layoutY="537.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="vertex12" fill="DODGERBLUE" layoutX="701.0" layoutY="353.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line id="line19" endX="0.20001220703125" endY="25.399993896484375" layoutX="700.0" layoutY="390.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line11" endX="-20.5999755859375" endY="11.600006103515625" layoutX="731.0" layoutY="332.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line25" endX="53.20001220703125" endY="7.20001220703125" layoutX="708.0" layoutY="454.0" startX="3.5999755859375" startY="-24.0" strokeWidth="5.0" />
+      <Line id="line12" endX="50.0" endY="11.199981689453125" layoutX="785.0" layoutY="338.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line26" endX="-20.5999755859375" endY="11.600006103515625" layoutX="805.0" layoutY="449.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line20" endX="0.20001220703125" endY="25.399993896484375" layoutX="848.0" layoutY="390.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line7" endX="0.20001220703125" endY="18.600006103515625" layoutX="772.0" layoutY="277.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line1" endX="-20.5999755859375" endY="11.600006103515625" layoutX="805.0" layoutY="220.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line2" endX="50.0" endY="11.199981689453125" layoutX="860.0" layoutY="224.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line13" endX="-20.5999755859375" endY="11.600006103515625" layoutX="880.0" layoutY="333.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line8" endX="0.20001220703125" endY="25.399993896484375" layoutX="918.0" layoutY="273.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line14" endX="50.0" endY="11.199981689453125" layoutX="932.0" layoutY="338.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line3" endX="-20.5999755859375" endY="11.600006103515625" layoutX="950.0" layoutY="222.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line4" endX="50.0" endY="11.199981689453125" layoutX="1003.0" layoutY="222.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line15" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1023.0" layoutY="333.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line9" endX="0.20001220703125" endY="25.399993896484375" layoutX="1060.0" layoutY="273.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line16" endX="50.0" endY="11.199981689453125" layoutX="1076.0" layoutY="334.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line5" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1095.0" layoutY="222.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line6" endX="50.0" endY="11.199981689453125" layoutX="1153.0" layoutY="222.0" startX="-0.20001220703125" startY="-21.399993896484375" strokeWidth="5.0" />
+      <Line id="line17" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1167.0" layoutY="334.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line10" endX="0.20001220703125" endY="25.399993896484375" layoutX="1209.0" layoutY="273.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line27" endX="50.0" endY="11.199981689453125" layoutX="858.0" layoutY="450.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line28" endX="-20.5999755859375" endY="11.600006103515625" layoutX="952.0" layoutY="447.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line21" endX="0.20001220703125" endY="25.399993896484375" layoutX="991.0" layoutY="390.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line29" endX="50.0" endY="11.199981689453125" layoutX="1004.0" layoutY="454.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line30" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1097.0" layoutY="448.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line22" endX="0.20001220703125" endY="25.399993896484375" layoutX="1139.0" layoutY="390.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line31" endX="50.0" endY="11.199981689453125" layoutX="1146.0" layoutY="454.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line32" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1238.0" layoutY="453.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line23" endX="0.20001220703125" endY="25.399993896484375" layoutX="1280.0" layoutY="390.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line18" endX="50.0" endY="11.199981689453125" layoutX="1217.0" layoutY="335.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line34" endX="0.20001220703125" endY="25.399993896484375" layoutX="628.0" layoutY="506.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line24" endX="-14.0" endY="10.0" layoutX="656.0" layoutY="452.0" startX="34.0" startY="-18.0" strokeWidth="5.0" />
+      <Line id="line40" endX="50.0" endY="11.199981689453125" layoutX="636.0" layoutY="566.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line41" endX="-20.5999755859375" endY="11.600006103515625" layoutX="728.0" layoutY="562.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line35" endX="0.20001220703125" endY="25.399993896484375" layoutX="772.0" layoutY="503.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line42" endX="50.0" endY="11.199981689453125" layoutX="784.0" layoutY="563.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line43" endX="-20.5999755859375" endY="11.600006103515625" layoutX="879.0" layoutY="561.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line36" endX="0.20001220703125" endY="25.399993896484375" layoutX="919.0" layoutY="503.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line44" endX="50.0" endY="11.199981689453125" layoutX="932.0" layoutY="566.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line45" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1024.0" layoutY="563.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line37" endX="0.20001220703125" endY="25.399993896484375" layoutX="1062.0" layoutY="503.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line46" endX="50.0" endY="11.199981689453125" layoutX="1079.0" layoutY="566.0" startX="-4.199951171875" startY="-23.20001220703125" strokeWidth="5.0" />
+      <Line id="line47" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1172.0" layoutY="564.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line38" endX="0.20001220703125" endY="25.399993896484375" layoutX="1209.0" layoutY="503.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line33" endX="50.0" endY="11.199981689453125" layoutX="1289.0" layoutY="449.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line48" endX="50.0" endY="11.199981689453125" layoutX="1220.0" layoutY="568.0" startX="-4.199951171875" startY="-23.20001220703125" strokeWidth="5.0" />
+      <Line id="line50" endX="0.20001220703125" endY="25.399993896484375" layoutX="700.0" layoutY="615.0" startX="0.20001220703125" startY="-21.0" strokeWidth="5.0" />
+      <Line id="line55" endX="50.0" endY="11.199981689453125" layoutX="711.0" layoutY="680.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line56" endX="-20.5999755859375" endY="11.600006103515625" layoutX="805.0" layoutY="678.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line51" endX="0.20001220703125" endY="20.20001220703125" layoutX="848.0" layoutY="618.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line57" endX="50.0" endY="11.199981689453125" layoutX="859.0" layoutY="680.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line58" endX="-20.5999755859375" endY="11.600006103515625" layoutX="951.0" layoutY="679.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line52" endX="0.20001220703125" endY="14.60003662109375" layoutX="992.0" layoutY="621.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line59" endX="50.0" endY="11.199981689453125" layoutX="1003.0" layoutY="680.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line60" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1096.0" layoutY="679.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line53" endX="0.199951171875" endY="17.79998779296875" layoutX="1139.0" layoutY="620.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line61" endX="50.0" endY="11.199981689453125" layoutX="1152.0" layoutY="680.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line62" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1238.0" layoutY="679.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line54" endX="0.199951171875" endY="16.20001220703125" layoutX="1280.0" layoutY="625.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line63" endX="0.20001220703125" endY="25.399993896484375" layoutX="772.0" layoutY="728.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line67" endX="57.39996337890625" endY="7.0" layoutX="779.0" layoutY="799.0" startX="5.39996337890625" startY="-24.20001220703125" strokeWidth="5.0" />
+      <Line id="line68" endX="-20.5999755859375" endY="11.600006103515625" layoutX="880.0" layoutY="794.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line64" endX="0.20001220703125" endY="23.0" layoutX="919.0" layoutY="731.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line69" endX="50.0" endY="11.199981689453125" layoutX="932.0" layoutY="795.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line70" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1025.0" layoutY="794.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line65" endX="0.20001220703125" endY="17.60003662109375" layoutX="1062.0" layoutY="738.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line71" endX="50.0" endY="11.199981689453125" layoutX="1077.0" layoutY="799.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
+      <Line id="line72" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1173.0" layoutY="793.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line66" endX="0.2000732421875" endY="25.0" layoutX="1209.0" layoutY="733.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line49" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1310.0" layoutY="565.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
+      <Line id="line39" endX="0.20001220703125" endY="25.399993896484375" layoutX="1350.0" layoutY="503.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
+      <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
+      <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
+         <font>
+            <Font size="70.0" />
+         </font>
+      </Text>
+      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" onAction="#changeMusicState" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" onAction="#changeSoundState" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_back_to_main_menu" layoutX="777.0" layoutY="543.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Main Menu">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_back_to_game" layoutX="777.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackToGame" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Game">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Exit Game">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
