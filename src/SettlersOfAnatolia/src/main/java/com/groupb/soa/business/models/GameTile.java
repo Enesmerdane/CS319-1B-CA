@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.groupb.soa.business.models;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,7 +35,7 @@ public class GameTile {
         distributeSources();
     }
     // methods
-    public boolean buildVertex( int index, int playerColor, PlayerList pl, boolean first)
+    public boolean buildVertex( int index, int playerColor, PlayerList pl, boolean first )
     {
         return vertices[index - 1].build(first, playerColor, pl);
     }
@@ -46,7 +47,16 @@ public class GameTile {
     
     public boolean buildRoad(int index, int playerColor, PlayerList pl, boolean first)
     {
-        return edges[index - 1].build(true, playerColor, pl);
+        return edges[index - 1].build(first, playerColor, pl);
+    }
+    
+    public ArrayList<Hexagon> getHexsWithValue(int value) {
+        ArrayList<Hexagon> hexagonList = new ArrayList();
+        for ( int i = 0; i < 19; i++){
+            if ( hexagons[i].getNumber() == value )
+                hexagonList.add(hexagons[i]);
+        }
+        return hexagonList;
     }
     
     private void distributeSources()

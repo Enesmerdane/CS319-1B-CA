@@ -7,7 +7,7 @@ package com.groupb.soa.business.models;
 
 /**
  *
- * @author user
+ * @author 
  */
 public class GameModel {
     
