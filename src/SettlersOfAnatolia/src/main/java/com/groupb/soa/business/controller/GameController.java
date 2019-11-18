@@ -7,8 +7,39 @@ package com.groupb.soa.business.controller;
 
 /**
  *
- * @author user
+ * @author Irmak
  */
 public class GameController {
+    GameModel gameModel; 
+    public GameModel()
+    {
+        gameModel = new GameModel();
+    }
     
+    public void startGame()
+    {
+        GameModel newGame = new GameModel (); 
+        //updateView(); 
+    }
+    public void buildRoad( int index)
+    {
+        gameModel.buildRoad(index);
+    }
+    
+    public void upgradeCity( int index)
+    {
+        gameModel.upgradeCity(index);
+    }
+    public void buildSettlement(int index)
+    {
+        gameModel.buildSettlement(index);
+    }
+    public void render()
+    {
+        gameModel.render();
+    }
+    public void dice()
+    {
+        gameModel.rollDice();
+    }
 }
