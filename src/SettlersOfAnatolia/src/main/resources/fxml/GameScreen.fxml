@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="rootPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.groupb.soa.presentation.GameScreen">
+<AnchorPane fx:id="rootPane" prefHeight="1080.0" prefWidth="1920.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupb.soa.presentation.GameScreen">
     <stylesheets>
         <URL value="@/styles/gamescreen.css" />
     </stylesheets>
@@ -62,34 +62,34 @@
             <Image url="@../images/grain_image.jpg" />
          </image>
       </ImageView>
-      <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: true" width="1920.0" />
-      <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: true" width="1000.0" />
-      <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true" text="Game Menu">
+      <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
+      <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
+      <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
          <font>
             <Font size="70.0" />
          </font>
       </Text>
-      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true" text="Game Music: ON">
+      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true" text="Game Sound: ON">
+      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_back_to_main_menu" layoutX="777.0" layoutY="543.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true" text="Back to Main Menu">
+      <Button fx:id="game_menu_back_to_main_menu" layoutX="777.0" layoutY="543.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Main Menu">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_back_to_game" layoutX="777.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true" text="Back to Game">
+      <Button fx:id="game_menu_back_to_game" layoutX="777.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Game">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true" text="Exit Game">
+      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Exit Game">
          <font>
             <Font size="35.0" />
          </font>

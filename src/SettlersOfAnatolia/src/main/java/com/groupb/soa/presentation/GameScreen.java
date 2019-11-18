@@ -63,49 +63,46 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        game_menu_filter.setVisible(false);
-        game_menu_background.setVisible(false);
-        game_menu_title.setVisible(false);
-        game_menu_game_music.setVisible(false);
-        game_menu_game_sound.setVisible(false);
-        game_menu_back_to_main_menu.setVisible(false);
-        game_menu_back_to_game.setVisible(false);
-        game_menu_exit_game.setVisible(false);
         System.out.println("Why not working :((");
         
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                game_menu_filter.setVisible(true);
+                System.out.println("Enter çalıştı");
+                game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
+        
         game_menu_game_sound.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                game_menu_game_sound.setVisible(true);
+                game_menu_game_sound.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
         game_menu_back_to_main_menu.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                game_menu_back_to_main_menu.setVisible(true);
+                game_menu_back_to_main_menu.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
         game_menu_back_to_game.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                game_menu_back_to_game.setVisible(true);
+                game_menu_back_to_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
         game_menu_exit_game.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                game_menu_exit_game.setVisible(true);
+                game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
     }   
-        
+    private void goMainMenu() throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
     
     @FXML
     private void goBackMainMenu(ActionEvent event) throws IOException{
@@ -115,14 +112,14 @@ public class GameScreen implements Initializable {
     
     @FXML
     private void openGameMenu(ActionEvent event){
-        game_menu_filter.setVisible(true);
-        game_menu_background.setVisible(true);
-        game_menu_title.setVisible(true);
-        game_menu_game_music.setVisible(true);
-        game_menu_game_sound.setVisible(true);
-        game_menu_back_to_main_menu.setVisible(true);
-        game_menu_back_to_game.setVisible(true);
-        game_menu_exit_game.setVisible(true);
+        game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_game_sound.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_back_to_main_menu.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_back_to_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+        game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
     }
     
     
