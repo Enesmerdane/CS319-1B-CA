@@ -5,7 +5,6 @@
  */
 package com.groupb.soa.presentation;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,10 +14,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseDragEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import sun.invoke.empty.Empty;
 
 /**
  *
@@ -44,7 +46,25 @@ public class GameScreen implements Initializable {
     private Button game_menu_back_to_game;
     @FXML
     private Button game_menu_exit_game;
+    @FXML
     
+    private ImageView settlement_image_button;
+    @FXML
+    private ImageView city_image_button;
+    @FXML
+    private ImageView road_image_button;
+    
+    @FXML
+    private Rectangle settlement_selected_rectangle;
+    @FXML
+    private Rectangle city_selected_rectangle;
+    @FXML
+    private Rectangle road_selected_rectangle;
+    
+    private Constrcution_type construct_type;
+    enum Constrcution_type{
+        EMPTY, SETTLEMENT, CITY, ROAD
+    }
     
     // Constructors
     /**
@@ -62,8 +82,8 @@ public class GameScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("Why not working :((");
+        construct_type = Constrcution_type.EMPTY;
+        
         
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
@@ -98,6 +118,44 @@ public class GameScreen implements Initializable {
                 game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
+        
+        // operations for image buttons in the right bottom
+        settlement_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                settlement_selected_rectangle.setVisible(true);
+                city_selected_rectangle.setVisible(false);
+                road_selected_rectangle.setVisible(false);
+                
+                construct_type = Constrcution_type.SETTLEMENT;
+            }
+            
+        });
+        
+        city_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                settlement_selected_rectangle.setVisible(false);
+                city_selected_rectangle.setVisible(true);
+                road_selected_rectangle.setVisible(false);
+                
+                construct_type = Constrcution_type.CITY;
+            }
+            
+        });
+        
+        road_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                settlement_selected_rectangle.setVisible(false);
+                city_selected_rectangle.setVisible(false);
+                road_selected_rectangle.setVisible(true);
+                
+                construct_type = Constrcution_type.ROAD;
+            }
+            
+        });
+        
     }   
     private void goMainMenu() throws IOException{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
@@ -122,5 +180,8 @@ public class GameScreen implements Initializable {
         game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
     }
     
-    
+    // Getter & Setter methods
+    public Constrcution_type getConstruct_type(){
+        return construct_type;
+    }
 }
