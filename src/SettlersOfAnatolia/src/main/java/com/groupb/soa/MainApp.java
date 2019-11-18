@@ -19,16 +19,16 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-         String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
+        //String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
           
         //Instantiating Media class  
-        Media media = new Media(new File(path).toURI().toString());  
+        //Media media = new Media(new File(path).toURI().toString());  
           
         //Instantiating MediaPlayer class   
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
+        //MediaPlayer mediaPlayer = new MediaPlayer(media);  
           
         //by setting this property to true, the audio will be played   
-        mediaPlayer.setAutoPlay(true);  
+        //mediaPlayer.setAutoPlay(true);  
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
         
         Scene scene = new Scene(root);

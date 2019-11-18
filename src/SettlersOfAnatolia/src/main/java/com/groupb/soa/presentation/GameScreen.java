@@ -63,8 +63,15 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        
-        
+        game_menu_filter.setVisible(false);
+        game_menu_background.setVisible(false);
+        game_menu_title.setVisible(false);
+        game_menu_game_music.setVisible(false);
+        game_menu_game_sound.setVisible(false);
+        game_menu_back_to_main_menu.setVisible(false);
+        game_menu_back_to_game.setVisible(false);
+        game_menu_exit_game.setVisible(false);
+        System.out.println("Why not working :((");
         
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
