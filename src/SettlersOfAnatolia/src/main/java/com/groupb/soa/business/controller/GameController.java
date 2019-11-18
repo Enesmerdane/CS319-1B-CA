@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.groupb.soa.business.controller;
-
+import com.groupb.soa.business.models.GameModel;
 /**
  *
  * @author Irmak
