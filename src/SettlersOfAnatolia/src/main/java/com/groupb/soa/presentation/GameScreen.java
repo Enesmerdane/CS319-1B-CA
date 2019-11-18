@@ -5,11 +5,15 @@
  */
 package com.groupb.soa.presentation;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+
 /**
  *
  * @author Enes Merdane 
  */
-public class GameScreen extends Screen{
+public class GameScreen implements Initializable {
     
     // Properties
     
@@ -25,31 +29,12 @@ public class GameScreen extends Screen{
         
     }
     
-    /**
-     *  @initiatedDate 17.11.2019
-     *  @initiator Enes
-     *  @lastEdited 17.11.2019
-     *  @author null
-     *  THIS METHOD WILL BE COMMENTED OUT WHEN GAMEMODEL CLASS IS CREATED
-     * @params GameModel prevGame which includes the information to upload the previous game
-     */
-    /**
-    public GameScreen(GameModel prevGame){
-        
-    }
-    **/
-    
-    
     // Methods
-    
-    @Override
-    public Screen createScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
-    public Screen deleteScreen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void initialize(URL location, ResourceBundle resources) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     
 }
