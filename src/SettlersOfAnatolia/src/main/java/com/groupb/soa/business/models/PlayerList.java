@@ -11,6 +11,7 @@ package com.groupb.soa.business.models;
  */
 import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
+import javafx.scene.Node;
 
 public class PlayerList implements IGameObject {
     Player[] players;
@@ -48,6 +49,11 @@ public class PlayerList implements IGameObject {
             players[i].render(gc);
         }
 
+    }
+
+    @Override
+    public void render(Node n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

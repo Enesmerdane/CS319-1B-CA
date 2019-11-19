@@ -5,11 +5,10 @@
  */
 package com.groupb.soa.presentation;
 
+import com.groupb.soa.business.models.Dice;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,9 +19,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import sun.invoke.empty.Empty;
 
 /**
  *
@@ -75,16 +74,17 @@ public class GameScreen implements Initializable {
     private Text your_turn_text;
     
     @FXML
-    private ImageView next_player_1;
-    
+    private Button roll_dice_button;
     @FXML
-    private ImageView next_player_2;
-    
+    private ImageView dice1;
     @FXML
-    private ImageView next_player_3;
-    
+    private ImageView dice2;
+    @FXML 
+    private Circle vertex1;
+    @FXML
     private boolean gameSound = true;
     private boolean gameMusic = true;
+    private Dice d1, d2;
     // Constructors
     /**
      *  @initiatedDate 17.11.2019
@@ -101,11 +101,44 @@ public class GameScreen implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        construct_type = Constrcution_type.EMPTY;
-        next_player_1.setStyle("visibility:false");
-        next_player_2.setStyle("visibility:false");
-        next_player_3.setStyle("visibility:false");
         
+        
+        vertex1.setOnMouseClicked( new VertexHandler(1));
+        construct_type = Constrcution_type.EMPTY;
+        roll_dice_button.setOnMouseClicked( new EventHandler<javafx.scene.input.MouseEvent>() {
+           @Override
+           public void handle(javafx.scene.input.MouseEvent event)
+           {
+               Dice d1, d2;
+               d1 = new Dice(0.0, 0.0);
+               d2 = new Dice(0.0, 0.0);
+               int d1i = d1.rollDice();
+               int d2i = d2.rollDice();
+               Image d1img, d2img;
+               switch(d1i)
+               {
+                   case 1: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_1.png"); break;
+                   case 2: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_2.png"); break;
+                   case 3: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_3.png"); break;
+                   case 4: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_4.png"); break;
+                   case 5: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_5.png"); break;
+                   case 6: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_6.png"); break;
+                   default: d1img = null; break;
+               }
+               switch(d2i)
+               {
+                   case 1: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_1.png"); break;
+                   case 2: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_2.png"); break;
+                   case 3: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_3.png"); break;
+                   case 4: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_4.png"); break;
+                   case 5: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_5.png"); break;
+                   case 6: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_6.png"); break;
+                   default: d2img = null; break;
+               }
+               dice1.setImage(d1img);
+               dice2.setImage(d2img);
+           }
+        });
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
@@ -213,7 +246,7 @@ public class GameScreen implements Initializable {
     
     @FXML
     private void rollDice(ActionEvent event) throws IOException{
-        // roll dice operations ve dice değerinin ekrana yazdırılması -çizdirilmesi(?)-
+        
     }
     
     @FXML
@@ -254,83 +287,21 @@ public class GameScreen implements Initializable {
     private void endTurn(ActionEvent event) throws IOException{
         your_turn_rectangle.setStyle("visibility:false");
         your_turn_text.setStyle("visibility:false");
-        next_player_1.setStyle("visibility:true");
-        Task<Void> sleeper = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        };
-        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                System.out.println("thread1 girdi.");
-                your_turn_rectangle.setStyle("visibility:false");
-                your_turn_text.setStyle("visibility:false");
-                next_player_1.setVisible(false);
-                next_player_2.setVisible(true);
-                next_player_1.setStyle("visibility:false");
-                next_player_2.setStyle("visibility:true");
-            }
-        });
-        Task<Void> sleeper2 = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        };sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                your_turn_rectangle.setStyle("visibility:false");
-                your_turn_text.setStyle("visibility:false");
-                next_player_2.setStyle("visibility:false");
-                next_player_3.setStyle("visibility:true");
-            }
-        });
-        Task<Void> sleeper3 = new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        };
-        new Thread(sleeper).start();
+    }
+    
+    class VertexHandler implements EventHandler<MouseEvent>
+    {
+        int index;
         
-        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                your_turn_rectangle.setStyle("visibility:false");
-                your_turn_text.setStyle("visibility:false");
-                next_player_2.setStyle("visibility:false");
-                next_player_3.setStyle("visibility:true");
-            }
-        });
+        VertexHandler(int i)
+        {
+            index = i;
+        }
         
-        new Thread(sleeper).start();
-        
-        sleeper.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-            @Override
-            public void handle(WorkerStateEvent event) {
-                next_player_3.setStyle("visibility:false");
-                your_turn_rectangle.setStyle("visibility:true");
-                your_turn_text.setStyle("visibility:true");
-            }
-        });
-        
-        new Thread(sleeper).start();
+        @Override
+        public void handle( MouseEvent e)
+        {
+            System.out.println("Attempt to build vertex at index " + index);
+        }
     }
 }

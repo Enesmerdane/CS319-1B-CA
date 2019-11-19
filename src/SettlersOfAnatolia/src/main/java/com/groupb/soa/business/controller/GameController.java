@@ -11,7 +11,7 @@ import com.groupb.soa.business.models.GameModel;
  */
 public class GameController {
     GameModel gameModel; 
-    public GameModel()
+    public GameController()
     {
         gameModel = new GameModel();
     }
@@ -28,7 +28,7 @@ public class GameController {
     
     public void upgradeCity( int index)
     {
-        gameModel.upgradeCity(index);
+        gameModel.buildCity(index);
     }
     public void buildSettlement(int index)
     {
@@ -36,10 +36,10 @@ public class GameController {
     }
     public void render()
     {
-        gameModel.render();
+        //gameModel.render();
     }
     public void dice()
     {
-        gameModel.rollDice();
+        //gameModel.rollDice();
     }
 }

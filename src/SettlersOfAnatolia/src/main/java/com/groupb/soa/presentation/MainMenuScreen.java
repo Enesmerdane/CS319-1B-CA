@@ -9,10 +9,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 /**
  *
@@ -32,6 +37,15 @@ public class MainMenuScreen implements Initializable{
     @FXML
     private void goNewGame(ActionEvent event) throws IOException{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
+        for( int i = 1; i < 55; i++)
+        {
+            pane.lookup( "#vertex" + i).setOnMouseClicked(new VertexHandler(i));
+        }
+        
+        for( int i = 1; i < 73; i++)
+        {
+            pane.lookup( "#line" + i).setOnMouseClicked( new EdgeHandler(i));
+        }
         rootPane.getChildren().setAll(pane);
         
         System.out.println("You clicked me!");
@@ -42,5 +56,40 @@ public class MainMenuScreen implements Initializable{
         System.exit(0);
     }
     
+    class VertexHandler implements EventHandler<MouseEvent>
+    {
+        int index;
+        
+        VertexHandler(int i)
+        {
+            index = i;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            System.out.println("Attempt to build vertex at index " + index);
+            Circle crc = (Circle) e.getSource();
+            crc.setFill(Color.RED);
+        }
+    }
+    
+    class EdgeHandler implements EventHandler<MouseEvent>
+    {
+        int index;
+        
+        EdgeHandler( int i)
+        {
+            index = i;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            System.out.println("Attempt to build edge at index " + index);
+            Line l = (Line) e.getSource();
+            l.setStroke(Color.RED);
+        }
+    }
     
 }

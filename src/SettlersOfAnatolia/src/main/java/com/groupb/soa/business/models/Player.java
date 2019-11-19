@@ -14,8 +14,9 @@ import javafx.scene.image.Image;
 
 
 import java.util.ArrayList;
+import javafx.scene.Node;
 
-public class Player  implements IGameObject {
+public class Player implements IGameObject {
     int[] sources;
     int score;
     int color;
@@ -89,6 +90,11 @@ public class Player  implements IGameObject {
 
     public int getScore() {
         return score;
+    }
+
+    @Override
+    public void render(Node n) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

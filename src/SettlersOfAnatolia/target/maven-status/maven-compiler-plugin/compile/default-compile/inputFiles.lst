@@ -2,12 +2,16 @@ E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\busin
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\data\DataManager.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\GameScreen.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Player.java
+E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Vertex.java
+E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\GameTile.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\SoundManager.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\GameModel.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Bank.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\SettingsController.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\GameController.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\MainMenuScreen.java
+E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Hexagon.java
+E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Edge.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\MainApp.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\LocatableObject.java
 E:\Github\Cs319Bilkent\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\DomesticTrade.java
