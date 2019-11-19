@@ -19,7 +19,7 @@ public class GameModel {
     Dice dice2;
 
 
-    GameModel() {
+    public GameModel() {
         tile = new GameTile();
         playerList = new PlayerList();
         bank = new Bank();
