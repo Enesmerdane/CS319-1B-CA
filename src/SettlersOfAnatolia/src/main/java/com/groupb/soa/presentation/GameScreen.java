@@ -120,7 +120,7 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        hexagonList = new Polygon[3];
+        hexagonList = new Polygon[12];
         
         vertex1.setOnMouseClicked( new VertexHandler(1));
         construct_type = Constrcution_type.EMPTY;
@@ -247,14 +247,31 @@ public class GameScreen implements Initializable {
         double baseX = 773.0;
         double baseY = 237.0;
         
-        int size = 3;
+        int size = 12;
         initiateHexagons(hexagonList, size);
         
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < 12; i++){
             for(int k = 0; k < 3; k++, i++){
                 createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
                 baseX += 147;
             }
+            baseX = 773.0 - 72.0;
+            baseY = 237.0 + 116.0;
+            for(int k = 0; k < 4; k++, i++){
+                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+                baseX += 147;
+            }
+            
+            baseX = 773.0 - 72.0 - 72.0;
+            baseY = 237.0 + 116.0 + 116.0;
+            
+            for(int k = 0; k < 5; k++, i++){
+                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+                baseX += 147;
+            }
+            
+            
+            
         }
         
     }  
