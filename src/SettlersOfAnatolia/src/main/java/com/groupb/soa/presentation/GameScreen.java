@@ -6,6 +6,7 @@
 package com.groupb.soa.presentation;
 
 import com.groupb.soa.business.models.Dice;
+import com.groupb.soa.business.models.Edge;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -36,6 +38,7 @@ public class GameScreen implements Initializable {
     // Constants
     private static final int NUMBER_OF_HEXAGONS = 19;
     private static final int NUMBER_OF_VERTICES = 54;
+    private static final int NUMBER_OF_EDGES = 70;
     // Variables
     @FXML
     private AnchorPane rootPane;
@@ -105,9 +108,8 @@ public class GameScreen implements Initializable {
     
     private Point[] verticeList;
     private Circle[] circleList;
+    private Line[] edgeList;
     
-    @FXML
-    private Text debugText;
     
     // Constructors
     /**
@@ -128,11 +130,11 @@ public class GameScreen implements Initializable {
         
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         
-        vertex1.setOnMouseClicked( new VertexHandler(1));
         construct_type = Constrcution_type.EMPTY;
         
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
+        edgeList = new Line[NUMBER_OF_EDGES];
         
         roll_dice_button.setOnMouseClicked( new EventHandler<javafx.scene.input.MouseEvent>() {
            @Override
@@ -239,16 +241,6 @@ public class GameScreen implements Initializable {
             
         });
         
-        rootPane.setOnMouseMoved(new EventHandler<MouseEvent>() {
-            @Override public void handle(MouseEvent event) {
-              String msg =
-                "(x: "       + event.getX()      + ", y: "       + event.getY()       + ") -- " +
-                "(sceneX: "  + event.getSceneX() + ", sceneY: "  + event.getSceneY()  + ") -- " +
-                "(screenX: " + event.getScreenX()+ ", screenY: " + event.getScreenY() + ")";
-
-              debugText.setText(msg);
-            }
-          });
         
         //Creating Hexagon
         // Stage stage = (Stage) rootPane.getScene().getWindow();
@@ -267,9 +259,26 @@ public class GameScreen implements Initializable {
         
         drawAllVertices();
         
+        for(int i = 0; i < NUMBER_OF_VERTICES; i++){
+            circleList[i].setOnMouseClicked(new VertexHandler(i));
+        }
         
     }  
     private void drawAllEdges(){
+        // 0 3 - 4
+        int i = 0;
+        edgeList[i] = new Line(verticeList[0].getX(), verticeList[0].getY(), verticeList[3].getX(), verticeList[3].getY());
+        edgeList[i].setFill(Color.BLACK);
+        edgeList[i].setStrokeWidth(5.0);
+        rootPane.getChildren().add(edgeList[i]);
+        i++;
+        
+        edgeList[i] = new Line(verticeList[3].getX(), verticeList[3].getY(), verticeList[7].getX(), verticeList[7].getY());
+        edgeList[i].setFill(Color.BLACK);
+        edgeList[i].setStrokeWidth(5.0);
+        rootPane.getChildren().add(edgeList[i]);
+        
+        
         
     }
     
@@ -419,7 +428,11 @@ public class GameScreen implements Initializable {
     
     private void placeHexagons(double initialX, double initialY){
         int i = 0;
-        
+        /**
+         * hexagon_forest_image
+         * hexagon_mountain_image
+         * hexagon_
+         */
         for(int k = 0; k < 3; k++, i++){
             createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
             initialX += 147;
@@ -427,7 +440,7 @@ public class GameScreen implements Initializable {
         initialX = 773.0 - 72.0;
         initialY = 237.0 + 116.0;
         for(int k = 0; k < 4; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_hill_image");
             initialX += 147;
         }
 
@@ -435,7 +448,7 @@ public class GameScreen implements Initializable {
         initialY = 237.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 5; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_mountain_image");
             initialX += 147;
         }
 
@@ -443,7 +456,7 @@ public class GameScreen implements Initializable {
         initialY = 237.0 + 116.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 4; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_pasture_image");
             initialX += 147;
         }
 
@@ -451,7 +464,7 @@ public class GameScreen implements Initializable {
         initialY = 237.0 + 116.0 + 116.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 3; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_field_image");
             initialX += 147;
         }
     }
@@ -571,6 +584,26 @@ public class GameScreen implements Initializable {
         public void handle( MouseEvent e)
         {
             System.out.println("Attempt to build vertex at index " + index);
+            Circle circle = (Circle) e.getSource();
+            circle.setFill(Color.RED);
+        }
+    }
+    
+    class EdgeHandler implements EventHandler<MouseEvent>
+    {
+        int index;
+        
+        EdgeHandler( int i)
+        {
+            index = i;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            System.out.println("Attempt to build edge at index " + index);
+            Line l = (Line) e.getSource();
+            l.setStroke(Color.RED);
         }
     }
 }

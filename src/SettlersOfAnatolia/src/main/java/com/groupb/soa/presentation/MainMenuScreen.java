@@ -39,12 +39,12 @@ public class MainMenuScreen implements Initializable{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
         for( int i = 1; i < 55; i++)
         {
-            pane.lookup( "#vertex" + i).setOnMouseClicked(new VertexHandler(i));
+            // pane.lookup( "#vertex" + i).setOnMouseClicked(new VertexHandler(i));
         }
         
         for( int i = 1; i < 73; i++)
         {
-            pane.lookup( "#line" + i).setOnMouseClicked( new EdgeHandler(i));
+            // pane.lookup( "#line" + i).setOnMouseClicked( new EdgeHandler(i));
         }
         rootPane.getChildren().setAll(pane);
         
