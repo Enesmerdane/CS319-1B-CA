@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.Double?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -107,7 +109,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button id="trade_with_bank_button" fx:id="exit_game_button21" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+      <Button fx:id="trade_with_bank_button" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -115,7 +117,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button id="trade-with_players_button" fx:id="exit_game_button211" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+      <Button fx:id="trade_with_players_button" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -123,7 +125,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="642.0" layoutX="601.0" layoutY="184.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="764.0" />
+      <Rectangle id="game_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="642.0" layoutX="601.0" layoutY="184.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="764.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1694.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1703.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -159,12 +161,195 @@
             <Point3D z="-1.0" />
          </rotationAxis>
       </ImageView>
-      <Rectangle id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="1406.0" layoutY="730.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
-      <Text id="your_turn_text" fill="RED" layoutX="1426.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
+      <Rectangle fx:id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="1406.0" layoutY="730.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
+      <Text fx:id="your_turn_text" fill="RED" layoutX="1426.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
          <font>
             <Font name="System Bold" size="50.0" />
          </font>
       </Text>
+      <Polygon fx:id="hexagon1" fill="DODGERBLUE" layoutX="773.0" layoutY="237.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="0.0" />
+            <Double fx:value="0.0" />
+            
+            <Double fx:value="73.0" />
+            <Double fx:value="-40.0" />
+            
+            <Double fx:value="147.0" />
+            <Double fx:value="0.0" />
+            
+            <Double fx:value="147.0" />
+            <Double fx:value="73.0" />
+            
+            <Double fx:value="73.0" />
+            <Double fx:value="116.0" />
+            
+            <Double fx:value="0.0" />
+            <Double fx:value="73.0" />
+            
+         </points>
+      </Polygon> 
+      <Polygon fx:id="hexagon2" fill="DODGERBLUE" layoutX="938.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon3" fill="DODGERBLUE" layoutX="938.0" layoutY="391.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon6" fill="DODGERBLUE" layoutX="1063.0" layoutY="381.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon><!--
+      <Polygon fx:id="hexagon7" fill="DODGERBLUE" layoutX="1212.0" layoutY="384.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon8" fill="DODGERBLUE" layoutX="705.0" layoutY="503.0" points="-74.33331298828125, -33.4000244140625, 65.4000244140625, -33.4000244140625, -4.0, -75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="hexagon9" fill="DODGERBLUE" layoutX="841.0" layoutY="495.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon10" fill="DODGERBLUE" layoutX="984.0" layoutY="508.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon11" fill="DODGERBLUE" layoutX="1134.0" layoutY="504.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon12" fill="DODGERBLUE" layoutX="1291.0" layoutY="501.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon13" fill="DODGERBLUE" layoutX="759.0" layoutY="617.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon14" fill="DODGERBLUE" layoutX="928.0" layoutY="635.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon15" fill="DODGERBLUE" layoutX="1057.0" layoutY="612.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon16" fill="DODGERBLUE" layoutX="1218.0" layoutY="611.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon17" fill="DODGERBLUE" layoutX="842.0" layoutY="724.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon18" fill="DODGERBLUE" layoutX="1008.0" layoutY="732.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon19" fill="DODGERBLUE" layoutX="1134.0" layoutY="738.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>
+      <Polygon fx:id="hexagon2" fill="DODGERBLUE" layoutX="1012.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE">
+         <points>
+            <Double fx:value="-50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="50.0" />
+            <Double fx:value="40.0" />
+            <Double fx:value="0.0" />
+            <Double fx:value="-60.0" />
+         </points>
+      </Polygon>-->
       <Circle fx:id="vertex5" fill="DODGERBLUE" layoutX="920.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="vertex1" fill="DODGERBLUE" layoutX="849.0" layoutY="200.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fx:id="vertex4" fill="DODGERBLUE" layoutX="773.0" layoutY="237.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" />
@@ -279,7 +464,7 @@
       <Line id="line61" endX="50.0" endY="11.199981689453125" layoutX="1152.0" layoutY="680.0" startX="0.4000244140625" startY="-20.0" strokeWidth="5.0" />
       <Line id="line62" endX="-20.5999755859375" endY="11.600006103515625" layoutX="1238.0" layoutY="679.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
       <Line id="line54" endX="0.199951171875" endY="16.20001220703125" layoutX="1280.0" layoutY="625.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
-      <Line id="line63" endX="0.20001220703125" endY="25.399993896484375" layoutX="772.0" layoutY="728.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
+      <Line id="line63" endX="0.20001220703125" endY="25.399993896484375" layoutX="772.0" layoutY="734.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
       <Line id="line67" endX="57.39996337890625" endY="7.0" layoutX="779.0" layoutY="799.0" startX="5.39996337890625" startY="-24.20001220703125" strokeWidth="5.0" />
       <Line id="line68" endX="-20.5999755859375" endY="11.600006103515625" layoutX="880.0" layoutY="794.0" startX="29.79998779296875" startY="-18.79998779296875" strokeWidth="5.0" />
       <Line id="line64" endX="0.20001220703125" endY="23.0" layoutX="919.0" layoutY="731.0" startX="0.20001220703125" startY="-25.0" strokeWidth="5.0" />
@@ -325,5 +510,10 @@
             <Font size="35.0" />
          </font>
       </Button>
+      <Text fx:id="debugText" fill="RED" layoutX="406.0" layoutY="263.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="56.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

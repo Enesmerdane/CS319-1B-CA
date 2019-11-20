@@ -14,14 +14,19 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  *
@@ -81,10 +86,23 @@ public class GameScreen implements Initializable {
     private ImageView dice2;
     @FXML 
     private Circle vertex1;
+    
     @FXML
+    private Polygon hexagon1;
+    
+    @FXML
+    private Polygon hexagonList[];
+    
+    
     private boolean gameSound = true;
     private boolean gameMusic = true;
     private Dice d1, d2;
+    
+    private Group hexagonGroup;
+    
+    @FXML
+    private Text debugText;
+    
     // Constructors
     /**
      *  @initiatedDate 17.11.2019
@@ -102,6 +120,7 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
+        hexagonList = new Polygon[3];
         
         vertex1.setOnMouseClicked( new VertexHandler(1));
         construct_type = Constrcution_type.EMPTY;
@@ -210,7 +229,66 @@ public class GameScreen implements Initializable {
             
         });
         
-    }   
+        rootPane.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override public void handle(MouseEvent event) {
+              String msg =
+                "(x: "       + event.getX()      + ", y: "       + event.getY()       + ") -- " +
+                "(sceneX: "  + event.getSceneX() + ", sceneY: "  + event.getSceneY()  + ") -- " +
+                "(screenX: " + event.getScreenX()+ ", screenY: " + event.getScreenY() + ")";
+
+              debugText.setText(msg);
+            }
+          });
+        
+        //Creating Hexagon
+        // Stage stage = (Stage) rootPane.getScene().getWindow();
+        // hexagonGroup = new Group(hexagon1);
+        
+        double baseX = 773.0;
+        double baseY = 237.0;
+        
+        int size = 3;
+        initiateHexagons(hexagonList, size);
+        
+        for(int i = 0; i < 3; i++){
+            for(int k = 0; k < 3; k++, i++){
+                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+                baseX += 147;
+            }
+        }
+        
+    }  
+    
+    private void initiateHexagons(Polygon[] arr, int size){
+        for(int i = 0; i < size; i++){
+            arr[i] = new Polygon();
+        }
+    }
+    
+    private void createHexagon(Double startPointX, Double startPointY, Polygon hexagon, String imageName){
+        hexagon.setLayoutX(startPointX);
+        hexagon.setLayoutY(startPointY);
+        hexagon.getPoints().clear();
+        hexagon.getPoints().addAll(new Double[]{        
+            0.0, 0.0, 
+            73.0, -40.0, 
+            147.0, 0.0,          
+            147.0, 73.0, 
+            73.0, 116.0,                   
+            0.0, 73.0, 
+         });
+        
+        rootPane.getChildren().add(hexagon);
+        
+        // DEBUG
+        System.out.println( "Created hexagon on: " + startPointX + " - " + startPointY);
+         
+        String image_path = "/images/" + imageName + ".jpg";
+        Image img = new Image(image_path);
+        hexagon.setFill(new ImagePattern(img));
+    }
+    
+    
     private void goMainMenu() throws IOException{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
         rootPane.getChildren().setAll(pane);
