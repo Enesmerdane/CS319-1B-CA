@@ -20,13 +20,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  *
@@ -34,6 +32,10 @@ import javafx.stage.Stage;
  */
 public class GameScreen implements Initializable {
     // Properties
+    // Constants
+    private static final int NUMBER_OF_HEXAGONS = 19;
+    
+    // Variables
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -120,7 +122,7 @@ public class GameScreen implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
-        hexagonList = new Polygon[12];
+        hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         
         vertex1.setOnMouseClicked( new VertexHandler(1));
         construct_type = Constrcution_type.EMPTY;
@@ -247,32 +249,46 @@ public class GameScreen implements Initializable {
         double baseX = 773.0;
         double baseY = 237.0;
         
-        int size = 12;
-        initiateHexagons(hexagonList, size);
+        initiateHexagons(hexagonList, NUMBER_OF_HEXAGONS);
         
-        for(int i = 0; i < 12; i++){
-            for(int k = 0; k < 3; k++, i++){
-                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-                baseX += 147;
-            }
-            baseX = 773.0 - 72.0;
-            baseY = 237.0 + 116.0;
-            for(int k = 0; k < 4; k++, i++){
-                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-                baseX += 147;
-            }
-            
-            baseX = 773.0 - 72.0 - 72.0;
-            baseY = 237.0 + 116.0 + 116.0;
-            
-            for(int k = 0; k < 5; k++, i++){
-                createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-                baseX += 147;
-            }
-            
-            
-            
+        int i = 0;
+        
+        for(int k = 0; k < 3; k++, i++){
+            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+            baseX += 147;
         }
+        baseX = 773.0 - 72.0;
+        baseY = 237.0 + 116.0;
+        for(int k = 0; k < 4; k++, i++){
+            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+            baseX += 147;
+        }
+
+        baseX = 773.0 - 72.0 - 72.0;
+        baseY = 237.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 5; k++, i++){
+            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+            baseX += 147;
+        }
+
+        baseX = 773.0 - 72.0;
+        baseY = 237.0 + 116.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 4; k++, i++){
+            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+            baseX += 147;
+        }
+
+        baseX = 773.0;
+        baseY = 237.0 + 116.0 + 116.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 3; k++, i++){
+            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
+            baseX += 147;
+        }
+            
+            
         
     }  
     
