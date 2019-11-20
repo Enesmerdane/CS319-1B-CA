@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
@@ -34,7 +35,7 @@ public class GameScreen implements Initializable {
     // Properties
     // Constants
     private static final int NUMBER_OF_HEXAGONS = 19;
-    
+    private static final int NUMBER_OF_VERTICES = 54;
     // Variables
     @FXML
     private AnchorPane rootPane;
@@ -70,6 +71,8 @@ public class GameScreen implements Initializable {
     private Rectangle road_selected_rectangle;
     
     private Constrcution_type construct_type;
+
+    
     enum Constrcution_type{
         EMPTY, SETTLEMENT, CITY, ROAD
     }
@@ -100,7 +103,8 @@ public class GameScreen implements Initializable {
     private boolean gameMusic = true;
     private Dice d1, d2;
     
-    private Group hexagonGroup;
+    private Point[] verticeList;
+    private Circle[] circleList;
     
     @FXML
     private Text debugText;
@@ -126,6 +130,10 @@ public class GameScreen implements Initializable {
         
         vertex1.setOnMouseClicked( new VertexHandler(1));
         construct_type = Constrcution_type.EMPTY;
+        
+        verticeList = new Point[NUMBER_OF_VERTICES];
+        circleList  = new Circle[NUMBER_OF_VERTICES];
+        
         roll_dice_button.setOnMouseClicked( new EventHandler<javafx.scene.input.MouseEvent>() {
            @Override
            public void handle(javafx.scene.input.MouseEvent event)
@@ -251,50 +259,200 @@ public class GameScreen implements Initializable {
         
         initiateHexagons(hexagonList, NUMBER_OF_HEXAGONS);
         
-        int i = 0;
+        placeHexagons(baseX, baseY);
         
-        for(int k = 0; k < 3; k++, i++){
-            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-            baseX += 147;
-        }
-        baseX = 773.0 - 72.0;
-        baseY = 237.0 + 116.0;
-        for(int k = 0; k < 4; k++, i++){
-            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-            baseX += 147;
-        }
-
-        baseX = 773.0 - 72.0 - 72.0;
-        baseY = 237.0 + 116.0 + 116.0;
-
-        for(int k = 0; k < 5; k++, i++){
-            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-            baseX += 147;
-        }
-
-        baseX = 773.0 - 72.0;
-        baseY = 237.0 + 116.0 + 116.0 + 116.0;
-
-        for(int k = 0; k < 4; k++, i++){
-            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-            baseX += 147;
-        }
-
-        baseX = 773.0;
-        baseY = 237.0 + 116.0 + 116.0 + 116.0 + 116.0;
-
-        for(int k = 0; k < 3; k++, i++){
-            createHexagon(baseX, baseY, hexagonList[i], "hexagon_forest_image");
-            baseX += 147;
-        }
-            
-            
+        setLocationToAllVertices(baseX + 73.0, baseY - 40.0);
+        
+        drawAllEdges();
+        
+        drawAllVertices();
+        
         
     }  
+    private void drawAllEdges(){
+        
+    }
+    
+    
+    private void drawAllVertices(){
+        for(int i = 0; i < NUMBER_OF_VERTICES; i++){
+            circleList[i] = new Circle(verticeList[i].getX(), verticeList[i].getY(), 7.0);
+            circleList[i].setFill(Color.DODGERBLUE);
+            rootPane.getChildren().add(circleList[i]);
+        }
+    }
+    
+    private void setLocationToAllVertices(double baseX, double baseY) {
+        int i = 0;
+        double baseX2;
+        double baseY2;
+        
+        double tempX = baseX;
+        double tempY = baseY;
+        baseX2 = tempX;
+        baseY2 = tempY;
+        for(int k = 0; k < 3; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+        System.out.println(baseX2 + " - " + baseY2);
+        
+        
+        tempX = baseX2 - 73.0;
+        baseX2 = tempX;
+        tempY = baseY2 + 40.0;
+        baseY2 = tempY;
+        
+        System.out.println(baseX2 + " - " + baseY2);
+        
+        for(int k = 0; k < 4; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+        
+        System.out.println(baseX2 + " - " + baseY2);
+        
+        tempY = baseY2 +  73.0;
+        baseY2 = tempY;
+        tempX = baseX2;
+        
+        System.out.println(baseX2 + " - " + baseY2);
+        
+        for(int k = 0; k < 4; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+        
+        System.out.println(baseX2 + " - " + baseY2);
+        
+        tempX = baseX2 - 73.0;
+        baseX2 = tempX;
+        tempY = baseY2 + 40.0;
+        baseY2 = tempY;
+        
+        for(int k = 0; k < 5; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempY = baseY2 +  73.0;
+        baseY2 = tempY;
+        tempX = baseX2;
+        
+        for(int k = 0; k < 5; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempX = baseX2 - 73.0;
+        baseX2 = tempX;
+        tempY = baseY2 + 40.0;
+        baseY2 = tempY;
+        
+        for(int k = 0; k < 6; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempY = baseY2 +  73.0 + 4.0;
+        baseY2 = tempY;
+        tempX = baseX2;
+        
+        for(int k = 0; k < 6; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempX = baseX2 + 73.0;
+        baseX2 = tempX;
+        tempY = baseY2 + 40.0;
+        baseY2 = tempY;
+        
+        for(int k = 0; k < 5; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempY = baseY2 + 73.0 + 4.0;
+        baseY2 = tempY;
+        tempX = baseX2;
+        
+        for(int k = 0; k < 5; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempX = baseX2 + 73.0;
+        baseX2 = tempX;
+        tempY = baseY2 + 40.0;
+        baseY2 = tempY;
+        
+        for(int k = 0; k < 4; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempY = baseY2 +  73.0 + 4.0;
+        baseY2 = tempY;
+        tempX = baseX2;
+        
+        for(int k = 0; k < 4; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+
+        tempY = baseY2 +  40.0;
+        baseY2 = tempY;
+        tempX = baseX2 + 73.0;
+        
+        for(int k = 0; k < 3; k++, i++){
+            verticeList[i] = new Point(tempX, tempY);
+            tempX += 147.0;
+        }
+    }
     
     private void initiateHexagons(Polygon[] arr, int size){
         for(int i = 0; i < size; i++){
             arr[i] = new Polygon();
+        }
+    }
+    
+    private void placeHexagons(double initialX, double initialY){
+        int i = 0;
+        
+        for(int k = 0; k < 3; k++, i++){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            initialX += 147;
+        }
+        initialX = 773.0 - 72.0;
+        initialY = 237.0 + 116.0;
+        for(int k = 0; k < 4; k++, i++){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            initialX += 147;
+        }
+
+        initialX = 773.0 - 72.0 - 72.0;
+        initialY = 237.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 5; k++, i++){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            initialX += 147;
+        }
+
+        initialX = 773.0 - 72.0;
+        initialY = 237.0 + 116.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 4; k++, i++){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            initialX += 147;
+        }
+
+        initialX = 773.0;
+        initialY = 237.0 + 116.0 + 116.0 + 116.0 + 116.0;
+
+        for(int k = 0; k < 3; k++, i++){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            initialX += 147;
         }
     }
     

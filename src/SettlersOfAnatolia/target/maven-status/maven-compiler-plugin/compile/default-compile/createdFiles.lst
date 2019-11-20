@@ -11,6 +11,7 @@ com\groupb\soa\presentation\GameScreen$7.class
 com\groupb\soa\business\controller\GameController.class
 com\groupb\soa\business\models\GameTile.class
 com\groupb\soa\presentation\MainMenuScreen.class
+com\groupb\soa\presentation\Point.class
 com\groupb\soa\MainApp.class
 com\groupb\soa\business\models\IGameObject.class
 com\groupb\soa\presentation\GameScreen$4.class
