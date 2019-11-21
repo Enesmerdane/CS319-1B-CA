@@ -38,7 +38,11 @@ public class GameScreen implements Initializable {
     // Constants
     private static final int NUMBER_OF_HEXAGONS = 19;
     private static final int NUMBER_OF_VERTICES = 54;
-    private static final int NUMBER_OF_EDGES = 70;
+    private static final int NUMBER_OF_EDGES = 72;
+    
+    private static final double HEXAGONS_BASE_X = 623.0;
+    private static final double HEXAGONS_BASE_Y = 237.0;
+    
     // Variables
     @FXML
     private AnchorPane rootPane;
@@ -246,14 +250,17 @@ public class GameScreen implements Initializable {
         // Stage stage = (Stage) rootPane.getScene().getWindow();
         // hexagonGroup = new Group(hexagon1);
         
-        double baseX = 773.0;
-        double baseY = 237.0;
+        
+        
+        
+        double baseX = HEXAGONS_BASE_X;
+        double baseY = HEXAGONS_BASE_Y;
         
         initiateHexagons(hexagonList, NUMBER_OF_HEXAGONS);
         
         placeHexagons(baseX, baseY);
         
-        setLocationToAllVertices(baseX + 73.0, baseY - 40.0);
+        setLocationToAllVertices(baseX + 70.0, baseY - 30.0);
         
         drawAllEdges();
         
@@ -265,21 +272,160 @@ public class GameScreen implements Initializable {
         
     }  
     private void drawAllEdges(){
-        // 0 3 - 4
         int i = 0;
-        edgeList[i] = new Line(verticeList[0].getX(), verticeList[0].getY(), verticeList[3].getX(), verticeList[3].getY());
-        edgeList[i].setFill(Color.BLACK);
-        edgeList[i].setStrokeWidth(5.0);
-        rootPane.getChildren().add(edgeList[i]);
-        i++;
         
-        edgeList[i] = new Line(verticeList[3].getX(), verticeList[3].getY(), verticeList[7].getX(), verticeList[7].getY());
-        edgeList[i].setFill(Color.BLACK);
-        edgeList[i].setStrokeWidth(5.0);
-        rootPane.getChildren().add(edgeList[i]);
+        // Draws the first line
+        for(int k = 0; k < 3; k++){
+            edgeList[i] = new Line(verticeList[ k+3 ].getX(), verticeList[ k+3 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
         
+        // Draws the first vertical lines
+        for(int k = 0; k < 4; k++){
+            edgeList[i] = new Line(verticeList[ k+3 ].getX(), verticeList[ k+3 ].getY(), verticeList[ k+7 ].getX(), verticeList[ k+7 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
         
+        // Draws the second line
+        for(int k = 7; k < 11; k++){
+            edgeList[i] = new Line(verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
         
+        // Draws the second vertical lines
+        for(int k = 7; k < 12; k++){
+            edgeList[i] = new Line(verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY(), verticeList[ k+9 ].getX(), verticeList[ k+9 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the third line
+        for(int k = 16; k < 21; k++){
+            edgeList[i] = new Line(verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k+6 ].getX(), verticeList[ k+6 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the third vertical lines
+        for(int k = 16; k < 22; k++){
+            edgeList[i] = new Line(verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY(), verticeList[ k+11 ].getX(), verticeList[ k+11 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the fourth line
+        for(int k = 33; k < 38; k++){
+            edgeList[i] = new Line(verticeList[ k-6 ].getX(), verticeList[ k-6 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k-5 ].getX(), verticeList[ k-5 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the fourth vertical lines
+        for(int k = 33; k < 38; k++){
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the fifth line
+        for(int k = 38; k < 42; k++){
+            edgeList[i] = new Line(verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+
+            edgeList[i] = new Line(verticeList[ k+5 ].getX(), verticeList[ k+5 ].getY(), verticeList[ k+1 ].getX(), verticeList[ k+1 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the fifth vertical lines
+        for(int k = 43; k < 47; k++){
+            edgeList[i] = new Line(verticeList[ k ].getX(), verticeList[ k ].getY(), verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+        }
+        
+        // Draws the sixth line
+        for(int k = 47; k < 50; k++){
+            edgeList[i] = new Line(verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY(), verticeList[ k ].getX(), verticeList[ k ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+            
+            edgeList[i] = new Line(verticeList[ k+4 ].getX(), verticeList[ k+4 ].getY(), verticeList[ k+1 ].getX(), verticeList[ k+1 ].getY());
+            edgeList[i].setFill(Color.BLACK);
+            edgeList[i].setStrokeWidth(5.0);
+            edgeList[i].setOnMouseClicked(new EdgeHandler(i));
+            rootPane.getChildren().add(edgeList[i]);
+            i++;
+            System.out.println(i);
+        }
     }
     
     
@@ -302,26 +448,26 @@ public class GameScreen implements Initializable {
         baseY2 = tempY;
         for(int k = 0; k < 3; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
         System.out.println(baseX2 + " - " + baseY2);
         
         
-        tempX = baseX2 - 73.0;
+        tempX = baseX2 - 70.0;
         baseX2 = tempX;
-        tempY = baseY2 + 40.0;
+        tempY = baseY2 + 30.0 + 3.0;
         baseY2 = tempY;
         
         System.out.println(baseX2 + " - " + baseY2);
         
         for(int k = 0; k < 4; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
         
         System.out.println(baseX2 + " - " + baseY2);
         
-        tempY = baseY2 +  73.0;
+        tempY = baseY2 + 80.0 + 6.0;
         baseY2 = tempY;
         tempX = baseX2;
         
@@ -329,94 +475,94 @@ public class GameScreen implements Initializable {
         
         for(int k = 0; k < 4; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
         
         System.out.println(baseX2 + " - " + baseY2);
         
-        tempX = baseX2 - 73.0;
+        tempX = baseX2 - 70.0;
         baseX2 = tempX;
-        tempY = baseY2 + 40.0;
+        tempY = baseY2 + 30.0;
         baseY2 = tempY;
         
         for(int k = 0; k < 5; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempY = baseY2 +  73.0;
+        tempY = baseY2 +  80.0;
         baseY2 = tempY;
         tempX = baseX2;
         
         for(int k = 0; k < 5; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempX = baseX2 - 73.0;
+        tempX = baseX2 - 70.0;
         baseX2 = tempX;
-        tempY = baseY2 + 40.0;
+        tempY = baseY2 + 30.0;
         baseY2 = tempY;
         
         for(int k = 0; k < 6; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempY = baseY2 +  73.0 + 4.0;
+        tempY = baseY2 +  80.0 + 6.0;
         baseY2 = tempY;
         tempX = baseX2;
         
         for(int k = 0; k < 6; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempX = baseX2 + 73.0;
+        tempX = baseX2 + 70.0;
         baseX2 = tempX;
-        tempY = baseY2 + 40.0;
+        tempY = baseY2 + 30.0;
         baseY2 = tempY;
         
         for(int k = 0; k < 5; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempY = baseY2 + 73.0 + 4.0;
+        tempY = baseY2 + 80.0 + 6.0;
         baseY2 = tempY;
         tempX = baseX2;
         
         for(int k = 0; k < 5; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempX = baseX2 + 73.0;
+        tempX = baseX2 + 70.0;
         baseX2 = tempX;
-        tempY = baseY2 + 40.0;
+        tempY = baseY2 + 30.0;
         baseY2 = tempY;
         
         for(int k = 0; k < 4; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempY = baseY2 +  73.0 + 4.0;
+        tempY = baseY2 +  80.0 + 6.0;
         baseY2 = tempY;
         tempX = baseX2;
         
         for(int k = 0; k < 4; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
 
-        tempY = baseY2 +  40.0;
+        tempY = baseY2 +  30.0;
         baseY2 = tempY;
-        tempX = baseX2 + 73.0;
+        tempX = baseX2 + 70.0;
         
         for(int k = 0; k < 3; k++, i++){
             verticeList[i] = new Point(tempX, tempY);
-            tempX += 147.0;
+            tempX += 140.0;
         }
     }
     
@@ -435,37 +581,44 @@ public class GameScreen implements Initializable {
          */
         for(int k = 0; k < 3; k++, i++){
             createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
-            initialX += 147;
+            initialX += 140;
         }
-        initialX = 773.0 - 72.0;
-        initialY = 237.0 + 116.0;
+        
+        initialX = HEXAGONS_BASE_X - 70.0;
+        initialY = HEXAGONS_BASE_Y + 116.0;
+        
         for(int k = 0; k < 4; k++, i++){
             createHexagon(initialX, initialY, hexagonList[i], "hexagon_hill_image");
-            initialX += 147;
+            initialX += 140;
         }
 
-        initialX = 773.0 - 72.0 - 72.0;
-        initialY = 237.0 + 116.0 + 116.0;
+        initialX = HEXAGONS_BASE_X - 70.0 - 70.0;
+        initialY = HEXAGONS_BASE_Y + 116.0 + 116.0;
 
         for(int k = 0; k < 5; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_mountain_image");
-            initialX += 147;
+            if(k== 2){
+            createHexagon(initialX, initialY, hexagonList[i], "hexagon_desert_image");
+                
+            } else {
+                createHexagon(initialX, initialY, hexagonList[i], "hexagon_mountain_image"); 
+            }
+            initialX += 140;
         }
 
-        initialX = 773.0 - 72.0;
-        initialY = 237.0 + 116.0 + 116.0 + 116.0;
+        initialX = HEXAGONS_BASE_X - 70.0;
+        initialY = HEXAGONS_BASE_Y + 116.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 4; k++, i++){
             createHexagon(initialX, initialY, hexagonList[i], "hexagon_pasture_image");
-            initialX += 147;
+            initialX += 140;
         }
 
-        initialX = 773.0;
-        initialY = 237.0 + 116.0 + 116.0 + 116.0 + 116.0;
+        initialX = HEXAGONS_BASE_X;
+        initialY = HEXAGONS_BASE_Y + 116.0 + 116.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 3; k++, i++){
             createHexagon(initialX, initialY, hexagonList[i], "hexagon_field_image");
-            initialX += 147;
+            initialX += 140;
         }
     }
     
@@ -475,11 +628,11 @@ public class GameScreen implements Initializable {
         hexagon.getPoints().clear();
         hexagon.getPoints().addAll(new Double[]{        
             0.0, 0.0, 
-            73.0, -40.0, 
-            147.0, 0.0,          
-            147.0, 73.0, 
-            73.0, 116.0,                   
-            0.0, 73.0, 
+            70.0, -30.0, 
+            140.0, 0.0,          
+            140.0, 86.0, 
+            70.0, 116.0,                   
+            0.0, 86.0, 
          });
         
         rootPane.getChildren().add(hexagon);

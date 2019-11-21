@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.Double?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
@@ -8,9 +7,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -20,12 +16,12 @@
         <URL value="@/styles/gamescreen.css" />
     </stylesheets>
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="2500.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1080.0" fitWidth="2500.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/wooden_background.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="exit_game_button" layoutX="29.0" layoutY="922.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
+      <Button fx:id="exit_game_button" layoutX="22.0" layoutY="975.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
          <font>
             <Font size="35.0" />
          </font>
@@ -33,7 +29,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="end_turn_button" layoutX="322.0" layoutY="921.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
+      <Button fx:id="end_turn_button" layoutX="315.0" layoutY="974.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
          <font>
             <Font size="35.0" />
          </font>
@@ -41,59 +37,59 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="144.0" layoutX="614.0" layoutY="857.0" stroke="BLACK" strokeType="INSIDE" width="420.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="599.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="635.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="144.0" layoutX="596.0" layoutY="934.0" stroke="BLACK" strokeType="INSIDE" width="420.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/grain_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="715.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/woods_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="795.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="777.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/sheep_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="875.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="857.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/iron_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="955.0" layoutY="881.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="937.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/brick_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="608.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="538.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1226.0" layoutY="823.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1254.0" layoutY="841.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
       <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1482.0" layoutY="932.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1682.0" layoutY="934.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1277.0" layoutY="931.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1049.0" layoutY="849.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1291.0" layoutY="943.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1031.0" layoutY="926.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1319.0" layoutY="961.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/settlement_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="city_image_button" fitHeight="87.0" fitWidth="130.0" layoutX="1498.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="city_image_button" fitHeight="87.0" fitWidth="130.0" layoutX="1526.0" layoutY="957.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/city_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="road_image_button" fitHeight="96.0" fitWidth="130.0" layoutX="1693.0" layoutY="939.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="road_image_button" fitHeight="96.0" fitWidth="130.0" layoutX="1721.0" layoutY="957.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/road_image.JPG" />
          </image>
       </ImageView>
-      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1670.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1698.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -101,7 +97,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="roll_dice_button" layoutX="439.0" layoutY="693.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="98.0" prefWidth="142.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Roll Dice">
+      <Button fx:id="roll_dice_button" layoutX="265.0" layoutY="694.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="98.0" prefWidth="142.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Roll Dice">
          <font>
             <Font size="24.0" />
          </font>
@@ -109,7 +105,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="trade_with_bank_button" layoutX="1250.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+      <Button fx:id="trade_with_bank_button" layoutX="1278.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -117,7 +113,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="trade_with_players_button" layoutX="1460.0" layoutY="833.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+      <Button fx:id="trade_with_players_button" layoutX="1488.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -125,35 +121,35 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Rectangle id="game_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="642.0" layoutX="601.0" layoutY="184.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="764.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1694.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1703.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle id="game_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="663.0" layoutX="435.0" layoutY="172.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="806.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1332.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1341.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="156.0" layoutX="58.0" layoutY="620.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="67.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="156.0" layoutX="22.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="31.0" layoutY="649.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1058.0" layoutY="858.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1040.0" layoutY="935.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1605.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1243.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="503.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="433.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="211.0" layoutY="631.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0">
+      <ImageView fx:id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="175.0" layoutY="651.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0">
          <image>
             <Image url="@../images/next_player_indicator.png" />
          </image>
@@ -161,14 +157,14 @@
             <Point3D z="-1.0" />
          </rotationAxis>
       </ImageView>
-      <Rectangle fx:id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="1406.0" layoutY="730.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
-      <Text fx:id="your_turn_text" fill="RED" layoutX="1426.0" layoutY="792.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
+      <Rectangle fx:id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="624.0" layoutY="842.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
+      <Text fx:id="your_turn_text" fill="RED" layoutX="644.0" layoutY="904.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
          <font>
             <Font name="System Bold" size="50.0" />
          </font>
       </Text>
-      <ImageView fx:id="dice1" fitHeight="108.0" fitWidth="102.0" layoutX="366.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="488.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dice1" fitHeight="108.0" fitWidth="102.0" layoutX="206.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="328.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
       <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
       <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
