@@ -15,18 +15,19 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 
 public class Player implements IGameObject {
     int[] sources;
     int score;
-    int color;
+    Color color;
     int remRoads;
     int remSettlements;
     int remCities;
     //ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
-    Player( int colour){
+    Player( Color colour){
         color = colour;
         score = 0;
         remRoads = 15;
@@ -52,7 +53,7 @@ public class Player implements IGameObject {
         return false;
     }
 
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 

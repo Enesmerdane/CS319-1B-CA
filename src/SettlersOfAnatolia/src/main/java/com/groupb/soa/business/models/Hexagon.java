@@ -8,6 +8,7 @@ package com.groupb.soa.business.models;
 
 
 import java.util.*;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -117,13 +118,13 @@ public class Hexagon {
         return true;
     }
 
-    public boolean stealResource( PlayerList pl, int playerColor)
+    public boolean stealResource( PlayerList pl, Color playerColor)
     {
         if( !hasRobber)
             return false;
 
         // get potential players that the player can steal from
-        List<Integer> potentialPlayers = new ArrayList<>();
+        List<Color> potentialPlayers = new ArrayList<>();
         for( Vertex v: vertices)
         {
             if( v.isOccupied() && v.getOccupColor() != playerColor)
@@ -132,7 +133,7 @@ public class Hexagon {
             }
         }
         // choose one random player to steal from
-        int victimColor = potentialPlayers.get( (int) (Math.random() * potentialPlayers.size()));
+        Color victimColor = potentialPlayers.get( (int) (Math.random() * potentialPlayers.size()));
         // steal one random source from this player
         // I DON'T KNOW IF THIS WORKS!
         boolean steal = pl.getPlayerWithColor(playerColor).stealSourceFrom(pl.getPlayerWithColor(victimColor));

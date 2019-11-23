@@ -1,4 +1,5 @@
 package com.groupb.soa;
+import com.groupb.soa.business.controller.GameController;
 import java.io.File;  
   
 
@@ -16,29 +17,22 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
     
+    private GameController game; 
+    
+    private static MainApp instance;
+    
+    public static MainApp getInstance() {
+            return instance;
+    }
+    
+    public GameController getGameControllerObj(){
+        return game;
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
-        
-        //String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
-          
-        //Instantiating Media class  
-        //Media media = new Media(new File(path).toURI().toString());  
-          
-        //Instantiating MediaPlayer class   
-        //MediaPlayer mediaPlayer = new MediaPlayer(media);  
-          
-        //by setting this property to true, the audio will be played   
-        //mediaPlayer.setAutoPlay(true);  
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainMenuScene.fxml"));
-        
-        Scene scene = new Scene(root);
-        
-        scene.getStylesheets().add("/styles/Styles.css");
-        
-        stage.setTitle("Settlers of Anatolia");
-        stage.setScene(scene);
-        stage.setFullScreen(true);
-        stage.show();
+        instance = this;
+        game = new GameController(stage, this);
     }
 
     /**
@@ -52,5 +46,7 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
+    
     
 }

@@ -5,8 +5,9 @@
  */
 package com.groupb.soa.presentation;
 
+import com.groupb.soa.MainApp;
+import com.groupb.soa.business.controller.GameController;
 import com.groupb.soa.business.models.Dice;
-import com.groupb.soa.business.models.Edge;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +16,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,6 +44,8 @@ public class GameScreen implements Initializable {
     private static final double HEXAGONS_BASE_Y = 237.0;
     
     // Variables
+    
+    // View properties
     @FXML
     private AnchorPane rootPane;
     @FXML
@@ -77,10 +79,11 @@ public class GameScreen implements Initializable {
     @FXML
     private Rectangle road_selected_rectangle;
     
-    private Constrcution_type construct_type;
-
+    private GameController mainController;
     
-    enum Constrcution_type{
+    
+    private Construction_type construct_type;
+    enum Construction_type{
         EMPTY, SETTLEMENT, CITY, ROAD
     }
     
@@ -117,14 +120,15 @@ public class GameScreen implements Initializable {
     
     // Constructors
     /**
+     * @param mainController to call build methods
      *  @initiatedDate 17.11.2019
      *  @initiator Enes
      *  @lastEdited 17.11.2019
-     *  @author null
+     *  @author null 
      * This constructor is for the first initiated game
      */
     public GameScreen(){
-        
+        this.mainController = MainApp.getInstance().getGameControllerObj();
     }
     
     // Methods
@@ -134,7 +138,7 @@ public class GameScreen implements Initializable {
         
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         
-        construct_type = Constrcution_type.EMPTY;
+        construct_type = Construction_type.EMPTY;
         
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
@@ -152,22 +156,22 @@ public class GameScreen implements Initializable {
                Image d1img, d2img;
                switch(d1i)
                {
-                   case 1: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_1.png"); break;
-                   case 2: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_2.png"); break;
-                   case 3: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_3.png"); break;
-                   case 4: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_4.png"); break;
-                   case 5: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_5.png"); break;
-                   case 6: d1img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_6.png"); break;
+                   case 1: d1img = new Image("images/die_face_1.png"); break;
+                   case 2: d1img = new Image("images/die_face_2.png"); break;
+                   case 3: d1img = new Image("images/die_face_3.png"); break;
+                   case 4: d1img = new Image("images/die_face_4.png"); break;
+                   case 5: d1img = new Image("images/die_face_5.png"); break;
+                   case 6: d1img = new Image("images/die_face_6.png"); break;
                    default: d1img = null; break;
                }
                switch(d2i)
                {
-                   case 1: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_1.png"); break;
-                   case 2: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_2.png"); break;
-                   case 3: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_3.png"); break;
-                   case 4: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_4.png"); break;
-                   case 5: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_5.png"); break;
-                   case 6: d2img = new Image("https://www.wpclipart.com/recreation/games/dice/die_face_6.png"); break;
+                   case 1: d2img = new Image("images/die_face_1.png"); break;
+                   case 2: d2img = new Image("images/die_face_2.png"); break;
+                   case 3: d2img = new Image("images/die_face_3.png"); break;
+                   case 4: d2img = new Image("images/die_face_4.png"); break;
+                   case 5: d2img = new Image("images/die_face_5.png"); break;
+                   case 6: d2img = new Image("images/die_face_6.png"); break;
                    default: d2img = null; break;
                }
                dice1.setImage(d1img);
@@ -216,7 +220,7 @@ public class GameScreen implements Initializable {
                 city_selected_rectangle.setVisible(false);
                 road_selected_rectangle.setVisible(false);
                 
-                construct_type = Constrcution_type.SETTLEMENT;
+                construct_type = Construction_type.SETTLEMENT;
             }
             
         });
@@ -228,7 +232,7 @@ public class GameScreen implements Initializable {
                 city_selected_rectangle.setVisible(true);
                 road_selected_rectangle.setVisible(false);
                 
-                construct_type = Constrcution_type.CITY;
+                construct_type = Construction_type.CITY;
             }
             
         });
@@ -240,7 +244,7 @@ public class GameScreen implements Initializable {
                 city_selected_rectangle.setVisible(false);
                 road_selected_rectangle.setVisible(true);
                 
-                construct_type = Constrcution_type.ROAD;
+                construct_type = Construction_type.ROAD;
             }
             
         });
@@ -675,7 +679,7 @@ public class GameScreen implements Initializable {
     }
     
     // Getter & Setter methods
-    public Constrcution_type getConstruct_type(){
+    public Construction_type getConstruct_type(){
         return construct_type;
     }
     
@@ -720,8 +724,10 @@ public class GameScreen implements Initializable {
     
     @FXML
     private void endTurn(ActionEvent event) throws IOException{
+        System.out.println("endTurn tuşuna basıldı");
         your_turn_rectangle.setStyle("visibility:false");
         your_turn_text.setStyle("visibility:false");
+        mainController.nextPlayer();
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -737,8 +743,23 @@ public class GameScreen implements Initializable {
         public void handle( MouseEvent e)
         {
             System.out.println("Attempt to build vertex at index " + index);
-            Circle circle = (Circle) e.getSource();
-            circle.setFill(Color.RED);
+            //Circle circle = (Circle) e.getSource();
+            //circle.setFill(Color.RED);
+            
+            if(construct_type == Construction_type.SETTLEMENT){
+                System.out.println("Helelelele");
+                if(mainController.buildSettlement(index)){
+                    System.out.println("Bindik bir alamete gidiyoruz kıyamete amaneeen");
+                    Circle circle = (Circle) e.getSource();
+                    circle.setFill(mainController.getCurrentPlayerColor());
+                }
+            }
+            else if(construct_type == Construction_type.CITY){
+                if(mainController.upgradeCity(index)){
+                    Circle circle = (Circle) e.getSource();
+                    circle.setFill(mainController.getCurrentPlayerColor());
+                }
+            }
         }
     }
     
@@ -755,8 +776,16 @@ public class GameScreen implements Initializable {
         public void handle( MouseEvent e)
         {
             System.out.println("Attempt to build edge at index " + index);
-            Line l = (Line) e.getSource();
-            l.setStroke(Color.RED);
+                // Line l = (Line) e.getSource();
+                // l.setStroke(Color.RED);
+                
+            if( construct_type == Construction_type.ROAD){
+                if( mainController.buildRoad(index) ){
+                    Line l = (Line) e.getSource();
+                    l.setStroke(mainController.getCurrentPlayerColor());
+                }
+            }
+            
         }
     }
 }

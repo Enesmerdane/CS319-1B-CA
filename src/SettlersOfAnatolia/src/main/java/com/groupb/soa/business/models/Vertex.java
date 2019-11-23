@@ -27,7 +27,7 @@ public class Vertex implements IGameObject{
     private List<Vertex> adjList;
     private List<Edge> edges;
     private int vertexNo;
-    private int occupColor; // private Player occupier?
+    private Color occupColor; // private Player occupier?
     private boolean isPort;
     private int level;
     // constructor(s)
@@ -37,7 +37,7 @@ public class Vertex implements IGameObject{
         adjList = new ArrayList<Vertex>();
         edges = new ArrayList<Edge>();
         vertexNo = vNo;
-        occupColor = 0;
+        occupColor = Color.BLACK;
         isPort = port;
         level = 0;
     }
@@ -68,22 +68,39 @@ public class Vertex implements IGameObject{
         
         else
         {
-            switch (occupColor){
-                    case 1: crc.setFill(Color.RED); break;
-                    case 2: crc.setFill(Color.PURPLE); break;
-                    case 3: crc.setFill(Color.GREEN); break;
-                    case 4: crc.setFill(Color.BLUE); break;
-                    default: crc.setFill(Color.BLACK); break;
-            }
+            crc.setFill(occupColor);
         }
         
     }
 
-    public boolean build(boolean first, int playerColor, PlayerList pl) // boolean build(Player p)
+    public boolean build(boolean firstTurn, boolean secondTurn, Color playerColor, PlayerList pl) // boolean build(Player p)
     {
+        // DEBUG
+        System.out.println("Buraya kadar geldik");
+        
         // condition check
+        // if it is the first turn of the game, then player can build settlement unless there is a neighbour vertex occupied by their own settlement
+        if(firstTurn){
+            for( Edge e: edges)
+            {
+                if( e.isAdjacentVerticesOccupied()){
+                    System.out.println("Vertex: One of adjecent vertices is occupied");
+                    return false;
+                }
+            }
+            return true;
+        } else if(secondTurn){ // if it is the second turn of the game, then player can build settlement unless there is a neighbour vertex occupied by their own settlement
+            // also they will collect the neighbour hexgons' resources as soon as they build
+            for( Edge e: edges)
+            {
+                if( e.isAdjacentVerticesOccupied())
+                    return false;
+            }
+            return true;
+        }
+        
         // if not first, player must have a road in the neighboring edges
-        if( !first)
+        if( !firstTurn)
         {
             boolean hasRoad = false;
             for( Edge e: edges)
@@ -96,7 +113,7 @@ public class Vertex implements IGameObject{
                 return false;
         }
         // if not first, player must have enough resources to build
-        if( !first)
+        if( !firstTurn)
         {
             // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
             boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
@@ -112,7 +129,7 @@ public class Vertex implements IGameObject{
             return false;
         // if all above conditions are true, then
         // subtract resources
-        if( !first)
+        if( !firstTurn)
         {
             pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
             pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
@@ -127,7 +144,7 @@ public class Vertex implements IGameObject{
         return true;
     }
 
-    public boolean upgrade(int playerColor, PlayerList pl)
+    public boolean upgrade(Color playerColor, PlayerList pl)
     {
         // condition check
         // player must have enough resources to build
@@ -161,7 +178,7 @@ public class Vertex implements IGameObject{
         return occupied;
     }
 
-    public int getOccupColor()
+    public Color getOccupColor()
     {
         return occupColor;
     }

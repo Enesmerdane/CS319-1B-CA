@@ -8,6 +8,7 @@ package com.groupb.soa.business.models;
  */
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -47,17 +48,18 @@ public class GameTile {
         return edges[index - 1];
     }
 
-    public boolean buildVertex( int index, int playerColor, PlayerList pl, boolean first )
+    public boolean buildVertex( int index, Color playerColor, PlayerList pl, boolean firstTurn, boolean secondTurn )
     {
-        return vertices[index - 1].build(first, playerColor, pl);
+        System.out.println("Game tile a ulaştık");
+        return vertices[index - 1].build(firstTurn, secondTurn, playerColor, pl);
     }
 
-    public boolean upgradeVertex( int index, int playerColor, PlayerList pl)
+    public boolean upgradeVertex( int index, Color playerColor, PlayerList pl)
     {
         return vertices[index - 1].upgrade(playerColor, pl);
     }
 
-    public boolean buildRoad(int index, int playerColor, PlayerList pl, boolean first)
+    public boolean buildRoad(int index, Color playerColor, PlayerList pl, boolean first)
     {
         return edges[index - 1].build(first, playerColor, pl);
     }
