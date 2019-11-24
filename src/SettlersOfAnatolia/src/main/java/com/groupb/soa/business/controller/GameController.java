@@ -81,6 +81,7 @@ public class GameController {
         //GameModel newGame = new GameModel (Color[] playerColors); 
         //updateView(); 
     }
+    
     public boolean buildRoad( int index)
     {
         return gameModel.buildRoad(index);

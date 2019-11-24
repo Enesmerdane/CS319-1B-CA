@@ -18,6 +18,7 @@ public class GameModel {
     private Bank bank;
     private Dice dice;
     private Dice dice2;
+    private int queue;
     private int turn;
     private boolean firstTurn;
     private boolean secondTurn;
@@ -28,7 +29,8 @@ public class GameModel {
         bank = new Bank();
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
-        turn = 1;
+        turn = 0;
+        queue = 1;
         firstTurn = true;
         secondTurn = false;
     }
@@ -54,7 +56,8 @@ public class GameModel {
         } else {
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index + "FAILED for some reasons");
         }
-        return tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
+        return result;
+        //tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
     }
     public boolean buildSettlement(int index){
         
@@ -86,15 +89,16 @@ public class GameModel {
 
     public void moveNextPlayer(){
         if(playerList.next()){
-            turn++;
-            if( turn == 2){
+            queue++;
+        }
+        turn = queue / 4;
+            if( turn == 1){ 
                 firstTurn = false;
                 secondTurn = true;
-            } else if(turn == 3){
+            } else if(turn == 2){
                 secondTurn = false;
             }
             System.out.println("Game Turn is increased " + turn);
         }
     }
 
-}

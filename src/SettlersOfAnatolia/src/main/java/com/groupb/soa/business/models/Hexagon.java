@@ -22,7 +22,7 @@ public class Hexagon {
     private int sourceType;
     private int number;
     private boolean hasRobber;
-
+    
     // constructor(s)
     public Hexagon()
     {
