@@ -79,28 +79,8 @@ public class Vertex implements IGameObject{
         System.out.println("Buraya kadar geldik");
         
         // condition check
-        // if it is the first turn of the game, then player can build settlement unless there is a neighbour vertex occupied by their own settlement
-        if(firstTurn){
-            for( Edge e: edges)
-            {
-                if( e.isAdjacentVerticesOccupied()){
-                    System.out.println("Vertex: One of adjecent vertices is occupied");
-                    return false;
-                }
-            }
-            return true;
-        } else if(secondTurn){ // if it is the second turn of the game, then player can build settlement unless there is a neighbour vertex occupied by their own settlement
-            // also they will collect the neighbour hexgons' resources as soon as they build
-            for( Edge e: edges)
-            {
-                if( e.isAdjacentVerticesOccupied())
-                    return false;
-            }
-            return true;
-        }
-        
         // if not first, player must have a road in the neighboring edges
-        if( !firstTurn)
+        if( !firstTurn && !secondTurn)
         {
             boolean hasRoad = false;
             for( Edge e: edges)
@@ -113,7 +93,7 @@ public class Vertex implements IGameObject{
                 return false;
         }
         // if not first, player must have enough resources to build
-        if( !firstTurn)
+        if( !firstTurn && !secondTurn)
         {
             // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
             boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
@@ -140,6 +120,20 @@ public class Vertex implements IGameObject{
         occupied = true;
         level = 1;
         occupColor = playerColor;
+        // block all other vertices
+        for( Vertex v : adjList)
+        {
+            if( v.level != 0 && v.level != -1)
+            {
+                System.out.println( "This shouldn't happen!");
+                System.exit(0);
+            }
+            
+            else
+            {
+                v.level = -1;
+            }
+        }
         // award 1 victory point?? (do we award them here?)
         return true;
     }
