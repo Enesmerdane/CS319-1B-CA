@@ -50,7 +50,7 @@ public class GameModel {
     }
 
     public boolean buildRoad(int index ){
-        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
+        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  true);
         if(result){
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index);
         } else {

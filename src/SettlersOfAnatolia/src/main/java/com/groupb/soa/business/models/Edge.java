@@ -56,55 +56,54 @@ public class Edge {
 
     public boolean build( boolean first, Color playerColor, PlayerList pl)
     {
+        // condition check
+        // there mustn't be a road in this edge
+        if( occupied)
+            return false;
+        // this road must be connected to at least 1 of player's constructs
+        // first check for settlements or cities.
+        boolean hasSettOrCity = adjVertices[0].getOccupColor() == playerColor
+                || adjVertices[1].getOccupColor() == playerColor;
+        // if there are no settlements or cities adjacent,
+        // check the edges of adjacent vertices.
+        if( !hasSettOrCity)
+        {
+            boolean verticesHaveRoad = false;
+            for( Vertex v: adjVertices)
+            {
+                for( Edge e: v.getEdges())
+                {
+                    if( e.getOccupColor() == playerColor)
+                    {
+                        verticesHaveRoad = true;
+                    }
+                }
+            }
+            if( !verticesHaveRoad)
+                return false;
+        }
+        // player must have enough resources
+        if( !first)
+        {
+            // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
+            // we need 1 brick & 1 lumber
+            boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
+                    && pl.getPlayerWithColor(playerColor).getSourceNo(2) >= 1; // check for lumber
+
+            if( !hasEnough)
+                return false;
+        }
+
+        // if all conditions are met, then
+
+        // get resources from player
+        pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
+        pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
+        // initialize proper variables
+        occupied = true;
+        occupColor = playerColor;
+       // check for longest road?
         return true;
-//        // condition check
-//        // there mustn't be a road in this edge
-//        if( occupied)
-//            return false;
-//        // this road must be connected to at least 1 of player's constructs
-//        // first check for settlements or cities.
-//        boolean hasSettOrCity = adjVertices[0].getOccupColor() == playerColor
-//                || adjVertices[1].getOccupColor() == playerColor;
-//        // if there are no settlements or cities adjacent,
-//        // check the edges of adjacent vertices.
-//        if( !hasSettOrCity)
-//        {
-//            boolean verticesHaveRoad = false;
-//            for( Vertex v: adjVertices)
-//            {
-//                for( Edge e: v.getEdges())
-//                {
-//                    if( e.getOccupColor() == playerColor)
-//                    {
-//                        verticesHaveRoad = true;
-//                    }
-//                }
-//            }
-//            if( !verticesHaveRoad)
-//                return false;
-//        }
-//        // player must have enough resources
-//        if( !first)
-//        {
-//            // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
-//            // we need 1 brick & 1 lumber
-//            boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
-//                    && pl.getPlayerWithColor(playerColor).getSourceNo(2) >= 1; // check for lumber
-//
-//            if( !hasEnough)
-//                return false;
-//        }
-//
-//        // if all conditions are met, then
-//
-//        // get resources from player
-//        pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
-//        pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
-//        // initialize proper variables
-//        occupied = true;
-//        occupColor = playerColor;
-//        // check for longest road?
-//        return true;
     }
     
     public void draw( Line l)
