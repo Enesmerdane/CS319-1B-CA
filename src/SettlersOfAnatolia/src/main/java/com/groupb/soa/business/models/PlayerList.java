@@ -41,8 +41,26 @@ public class PlayerList implements IGameObject {
 
     }
 
-    public boolean next(){
-        currentPlayerNo = (++currentPlayerNo) % 4;
+    public boolean next( boolean secondTurn, boolean stay){
+        if( !stay)
+        {
+            if( secondTurn)
+        {
+            currentPlayerNo--;
+            if( currentPlayerNo == -1)
+            {
+                currentPlayerNo = 3;
+            }
+        }
+        else
+        {
+            currentPlayerNo++;
+            if( currentPlayerNo == 4)
+            {
+                currentPlayerNo = 0;
+            }
+        }
+        }
         System.out.println("Current player no: " + currentPlayerNo);
         if(currentPlayerNo == 0){ // if the next turn begins
             return true;
