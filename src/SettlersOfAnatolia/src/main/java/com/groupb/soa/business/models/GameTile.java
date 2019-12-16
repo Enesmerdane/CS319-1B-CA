@@ -8,6 +8,7 @@ package com.groupb.soa.business.models;
  */
 
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 /**
  *
@@ -25,7 +26,7 @@ public class GameTile {
         vertices = new Vertex[54];
         for( int i = 0; i < vertices.length; i++)
         {
-            vertices[i] = new Vertex(i + 1, false); // vertex with number i + 1 becomes ith member of array
+            vertices[i] = new Vertex(i , false); // vertex with number i becomes ith member of array
         }
         edges = new Edge[72];
         hexagons = new Hexagon[19];
@@ -40,26 +41,27 @@ public class GameTile {
     // methods
 
     public Vertex getVertexWithId( int index ){
-        return vertices[index - 1];
+        return vertices[index];
     }
 
     public Edge getEdgeWithId( int index ) {
-        return edges[index - 1];
+        return edges[index];
     }
 
-    public boolean buildVertex( int index, int playerColor, PlayerList pl, boolean first )
+    public boolean buildVertex( int index, Color playerColor, PlayerList pl, boolean firstTurn, boolean secondTurn )
     {
-        return vertices[index - 1].build(first, playerColor, pl);
+        System.out.println("Game tile a ulaştık");
+        return vertices[index].build(firstTurn, secondTurn, playerColor, pl);
     }
 
-    public boolean upgradeVertex( int index, int playerColor, PlayerList pl)
+    public boolean upgradeVertex( int index, Color playerColor, PlayerList pl)
     {
-        return vertices[index - 1].upgrade(playerColor, pl);
+        return vertices[index].upgrade(playerColor, pl);
     }
 
-    public boolean buildRoad(int index, int playerColor, PlayerList pl, boolean first)
+    public boolean buildRoad(int index, Color playerColor, PlayerList pl, boolean first)
     {
-        return edges[index - 1].build(first, playerColor, pl);
+        return edges[index].build(first, playerColor, pl);
     }
 
     public ArrayList<Hexagon> getHexsWithValue(int value) {
@@ -123,78 +125,78 @@ public class GameTile {
         // "the most brute-forcest code I have ever seen" -Alper
 
         // initialize edges using the vertices they are adjacent to
-        edges[0] = vertices[0].addEdge( vertices[3], 1);
-        edges[1] = vertices[0].addEdge( vertices[4], 2);
-        edges[2] = vertices[1].addEdge( vertices[4], 3);
-        edges[3] = vertices[1].addEdge( vertices[5], 4);
-        edges[4] = vertices[2].addEdge( vertices[5], 5);
-        edges[5] = vertices[2].addEdge( vertices[6], 6);
-        edges[6] = vertices[3].addEdge( vertices[7], 7);
-        edges[7] = vertices[4].addEdge( vertices[8], 8);
-        edges[8] = vertices[5].addEdge( vertices[9], 9);
-        edges[9] = vertices[6].addEdge( vertices[10], 10);
-        edges[10] = vertices[7].addEdge( vertices[11], 11);
-        edges[11] = vertices[7].addEdge( vertices[12], 12);
-        edges[12] = vertices[8].addEdge( vertices[12], 13);
-        edges[13] = vertices[8].addEdge( vertices[13], 14);
-        edges[14] = vertices[9].addEdge( vertices[13], 15);
-        edges[15] = vertices[9].addEdge( vertices[14], 16);
-        edges[16] = vertices[10].addEdge( vertices[14], 17);
-        edges[17] = vertices[10].addEdge( vertices[15], 18);
-        edges[18] = vertices[11].addEdge( vertices[16], 19);
-        edges[19] = vertices[12].addEdge( vertices[17], 20);
-        edges[20] = vertices[13].addEdge( vertices[18], 21);
-        edges[21] = vertices[14].addEdge( vertices[19], 22);
-        edges[22] = vertices[15].addEdge( vertices[20], 23);
-        edges[23] = vertices[16].addEdge( vertices[21], 24);
-        edges[24] = vertices[16].addEdge( vertices[22], 25);
-        edges[25] = vertices[17].addEdge( vertices[22], 26);
-        edges[26] = vertices[17].addEdge( vertices[23], 27);
-        edges[27] = vertices[18].addEdge( vertices[23], 28);
-        edges[28] = vertices[18].addEdge( vertices[24], 29);
-        edges[29] = vertices[19].addEdge( vertices[24], 30);
-        edges[30] = vertices[19].addEdge( vertices[25], 31);
-        edges[31] = vertices[20].addEdge( vertices[25], 32);
-        edges[32] = vertices[20].addEdge( vertices[26], 33);
-        edges[33] = vertices[21].addEdge( vertices[27], 34);
-        edges[34] = vertices[22].addEdge( vertices[28], 35);
-        edges[35] = vertices[23].addEdge( vertices[29], 36);
-        edges[36] = vertices[24].addEdge( vertices[30], 37);
-        edges[37] = vertices[25].addEdge( vertices[31], 38);
-        edges[38] = vertices[26].addEdge( vertices[32], 39);
-        edges[39] = vertices[27].addEdge( vertices[33], 40);
-        edges[40] = vertices[28].addEdge( vertices[33], 41);
-        edges[41] = vertices[28].addEdge( vertices[34], 42);
-        edges[42] = vertices[29].addEdge( vertices[34], 43);
-        edges[43] = vertices[29].addEdge( vertices[35], 44);
-        edges[44] = vertices[30].addEdge( vertices[35], 45);
-        edges[45] = vertices[30].addEdge( vertices[36], 46);
-        edges[46] = vertices[31].addEdge( vertices[36], 47);
-        edges[47] = vertices[31].addEdge( vertices[37], 48);
-        edges[48] = vertices[32].addEdge( vertices[37], 49);
-        edges[49] = vertices[33].addEdge( vertices[38], 50);
-        edges[50] = vertices[34].addEdge( vertices[39], 51);
-        edges[51] = vertices[35].addEdge( vertices[40], 52);
-        edges[52] = vertices[36].addEdge( vertices[41], 53);
-        edges[53] = vertices[37].addEdge( vertices[42], 54);
-        edges[54] = vertices[38].addEdge( vertices[43], 55);
-        edges[55] = vertices[39].addEdge( vertices[43], 56);
-        edges[56] = vertices[39].addEdge( vertices[44], 57);
-        edges[57] = vertices[40].addEdge( vertices[44], 58);
-        edges[58] = vertices[40].addEdge( vertices[45], 59);
-        edges[59] = vertices[41].addEdge( vertices[45], 60);
-        edges[60] = vertices[41].addEdge( vertices[46], 61);
-        edges[61] = vertices[42].addEdge( vertices[46], 62);
-        edges[62] = vertices[43].addEdge( vertices[47], 63);
-        edges[63] = vertices[44].addEdge( vertices[48], 64);
-        edges[64] = vertices[45].addEdge( vertices[49], 65);
-        edges[65] = vertices[46].addEdge( vertices[50], 66);
-        edges[66] = vertices[47].addEdge( vertices[51], 67);
-        edges[67] = vertices[48].addEdge( vertices[51], 68);
-        edges[68] = vertices[48].addEdge( vertices[52], 69);
-        edges[69] = vertices[49].addEdge( vertices[52], 70);
-        edges[70] = vertices[49].addEdge( vertices[53], 71);
-        edges[71] = vertices[50].addEdge( vertices[53], 72);
+        edges[0] = vertices[0].addEdge( vertices[3], 0);
+        edges[1] = vertices[0].addEdge( vertices[4], 1);
+        edges[2] = vertices[1].addEdge( vertices[4], 2);
+        edges[3] = vertices[1].addEdge( vertices[5], 3);
+        edges[4] = vertices[2].addEdge( vertices[5], 4);
+        edges[5] = vertices[2].addEdge( vertices[6], 5);
+        edges[6] = vertices[3].addEdge( vertices[7], 6);
+        edges[7] = vertices[4].addEdge( vertices[8], 7);
+        edges[8] = vertices[5].addEdge( vertices[9], 8);
+        edges[9] = vertices[6].addEdge( vertices[10], 9);
+        edges[10] = vertices[7].addEdge( vertices[11], 10);
+        edges[11] = vertices[7].addEdge( vertices[12], 11);
+        edges[12] = vertices[8].addEdge( vertices[12], 12);
+        edges[13] = vertices[8].addEdge( vertices[13], 13);
+        edges[14] = vertices[9].addEdge( vertices[13], 14);
+        edges[15] = vertices[9].addEdge( vertices[14], 15);
+        edges[16] = vertices[10].addEdge( vertices[14], 16);
+        edges[17] = vertices[10].addEdge( vertices[15], 17);
+        edges[18] = vertices[11].addEdge( vertices[16], 18);
+        edges[19] = vertices[12].addEdge( vertices[17], 19);
+        edges[20] = vertices[13].addEdge( vertices[18], 20);
+        edges[21] = vertices[14].addEdge( vertices[19], 21);
+        edges[22] = vertices[15].addEdge( vertices[20], 22);
+        edges[23] = vertices[16].addEdge( vertices[21], 23);
+        edges[24] = vertices[16].addEdge( vertices[22], 24);
+        edges[25] = vertices[17].addEdge( vertices[22], 25);
+        edges[26] = vertices[17].addEdge( vertices[23], 26);
+        edges[27] = vertices[18].addEdge( vertices[23], 27);
+        edges[28] = vertices[18].addEdge( vertices[24], 28);
+        edges[29] = vertices[19].addEdge( vertices[24], 29);
+        edges[30] = vertices[19].addEdge( vertices[25], 30);
+        edges[31] = vertices[20].addEdge( vertices[25], 31);
+        edges[32] = vertices[20].addEdge( vertices[26], 32);
+        edges[33] = vertices[21].addEdge( vertices[27], 33);
+        edges[34] = vertices[22].addEdge( vertices[28], 34);
+        edges[35] = vertices[23].addEdge( vertices[29], 35);
+        edges[36] = vertices[24].addEdge( vertices[30], 36);
+        edges[37] = vertices[25].addEdge( vertices[31], 37);
+        edges[38] = vertices[26].addEdge( vertices[32], 38);
+        edges[39] = vertices[27].addEdge( vertices[33], 39);
+        edges[40] = vertices[28].addEdge( vertices[33], 40);
+        edges[41] = vertices[28].addEdge( vertices[34], 41);
+        edges[42] = vertices[29].addEdge( vertices[34], 42);
+        edges[43] = vertices[29].addEdge( vertices[35], 43);
+        edges[44] = vertices[30].addEdge( vertices[35], 44);
+        edges[45] = vertices[30].addEdge( vertices[36], 45);
+        edges[46] = vertices[31].addEdge( vertices[36], 46);
+        edges[47] = vertices[31].addEdge( vertices[37], 47);
+        edges[48] = vertices[32].addEdge( vertices[37], 48);
+        edges[49] = vertices[33].addEdge( vertices[38], 49);
+        edges[50] = vertices[34].addEdge( vertices[39], 50);
+        edges[51] = vertices[35].addEdge( vertices[40], 51);
+        edges[52] = vertices[36].addEdge( vertices[41], 52);
+        edges[53] = vertices[37].addEdge( vertices[42], 53);
+        edges[54] = vertices[38].addEdge( vertices[43], 54);
+        edges[55] = vertices[39].addEdge( vertices[43], 55);
+        edges[56] = vertices[39].addEdge( vertices[44], 56);
+        edges[57] = vertices[40].addEdge( vertices[44], 57);
+        edges[58] = vertices[40].addEdge( vertices[45], 58);
+        edges[59] = vertices[41].addEdge( vertices[45], 59);
+        edges[60] = vertices[41].addEdge( vertices[46], 60);
+        edges[61] = vertices[42].addEdge( vertices[46], 61);
+        edges[62] = vertices[43].addEdge( vertices[47], 62);
+        edges[63] = vertices[44].addEdge( vertices[48], 63);
+        edges[64] = vertices[45].addEdge( vertices[49], 64);
+        edges[65] = vertices[46].addEdge( vertices[50], 65);
+        edges[66] = vertices[47].addEdge( vertices[51], 66);
+        edges[67] = vertices[48].addEdge( vertices[51], 67);
+        edges[68] = vertices[48].addEdge( vertices[52], 68);
+        edges[69] = vertices[49].addEdge( vertices[52], 69);
+        edges[70] = vertices[49].addEdge( vertices[53], 70);
+        edges[71] = vertices[50].addEdge( vertices[53], 71);
 
         // second, initialize the vertices of hexagons.
         hexagons[0].setVertices( vertices[3],  vertices[0],  vertices[4],  vertices[8],  vertices[12],  vertices[7]);

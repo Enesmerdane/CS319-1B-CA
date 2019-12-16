@@ -12,16 +12,17 @@ package com.groupb.soa.business.models;
 import javafx.scene.canvas.GraphicsContext;
 import java.util.ArrayList;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 
 public class PlayerList implements IGameObject {
     Player[] players;
     int currentPlayerNo;
-    int[] colors = { 0, 1, 2, 3}; // each number will be associated with an integer
+    int[] colors = { 0, 1, 2, 3}; // each number will be associated with an integer -> No they wont :)) -Enes
 
-    PlayerList(){
+    PlayerList(Color playerColors[] ){
         players = new Player[4];
         for ( int i = 0; i < 4; i++){
-                players[i] = new Player( colors[i]);
+                players[i] = new Player( playerColors[i]);
 
         }
         currentPlayerNo = 0;
@@ -31,7 +32,7 @@ public class PlayerList implements IGameObject {
         return players[currentPlayerNo];
     }
 
-    public Player getPlayerWithColor( int color ){
+    public Player getPlayerWithColor( Color color ){
         for ( int i = 0; i < 4; i++){
             if ( players[currentPlayerNo].getColor() == color)
                 return players[currentPlayerNo];
@@ -40,8 +41,13 @@ public class PlayerList implements IGameObject {
 
     }
 
-    public void next(){
-        currentPlayerNo = (currentPlayerNo++) % 4;
+    public boolean next(){
+        currentPlayerNo = (++currentPlayerNo) % 4;
+        System.out.println("Current player no: " + currentPlayerNo);
+        if(currentPlayerNo == 0){ // if the next turn begins
+            return true;
+        }
+        return false;
     }
 
     public void render(GraphicsContext gc) {

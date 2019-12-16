@@ -29,7 +29,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="end_turn_button" layoutX="315.0" layoutY="974.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
+      <Button fx:id="end_turn_button" layoutX="315.0" layoutY="974.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#endTurn" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
          <font>
             <Font size="35.0" />
          </font>

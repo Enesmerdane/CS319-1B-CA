@@ -5,6 +5,7 @@
  */
 package com.groupb.soa.presentation;
 
+import com.groupb.soa.MainApp;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,7 +49,7 @@ public class MainMenuScreen implements Initializable{
         }
         rootPane.getChildren().setAll(pane);
         
-        System.out.println("You clicked me!");
+        MainApp.getInstance().getGameControllerObj().initateGame();
     }
     
     @FXML
@@ -56,40 +57,5 @@ public class MainMenuScreen implements Initializable{
         System.exit(0);
     }
     
-    class VertexHandler implements EventHandler<MouseEvent>
-    {
-        int index;
-        
-        VertexHandler(int i)
-        {
-            index = i;
-        }
-        
-        @Override
-        public void handle( MouseEvent e)
-        {
-            System.out.println("Attempt to build vertex at index " + index);
-            Circle crc = (Circle) e.getSource();
-            crc.setFill(Color.RED);
-        }
-    }
-    
-    class EdgeHandler implements EventHandler<MouseEvent>
-    {
-        int index;
-        
-        EdgeHandler( int i)
-        {
-            index = i;
-        }
-        
-        @Override
-        public void handle( MouseEvent e)
-        {
-            System.out.println("Attempt to build edge at index " + index);
-            Line l = (Line) e.getSource();
-            l.setStroke(Color.RED);
-        }
-    }
     
 }

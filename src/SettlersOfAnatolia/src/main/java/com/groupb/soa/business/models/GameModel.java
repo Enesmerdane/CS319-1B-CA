@@ -10,21 +10,29 @@ package com.groupb.soa.business.models;
  * @author Göksu
  */
 import java.util.ArrayList;
+import javafx.scene.paint.Color;
 
 public class GameModel {
-    GameTile tile;
-    PlayerList playerList;
-    Bank bank;
-    Dice dice;
-    Dice dice2;
-
-
-    public GameModel() {
+    private GameTile tile;
+    private PlayerList playerList;
+    private Bank bank;
+    private Dice dice;
+    private Dice dice2;
+    private int queue;
+    private int turn;
+    private boolean firstTurn;
+    private boolean secondTurn;
+    
+    public GameModel(Color[] playerColors) {
         tile = new GameTile();
-        playerList = new PlayerList();
+        playerList = new PlayerList(playerColors);
         bank = new Bank();
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
+        turn = 0;
+        queue = 1;
+        firstTurn = true;
+        secondTurn = false;
     }
     // player rolls the dice and sources are distributed
     public void playTurn(){
@@ -38,30 +46,59 @@ public class GameModel {
                bank.subSource( hexagonList.get(i).getSourceType(), 1);
            }
         }
-        playerList.next();
+        //playerList.next(); Bu durumda player kendisi basamıyor nextTurn e o yüzden bunu aşağıda bir metoda alıyorum
     }
 
     public boolean buildRoad(int index ){
-      return tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
+        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
+        if(result){
+            System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index);
+        } else {
+            System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index + "FAILED for some reasons");
+        }
+        return result;
+        //tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  false);
     }
     public boolean buildSettlement(int index){
-
-       boolean result = tile.buildVertex( index, playerList.getCurrentPlayer().getColor(),  playerList,false );
-       if(result)
+        
+        boolean result = tile.buildVertex( index, playerList.getCurrentPlayer().getColor(),  playerList, firstTurn, secondTurn );
+        if(result){
+           System.out.println("GameModel: Building Settlement by " + playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index);
            playerList.getCurrentPlayer().increaseScore( 1);
-       return result;
+        } else {
+            System.out.println("GameModel: Building Settlement by "+ playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index + " FAILED for some reasons");
+        }
+        return result;
 
     }
     public boolean buildCity(int index){
-       boolean result =  tile.upgradeVertex(  index,playerList.getCurrentPlayer().getColor(), playerList);
-       if(result)
-           playerList.getCurrentPlayer().increaseScore( 2) ;
+        boolean result =  tile.upgradeVertex(  index,playerList.getCurrentPlayer().getColor(), playerList);
+        if(result){
+            System.out.println("GameModel: Building City by "+ playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index);
+            playerList.getCurrentPlayer().increaseScore(2) ;
+        } else {
+            System.out.println("GameModel: Building City by "+ playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index + " FAILED for some reasons");
+        }
 
        return result;
     }
 
+    public Color getCurrentPlayerColor(){
+        return playerList.getCurrentPlayer().getColor();
+    }
 
+    public void moveNextPlayer(){
+        if(playerList.next()){
+            queue++;
+        }
+        turn = queue / 4;
+            if( turn == 1){ 
+                firstTurn = false;
+                secondTurn = true;
+            } else if(turn == 2){
+                secondTurn = false;
+            }
+            System.out.println("Game Turn is increased " + turn);
+        }
+    }
 
-
-
-}
