@@ -30,7 +30,7 @@ public class GameModel {
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
         turn = 0;
-        queue = 1;
+        queue = 0;
         firstTurn = true;
         secondTurn = false;
     }
@@ -50,7 +50,7 @@ public class GameModel {
     }
 
     public boolean buildRoad(int index ){
-        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  true);
+        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  firstTurn || secondTurn);
         if(result){
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index);
         } else {
@@ -88,17 +88,15 @@ public class GameModel {
     }
 
     public void moveNextPlayer(){
-        if(playerList.next()){
-            queue++;
-        }
+        // playerList.next()'s stay parameter is set to 'true'
+        // when queue == 3 or 7. This is because in the first 2 rounds,
+        // one player gets to play twice at the end.
+        playerList.next( secondTurn, queue == 3 || queue == 7);
+        queue++;
         turn = queue / 4;
-            if( turn == 1){ 
-                firstTurn = false;
-                secondTurn = true;
-            } else if(turn == 2){
-                secondTurn = false;
-            }
-            System.out.println("Game Turn is increased " + turn);
+        firstTurn = (turn == 0);
+        secondTurn = (turn == 1);
+        System.out.println("Game Turn is increased " + turn);
         }
     }
 

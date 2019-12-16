@@ -82,6 +82,7 @@ public class Vertex implements IGameObject{
         // if not first, player must have a road in the neighboring edges
         if( !firstTurn && !secondTurn)
         {
+            System.out.println( "Not first or second, road check");
             boolean hasRoad = false;
             for( Edge e: edges)
             {
@@ -95,6 +96,7 @@ public class Vertex implements IGameObject{
         // if not first, player must have enough resources to build
         if( !firstTurn && !secondTurn)
         {
+            System.out.println( "Not first or second, resource check");
             // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
             boolean hasEnough = pl.getPlayerWithColor(playerColor).getSourceNo(4) >= 1 // check for brick
                     && pl.getPlayerWithColor(playerColor).getSourceNo(2) >= 1 // check for lumber
@@ -109,8 +111,9 @@ public class Vertex implements IGameObject{
             return false;
         // if all above conditions are true, then
         // subtract resources
-        if( !firstTurn)
+        if( !firstTurn && !secondTurn)
         {
+            System.out.println( "Not first or second, resource withdrawal");
             pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
             pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
             pl.getPlayerWithColor(playerColor).subSource(3, 1); // subtract 1 wool
