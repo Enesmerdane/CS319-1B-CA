@@ -57,6 +57,11 @@ public class Edge {
     public boolean build( boolean first, Color playerColor, PlayerList pl)
     {
         // condition check
+        // player must have fewer than 15 roads
+        if( pl.getPlayerWithColor(playerColor).getRemRoads() <= 0)
+        {
+            return false;
+        }
         // there mustn't be a road in this edge
         if( occupied)
             return false;
@@ -97,12 +102,16 @@ public class Edge {
         // if all conditions are met, then
 
         // get resources from player
-        pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
-        pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
+        if( !first)
+        {
+            pl.getPlayerWithColor(playerColor).subSource(4, 1); // subtract 1 brick
+            pl.getPlayerWithColor(playerColor).subSource(2, 1); // subtract 1 lumber
+        }
         // initialize proper variables
         occupied = true;
         occupColor = playerColor;
        // check for longest road?
+        pl.getPlayerWithColor(playerColor).successfulRoadBuild();
         return true;
     }
     

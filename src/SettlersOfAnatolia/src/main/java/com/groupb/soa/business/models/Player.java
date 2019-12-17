@@ -35,7 +35,10 @@ public class Player implements IGameObject {
         remCities = 4;
         cards = new ArrayList<DevCard>();
         sources = new int[5];
-
+        for( int i = 0; i < sources.length; i++)
+        {
+            sources[i] = 111;
+        }
     }
     
     public boolean buyDevCard(Bank bank){
@@ -98,8 +101,8 @@ public class Player implements IGameObject {
     public void render(GraphicsContext gc) {
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void addScore(int score) {
+        this.score += score;
     }
 
     public int getScore() {
@@ -109,6 +112,36 @@ public class Player implements IGameObject {
     @Override
     public void render(Node n) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public int getRemSettlements()
+    {
+        return remSettlements;
+    }
+    
+    public int getRemRoads()
+    {
+        return remRoads;
+    }
+    
+    public int getRemCities()
+    {
+        return remCities;
+    }
+    
+    public void successfulSettBuild()
+    {
+        remSettlements--;
+    }
+    
+    public void successfulCityBuild()
+    {
+        remCities--;
+    }
+    
+    public void successfulRoadBuild()
+    {
+        remRoads--;
     }
 }
 

@@ -108,6 +108,16 @@ public class GameScreen implements Initializable {
     @FXML
     private Polygon hexagonList[];
     
+    @FXML
+    private Text grain;
+    @FXML
+    private Text lumber;
+    @FXML
+    private Text wool;
+    @FXML
+    private Text stone;
+    @FXML
+    private Text brick;
     
     private boolean gameSound = true;
     private boolean gameMusic = true;
@@ -144,40 +154,7 @@ public class GameScreen implements Initializable {
         circleList  = new Circle[NUMBER_OF_VERTICES];
         edgeList = new Line[NUMBER_OF_EDGES];
         
-        roll_dice_button.setOnMouseClicked( new EventHandler<javafx.scene.input.MouseEvent>() {
-           @Override
-           public void handle(javafx.scene.input.MouseEvent event)
-           {
-               Dice d1, d2;
-               d1 = new Dice(0.0, 0.0);
-               d2 = new Dice(0.0, 0.0);
-               int d1i = d1.rollDice();
-               int d2i = d2.rollDice();
-               Image d1img, d2img;
-               switch(d1i)
-               {
-                   case 1: d1img = new Image("images/die_face_1.png"); break;
-                   case 2: d1img = new Image("images/die_face_2.png"); break;
-                   case 3: d1img = new Image("images/die_face_3.png"); break;
-                   case 4: d1img = new Image("images/die_face_4.png"); break;
-                   case 5: d1img = new Image("images/die_face_5.png"); break;
-                   case 6: d1img = new Image("images/die_face_6.png"); break;
-                   default: d1img = null; break;
-               }
-               switch(d2i)
-               {
-                   case 1: d2img = new Image("images/die_face_1.png"); break;
-                   case 2: d2img = new Image("images/die_face_2.png"); break;
-                   case 3: d2img = new Image("images/die_face_3.png"); break;
-                   case 4: d2img = new Image("images/die_face_4.png"); break;
-                   case 5: d2img = new Image("images/die_face_5.png"); break;
-                   case 6: d2img = new Image("images/die_face_6.png"); break;
-                   default: d2img = null; break;
-               }
-               dice1.setImage(d1img);
-               dice2.setImage(d2img);
-           }
-        });
+        
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
@@ -249,7 +226,7 @@ public class GameScreen implements Initializable {
             
         });
         
-        
+        roll_dice_button.setOnMouseClicked( new DiceHandler());
         //Creating Hexagon
         // Stage stage = (Stage) rootPane.getScene().getWindow();
         // hexagonGroup = new Group(hexagon1);
@@ -273,7 +250,6 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < NUMBER_OF_VERTICES; i++){
             circleList[i].setOnMouseClicked(new VertexHandler(i));
         }
-        
     }  
     private void drawAllEdges(){
         int i = 0;
@@ -683,10 +659,6 @@ public class GameScreen implements Initializable {
         return construct_type;
     }
     
-    @FXML
-    private void rollDice(ActionEvent event) throws IOException{
-        
-    }
     
     @FXML
     private void goBackToGame(ActionEvent event) throws IOException{
@@ -728,6 +700,17 @@ public class GameScreen implements Initializable {
         your_turn_rectangle.setStyle("visibility:false");
         your_turn_text.setStyle("visibility:false");
         mainController.nextPlayer();
+        refreshResources();
+    }
+    
+    private void refreshResources()
+    {
+        // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
+        stone.setText( mainController.getCurrentPlayer().getSourceNo(0) + "");
+        grain.setText( mainController.getCurrentPlayer().getSourceNo(1) + "");
+        lumber.setText( mainController.getCurrentPlayer().getSourceNo(2) + "");
+        wool.setText( mainController.getCurrentPlayer().getSourceNo(3) + "");
+        brick.setText( mainController.getCurrentPlayer().getSourceNo(4) + "");
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -752,12 +735,14 @@ public class GameScreen implements Initializable {
                     System.out.println("Bindik bir alamete gidiyoruz kıyamete amaneeen");
                     Circle circle = (Circle) e.getSource();
                     circle.setFill(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
             else if(construct_type == Construction_type.CITY){
                 if(mainController.upgradeCity(index)){
                     Circle circle = (Circle) e.getSource();
                     circle.setFill(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
         }
@@ -783,9 +768,45 @@ public class GameScreen implements Initializable {
                 if( mainController.buildRoad(index) ){
                     Line l = (Line) e.getSource();
                     l.setStroke(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
             
+        }
+    }
+    
+    class DiceHandler implements EventHandler<MouseEvent>
+    {
+        DiceHandler(){}
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            int[] diceNums = mainController.rollDice();
+            Image d1img, d2img;
+            switch(diceNums[0])
+            {
+                case 1: d1img = new Image("images/die_face_1.png"); break;
+                case 2: d1img = new Image("images/die_face_2.png"); break;
+                case 3: d1img = new Image("images/die_face_3.png"); break;
+                case 4: d1img = new Image("images/die_face_4.png"); break;
+                case 5: d1img = new Image("images/die_face_5.png"); break;
+                case 6: d1img = new Image("images/die_face_6.png"); break;
+                default: d1img = null; break;
+            }
+            switch(diceNums[1])
+            {
+                case 1: d2img = new Image("images/die_face_1.png"); break;
+                case 2: d2img = new Image("images/die_face_2.png"); break;
+                case 3: d2img = new Image("images/die_face_3.png"); break;
+                case 4: d2img = new Image("images/die_face_4.png"); break;
+                case 5: d2img = new Image("images/die_face_5.png"); break;
+                case 6: d2img = new Image("images/die_face_6.png"); break;
+                default: d2img = null; break;
+            }
+            dice1.setImage(d1img);
+            dice2.setImage(d2img);
+            refreshResources();
         }
     }
 }

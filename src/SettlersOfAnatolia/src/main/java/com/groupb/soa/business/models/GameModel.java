@@ -35,18 +35,8 @@ public class GameModel {
         secondTurn = false;
     }
     // player rolls the dice and sources are distributed
-    public void playTurn(){
-        int diceNo = dice.rollDice();
-        int diceNo2 = dice2.rollDice();
-        ArrayList<Hexagon> hexagonList =  tile.getHexsWithValue(diceNo+diceNo2);
-        for(int i= 0; i < hexagonList.size(); i++){
-           Vertex[] occupVertex =  hexagonList.get(i).getOccupiedVertices();
-           for(int j = 0; j < occupVertex.length ; j++ ){
-               playerList.getPlayerWithColor( occupVertex[j].getOccupColor()).addSource( hexagonList.get(i).getSourceType(), 1);
-               bank.subSource( hexagonList.get(i).getSourceType(), 1);
-           }
-        }
-        //playerList.next(); Bu durumda player kendisi basamıyor nextTurn e o yüzden bunu aşağıda bir metoda alıyorum
+    public boolean produceResources(){
+            return tile.produceResources(dice.value + dice2.value , playerList);
     }
 
     public boolean buildRoad(int index ){
@@ -83,6 +73,10 @@ public class GameModel {
        return result;
     }
 
+    public Player getCurrentPlayer()
+    {
+        return playerList.getCurrentPlayer();
+    }
     public Color getCurrentPlayerColor(){
         return playerList.getCurrentPlayer().getColor();
     }
@@ -101,6 +95,19 @@ public class GameModel {
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
         System.out.println("Game Turn is increased " + turn);
-        }
     }
+    
+    public int[] rollDice()
+    {
+        // roll the dice
+        int d1 = dice.rollDice();
+        int d2 = dice2.rollDice();
+        int result[] = new int[2];
+        result[0] = d1;
+        result[1] = d2;
+        return result;
+    }
+}
+
+
 

@@ -72,28 +72,44 @@ public class GameTile {
         }
         return hexagonList;
     }
+    
+    public boolean produceResources(int sum, PlayerList pl)
+    {
+        if( sum == 7)
+            return false;
+        boolean result = true;
+        for( Hexagon h : hexagons)
+        {
+            if( h.getNumber() == sum )
+            {
+                result &= h.produceResource(pl);
+            }
+        }
+        return result;
+    }
 
     private void distributeSources()
     {
+        // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
         hexagons[0].setSourceType(0); // ore
-        hexagons[1].setSourceType(0); // wool
-        hexagons[2].setSourceType(0); // lumber
-        hexagons[3].setSourceType(0); // grain
-        hexagons[4].setSourceType(0); // brick
-        hexagons[5].setSourceType(0); // wool
-        hexagons[6].setSourceType(0); // brick
-        hexagons[7].setSourceType(0); // grain
-        hexagons[8].setSourceType(0); // lumber
-        hexagons[9].setSourceType(0); // DESERT
-        hexagons[10].setSourceType(0); // lumber
+        hexagons[1].setSourceType(3); // wool
+        hexagons[2].setSourceType(2); // lumber
+        hexagons[3].setSourceType(1); // grain
+        hexagons[4].setSourceType(4); // brick
+        hexagons[5].setSourceType(3); // wool
+        hexagons[6].setSourceType(4); // brick
+        hexagons[7].setSourceType(1); // grain
+        hexagons[8].setSourceType(2); // lumber
+        hexagons[9].setSourceType(-99); // DESERT
+        hexagons[10].setSourceType(2); // lumber
         hexagons[11].setSourceType(0); // ore
-        hexagons[12].setSourceType(0); // lumber
+        hexagons[12].setSourceType(2); // lumber
         hexagons[13].setSourceType(0); // ore
-        hexagons[14].setSourceType(0); // grain
-        hexagons[15].setSourceType(0); // wool
-        hexagons[16].setSourceType(0); // brick
-        hexagons[17].setSourceType(0); // grain
-        hexagons[18].setSourceType(0); // wool
+        hexagons[14].setSourceType(1); // grain
+        hexagons[15].setSourceType(3); // wool
+        hexagons[16].setSourceType(4); // brick
+        hexagons[17].setSourceType(1); // grain
+        hexagons[18].setSourceType(3); // wool
     }
     private void distributeDiceNumbers()
     {
