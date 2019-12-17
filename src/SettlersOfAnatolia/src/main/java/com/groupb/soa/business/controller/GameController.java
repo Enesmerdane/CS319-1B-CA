@@ -5,6 +5,7 @@
  */
 package com.groupb.soa.business.controller;
 import com.groupb.soa.business.models.GameModel;
+import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.PlayerList;
 import java.io.IOException;
 import javafx.application.Application;
@@ -107,6 +108,11 @@ public class GameController {
 
     public Color getCurrentPlayerColor() {
         return gameModel.getCurrentPlayerColor();
+    }
+    
+    public Player getCurrentPlayer()
+    {
+        return gameModel.getCurrentPlayer();
     }
     
     public void nextPlayer(){

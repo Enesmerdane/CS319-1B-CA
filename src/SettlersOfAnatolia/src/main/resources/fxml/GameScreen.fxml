@@ -16,7 +16,7 @@
         <URL value="@/styles/gamescreen.css" />
     </stylesheets>
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="2500.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="1091.0" fitWidth="1920.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/wooden_background.jpg" />
          </image>
@@ -69,7 +69,7 @@
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1254.0" layoutY="841.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1243.0" layoutY="835.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
       <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1482.0" layoutY="932.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1682.0" layoutY="934.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1277.0" layoutY="931.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
@@ -197,5 +197,10 @@
             <Font size="35.0" />
          </font>
       </Button>
+      <Text fx:id="grain" layoutX="628.0" layoutY="1038.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="lumber" layoutX="708.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="wool" layoutX="789.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="stone" layoutX="868.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="brick" layoutX="950.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
    </children>
 </AnchorPane>

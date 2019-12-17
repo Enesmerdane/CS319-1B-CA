@@ -79,6 +79,13 @@ public class Vertex implements IGameObject{
         System.out.println("Buraya kadar geldik");
         
         // condition check
+        
+        // player must have less than 5 settlements
+        if( pl.getPlayerWithColor(playerColor).getRemSettlements() <= 0)
+        {
+            return false;
+        }
+        
         // if not first, player must have a road in the neighboring edges
         if( !firstTurn && !secondTurn)
         {
@@ -138,12 +145,20 @@ public class Vertex implements IGameObject{
             }
         }
         // award 1 victory point?? (do we award them here?)
+         pl.getPlayerWithColor(playerColor).successfulSettBuild();
         return true;
     }
 
     public boolean upgrade(Color playerColor, PlayerList pl)
     {
         // condition check
+        
+        // player must have fewer than 4 cities
+        if( pl.getPlayerWithColor(playerColor).getRemCities() <= 0)
+        {
+            return false;
+        }
+        
         // player must have enough resources to build
         // 0 = ore, 1 = grain, 2 = lumber, 3 = wool, 4 = brick
         // we need 3 ore & 2 grain
@@ -161,6 +176,7 @@ public class Vertex implements IGameObject{
         // change the proper values
         level = 2;
         // award victory points?? (do we award them here?)
+        pl.getPlayerWithColor(playerColor).successfulCityBuild();
         // return true
         return true;
     }

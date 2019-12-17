@@ -83,6 +83,10 @@ public class GameModel {
        return result;
     }
 
+    public Player getCurrentPlayer()
+    {
+        return playerList.getCurrentPlayer();
+    }
     public Color getCurrentPlayerColor(){
         return playerList.getCurrentPlayer().getColor();
     }

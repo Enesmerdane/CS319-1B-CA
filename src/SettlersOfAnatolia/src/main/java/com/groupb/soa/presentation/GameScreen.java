@@ -108,6 +108,16 @@ public class GameScreen implements Initializable {
     @FXML
     private Polygon hexagonList[];
     
+    @FXML
+    private Text grain;
+    @FXML
+    private Text lumber;
+    @FXML
+    private Text wool;
+    @FXML
+    private Text stone;
+    @FXML
+    private Text brick;
     
     private boolean gameSound = true;
     private boolean gameMusic = true;
@@ -273,7 +283,6 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < NUMBER_OF_VERTICES; i++){
             circleList[i].setOnMouseClicked(new VertexHandler(i));
         }
-        
     }  
     private void drawAllEdges(){
         int i = 0;
@@ -728,6 +737,17 @@ public class GameScreen implements Initializable {
         your_turn_rectangle.setStyle("visibility:false");
         your_turn_text.setStyle("visibility:false");
         mainController.nextPlayer();
+        refreshResources();
+    }
+    
+    private void refreshResources()
+    {
+        // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
+        stone.setText( mainController.getCurrentPlayer().getSourceNo(0) + "");
+        grain.setText( mainController.getCurrentPlayer().getSourceNo(1) + "");
+        lumber.setText( mainController.getCurrentPlayer().getSourceNo(2) + "");
+        wool.setText( mainController.getCurrentPlayer().getSourceNo(3) + "");
+        brick.setText( mainController.getCurrentPlayer().getSourceNo(4) + "");
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -752,12 +772,14 @@ public class GameScreen implements Initializable {
                     System.out.println("Bindik bir alamete gidiyoruz kıyamete amaneeen");
                     Circle circle = (Circle) e.getSource();
                     circle.setFill(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
             else if(construct_type == Construction_type.CITY){
                 if(mainController.upgradeCity(index)){
                     Circle circle = (Circle) e.getSource();
                     circle.setFill(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
         }
@@ -783,6 +805,7 @@ public class GameScreen implements Initializable {
                 if( mainController.buildRoad(index) ){
                     Line l = (Line) e.getSource();
                     l.setStroke(mainController.getCurrentPlayerColor());
+                    refreshResources();
                 }
             }
             
