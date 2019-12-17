@@ -20,9 +20,17 @@ public class RoadBuilding extends DevCard {
         selectedEdge2 = -1;
     }
     
+    public void setSelectedEdgeFirst(int index){
+        selectedEdge1 = index;
+    }
+    
+    public void setSelectedEdgeSecond(int index){
+        selectedEdge2 = index;
+    }
+    
     public boolean play(GameModel model){
         //card is bought in the current turn
-        if( recentlyBought == true)
+        if( recentlyBought )
             return false;
         //edges are not set
         if( selectedEdge1 == -1 || selectedEdge2 == -1)

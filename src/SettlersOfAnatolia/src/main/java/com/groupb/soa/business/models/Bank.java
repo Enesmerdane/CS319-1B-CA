@@ -30,6 +30,10 @@ public class Bank {
        //will be implemented
    }
    
+   public int[] getSources(){
+   return sources;
+   }
+   
    public boolean subSource(int source, int amount){
        if ( sources[source]  >= amount  ){
            sources[source] = sources[source] - amount ;

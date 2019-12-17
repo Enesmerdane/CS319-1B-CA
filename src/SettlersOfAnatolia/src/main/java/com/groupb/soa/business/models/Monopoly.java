@@ -19,7 +19,8 @@ public class Monopoly extends DevCard{
     }
     
     public  boolean play(GameModel model){
-        //selected source check will be revised ?
+       if ( recentlyBought)
+           return false;
        int current = model.getPlayerList().getCurrentPlayerNo();
        for( int i = 0; i < 4; i++){
            if ( i != current ){
