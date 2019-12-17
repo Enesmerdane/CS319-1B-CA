@@ -88,6 +88,11 @@ public class GameTile {
         return result;
     }
 
+    private int findLongestRoad(PlayerList pl, Color playerColor, int index)
+    {
+        // TO-DO
+        return 0;
+    }
     private void distributeSources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
