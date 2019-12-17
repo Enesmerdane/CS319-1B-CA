@@ -167,6 +167,26 @@
       <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="328.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
       <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
+      <Text fx:id="grain" layoutX="628.0" layoutY="1038.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="lumber" layoutX="708.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="wool" layoutX="789.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="stone" layoutX="868.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="brick" layoutX="950.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
       <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
          <font>
             <Font size="70.0" />
@@ -197,10 +217,5 @@
             <Font size="35.0" />
          </font>
       </Button>
-      <Text fx:id="grain" layoutX="628.0" layoutY="1038.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="lumber" layoutX="708.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="wool" layoutX="789.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="stone" layoutX="868.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="brick" layoutX="950.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
    </children>
 </AnchorPane>
