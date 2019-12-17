@@ -7,7 +7,7 @@ package com.groupb.soa.business.models;
 
 /**
  *
- * @author İrem Kırmacı
+ * @author İrem Kırmacı, Göksu
  */
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -24,7 +24,7 @@ public class Player implements IGameObject {
     int remRoads;
     int remSettlements;
     int remCities;
-    //ArrayList<DevCard> cards;
+    ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
     Player( Color colour){
@@ -33,10 +33,23 @@ public class Player implements IGameObject {
         remRoads = 15;
         remSettlements = 5;
         remCities = 4;
-       // cards = new ArrayList<DevCard>();
+        cards = new ArrayList<DevCard>();
         sources = new int[5];
 
     }
+    
+    public boolean buyDevCard(Bank bank){
+        if(sources[0] > 0 && sources[1] > 0 && sources[3] > 0){
+            subSource(0, 1);
+            subSource(1, 1);
+            subSource(3, 1);
+            bank.drawCard();
+            return true;
+        }
+        return false;
+    }
+    
+    
     public void increaseScore( int amount){
         score += amount;
     }

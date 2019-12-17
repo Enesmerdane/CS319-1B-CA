@@ -86,6 +86,10 @@ public class GameModel {
     public Color getCurrentPlayerColor(){
         return playerList.getCurrentPlayer().getColor();
     }
+    
+    public Bank getBank(){
+        return bank;
+    }
 
     public void moveNextPlayer(){
         // playerList.next()'s stay parameter is set to 'true'
