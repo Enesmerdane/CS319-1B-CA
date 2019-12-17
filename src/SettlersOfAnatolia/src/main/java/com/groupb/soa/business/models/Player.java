@@ -35,6 +35,10 @@ public class Player implements IGameObject {
         remCities = 4;
         cards = new ArrayList<DevCard>();
         sources = new int[5];
+        for( int i = 0; i < sources.length; i++)
+        {
+            sources[i] = 111;
+        }
     }
     
     public boolean buyDevCard(Bank bank){

@@ -101,9 +101,11 @@ public class GameController {
     {
         //gameModel.render();
     }
-    public void dice()
+    public int[] rollDice()
     {
-        //gameModel.rollDice();
+        int[] diceValue = gameModel.rollDice();
+        gameModel.produceResources();
+        return diceValue;
     }
 
     public Color getCurrentPlayerColor() {

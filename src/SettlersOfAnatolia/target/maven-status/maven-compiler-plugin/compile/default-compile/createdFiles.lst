@@ -1,4 +1,5 @@
 com\groupb\soa\business\models\Hexagon.class
+com\groupb\soa\presentation\GameScreen$DiceHandler.class
 com\groupb\soa\data\DataManager.class
 com\groupb\soa\business\models\Vertex.class
 com\groupb\soa\presentation\GameScreen$3.class
@@ -32,5 +33,4 @@ com\groupb\soa\business\models\DomesticTrade.class
 com\groupb\soa\business\models\Player.class
 com\groupb\soa\presentation\GameScreen.class
 com\groupb\soa\presentation\GameScreen$6.class
-com\groupb\soa\presentation\GameScreen$9.class
 com\groupb\soa\business\models\DevCard.class

@@ -197,10 +197,10 @@
             <Font size="35.0" />
          </font>
       </Button>
-      <Text fx:id="grain" layoutX="628.0" layoutY="1038.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="lumber" layoutX="708.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="wool" layoutX="789.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="stone" layoutX="868.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
-      <Text fx:id="brick" layoutX="950.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="grain" layoutX="628.0" layoutY="1038.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="lumber" layoutX="708.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="wool" layoutX="789.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="stone" layoutX="868.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
+      <Text fx:id="brick" layoutX="950.0" layoutY="1039.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125" />
    </children>
 </AnchorPane>
