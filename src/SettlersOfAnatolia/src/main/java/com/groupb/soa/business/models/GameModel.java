@@ -38,6 +38,11 @@ public class GameModel {
     public boolean produceResources(){
             return tile.produceResources(dice.value + dice2.value , playerList);
     }
+    
+    //gets playerList
+    public PlayerList getPlayerList(){
+        return playerList;
+    }
 
     public boolean buildRoad(int index ){
         boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  firstTurn || secondTurn);

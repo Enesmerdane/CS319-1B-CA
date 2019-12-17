@@ -31,6 +31,14 @@ public class PlayerList implements IGameObject {
     public Player getCurrentPlayer(){
         return players[currentPlayerNo];
     }
+    
+    public int getCurrentPlayerNo(){
+        return currentPlayerNo;
+    }
+    
+    public Player getPlayer(int i){
+        return players[i];
+    }
 
     public Player getPlayerWithColor( Color color ){
         for ( int i = 0; i < 4; i++){
