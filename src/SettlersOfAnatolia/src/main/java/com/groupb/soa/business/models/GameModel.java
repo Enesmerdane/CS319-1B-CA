@@ -108,11 +108,6 @@ public class GameModel {
         return result;
     }
     
-    private int findLongestRoad(PlayerList pl, Color playerColor, int index)
-    {
-        // TO-DO
-        return 0;
-    }
     
 }
 
