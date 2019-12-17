@@ -29,5 +29,6 @@ public class Monopoly extends DevCard{
            }
     }
     
-}
+    return true;
+ }
 }
