@@ -13,8 +13,11 @@ import java.util.*;
  */
 public class Bank {
    int[] sources;
-   Stack<DevCard> cardStack;
+   Queue<DevCard> cards;
    
+   int monopoly; // number of monopoly cards
+   int plenty; //number of yearofplenty cards
+   int roadB; //number of road building cards in bank
    Bank(){
        //initialize sources in bank
        sources = new int[5];
@@ -22,7 +25,24 @@ public class Bank {
            sources[i] = 19;
        
        //initialize cardStack
-       cardStack = new Stack<>();
+       cards = new LinkedList<>();
+       //distrubute stack randomly
+       while(monopoly != 0 || plenty != 0 || roadB != 0 ){
+           int random = (int)(Math.random()* 2 );
+           if ( random == 0){
+               cards.add(new Monopoly("monopoly", null));
+               monopoly--;
+            }
+           else if ( random == 1 ){
+                cards.add(new YearOfPlenty("plenty", null));
+                plenty--;
+           }
+           else if ( random == 2 ){
+                cards.add(new RoadBuilding("roadBuilding", null));
+                plenty--;
+           }  
+       }
+       
        
    }
    
