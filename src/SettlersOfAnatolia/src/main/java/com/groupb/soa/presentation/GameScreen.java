@@ -250,7 +250,12 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < NUMBER_OF_VERTICES; i++){
             circleList[i].setOnMouseClicked(new VertexHandler(i));
         }
-    }  
+        
+        for(int i = 0; i < NUMBER_OF_HEXAGONS; i++) 
+        {
+           hexagonList[i].setOnMouseClicked(new HexagonHandler(i));
+        }  
+    }
     private void drawAllEdges(){
         int i = 0;
         
@@ -807,6 +812,21 @@ public class GameScreen implements Initializable {
             dice1.setImage(d1img);
             dice2.setImage(d2img);
             refreshResources();
+        }
+    }
+    
+    class HexagonHandler implements EventHandler<MouseEvent>
+    {
+        int index;
+        HexagonHandler( int i)
+        {
+            index = i;
+        }
+        
+        @Override
+        public void handle(MouseEvent e)
+        {
+            System.out.println( "The user clicked on hexagon #" + index);
         }
     }
 }

@@ -64,16 +64,13 @@ public class GameController {
     }
     
     public void initateGame(){
-        // here we set deafult colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
+        // here we set default colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
         
         Color[] playerColors = new Color[4];
         playerColors[0] = Color.RED;
         playerColors[1] = Color.BLUE;
         playerColors[2] = Color.GREENYELLOW;
         playerColors[3] = Color.PURPLE;
-        
-        
-        
         gameModel = new GameModel(playerColors);
     }
     

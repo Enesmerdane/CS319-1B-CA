@@ -167,7 +167,7 @@ public class Vertex implements IGameObject{
         if( !hasEnough)
             return false;
         // player must have a settlement in this vertex
-        if( occupColor != playerColor)
+        if( occupColor.equals( playerColor) && level != 1)
             return false;
         // if all above conditions are true, then
         // subtract resources
