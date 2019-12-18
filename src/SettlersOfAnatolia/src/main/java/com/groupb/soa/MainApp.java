@@ -1,5 +1,7 @@
 package com.groupb.soa;
 import com.groupb.soa.business.controller.GameController;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.io.File;  
   
 
@@ -21,6 +23,17 @@ public class MainApp extends Application {
     
     private static MainApp instance;
     
+    private static double WIDTH;
+    private static double HEIGHT;
+    
+    public static double getWidth(){
+        return WIDTH;
+    }
+    
+    public static double getHeight(){
+        return HEIGHT;
+    }
+    
     public static MainApp getInstance() {
             return instance;
     }
@@ -31,6 +44,9 @@ public class MainApp extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        WIDTH = gd.getDisplayMode().getWidth();
+        HEIGHT = gd.getDisplayMode().getHeight();
         instance = this;
         game = new GameController(stage, this);
     }
