@@ -18,6 +18,7 @@ public class Bank {
    int monopoly; // number of monopoly cards
    int plenty; //number of yearofplenty cards
    int roadB; //number of road building cards in bank
+   
    Bank(){
        //initialize sources in bank
        sources = new int[5];
@@ -39,7 +40,7 @@ public class Bank {
            }
            else if ( random == 2 ){
                 cards.add(new RoadBuilding("roadBuilding", null));
-                plenty--;
+                roadB--;
            }  
        }
        

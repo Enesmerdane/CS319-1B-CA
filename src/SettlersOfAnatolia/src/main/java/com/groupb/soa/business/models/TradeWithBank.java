@@ -12,7 +12,7 @@ package com.groupb.soa.business.models;
 public class TradeWithBank {
     public boolean trade(Player player, int source1,Bank bank,int source2){
         int[] sourceArray = bank.getSources();
-        if(player.getSourceNo(source1)>0 && sourceArray[source2] > 0){
+        if(player.getSourceNo(source1)> 0 && sourceArray[source2] > 0){
             player.subSource(source1, 1);
             player.addSource(source2, 1);
             
