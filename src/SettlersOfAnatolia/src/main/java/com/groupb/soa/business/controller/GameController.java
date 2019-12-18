@@ -117,4 +117,9 @@ public class GameController {
     public void nextPlayer(){
         gameModel.moveNextPlayer();
     }
+    
+    public boolean sendRobberToHexagon( int index)
+    {
+        return gameModel.sendRobberToHexagon(index);
+    }
 }

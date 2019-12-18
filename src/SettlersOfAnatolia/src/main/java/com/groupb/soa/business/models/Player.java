@@ -81,10 +81,11 @@ public class Player implements IGameObject {
     }
 
     public boolean stealSourceFrom( Player p1 ){
+        System.out.println( p1);
         if ( p1.getTotalNoOfSources() > 0){
-            int random = (int) (( Math.random() * 4 ) + 1);
+            int random = (int) (( Math.random() * 5 ));
             while( sources[random] < 0){
-                random = (int) (( Math.random() * 4 ) + 1);
+                random = (int) ( Math.random() * 5 );
             }
             p1.subSource( random, 1);
             addSource(random, 1);
