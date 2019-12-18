@@ -42,8 +42,8 @@ public class PlayerList implements IGameObject {
 
     public Player getPlayerWithColor( Color color ){
         for ( int i = 0; i < 4; i++){
-            if ( players[currentPlayerNo].getColor() == color)
-                return players[currentPlayerNo];
+            if ( players[i].getColor().equals(color))
+                return players[i];
         }
         return null;
 

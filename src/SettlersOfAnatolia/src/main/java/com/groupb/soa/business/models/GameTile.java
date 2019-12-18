@@ -87,12 +87,21 @@ public class GameTile {
         }
         return result;
     }
+    
+    public boolean sendRobberToHexagon( int index, PlayerList pl)
+    {
+        if( hexagons[index].hasRobber())
+            return false;
+        hexagons[index].moveRobber();
+        return hexagons[index].stealResource(pl, pl.getCurrentPlayer().getColor());
+    }
 
     private int findLongestRoad(PlayerList pl, Color playerColor, int index)
     {
         // TO-DO
         return 0;
     }
+    
     private void distributeSources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
