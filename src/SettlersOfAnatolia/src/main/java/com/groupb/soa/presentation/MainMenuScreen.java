@@ -35,26 +35,20 @@ public class MainMenuScreen implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    @FXML
-    private void goNewGame(ActionEvent event) throws IOException{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
-        for( int i = 1; i < 55; i++)
-        {
-            // pane.lookup( "#vertex" + i).setOnMouseClicked(new VertexHandler(i));
-        }
-        
-        for( int i = 1; i < 73; i++)
-        {
-            // pane.lookup( "#line" + i).setOnMouseClicked( new EdgeHandler(i));
-        }
-        rootPane.getChildren().setAll(pane);
-        
-        MainApp.getInstance().getGameControllerObj().initateGame();
-    }
+    
     
     @FXML
     private void terminateGame(ActionEvent event) throws IOException{
         System.exit(0);
+    }
+    
+    @FXML
+    private void goGameOptionsMenu() throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameOptions.fxml"));
+        
+        rootPane.getChildren().setAll(pane);
+        
+        MainApp.getInstance().getGameControllerObj().initateGame();
     }
     
     

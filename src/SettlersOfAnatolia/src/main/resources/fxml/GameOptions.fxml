@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupb.soa.presentation.GameOptionsScreen">
+   <children>
+      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/main_menu_scene_background.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle id="game_options_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="435.0" layoutX="121.0" layoutY="322.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="806.0" />
+      <Button fx:id="new_game_button_game_options" layoutX="565.0" layoutY="609.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goNewGame" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Start Game" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="main_menu_button_game_options" layoutX="187.0" layoutY="609.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Main Menu" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Button>
+      <MenuButton fx:id="color_picked_game_options" layoutX="688.0" layoutY="484.0" mnemonicParsing="false" text="Color">
+        <items>
+        </items>
+         <font>
+            <Font size="35.0" />
+         </font>
+      </MenuButton>
+      <TextField fx:id="username_game_options" layoutX="203.0" layoutY="483.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </TextField>
+      <Text layoutX="208.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Text layoutX="350.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Options Screen">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
