@@ -43,6 +43,11 @@ public class GameModel {
             return tile.produceResources(dice.value + dice2.value , playerList);
     }
     
+    public boolean sendRobberToHexagon( int index)
+    {
+        return tile.sendRobberToHexagon(index, playerList);
+    }
+    
     //gets playerList
     public PlayerList getPlayerList(){
         return playerList;

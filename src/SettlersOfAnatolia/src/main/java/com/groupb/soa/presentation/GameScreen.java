@@ -826,7 +826,8 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
-            System.out.println( "The user clicked on hexagon #" + index);
+            mainController.sendRobberToHexagon(index);
+            refreshResources();
         }
     }
 }

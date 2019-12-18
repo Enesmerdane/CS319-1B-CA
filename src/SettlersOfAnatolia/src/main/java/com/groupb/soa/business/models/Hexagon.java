@@ -120,32 +120,47 @@ public class Hexagon {
 
     public boolean stealResource( PlayerList pl, Color playerColor)
     {
+        // if this tile does not have the robber, return false.
         if( !hasRobber)
             return false;
-
-        // get potential players that the player can steal from
-        List<Color> potentialPlayers = new ArrayList<>();
+        
+        List<Color> potentialVictims = new ArrayList<>();
+        // get the list of players the current player can steal from.
         for( Vertex v: vertices)
         {
-            if( v.isOccupied() && v.getOccupColor() != playerColor)
-            {
-                potentialPlayers.add(v.getOccupColor());
-            }
+            // if current vertex is occupied by someone other than the stealing player,
+            // add to list.
+            if( v.isOccupied() && !v.getOccupColor().equals(playerColor))
+                potentialVictims.add(v.getOccupColor());
         }
-        // choose one random player to steal from
-        Color victimColor = potentialPlayers.get( (int) (Math.random() * potentialPlayers.size()));
-        // steal one random source from this player
-        // I DON'T KNOW IF THIS WORKS!
-        boolean steal = pl.getPlayerWithColor(playerColor).stealSourceFrom(pl.getPlayerWithColor(victimColor));
-        while( !steal)
+        
+        // if there are no potential victims, return false.
+        if( potentialVictims.size() <= 0)
+            return false;
+        
+        // else, proceed to steal.
+        boolean victimFound = false;
+        while( !victimFound)
         {
-            // if steal is false, this means that the selected potential player has no resources. try again
-            // remove the previous potential victim from the list of potential players
-            potentialPlayers.remove( potentialPlayers.lastIndexOf(victimColor));
-            // select another random victim
-            victimColor = potentialPlayers.get( (int) (Math.random() * potentialPlayers.size()));
-            // steal one random source from this player
-            pl.getPlayerWithColor(playerColor).stealSourceFrom(pl.getPlayerWithColor(victimColor));
+            // if all victims are searched and the player cannot steal from any one of them,
+            // return false.
+            if( potentialVictims.size() <= 0)
+                return false;
+            
+            // else, choose a victim.
+            Color victimColor = potentialVictims.get( (int) (Math.random() * potentialVictims.size()));
+            // try to steal from this victim.
+            boolean attempt = pl.getPlayerWithColor(playerColor).stealSourceFrom( pl.getPlayerWithColor(victimColor));
+            
+            // if successfully stolen from, then end this function.
+            if( attempt)
+                return true;
+            
+            // else, remove the current victim from the list of potential victims, and start over.
+            else
+            {
+                potentialVictims.remove(victimColor);
+            }
         }
         return true;
     }
@@ -160,6 +175,14 @@ public class Hexagon {
         if( !hasRobber)
         {
             hasRobber = true;
+        }
+    }
+    
+    public void removeRobber()
+    {
+        if( hasRobber)
+        {
+            hasRobber = false;
         }
     }
 }
