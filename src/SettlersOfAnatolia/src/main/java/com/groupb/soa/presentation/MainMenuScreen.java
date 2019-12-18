@@ -14,6 +14,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -28,11 +29,18 @@ public class MainMenuScreen implements Initializable{
     // Properties
     @FXML
     private AnchorPane rootPane;
+    
+    @FXML
+    private ImageView main_menu_scene_background_image;
+
+
     // Constructor
     
     // Methods
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        main_menu_scene_background_image.setFitHeight(MainApp.getHeight());
+        main_menu_scene_background_image.setFitWidth(MainApp.getWidth());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
