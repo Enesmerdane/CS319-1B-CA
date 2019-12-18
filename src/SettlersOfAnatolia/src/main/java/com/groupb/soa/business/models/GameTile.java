@@ -92,6 +92,12 @@ public class GameTile {
     {
         if( hexagons[index].hasRobber())
             return false;
+        
+        for( Hexagon h: hexagons)
+        {
+            if( h.hasRobber())
+                h.removeRobber();
+        }
         hexagons[index].moveRobber();
         return hexagons[index].stealResource(pl, pl.getCurrentPlayer().getColor());
     }
