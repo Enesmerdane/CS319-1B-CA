@@ -32,5 +32,6 @@ com\groupb\soa\presentation\GameScreen$EdgeHandler.class
 com\groupb\soa\business\models\DomesticTrade.class
 com\groupb\soa\business\models\Player.class
 com\groupb\soa\presentation\GameScreen.class
+com\groupb\soa\presentation\GameScreen$HexagonHandler.class
 com\groupb\soa\presentation\GameScreen$6.class
 com\groupb\soa\business\models\DevCard.class
