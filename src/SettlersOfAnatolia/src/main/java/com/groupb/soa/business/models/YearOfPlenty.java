@@ -30,4 +30,42 @@ public class YearOfPlenty extends DevCard{
         owner.addSource(selectedSource2, 1);
         return true;
     }
+    
+    public void setSelectedSource1( String sourceType)
+    {
+        switch (sourceType)
+        {
+            case "Ore":
+                selectedSource1 = 0; break;
+            case "Grain":
+                selectedSource1 = 1; break;
+            case "Lumber":
+                selectedSource1 = 2; break;
+            case "Wool":
+                selectedSource1 = 3; break;
+            case "Brick":
+                selectedSource1 = 4; break;
+            default:
+                selectedSource1 = -1; break;
+        }
+    }
+    
+    public void setSelectedSource2( String sourceType)
+    {
+        switch (sourceType)
+        {
+            case "Ore":
+                selectedSource2 = 0; break;
+            case "Grain":
+                selectedSource2 = 1; break;
+            case "Lumber":
+                selectedSource2 = 2; break;
+            case "Wool":
+                selectedSource2 = 3; break;
+            case "Brick":
+                selectedSource2 = 4; break;
+            default:
+                selectedSource2 = -1; break;
+        }
+    }
 }

@@ -20,6 +20,7 @@ public class GameModel {
     private Dice dice2;
     private int queue;
     private int turn;
+    private int freeRoads;
     private boolean firstTurn;
     private boolean secondTurn;
     private boolean firstTurnSettBuilt;
@@ -33,6 +34,7 @@ public class GameModel {
         dice2 = new Dice(0.0,0.0);
         turn = 0;
         queue = 0;
+        freeRoads = 0;
         firstTurn = true;
         secondTurn = false;
         firstTurnSettBuilt = false;
@@ -62,11 +64,15 @@ public class GameModel {
             else if( firstTurnRoadBuilt)
                 return false;
         }
-        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  firstTurn || secondTurn);
+        boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  firstTurn || secondTurn || freeRoads > 0);
         if(result){
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index);
+            // if it is the set-up turns, notify that the player built their free road.
             if( firstTurn || secondTurn)
                 firstTurnRoadBuilt = true;
+            // if it is not the set-up turns and the player built a free road, subtract 1 free road privilege.
+            else if( !firstTurn && !secondTurn && freeRoads > 0)
+                freeRoads--;
         } else {
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index + "FAILED for some reasons");
         }
@@ -124,6 +130,8 @@ public class GameModel {
         if( ( firstTurn || secondTurn) && !(firstTurnSettBuilt && firstTurnRoadBuilt) )
             return;
         
+        if( freeRoads > 0)
+            return;
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
@@ -153,7 +161,54 @@ public class GameModel {
         return result;
     }
     
+    public boolean playCard( String cardName, String sourceName)
+    {
+        // first, we check if the player has the card.
+        if( playerList.getCurrentPlayer().getCardNo(cardName) <= 0)
+        {
+            return false;
+        }
+        
+        // if the player has the card...
+        // play it
+        DevCard curCard = playerList.getCurrentPlayer().getCard(cardName);
+        
+        // if there is no such card, return false.
+        if( curCard == null)
+            return false;
+        if( cardName.equals("Knight"))
+        {
+            // To do
+        }
+        
+        else if( cardName.equals("Road Building"))
+        {
+            RoadBuilding rb = (RoadBuilding) curCard;
+            // To do
+            rb.play(this);
+        }
+        
+        else if( cardName.equals("Monopoly"))
+        {
+            System.out.println( "Monopoly checkpoint");
+            Monopoly mono = (Monopoly) curCard;
+            mono.setSelectedSource(sourceName);
+            return mono.play( this);
+        }
+        
+        else if( cardName.equals("Year of Plenty"))
+        {
+            YearOfPlenty yop = (YearOfPlenty) curCard;
+            // To do
+            yop.play( this);
+        }
+        return false;
+    }
     
+    protected void addFreeRoads( int i)
+    {
+        freeRoads += (int) Math.min(i, playerList.getCurrentPlayer().getRemRoads());
+    }
 }
 
 

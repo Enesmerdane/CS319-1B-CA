@@ -16,8 +16,6 @@ public class RoadBuilding extends DevCard {
     
     public RoadBuilding(String name,Player owner){
         super(name, owner); 
-        selectedEdge1 = -1;
-        selectedEdge2 = -1;
     }
     
     public void setSelectedEdgeFirst(int index){
@@ -33,11 +31,8 @@ public class RoadBuilding extends DevCard {
         if( recentlyBought )
             return false;
         //edges are not set
-        if( selectedEdge1 == -1 || selectedEdge2 == -1)
-            return false;
-        // if buildable build road to edges
-        return model.buildRoad(selectedEdge1) && model.buildRoad(selectedEdge2);
-        
+        model.addFreeRoads( 2);
+        return true;
     }
         
     }

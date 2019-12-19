@@ -17,6 +17,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -79,6 +81,15 @@ public class GameScreen implements Initializable {
     @FXML
     private Rectangle road_selected_rectangle;
     
+    @FXML
+    private MenuButton cardMenu;
+    @FXML
+    private MenuButton sourceMenu;
+    
+    @FXML
+    private MenuItem knightChoice, roadChoice, yearChoice, monoChoice;
+    @FXML
+    private MenuItem grainChoice, lumberChoice, woolChoice, oreChoice, brickChoice;
     private GameController mainController;
     
     
@@ -118,14 +129,16 @@ public class GameScreen implements Initializable {
     private Text stone;
     @FXML
     private Text brick;
+    @FXML
+    private Button playCard;
     
     private boolean gameSound = true;
     private boolean gameMusic = true;
-    private Dice d1, d2;
     
     private Point[] verticeList;
     private Circle[] circleList;
     private Line[] edgeList;
+    private PlayCardHandler pch;
     
     
     // Constructors
@@ -153,6 +166,89 @@ public class GameScreen implements Initializable {
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
         edgeList = new Line[NUMBER_OF_EDGES];
+        
+        pch = new PlayCardHandler();
+        playCard.setOnMouseClicked(pch);
+        knightChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                cardMenu.setText( knightChoice.getText());
+                pch.setCardType(knightChoice.getText());
+            }
+        });
+        
+        roadChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                cardMenu.setText( roadChoice.getText());
+                pch.setCardType( roadChoice.getText());
+            }
+        });
+        
+        yearChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                cardMenu.setText( yearChoice.getText());
+                pch.setCardType( yearChoice.getText());
+            }
+        });
+        
+        monoChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                cardMenu.setText( monoChoice.getText());
+                pch.setCardType( monoChoice.getText());
+            }
+        });
+        
+        grainChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                sourceMenu.setText( grainChoice.getText());
+                pch.setSourceType( grainChoice.getText());
+            }
+        });
+        
+        lumberChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                sourceMenu.setText( lumberChoice.getText());
+                pch.setSourceType( lumberChoice.getText());
+            }
+        });
+        
+        woolChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                sourceMenu.setText( woolChoice.getText());
+                pch.setSourceType( woolChoice.getText());
+            }
+        });
+        
+        oreChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                sourceMenu.setText( oreChoice.getText());
+                pch.setSourceType( oreChoice.getText());
+            }
+        });
+        
+        brickChoice.setOnAction( new EventHandler<ActionEvent>() {
+            @Override
+            public void handle( ActionEvent e)
+            {
+                sourceMenu.setText( brickChoice.getText());
+                pch.setSourceType( brickChoice.getText());
+            }
+        });
         
         
         // Button Operations
@@ -836,6 +932,35 @@ public class GameScreen implements Initializable {
         {
             mainController.sendRobberToHexagon(index);
             refreshResources();
+        }
+    }
+    
+    class PlayCardHandler implements EventHandler<MouseEvent>
+    {
+        String cardType, sourceType;
+        PlayCardHandler()
+        {
+            cardType = "";
+            sourceType = "";
+        }
+        
+        public void setCardType( String s)
+        {
+            cardType = s;
+        }
+        
+        public void setSourceType( String s)
+        {
+            sourceType = s;
+        }
+        
+        @Override
+        public void handle(MouseEvent e)
+        {
+            if( cardType.equals("") || sourceType.equals(""))
+                return;
+            
+            mainController.playCard(cardType, sourceType);
         }
     }
 }

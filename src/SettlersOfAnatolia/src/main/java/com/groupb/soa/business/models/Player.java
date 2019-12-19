@@ -10,7 +10,6 @@ package com.groupb.soa.business.models;
  * @author İrem Kırmacı, Göksu
  */
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ public class Player implements IGameObject {
     int remRoads;
     int remSettlements;
     int remCities;
+    int freeRoads;
     ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
@@ -39,6 +39,8 @@ public class Player implements IGameObject {
         {
             sources[i] = 111;
         }
+        cards.add( new Monopoly("test", this));
+        cards.add( new RoadBuilding( "test", this));
     }
     
     public boolean buyDevCard(Bank bank){
@@ -143,6 +145,81 @@ public class Player implements IGameObject {
     public void successfulRoadBuild()
     {
         remRoads--;
+    }
+    
+    public int getCardNo(String cardName)
+    {
+        int knightCards, roadCards, yearCards, monoCards;
+        knightCards = roadCards = yearCards = monoCards = 0;
+        for( int i = 0; i < cards.size(); i++)
+        {
+            /*if( cards.get(i) instanceof Knight)
+            *   knightCards++
+            */
+            if( cards.get(i) instanceof Monopoly)
+                monoCards++;
+            else if( cards.get(i) instanceof RoadBuilding)
+                roadCards++;
+            else if( cards.get(i) instanceof YearOfPlenty)
+                yearCards++;
+        }
+        
+        switch (cardName) {
+            case "Knight":
+                return knightCards;
+            case "Road Building":
+                return roadCards;
+            case "Year of Plenty":
+                return yearCards;
+            case "Monopoly":
+                return monoCards;
+            default:
+                return -1;
+        }
+    }
+    
+    // returns the first card with the given type in the cards ArrayList.
+    public DevCard getCard( String cardName)
+    {
+        for( int i = 0; i < cards.size(); i++)
+        {
+            System.out.println( cardName);
+            boolean condition;
+            switch (cardName) {
+            case "Knight":
+                condition = false; break; //condition = cards.get(i) instanceof Knight;
+            case "Road Building":
+                condition = cards.get(i) instanceof RoadBuilding; break;
+            case "Year of Plenty":
+                condition = cards.get(i) instanceof YearOfPlenty; break;
+            case "Monopoly":
+                condition = cards.get(i) instanceof Monopoly; break;
+            default:
+                condition = false;
+            }
+            
+            System.out.println( "instanceof: " + (cards.get(i) instanceof Monopoly));
+            System.out.println( condition);
+            
+            if( condition)
+                return cards.get(i);
+        }
+        return null;
+    }
+    
+    public boolean removeCard( DevCard dc)
+    {
+        return cards.remove(dc);
+    }
+    
+    // this function is used to set all the recentlyBought variables of cards to false.
+    public void refreshCards()
+    {
+        for( DevCard dc : cards)
+        {
+            if( dc.getRecentlyBought())
+                dc.setRecentlyBought(false);
+        }
     }
 }
 
