@@ -56,7 +56,7 @@ public class GameOptionsScreen implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
         userName = "";
         
         color_blueItem   = new MenuItem("Blue");
