@@ -10,7 +10,6 @@ package com.groupb.soa.business.models;
  * @author İrem Kırmacı, Göksu
  */
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ public class Player implements IGameObject {
     int remRoads;
     int remSettlements;
     int remCities;
+    int freeRoads;
     ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
@@ -40,6 +40,7 @@ public class Player implements IGameObject {
             sources[i] = 111;
         }
         cards.add( new Monopoly("test", this));
+        cards.add( new RoadBuilding( "test", this));
     }
     
     public boolean buyDevCard(Bank bank){
