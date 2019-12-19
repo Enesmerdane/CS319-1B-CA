@@ -1,6 +1,7 @@
 com\groupb\soa\business\models\Hexagon.class
 com\groupb\soa\presentation\GameScreen$DiceHandler.class
 com\groupb\soa\data\DataManager.class
+com\groupb\soa\presentation\GameOptionsScreen.class
 com\groupb\soa\presentation\GameScreen$16.class
 com\groupb\soa\business\models\Vertex.class
 com\groupb\soa\presentation\GameOptionsScreen$2.class
