@@ -183,7 +183,6 @@ public class Player implements IGameObject {
     {
         for( int i = 0; i < cards.size(); i++)
         {
-            System.out.println( cardName);
             boolean condition;
             switch (cardName) {
             case "Knight":
@@ -197,10 +196,6 @@ public class Player implements IGameObject {
             default:
                 condition = false;
             }
-            
-            System.out.println( "instanceof: " + (cards.get(i) instanceof Monopoly));
-            System.out.println( condition);
-            
             if( condition)
                 return cards.get(i);
         }

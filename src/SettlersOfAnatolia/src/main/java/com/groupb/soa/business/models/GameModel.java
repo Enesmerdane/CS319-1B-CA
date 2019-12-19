@@ -172,20 +172,23 @@ public class GameModel {
         // if the player has the card...
         // play it
         DevCard curCard = playerList.getCurrentPlayer().getCard(cardName);
-        
         // if there is no such card, return false.
         if( curCard == null)
             return false;
+        
+        boolean isPlayed = false;
         if( cardName.equals("Knight"))
         {
             // To do
+            isPlayed = false;
         }
         
         else if( cardName.equals("Road Building"))
         {
+            System.out.println( "Road Building checkpoint");
             RoadBuilding rb = (RoadBuilding) curCard;
             // To do
-            rb.play(this);
+            isPlayed = rb.play(this);
         }
         
         else if( cardName.equals("Monopoly"))
@@ -193,20 +196,27 @@ public class GameModel {
             System.out.println( "Monopoly checkpoint");
             Monopoly mono = (Monopoly) curCard;
             mono.setSelectedSource(sourceName);
-            return mono.play( this);
+            isPlayed = mono.play( this);
         }
         
         else if( cardName.equals("Year of Plenty"))
         {
             YearOfPlenty yop = (YearOfPlenty) curCard;
             // To do
-            yop.play( this);
+            isPlayed = yop.play( this);
+        }
+        if( isPlayed)
+        {
+            playerList.getCurrentPlayer().removeCard(curCard);
+            return true;
         }
         return false;
     }
     
     protected void addFreeRoads( int i)
     {
+        System.out.println( "i = " + i);
+        System.out.println( playerList.getCurrentPlayer().getRemRoads() + " xd");
         freeRoads += (int) Math.min(i, playerList.getCurrentPlayer().getRemRoads());
     }
 }

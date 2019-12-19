@@ -957,9 +957,11 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
-            if( cardType.equals("") || sourceType.equals(""))
+            if( cardType.equals("") || (cardType.equals("Monopoly") && sourceType.equals("")))
                 return;
             
+            System.out.println( cardType);
+            System.out.println( sourceType);
             mainController.playCard(cardType, sourceType);
         }
     }
