@@ -11,7 +11,7 @@ package com.groupb.soa.business.models;
  */
 public abstract class DevCard {
     String name;
-    boolean  recentlyBought;
+    boolean recentlyBought;
     Player owner;
     
     public DevCard(String name, Player owner){
@@ -24,7 +24,7 @@ public abstract class DevCard {
         recentlyBought = recent;
     }
     
-    public boolean getRecentlyBought(boolean recent){
+    public boolean getRecentlyBought(){
         return recentlyBought; 
     }
     public abstract boolean play(GameModel model);

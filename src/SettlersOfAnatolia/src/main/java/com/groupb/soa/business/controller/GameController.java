@@ -122,4 +122,9 @@ public class GameController {
     {
         return gameModel.sendRobberToHexagon(index);
     }
+    
+    public boolean playCard( String cardName, String sourceType)
+    {
+        return gameModel.playCard( cardName, sourceType);
+    }
 }

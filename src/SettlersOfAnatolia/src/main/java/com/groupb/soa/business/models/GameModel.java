@@ -153,6 +153,49 @@ public class GameModel {
         return result;
     }
     
+    public boolean playCard( String cardName, String sourceName)
+    {
+        // first, we check if the player has the card.
+        if( playerList.getCurrentPlayer().getCardNo(cardName) <= 0)
+        {
+            return false;
+        }
+        
+        // if the player has the card...
+        // play it
+        DevCard curCard = playerList.getCurrentPlayer().getCard(cardName);
+        
+        // if there is no such card, return false.
+        if( curCard == null)
+            return false;
+        if( cardName.equals("Knight"))
+        {
+            // To do
+        }
+        
+        else if( cardName.equals("Road Building"))
+        {
+            RoadBuilding rb = (RoadBuilding) curCard;
+            // To do
+            rb.play(this);
+        }
+        
+        else if( cardName.equals("Monopoly"))
+        {
+            System.out.println( "Monopoly checkpoint");
+            Monopoly mono = (Monopoly) curCard;
+            mono.setSelectedSource(sourceName);
+            return mono.play( this);
+        }
+        
+        else if( cardName.equals("Year of Plenty"))
+        {
+            YearOfPlenty yop = (YearOfPlenty) curCard;
+            // To do
+            yop.play( this);
+        }
+        return false;
+    }
     
 }
 

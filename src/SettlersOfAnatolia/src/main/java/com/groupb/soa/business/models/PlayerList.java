@@ -50,6 +50,7 @@ public class PlayerList implements IGameObject {
     }
 
     public boolean next( boolean secondTurn, boolean stay){
+        getCurrentPlayer().refreshCards();
         if( !stay)
         {
             if( secondTurn)
