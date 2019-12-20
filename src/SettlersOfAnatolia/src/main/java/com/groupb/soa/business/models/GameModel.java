@@ -25,6 +25,7 @@ public class GameModel {
     private boolean secondTurn;
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
+    private int robberMoves;
     
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
@@ -39,6 +40,7 @@ public class GameModel {
         secondTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
+        robberMoves = 0;
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
@@ -47,7 +49,14 @@ public class GameModel {
     
     public boolean sendRobberToHexagon( int index)
     {
-        return tile.sendRobberToHexagon(index, playerList);
+       if( robberMoves > 0)
+       {
+            boolean result = tile.sendRobberToHexagon(index, playerList);
+            if(result)
+                robberMoves--;
+            return result;
+       }
+       return false;
     }
     
     //gets playerList
@@ -130,8 +139,14 @@ public class GameModel {
         if( ( firstTurn || secondTurn) && !(firstTurnSettBuilt && firstTurnRoadBuilt) )
             return;
         
+        // if player has the right to build free roads, stop.
         if( freeRoads > 0)
             return;
+        
+        // if player has the right to move the robber, stop.
+        if( robberMoves > 0)
+            return;
+        
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
@@ -219,6 +234,11 @@ public class GameModel {
         System.out.println( "i = " + i);
         System.out.println( playerList.getCurrentPlayer().getRemRoads() + " xd");
         freeRoads += (int) Math.min(i, playerList.getCurrentPlayer().getRemRoads());
+    }
+    
+    protected void addRobberMove()
+    {
+        robberMoves += 1;
     }
 }
 
