@@ -179,6 +179,36 @@ public class Player implements IGameObject {
         }
     }
     
+    public int getPlayableCardNo(String cardName)
+    {
+        int knightCards, roadCards, yearCards, monoCards;
+        knightCards = roadCards = yearCards = monoCards = 0;
+        for( int i = 0; i < cards.size(); i++)
+        {
+            if( cards.get(i) instanceof Knight && !cards.get(i).getRecentlyBought())
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly && !cards.get(i).getRecentlyBought())
+                monoCards++;
+            else if( cards.get(i) instanceof RoadBuilding && !cards.get(i).getRecentlyBought())
+                roadCards++;
+            else if( cards.get(i) instanceof YearOfPlenty && !cards.get(i).getRecentlyBought())
+                yearCards++;
+        }
+        
+        switch (cardName) {
+            case "Knight":
+                return knightCards;
+            case "Road Building":
+                return roadCards;
+            case "Year of Plenty":
+                return yearCards;
+            case "Monopoly":
+                return monoCards;
+            default:
+                return -1;
+        }
+    }
+    
     // returns the first card with the given type in the cards ArrayList.
     public DevCard getCard( String cardName)
     {

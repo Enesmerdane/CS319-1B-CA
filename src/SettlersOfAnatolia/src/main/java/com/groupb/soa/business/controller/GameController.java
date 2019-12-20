@@ -127,4 +127,14 @@ public class GameController {
     {
         return gameModel.playCard( cardName, sourceType, sourceType2);
     }
+    
+    public int getPlayerCardNo(String cardName)
+    {
+        return gameModel.getPlayerCardNo(cardName);
+    }
+    
+    public int getPlayerPlayableCardNo(String cardName)
+    {
+        return gameModel.getPlayerPlayableCardNo(cardName);
+    }
 }

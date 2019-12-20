@@ -91,7 +91,7 @@ public class GameScreen implements Initializable {
     @FXML
     private MenuItem grainChoice, lumberChoice, woolChoice, oreChoice, brickChoice;
     @FXML
-    private Text resourceMsg;
+    private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
     private GameController mainController;
     
     
@@ -795,6 +795,7 @@ public class GameScreen implements Initializable {
         System.out.println("endTurn tuşuna basıldı");
         mainController.nextPlayer();
         refreshResources();
+        refreshCardNumbers();
     }
     
     private void refreshResources()
@@ -814,6 +815,18 @@ public class GameScreen implements Initializable {
         woolEffect.setVisible(toggle);
         oreEffect.setVisible(toggle);
         brickEffect.setVisible(toggle);
+    }
+    
+    private void refreshCardNumbers()
+    {
+        knightNo.setText( mainController.getPlayerPlayableCardNo("Knight") + 
+                " (" + mainController.getPlayerCardNo("Knight") + ")");
+        rbNo.setText( mainController.getPlayerPlayableCardNo("Road Building") + 
+                " (" + mainController.getPlayerCardNo("Road Building") + ")");
+        yearNo.setText( mainController.getPlayerPlayableCardNo("Year of Plenty") + 
+                " (" + mainController.getPlayerCardNo("Year of Plenty") + ")");
+        monoNo.setText( mainController.getPlayerPlayableCardNo("Monopoly") + 
+                " (" + mainController.getPlayerCardNo("Monopoly") + ")");
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -972,13 +985,33 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
+            // if no card type is specified, return.
             if( cardType.equals(""))
                 return;
             
+            // if player has no playable card of that type, return.
+            int count = -1;
+            switch( cardType)
+            {
+                case "Knight":
+                    count = knightNo.getText().charAt(0) - '0'; break;
+                case "Road Building":
+                    count = rbNo.getText().charAt(0) - '0'; break;
+                case "Year of Plenty":
+                    count = yearNo.getText().charAt(0) - '0'; break;
+                case "Monopoly":
+                    count = monoNo.getText().charAt(0) - '0'; break;
+                default:
+                    count = -1; break;
+            }
+            
+            if ( count <= 0)
+                return;
             if( !cardType.equals("Monopoly") && !cardType.equals("Year of Plenty"))
             {
                 mainController.playCard(cardType, sourceType, sourceType2);
                 refreshResources();
+                refreshCardNumbers();
             }
             else
             {
@@ -1016,6 +1049,7 @@ public class GameScreen implements Initializable {
                     refreshResources();
                     resourceMsg.setText( "");
                     toggleResourcePickEffects(false);
+                    refreshCardNumbers();
                 }
             }
             else if( rscSet == ResourceSetting.SOURCE2)
@@ -1025,6 +1059,7 @@ public class GameScreen implements Initializable {
                 mainController.playCard(pch.getCardType(), pch.getSourceType(), pch.getSourceType2());
                 rscSet = ResourceSetting.NONE;
                 refreshResources();
+                refreshCardNumbers();
                 resourceMsg.setText( "");
                 toggleResourcePickEffects(false);
             }

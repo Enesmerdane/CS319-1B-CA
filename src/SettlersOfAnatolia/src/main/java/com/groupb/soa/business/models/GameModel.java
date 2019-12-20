@@ -241,6 +241,16 @@ public class GameModel {
     {
         robberMoves += 1;
     }
+    
+    public int getPlayerCardNo( String cardName)
+    {
+        return playerList.getCurrentPlayer().getCardNo( cardName);
+    }
+    
+    public int getPlayerPlayableCardNo( String cardName)
+    {
+        return playerList.getCurrentPlayer().getPlayableCardNo( cardName);
+    }
 }
 
 
