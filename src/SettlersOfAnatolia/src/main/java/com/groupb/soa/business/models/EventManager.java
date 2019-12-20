@@ -10,8 +10,8 @@ package com.groupb.soa.business.models;
  * @author İrem Kırmacı
  */
 public class EventManager {
-     Event event;
-    GameModel model;
+    private Event event;
+    private GameModel model;
     public  EventManager(GameModel model){
         this.model = model;
     }
@@ -25,13 +25,13 @@ public class EventManager {
                 //event = new EarthQuake(model);
             }
             if(random >= 3 && random <= 5){
-                event = new Flood(model);
+                event = new Flood();
             }
             if(random >= 6 && random <= 8){
                 //event = new WolfAttack(model);
             }
             if(random >= 9){
-                event = new CybeleMonth(model);
+                event = new CybeleMonth();
             }
             return event;
 

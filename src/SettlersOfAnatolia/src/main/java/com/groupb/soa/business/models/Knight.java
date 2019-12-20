@@ -17,7 +17,7 @@ public class Knight extends DevCard{
     }
     
     public boolean play(GameModel model){
-        if( recentlyBought == true)
+        if( this.getRecentlyBought() == true)
             return false;
         
         model.addRobberMove();

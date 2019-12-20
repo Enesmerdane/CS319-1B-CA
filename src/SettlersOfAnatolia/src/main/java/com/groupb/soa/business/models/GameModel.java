@@ -44,7 +44,7 @@ public class GameModel {
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
-            return tile.produceResources(dice.value + dice2.value , playerList);
+            return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
     }
     
     public boolean sendRobberToHexagon( int index)

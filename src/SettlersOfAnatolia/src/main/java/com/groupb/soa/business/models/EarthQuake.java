@@ -10,10 +10,7 @@ package com.groupb.soa.business.models;
  * @author Irmak Demir
  */
 public class EarthQuake implements Event {
-    GameModel gameModel;
-    public EarthQuake(GameModel gameModel){
-        this.gameModel = gameModel;
-    }
+    public EarthQuake(){}
 
     public void occur(GameModel model) {
         //model.destroyAllCities();

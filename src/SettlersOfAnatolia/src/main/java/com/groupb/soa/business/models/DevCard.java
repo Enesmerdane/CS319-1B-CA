@@ -10,9 +10,9 @@ package com.groupb.soa.business.models;
  * @author goksuturan
  */
 public abstract class DevCard {
-    String name;
-    boolean recentlyBought;
-    Player owner;
+    private String name;
+    private boolean recentlyBought;
+    private Player owner;
     
     public DevCard(String name){
         this.name = name;

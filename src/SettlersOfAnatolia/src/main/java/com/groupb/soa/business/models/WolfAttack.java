@@ -10,10 +10,7 @@ package com.groupb.soa.business.models;
  * @author Irmak Demir
  */
 public class WolfAttack implements Event{
-    GameModel gameModel;
-    public WolfAttack(GameModel gameModel){
-        this.gameModel = gameModel;
-    }
+    public WolfAttack(){}
     public void occur(GameModel model) {
          //model.setWolfAttacked(true);
     }

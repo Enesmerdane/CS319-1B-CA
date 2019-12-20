@@ -16,16 +16,16 @@ import java.util.ArrayList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-public class Player implements IGameObject {
-    int[] sources;
-    int score;
-    Color color;
-    int remRoads;
-    int remSettlements;
-    int remCities;
-    int freeRoads;
-    boolean canBuyDevCard;
-    ArrayList<DevCard> cards;
+public class Player{
+    private int[] sources;
+    private int score;
+    private Color color;
+    private int remRoads;
+    private int remSettlements;
+    private int remCities;
+    private int freeRoads;
+    private boolean canBuyDevCard;
+    private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
     Player( Color colour){
@@ -109,11 +109,6 @@ public class Player implements IGameObject {
         return score;
     }
 
-    @Override
-    public void render(Node n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public int getRemSettlements()
     {
         return remSettlements;

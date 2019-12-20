@@ -10,10 +10,7 @@ package com.groupb.soa.business.models;
  * @author goksuturan
  */
 public class CybeleMonth implements Event{
-    GameModel gameModel;
-    public CybeleMonth(GameModel gameModel){
-        this.gameModel = gameModel;
-    }
+    public CybeleMonth(){}
 
     @Override
     public void occur(GameModel model) {

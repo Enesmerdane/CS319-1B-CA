@@ -16,7 +16,7 @@ public class RoadBuilding extends DevCard {
     
     public boolean play(GameModel model){
         //card is bought in the current turn
-        if( recentlyBought )
+        if( this.getRecentlyBought() )
             return false;
         //edges are not set
         model.addFreeRoads( 2);

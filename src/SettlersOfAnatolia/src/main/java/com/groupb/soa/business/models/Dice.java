@@ -13,8 +13,8 @@ import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Dice extends LocatableObject implements IGameObject {
-    int value;
+public class Dice extends LocatableObject{
+    private int value;
     public static final String IMG1_PATH = ""; // to be added
     public static final String IMG2_PATH = ""; // to be added
     public static final String IMG3_PATH = ""; // to be added
@@ -31,38 +31,10 @@ public class Dice extends LocatableObject implements IGameObject {
         value = (int)(Math.random()*6 + 1);
         return value;
     }
-
-//    @Override
-//    public void render(GraphicsContext gc) {
-//        Image image;
-//        if ( value == 1){
-//            image = new Image("IMG1_PATH");
-//        }
-//        else if ( value == 2){
-//            image = new Image("IMG2_PATH");
-//        }
-//        else if ( value == 3){
-//            image = new Image("IMG3_PATH");
-//        }
-//        else if ( value == 4){
-//            image = new Image("IMG4_PATH");
-//        }
-//        else if ( value == 5){
-//            image = new Image("IMG5_PATH");
-//        }
-//        else if ( value == 6){
-//            image = new Image("IMG6_PATH");
-//        }
-//        else{
-//            image = null;
-//        }
-//        if ( image != null)
-//            gc.drawImage(image, x, y );
-//    }
-
-    @Override
-    public void render(Node n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    public int getValue()
+    {
+        return value;
     }
 
 }

@@ -14,11 +14,7 @@ import java.util.*;
 public class Bank {
    private int[] sources;
    private Queue<DevCard> cards;
-   
-   int monopoly; // number of monopoly cards
-   int plenty; //number of yearofplenty cards
-   int roadB; //number of road building cards in bank
-   
+
    Bank(){
        //initialize sources in bank
        sources = new int[5];

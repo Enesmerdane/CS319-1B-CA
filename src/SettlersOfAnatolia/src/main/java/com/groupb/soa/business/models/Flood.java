@@ -10,10 +10,7 @@ package com.groupb.soa.business.models;
  * @author goksuturan
  */
 public class Flood implements Event{
-     GameModel gameModel;
-    public Flood(GameModel gameModel){
-        this.gameModel = gameModel;
-    }
+    public Flood(){}
     public void occur(GameModel model) {
         //model.setFlood(true);
     }
