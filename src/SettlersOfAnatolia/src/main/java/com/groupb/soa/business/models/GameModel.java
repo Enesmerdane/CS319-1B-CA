@@ -194,8 +194,9 @@ public class GameModel {
         boolean isPlayed = false;
         if( cardName.equals("Knight"))
         {
-            // To do
-            isPlayed = false;
+            System.out.println( "Knight checkpoint");
+            Knight knight = (Knight) curCard;
+            isPlayed = knight.play(this);
         }
         
         else if( cardName.equals("Road Building"))

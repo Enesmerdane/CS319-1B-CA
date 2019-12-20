@@ -45,6 +45,7 @@ com\groupb\soa\business\models\TradeWithBank.class
 com\groupb\soa\presentation\GameScreen.class
 com\groupb\soa\presentation\GameScreen$12.class
 com\groupb\soa\presentation\GameScreen$HexagonHandler.class
+com\groupb\soa\business\models\Knight.class
 com\groupb\soa\presentation\GameScreen$6.class
 com\groupb\soa\presentation\GameScreen$9.class
 com\groupb\soa\presentation\GameScreen$PlayCardHandler.class

@@ -42,6 +42,7 @@ public class Player implements IGameObject {
         cards.add( new Monopoly("test", this));
         cards.add( new RoadBuilding( "test", this));
         cards.add( new YearOfPlenty( "test", this));
+        cards.add( new Knight( "test", this));
     }
     
     public boolean buyDevCard(Bank bank){
@@ -154,10 +155,9 @@ public class Player implements IGameObject {
         knightCards = roadCards = yearCards = monoCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
-            /*if( cards.get(i) instanceof Knight)
-            *   knightCards++
-            */
-            if( cards.get(i) instanceof Monopoly)
+            if( cards.get(i) instanceof Knight)
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly)
                 monoCards++;
             else if( cards.get(i) instanceof RoadBuilding)
                 roadCards++;
@@ -187,7 +187,7 @@ public class Player implements IGameObject {
             boolean condition;
             switch (cardName) {
             case "Knight":
-                condition = false; break; //condition = cards.get(i) instanceof Knight;
+                condition = cards.get(i) instanceof Knight; break; //condition = cards.get(i) instanceof Knight;
             case "Road Building":
                 condition = cards.get(i) instanceof RoadBuilding; break;
             case "Year of Plenty":
