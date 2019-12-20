@@ -131,8 +131,8 @@ public class MainMenuScreen implements Initializable{
         //exit_game_button.setStyle("-fx-font-size:10px;");
         lengthOfLabel = exit_game_button.getText().length();
         exit_game_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("5- " + newX);
-        System.out.println("5- " + newY);
+        System.out.println("5-> " + newX);
+        System.out.println("5-> " + newY);
     }
     
     @FXML
