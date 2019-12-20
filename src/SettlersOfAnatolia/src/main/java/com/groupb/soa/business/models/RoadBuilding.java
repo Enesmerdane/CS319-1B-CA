@@ -10,8 +10,8 @@ package com.groupb.soa.business.models;
  * @author goksuturan
  */
 public class RoadBuilding extends DevCard {
-    public RoadBuilding(String name,Player owner){
-        super(name, owner); 
+    public RoadBuilding(String name){
+        super(name); 
     }
     
     public boolean play(GameModel model){

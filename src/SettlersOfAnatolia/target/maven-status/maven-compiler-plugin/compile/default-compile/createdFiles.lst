@@ -6,6 +6,7 @@ com\groupb\soa\business\models\Vertex.class
 com\groupb\soa\presentation\GameOptionsScreen$2.class
 com\groupb\soa\presentation\GameScreen$3.class
 com\groupb\soa\business\models\LocatableObject.class
+com\groupb\soa\presentation\GameScreen$13.class
 com\groupb\soa\presentation\GameScreen$ResourceClickHandler.class
 com\groupb\soa\business\models\Monopoly.class
 com\groupb\soa\presentation\GameScreen$ResourceSetting.class

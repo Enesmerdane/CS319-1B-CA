@@ -96,7 +96,7 @@
             <Image url="@../images/road_image.JPG" />
          </image>
       </ImageView>
-      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1698.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+      <Button id="buy_upgrade_card_button" fx:id="buy_dev_card" layoutX="1698.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

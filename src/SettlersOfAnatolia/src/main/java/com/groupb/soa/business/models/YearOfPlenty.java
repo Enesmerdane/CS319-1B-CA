@@ -13,8 +13,8 @@ public class YearOfPlenty extends DevCard{
     int selectedSource1;
     int selectedSource2;
     
-    public YearOfPlenty(String name,Player owner){
-        super(name, owner); 
+    public YearOfPlenty(String name){
+        super(name); 
         selectedSource1 = -1;
         selectedSource2 = -1;
     }

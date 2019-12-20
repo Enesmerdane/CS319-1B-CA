@@ -93,6 +93,8 @@ public class GameScreen implements Initializable {
     private MenuItem grainChoice, lumberChoice, woolChoice, oreChoice, brickChoice;
     @FXML
     private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
+    @FXML
+    private Button buy_dev_card;
     private GameController mainController;
     
     
@@ -245,6 +247,16 @@ public class GameScreen implements Initializable {
         brickPic.setOnMouseClicked(new ResourceClickHandler("Brick"));
         
         // Button Operations
+        buy_dev_card.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            
+            @Override
+            public void handle( MouseEvent e)
+            {
+                System.out.println( "Buy card checkpoint" + mainController.buyCard());
+                refreshResources();
+                refreshCardNumbers();
+            }
+        });
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
@@ -345,6 +357,7 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < NUMBER_OF_HEXAGONS; i++) 
         {
            hexagonList[i].setOnMouseClicked(new HexagonHandler(i));
+           hexagonNumberCircles[i].setOnMouseClicked(new HexagonHandler(i));
         }  
     }
     private void drawAllEdges(){
@@ -508,7 +521,7 @@ public class GameScreen implements Initializable {
     private void drawAllVertices(){
         for(int i = 0; i < NUMBER_OF_VERTICES; i++){
             circleList[i] = new Circle(verticeList[i].getX(), verticeList[i].getY(), 7.0);
-            circleList[i].setFill(Color.DODGERBLUE);
+            circleList[i].setFill(Color.BLACK);
             rootPane.getChildren().add(circleList[i]);
         }
     }
@@ -889,6 +902,7 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < 19; i++){
             hexagonNumbers[i].toFront();
         }
+    }
     private void toggleResourcePickEffects(boolean toggle)
     {
         grainEffect.setVisible(toggle);

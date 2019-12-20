@@ -14,10 +14,9 @@ public abstract class DevCard {
     boolean recentlyBought;
     Player owner;
     
-    public DevCard(String name, Player owner){
+    public DevCard(String name){
         this.name = name;
         recentlyBought = true; //shows whether the dev card is recently bought
-        this.owner = owner;
     }
     
     public void setRecentlyBought(boolean recent){

@@ -26,29 +26,56 @@ public class Bank {
            sources[i] = 19;
        
        //initialize cardStack
-       cards = new LinkedList<>();
-       //distrubute stack randomly
-       while(monopoly != 0 || plenty != 0 || roadB != 0 ){
-           int random = (int)(Math.random()* 2 );
-           if ( random == 0){
-               cards.add(new Monopoly("monopoly", null));
-               monopoly--;
-            }
-           else if ( random == 1 ){
-                cards.add(new YearOfPlenty("plenty", null));
-                plenty--;
-           }
-           else if ( random == 2 ){
-                cards.add(new RoadBuilding("roadBuilding", null));
-                roadB--;
-           }  
+       LinkedList<DevCard> tempCards = new LinkedList<>();
+       // add 14 knight cards
+       for( int i = 1; i < 15; i++)
+       {
+           tempCards.add( new Knight( "knight" + i));
+       }
+       // add 6 progress cards
+       for( int i = 1; i < 3; i++)
+       {
+           tempCards.add( new RoadBuilding("rb" + i));
+           tempCards.add( new YearOfPlenty("yop" + i));
+           tempCards.add( new Monopoly( "mono" + i));
        }
        
+       // add 5 victory cards
+       for( int i = 1; i < 6; i++)
+       {
+           // To do
+       }
+       
+       java.util.Collections.shuffle(tempCards);
+       cards = tempCards;
        
    }
    
-   public void drawCard(){
-       //will be implemented
+   public boolean drawCard(Player p){
+       // check for resources
+       // 1 wool, 1 grain, 1 ore
+       // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
+       if( p.getSourceNo(3) <= 1 || p.getSourceNo(1) <= 1 || p.getSourceNo(0) <= 1)
+           return false;
+       
+       // player should be able to buy a devcard
+       if( !p.getCanBuyDevCard())
+           return false;
+       
+       // if there are no devcards left in the bank, return false.
+       if( cards.isEmpty())
+       {
+           return false;
+       }
+       // if the check is passed
+       boolean successful = p.subSource(3, 1) && p.subSource(1, 1) && p.subSource(0, 1);
+       if( successful)
+       {
+           DevCard dc = cards.remove();
+           p.addCard( dc);
+           p.setCanBuyDevCard(false);
+       }
+       return successful;
    }
    
    public int[] getSources(){

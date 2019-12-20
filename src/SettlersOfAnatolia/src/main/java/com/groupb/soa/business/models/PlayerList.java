@@ -51,6 +51,7 @@ public class PlayerList implements IGameObject {
 
     public boolean next( boolean secondTurn, boolean stay){
         getCurrentPlayer().refreshCards();
+        getCurrentPlayer().setCanBuyDevCard(true);
         if( !stay)
         {
             if( secondTurn)

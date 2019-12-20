@@ -146,4 +146,9 @@ public class GameController {
     public int[] getNumberOfHexagons(){
         return gameModel.getNumberOfHexagons();
     }
+    
+    public boolean buyCard()
+    {
+        return gameModel.buyCard();
+    }
 }

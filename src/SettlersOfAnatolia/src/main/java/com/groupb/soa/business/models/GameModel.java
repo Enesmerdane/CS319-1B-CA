@@ -251,6 +251,19 @@ public class GameModel {
     {
         return playerList.getCurrentPlayer().getPlayableCardNo( cardName);
     }
+    
+    public int[] getSources(){
+        return tile.getResources();
+    }
+    
+    public int [] getNumberOfHexagons(){
+        return tile.getNumbersofHexagons();
+    }
+    
+    public boolean buyCard()
+    {
+        return playerList.getCurrentPlayer().buyDevCard(bank);
+    }
 }
 
 

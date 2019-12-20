@@ -13,8 +13,8 @@ public class Monopoly extends DevCard{
     
     int selectedSource;
 
-    public Monopoly( String name, Player owner){
-        super(name, owner);
+    public Monopoly( String name){
+        super(name);
         selectedSource = -1;
     }
     

@@ -12,8 +12,8 @@ package com.groupb.soa.business.models;
 public class Knight extends DevCard{
 
     
-    public Knight(String name,Player owner){
-        super(name, owner); 
+    public Knight(String name){
+        super(name); 
     }
     
     public boolean play(GameModel model){

@@ -24,6 +24,7 @@ public class Player implements IGameObject {
     int remSettlements;
     int remCities;
     int freeRoads;
+    boolean canBuyDevCard;
     ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
@@ -35,25 +36,19 @@ public class Player implements IGameObject {
         remCities = 4;
         cards = new ArrayList<DevCard>();
         sources = new int[5];
+        canBuyDevCard = true;
         for( int i = 0; i < sources.length; i++)
         {
             sources[i] = 111;
         }
-        cards.add( new Monopoly("test", this));
-        cards.add( new RoadBuilding( "test", this));
-        cards.add( new YearOfPlenty( "test", this));
-        cards.add( new Knight( "test", this));
+        cards.add( new Monopoly("test"));
+        cards.add( new RoadBuilding( "test"));
+        cards.add( new YearOfPlenty( "test"));
+        cards.add( new Knight( "test"));
     }
     
     public boolean buyDevCard(Bank bank){
-        if(sources[0] > 0 && sources[1] > 0 && sources[3] > 0){
-            subSource(0, 1);
-            subSource(1, 1);
-            subSource(3, 1);
-            bank.drawCard();
-            return true;
-        }
-        return false;
+        return bank.drawCard(this);
     }
     
     
@@ -246,6 +241,21 @@ public class Player implements IGameObject {
             if( dc.getRecentlyBought())
                 dc.setRecentlyBought(false);
         }
+    }
+    
+    public boolean getCanBuyDevCard()
+    {
+        return canBuyDevCard;
+    }
+    
+    public void setCanBuyDevCard( boolean toggle)
+    {
+        canBuyDevCard = toggle;
+    }
+    
+    public void addCard( DevCard dc)
+    {
+        cards.add( dc);
     }
 }
 
