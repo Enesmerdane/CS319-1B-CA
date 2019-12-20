@@ -161,7 +161,7 @@ public class GameModel {
         return result;
     }
     
-    public boolean playCard( String cardName, String sourceName)
+    public boolean playCard( String cardName, String sourceName, String sourceName2)
     {
         // first, we check if the player has the card.
         if( playerList.getCurrentPlayer().getCardNo(cardName) <= 0)
@@ -202,7 +202,8 @@ public class GameModel {
         else if( cardName.equals("Year of Plenty"))
         {
             YearOfPlenty yop = (YearOfPlenty) curCard;
-            // To do
+            yop.setSelectedSource1(sourceName);
+            yop.setSelectedSource2(sourceName2);
             isPlayed = yop.play( this);
         }
         if( isPlayed)

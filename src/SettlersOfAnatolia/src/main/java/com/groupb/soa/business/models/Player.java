@@ -41,6 +41,7 @@ public class Player implements IGameObject {
         }
         cards.add( new Monopoly("test", this));
         cards.add( new RoadBuilding( "test", this));
+        cards.add( new YearOfPlenty( "test", this));
     }
     
     public boolean buyDevCard(Bank bank){
