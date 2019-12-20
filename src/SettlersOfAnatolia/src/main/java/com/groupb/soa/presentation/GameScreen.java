@@ -945,14 +945,15 @@ public class GameScreen implements Initializable {
                 if(mainController.buildSettlement(index)){
                     System.out.println("Bindik bir alamete gidiyoruz kıyamete amaneeen");
                     Circle circle = (Circle) e.getSource();
-                    circle.setFill(mainController.getCurrentPlayerColor());
+                    circle.setFill( mainController.getCurrentPlayerColor());
                     refreshResources();
                 }
             }
             else if(construct_type == Construction_type.CITY){
                 if(mainController.upgradeCity(index)){
                     Circle circle = (Circle) e.getSource();
-                    circle.setFill(mainController.getCurrentPlayerColor());
+                    circle.setStroke(Color.GOLD);
+                    circle.setStrokeWidth(3.0);
                     refreshResources();
                 }
             }
