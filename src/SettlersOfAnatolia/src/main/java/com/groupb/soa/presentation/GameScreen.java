@@ -91,6 +91,8 @@ public class GameScreen implements Initializable {
     private MenuItem knightChoice, roadChoice, yearChoice, monoChoice;
     @FXML
     private MenuItem grainChoice, lumberChoice, woolChoice, oreChoice, brickChoice;
+    @FXML
+    private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
     private GameController mainController;
     
     
@@ -99,11 +101,11 @@ public class GameScreen implements Initializable {
         EMPTY, SETTLEMENT, CITY, ROAD
     }
     
-    @FXML
-    private Rectangle your_turn_rectangle;
-    
-    @FXML
-    private Text your_turn_text;
+    private ResourceSetting rscSet;
+    enum ResourceSetting
+    {
+        NONE, SOURCE1, SOURCE2
+    }
     
     @FXML
     private Button roll_dice_button;
@@ -132,6 +134,19 @@ public class GameScreen implements Initializable {
     private Text brick;
     @FXML
     private Button playCard;
+    
+    @FXML
+    private ImageView grainPic;
+    @FXML
+    private ImageView lumberPic;
+    @FXML
+    private ImageView woolPic;
+    @FXML
+    private ImageView orePic;
+    @FXML
+    private ImageView brickPic;
+    @FXML
+    private Rectangle grainEffect, lumberEffect, woolEffect, oreEffect, brickEffect;
     
     private boolean gameSound = true;
     private boolean gameMusic = true;
@@ -165,7 +180,7 @@ public class GameScreen implements Initializable {
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         
         construct_type = Construction_type.EMPTY;
-        
+        rscSet = ResourceSetting.NONE;
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
         edgeList = new Line[NUMBER_OF_EDGES];
@@ -179,8 +194,11 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( knightChoice.getText());
-                pch.setCardType(knightChoice.getText());
+                if( rscSet == ResourceSetting.NONE)
+                {
+                    cardMenu.setText( knightChoice.getText());
+                    pch.setCardType(knightChoice.getText());
+                }
             }
         });
         
@@ -188,8 +206,11 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( roadChoice.getText());
-                pch.setCardType( roadChoice.getText());
+                if( rscSet == ResourceSetting.NONE)
+                {
+                    cardMenu.setText( roadChoice.getText());
+                    pch.setCardType( roadChoice.getText());
+                }
             }
         });
         
@@ -197,8 +218,11 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( yearChoice.getText());
-                pch.setCardType( yearChoice.getText());
+                if( rscSet == ResourceSetting.NONE)
+                {
+                    cardMenu.setText( yearChoice.getText());
+                    pch.setCardType( yearChoice.getText());
+                }
             }
         });
         
@@ -206,56 +230,19 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( monoChoice.getText());
-                pch.setCardType( monoChoice.getText());
+                if( rscSet == ResourceSetting.NONE)
+                {
+                    cardMenu.setText( monoChoice.getText());
+                    pch.setCardType( monoChoice.getText());
+                }
             }
         });
         
-        grainChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( grainChoice.getText());
-                pch.setSourceType( grainChoice.getText());
-            }
-        });
-        
-        lumberChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( lumberChoice.getText());
-                pch.setSourceType( lumberChoice.getText());
-            }
-        });
-        
-        woolChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( woolChoice.getText());
-                pch.setSourceType( woolChoice.getText());
-            }
-        });
-        
-        oreChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( oreChoice.getText());
-                pch.setSourceType( oreChoice.getText());
-            }
-        });
-        
-        brickChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( brickChoice.getText());
-                pch.setSourceType( brickChoice.getText());
-            }
-        });
-        
+        grainPic.setOnMouseClicked(new ResourceClickHandler("Grain"));
+        lumberPic.setOnMouseClicked(new ResourceClickHandler("Lumber"));
+        woolPic.setOnMouseClicked(new ResourceClickHandler("Wool"));
+        orePic.setOnMouseClicked(new ResourceClickHandler("Ore"));
+        brickPic.setOnMouseClicked(new ResourceClickHandler("Brick"));
         
         // Button Operations
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
@@ -877,10 +864,9 @@ public class GameScreen implements Initializable {
     @FXML
     private void endTurn(ActionEvent event) throws IOException{
         System.out.println("endTurn tuşuna basıldı");
-        your_turn_rectangle.setStyle("visibility:false");
-        your_turn_text.setStyle("visibility:false");
         mainController.nextPlayer();
         refreshResources();
+        refreshCardNumbers();
     }
     
     private void refreshResources()
@@ -903,6 +889,25 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < 19; i++){
             hexagonNumbers[i].toFront();
         }
+    private void toggleResourcePickEffects(boolean toggle)
+    {
+        grainEffect.setVisible(toggle);
+        lumberEffect.setVisible(toggle);
+        woolEffect.setVisible(toggle);
+        oreEffect.setVisible(toggle);
+        brickEffect.setVisible(toggle);
+    }
+    
+    private void refreshCardNumbers()
+    {
+        knightNo.setText( mainController.getPlayerPlayableCardNo("Knight") + 
+                " (" + mainController.getPlayerCardNo("Knight") + ")");
+        rbNo.setText( mainController.getPlayerPlayableCardNo("Road Building") + 
+                " (" + mainController.getPlayerCardNo("Road Building") + ")");
+        yearNo.setText( mainController.getPlayerPlayableCardNo("Year of Plenty") + 
+                " (" + mainController.getPlayerCardNo("Year of Plenty") + ")");
+        monoNo.setText( mainController.getPlayerPlayableCardNo("Monopoly") + 
+                " (" + mainController.getPlayerCardNo("Monopoly") + ")");
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -1020,11 +1025,12 @@ public class GameScreen implements Initializable {
     
     class PlayCardHandler implements EventHandler<MouseEvent>
     {
-        String cardType, sourceType;
+        String cardType, sourceType, sourceType2;
         PlayCardHandler()
         {
             cardType = "";
             sourceType = "";
+            sourceType2 = "";
         }
         
         public void setCardType( String s)
@@ -1037,15 +1043,107 @@ public class GameScreen implements Initializable {
             sourceType = s;
         }
         
+        public void setSourceType2( String s)
+        {
+            sourceType2 = s;
+        }
+        
+        public String getCardType()
+        {
+            return cardType;
+        }
+        
+        public String getSourceType()
+        {
+            return sourceType;
+        }
+        
+        public String getSourceType2()
+        {
+            return sourceType2;
+        }
+        
         @Override
         public void handle(MouseEvent e)
         {
-            if( cardType.equals("") || (cardType.equals("Monopoly") && sourceType.equals("")))
+            // if no card type is specified, return.
+            if( cardType.equals(""))
                 return;
             
-            System.out.println( cardType);
-            System.out.println( sourceType);
-            mainController.playCard(cardType, sourceType);
+            // if player has no playable card of that type, return.
+            int count = -1;
+            switch( cardType)
+            {
+                case "Knight":
+                    count = knightNo.getText().charAt(0) - '0'; break;
+                case "Road Building":
+                    count = rbNo.getText().charAt(0) - '0'; break;
+                case "Year of Plenty":
+                    count = yearNo.getText().charAt(0) - '0'; break;
+                case "Monopoly":
+                    count = monoNo.getText().charAt(0) - '0'; break;
+                default:
+                    count = -1; break;
+            }
+            
+            if ( count <= 0)
+                return;
+            if( !cardType.equals("Monopoly") && !cardType.equals("Year of Plenty"))
+            {
+                mainController.playCard(cardType, sourceType, sourceType2);
+                refreshResources();
+                refreshCardNumbers();
+            }
+            else
+            {
+                rscSet = ResourceSetting.SOURCE1;
+                resourceMsg.setText( "Select source #1 by clicking on one of their respective images.");
+                toggleResourcePickEffects(true);
+            }
+        }
+    }
+    
+    class ResourceClickHandler implements EventHandler<MouseEvent>
+    {
+        String name;
+        ResourceClickHandler(String s)
+        {
+            name = s;
+        }
+        
+        @Override
+        public void handle(MouseEvent e)
+        {
+            if( rscSet == ResourceSetting.SOURCE1)
+            {
+                System.out.println( "Selecting " + name + " as source 1");
+                pch.setSourceType(name);
+                if( pch.getCardType().equals("Year of Plenty"))
+                {
+                    rscSet = ResourceSetting.SOURCE2;
+                    resourceMsg.setText( "Select source #2 by clicking on one of their respective images below.");
+                }
+                else
+                {
+                    mainController.playCard(pch.getCardType(), pch.getSourceType(), pch.getSourceType2());
+                    rscSet = ResourceSetting.NONE;
+                    refreshResources();
+                    resourceMsg.setText( "");
+                    toggleResourcePickEffects(false);
+                    refreshCardNumbers();
+                }
+            }
+            else if( rscSet == ResourceSetting.SOURCE2)
+            {
+                System.out.println( "Selecting " + name + " as source 2");
+                pch.setSourceType2(name);
+                mainController.playCard(pch.getCardType(), pch.getSourceType(), pch.getSourceType2());
+                rscSet = ResourceSetting.NONE;
+                refreshResources();
+                refreshCardNumbers();
+                resourceMsg.setText( "");
+                toggleResourcePickEffects(false);
+            }
         }
     }
 }

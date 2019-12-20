@@ -16,7 +16,7 @@ public abstract class DevCard {
     
     public DevCard(String name, Player owner){
         this.name = name;
-        recentlyBought = false; //shows whether the dev card is recently bought
+        recentlyBought = true; //shows whether the dev card is recently bought
         this.owner = owner;
     }
     

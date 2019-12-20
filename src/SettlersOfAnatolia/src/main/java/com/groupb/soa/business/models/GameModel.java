@@ -25,6 +25,7 @@ public class GameModel {
     private boolean secondTurn;
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
+    private int robberMoves;
     
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
@@ -39,6 +40,7 @@ public class GameModel {
         secondTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
+        robberMoves = 0;
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
@@ -47,7 +49,14 @@ public class GameModel {
     
     public boolean sendRobberToHexagon( int index)
     {
-        return tile.sendRobberToHexagon(index, playerList);
+       if( robberMoves > 0)
+       {
+            boolean result = tile.sendRobberToHexagon(index, playerList);
+            if(result)
+                robberMoves--;
+            return result;
+       }
+       return false;
     }
     
     //gets playerList
@@ -130,8 +139,14 @@ public class GameModel {
         if( ( firstTurn || secondTurn) && !(firstTurnSettBuilt && firstTurnRoadBuilt) )
             return;
         
+        // if player has the right to build free roads, stop.
         if( freeRoads > 0)
             return;
+        
+        // if player has the right to move the robber, stop.
+        if( robberMoves > 0)
+            return;
+        
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
@@ -161,7 +176,7 @@ public class GameModel {
         return result;
     }
     
-    public boolean playCard( String cardName, String sourceName)
+    public boolean playCard( String cardName, String sourceName, String sourceName2)
     {
         // first, we check if the player has the card.
         if( playerList.getCurrentPlayer().getCardNo(cardName) <= 0)
@@ -179,8 +194,9 @@ public class GameModel {
         boolean isPlayed = false;
         if( cardName.equals("Knight"))
         {
-            // To do
-            isPlayed = false;
+            System.out.println( "Knight checkpoint");
+            Knight knight = (Knight) curCard;
+            isPlayed = knight.play(this);
         }
         
         else if( cardName.equals("Road Building"))
@@ -202,7 +218,8 @@ public class GameModel {
         else if( cardName.equals("Year of Plenty"))
         {
             YearOfPlenty yop = (YearOfPlenty) curCard;
-            // To do
+            yop.setSelectedSource1(sourceName);
+            yop.setSelectedSource2(sourceName2);
             isPlayed = yop.play( this);
         }
         if( isPlayed)
@@ -220,12 +237,19 @@ public class GameModel {
         freeRoads += (int) Math.min(i, playerList.getCurrentPlayer().getRemRoads());
     }
     
-    public int[] getSources(){
-        return tile.getResources();
+    protected void addRobberMove()
+    {
+        robberMoves += 1;
     }
     
-    public int [] getNumberOfHexagons(){
-        return tile.getNumbersofHexagons();
+    public int getPlayerCardNo( String cardName)
+    {
+        return playerList.getCurrentPlayer().getCardNo( cardName);
+    }
+    
+    public int getPlayerPlayableCardNo( String cardName)
+    {
+        return playerList.getCurrentPlayer().getPlayableCardNo( cardName);
     }
 }
 

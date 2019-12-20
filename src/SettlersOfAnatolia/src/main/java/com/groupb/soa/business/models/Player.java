@@ -41,6 +41,8 @@ public class Player implements IGameObject {
         }
         cards.add( new Monopoly("test", this));
         cards.add( new RoadBuilding( "test", this));
+        cards.add( new YearOfPlenty( "test", this));
+        cards.add( new Knight( "test", this));
     }
     
     public boolean buyDevCard(Bank bank){
@@ -153,14 +155,43 @@ public class Player implements IGameObject {
         knightCards = roadCards = yearCards = monoCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
-            /*if( cards.get(i) instanceof Knight)
-            *   knightCards++
-            */
-            if( cards.get(i) instanceof Monopoly)
+            if( cards.get(i) instanceof Knight)
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly)
                 monoCards++;
             else if( cards.get(i) instanceof RoadBuilding)
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty)
+                yearCards++;
+        }
+        
+        switch (cardName) {
+            case "Knight":
+                return knightCards;
+            case "Road Building":
+                return roadCards;
+            case "Year of Plenty":
+                return yearCards;
+            case "Monopoly":
+                return monoCards;
+            default:
+                return -1;
+        }
+    }
+    
+    public int getPlayableCardNo(String cardName)
+    {
+        int knightCards, roadCards, yearCards, monoCards;
+        knightCards = roadCards = yearCards = monoCards = 0;
+        for( int i = 0; i < cards.size(); i++)
+        {
+            if( cards.get(i) instanceof Knight && !cards.get(i).getRecentlyBought())
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly && !cards.get(i).getRecentlyBought())
+                monoCards++;
+            else if( cards.get(i) instanceof RoadBuilding && !cards.get(i).getRecentlyBought())
+                roadCards++;
+            else if( cards.get(i) instanceof YearOfPlenty && !cards.get(i).getRecentlyBought())
                 yearCards++;
         }
         
@@ -186,7 +217,7 @@ public class Player implements IGameObject {
             boolean condition;
             switch (cardName) {
             case "Knight":
-                condition = false; break; //condition = cards.get(i) instanceof Knight;
+                condition = cards.get(i) instanceof Knight; break; //condition = cards.get(i) instanceof Knight;
             case "Road Building":
                 condition = cards.get(i) instanceof RoadBuilding; break;
             case "Year of Plenty":

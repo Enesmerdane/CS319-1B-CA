@@ -9,24 +9,19 @@ package com.groupb.soa.business.models;
  *
  * @author goksuturan
  */
-public class RoadBuilding extends DevCard {
-    public RoadBuilding(String name,Player owner){
+public class Knight extends DevCard{
+
+    
+    public Knight(String name,Player owner){
         super(name, owner); 
     }
     
     public boolean play(GameModel model){
-        //card is bought in the current turn
-        if( recentlyBought )
+        if( recentlyBought == true)
             return false;
-        //edges are not set
-        model.addFreeRoads( 2);
+        
+        model.addRobberMove();
         return true;
     }
-        
-    }
+}
     
-    
-    
-    
-    
-
