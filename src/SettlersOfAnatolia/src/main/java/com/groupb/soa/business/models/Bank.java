@@ -12,8 +12,8 @@ import java.util.*;
  * @author goksuturan
  */
 public class Bank {
-   int[] sources;
-   Queue<DevCard> cards;
+   private int[] sources;
+   private Queue<DevCard> cards;
    
    int monopoly; // number of monopoly cards
    int plenty; //number of yearofplenty cards
