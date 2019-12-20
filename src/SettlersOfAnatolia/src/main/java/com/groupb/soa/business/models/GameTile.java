@@ -276,4 +276,20 @@ public class GameTile {
         hexagons[17].setEdges( edges[63],  edges[57],  edges[58],  edges[64],  edges[69],  edges[68]);
         hexagons[18].setEdges( edges[64],  edges[59],  edges[60],  edges[65],  edges[71],  edges[70]);
     }
+    
+    public int[] getResources(){
+        int[] sources = new int[19];
+        for(int i = 0; i < 19; i++){
+            sources[i] = hexagons[i].getSourceType();
+        }
+        return sources;
+    }
+    
+    public int[] getNumbersofHexagons(){
+        int[] numbers = new int[19];
+        for(int i = 0; i < 19; i++){
+            numbers[i] = hexagons[i].getNumber();
+        }
+        return numbers;
+    }
 }

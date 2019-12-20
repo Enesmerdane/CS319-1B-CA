@@ -69,7 +69,7 @@ public class MainMenuScreen implements Initializable{
         main_menu_scene_background_image.setFitWidth(MainApp.getWidth());
         System.out.println(MainApp.getHeight() / 1020.0);
         System.out.println(continue_game_button.getHeight()); // --> here these buttons have no size etc 
-        setNewSizeButtons();
+        // setNewSizeButtons();
         //setNewSizeButton(new_game_button);
         //setNewSizeButton(settings_button);
         //setNewSizeButton(how_to_play_button);

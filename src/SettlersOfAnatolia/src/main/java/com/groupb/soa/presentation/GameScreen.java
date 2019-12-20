@@ -29,6 +29,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
@@ -140,6 +141,8 @@ public class GameScreen implements Initializable {
     private Line[] edgeList;
     private PlayCardHandler pch;
     
+    private Circle[] hexagonNumberCircles;
+    private Text[] hexagonNumbers;
     
     // Constructors
     /**
@@ -166,6 +169,9 @@ public class GameScreen implements Initializable {
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
         edgeList = new Line[NUMBER_OF_EDGES];
+        
+        hexagonNumberCircles = new Circle[NUMBER_OF_HEXAGONS];
+        hexagonNumbers = new Text[NUMBER_OF_HEXAGONS];
         
         pch = new PlayCardHandler();
         playCard.setOnMouseClicked(pch);
@@ -323,7 +329,7 @@ public class GameScreen implements Initializable {
         });
         
         roll_dice_button.setOnMouseClicked( new DiceHandler());
-        //Creating Hexagon
+        // Creating Hexagon
         // Stage stage = (Stage) rootPane.getScene().getWindow();
         // hexagonGroup = new Group(hexagon1);
         
@@ -343,6 +349,8 @@ public class GameScreen implements Initializable {
         
         drawAllVertices();
         
+        setAllCircleNumbersToFront();
+        //setAllHexagonNumbersToFront();
         for(int i = 0; i < NUMBER_OF_VERTICES; i++){
             circleList[i].setOnMouseClicked(new VertexHandler(i));
         }
@@ -628,7 +636,7 @@ public class GameScreen implements Initializable {
             tempX += 140.0;
         }
 
-        tempY = baseY2 +  80.0 + 6.0;
+        tempY = baseY2 + 80.0 + 6.0;
         baseY2 = tempY;
         tempX = baseX2;
         
@@ -637,7 +645,7 @@ public class GameScreen implements Initializable {
             tempX += 140.0;
         }
 
-        tempY = baseY2 +  30.0;
+        tempY = baseY2 + 30.0;
         baseY2 = tempY;
         tempX = baseX2 + 70.0;
         
@@ -655,13 +663,15 @@ public class GameScreen implements Initializable {
     
     private void placeHexagons(double initialX, double initialY){
         int i = 0;
-        /**
-         * hexagon_forest_image
-         * hexagon_mountain_image
-         * hexagon_
-         */
+        int index_sources = 0;
+        int index_numbers = 0;
+        int[] hexagonSources = mainController.getHexagonSources();
+        int[] hexagonsNumbers = mainController.getNumberOfHexagons();
+        
         for(int k = 0; k < 3; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_forest_image");
+            createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+            index_numbers++;
+            index_sources++;
             initialX += 140;
         }
         
@@ -669,7 +679,9 @@ public class GameScreen implements Initializable {
         initialY = HEXAGONS_BASE_Y + 116.0;
         
         for(int k = 0; k < 4; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_hill_image");
+            createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+            index_numbers++;
+            index_sources++;
             initialX += 140;
         }
 
@@ -678,10 +690,14 @@ public class GameScreen implements Initializable {
 
         for(int k = 0; k < 5; k++, i++){
             if(k== 2){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_desert_image");
+            createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+            index_numbers++;
+            index_sources++;
                 
             } else {
-                createHexagon(initialX, initialY, hexagonList[i], "hexagon_mountain_image"); 
+                createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+                index_numbers++;
+                index_sources++;
             }
             initialX += 140;
         }
@@ -690,20 +706,47 @@ public class GameScreen implements Initializable {
         initialY = HEXAGONS_BASE_Y + 116.0 + 116.0 + 116.0;
 
         for(int k = 0; k < 4; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_pasture_image");
+            createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+            index_numbers++;
+            index_sources++;
             initialX += 140;
         }
 
         initialX = HEXAGONS_BASE_X;
         initialY = HEXAGONS_BASE_Y + 116.0 + 116.0 + 116.0 + 116.0;
-
+        
         for(int k = 0; k < 3; k++, i++){
-            createHexagon(initialX, initialY, hexagonList[i], "hexagon_field_image");
+            createHexagon(initialX, initialY, hexagonList[i], hexagonSources[index_sources], hexagonsNumbers[index_numbers], i);
+            index_numbers++;
+            index_sources++;
             initialX += 140;
         }
     }
     
-    private void createHexagon(Double startPointX, Double startPointY, Polygon hexagon, String imageName){
+    private void createHexagon(Double startPointX, Double startPointY, Polygon hexagon, int sourceType, int hexagonNumber, int index){
+        String sourceName = "";
+        switch(sourceType){
+            case 0:
+                sourceName = "mountain";
+                break;
+            case 1:
+                sourceName = "field";
+                break;
+            case 2:
+                sourceName = "forest";
+                break; 
+            case 3:
+                sourceName = "pasture";
+                break;
+            case 4:
+                sourceName = "hill";
+                break;
+            case -99:
+                sourceName = "desert";
+                break;
+            default:
+                System.out.println("Mistake on resource type!!!");
+        }
         hexagon.setLayoutX(startPointX);
         hexagon.setLayoutY(startPointY);
         hexagon.getPoints().clear();
@@ -711,17 +754,45 @@ public class GameScreen implements Initializable {
             0.0, 0.0, 
             70.0, -30.0, 
             140.0, 0.0,          
-            140.0, 86.0, 
+            140.0, 86.0,
             70.0, 116.0,                   
             0.0, 86.0, 
          });
+        double numberX = startPointX + 65.0;
+        double numberY = startPointY + 48.0;
+        if(hexagonNumber >= 10)
+            numberX = numberX -5;
         
+        
+        //hexagonNumberCircles[index].setFill(Color.WHITE);
+        hexagonNumberCircles[index] = new Circle(startPointX + 70.0, startPointY + 40.0, 30.0);
+        System.out.println("index " + index + " numbercircle is created. " + hexagonNumber);
+        
+        if(hexagonNumber != 7){
+            String numberPath = "/images/number_token_" + hexagonNumber + ".png";
+
+            Image image = new Image(numberPath);
+            hexagonNumberCircles[index].setFill(new ImagePattern(image));
+            System.out.println("number path:" + numberPath);
+        } else {
+            System.out.println("index " + hexagonNumber + " is invisible");
+            hexagonNumberCircles[index].setStyle("visibility:false");
+        }
+        
+        rootPane.getChildren().add(hexagonNumberCircles[index]);
+        
+        //hexagonNumbers[index] = new Text(numberX, numberY, Integer.toString(hexagonNumber));
+        //hexagonNumbers[index].setFont(new Font(20));
+        
+        //rootPane.getChildren().add(hexagonNumbers[index]);
         rootPane.getChildren().add(hexagon);
         
         // DEBUG
-        System.out.println( "Created hexagon on: " + startPointX + " - " + startPointY);
-         
-        String image_path = "/images/" + imageName + ".jpg";
+        // System.out.println( "Created hexagon on: " + startPointX + " - " + startPointY);
+        
+        
+        
+        String image_path = "/images/" + "hexagon_" + sourceName + "_image" + ".jpg";
         Image img = new Image(image_path);
         hexagon.setFill(new ImagePattern(img));
     }
@@ -820,6 +891,18 @@ public class GameScreen implements Initializable {
         lumber.setText( mainController.getCurrentPlayer().getSourceNo(2) + "");
         wool.setText( mainController.getCurrentPlayer().getSourceNo(3) + "");
         brick.setText( mainController.getCurrentPlayer().getSourceNo(4) + "");
+    }
+    
+    private void setAllCircleNumbersToFront(){
+        for(int i = 0; i < 19; i++){
+            hexagonNumberCircles[i].toFront();
+        }
+    }
+    
+    private void setAllHexagonNumbersToFront(){
+        for(int i = 0; i < 19; i++){
+            hexagonNumbers[i].toFront();
+        }
     }
     
     class VertexHandler implements EventHandler<MouseEvent>

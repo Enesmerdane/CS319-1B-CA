@@ -219,6 +219,14 @@ public class GameModel {
         System.out.println( playerList.getCurrentPlayer().getRemRoads() + " xd");
         freeRoads += (int) Math.min(i, playerList.getCurrentPlayer().getRemRoads());
     }
+    
+    public int[] getSources(){
+        return tile.getResources();
+    }
+    
+    public int [] getNumberOfHexagons(){
+        return tile.getNumbersofHexagons();
+    }
 }
 
 

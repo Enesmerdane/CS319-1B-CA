@@ -72,9 +72,9 @@
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1243.0" layoutY="835.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="667.0" />
-      <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1482.0" layoutY="932.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
-      <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1682.0" layoutY="934.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
-      <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1277.0" layoutY="931.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1510.0" layoutY="951.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1710.0" layoutY="951.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
+      <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1307.0" layoutY="948.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1031.0" layoutY="926.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1319.0" layoutY="961.0" pickOnBounds="true" preserveRatio="true">
          <image>
