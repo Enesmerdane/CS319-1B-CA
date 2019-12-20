@@ -72,6 +72,7 @@ public class GameController {
         playerColors[2] = Color.GREENYELLOW;
         playerColors[3] = Color.PURPLE;
         gameModel = new GameModel(playerColors);
+        
     }
     
     public void startGame()
@@ -126,5 +127,13 @@ public class GameController {
     public boolean playCard( String cardName, String sourceType)
     {
         return gameModel.playCard( cardName, sourceType);
+    }
+    
+    public int[] getHexagonSources(){
+        return gameModel.getSources();
+    }
+    
+    public int[] getNumberOfHexagons(){
+        return gameModel.getNumberOfHexagons();
     }
 }

@@ -69,7 +69,7 @@ public class MainMenuScreen implements Initializable{
         main_menu_scene_background_image.setFitWidth(MainApp.getWidth());
         System.out.println(MainApp.getHeight() / 1020.0);
         System.out.println(continue_game_button.getHeight()); // --> here these buttons have no size etc 
-        setNewSizeButtons();
+        // setNewSizeButtons();
         //setNewSizeButton(new_game_button);
         //setNewSizeButton(settings_button);
         //setNewSizeButton(how_to_play_button);
@@ -131,8 +131,8 @@ public class MainMenuScreen implements Initializable{
         //exit_game_button.setStyle("-fx-font-size:10px;");
         lengthOfLabel = exit_game_button.getText().length();
         exit_game_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("5- " + newX);
-        System.out.println("5- " + newY);
+        System.out.println("5-> " + newX);
+        System.out.println("5-> " + newY);
     }
     
     @FXML
