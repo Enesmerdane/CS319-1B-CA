@@ -1,5 +1,6 @@
 package com.groupb.soa;
 import com.groupb.soa.business.controller.GameController;
+import com.groupb.soa.presentation.SettingsController;
 import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
     
     private GameController game; 
+    private SettingsController settingsController;
     
     private static MainApp instance;
     
@@ -37,11 +39,15 @@ public class MainApp extends Application {
     }
     
     public static MainApp getInstance() {
-            return instance;
+        return instance;
     }
     
     public GameController getGameControllerObj(){
         return game;
+    }
+    
+    public SettingsController getSettings(){
+        return settingsController;
     }
     
     @Override
@@ -54,6 +60,7 @@ public class MainApp extends Application {
         System.out.println(HEIGHT);
         instance = this;
         
+        settingsController = new SettingsController();
         game = new GameController(stage, this);
     }
 

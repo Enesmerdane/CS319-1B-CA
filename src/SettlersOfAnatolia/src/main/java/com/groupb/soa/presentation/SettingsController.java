@@ -8,6 +8,7 @@ package com.groupb.soa.presentation;
 import java.io.File;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import com.groupb.soa.MainApp;
 
 /**
  *
@@ -16,13 +17,22 @@ import javafx.scene.media.MediaPlayer;
 public class SettingsController {
     private boolean isGameMusicOn;
     private boolean isGameSoundOn;
-    private String background; 
+    private String background;
     public SettingsController()
     {
         isGameMusicOn = true;
         isGameSoundOn = true; 
-        background = "wooden"; 
+        background = "wooden";
+        String path = "/musics/gameMusic.mpeg";
+        //Instantiating Media class  
+        Media media = new Media(MainApp.getInstance().getClass().getResource(path).toString());  
         
+        //Instantiating MediaPlayer class   
+        MediaPlayer mediaPlayer = new MediaPlayer(media);  
+          
+        //by setting this property to true, the audio will be played
+        System.out.println("it plays");
+        mediaPlayer.setAutoPlay(true);  
     }
     
     public boolean getIsGameMusicOn()
@@ -30,7 +40,7 @@ public class SettingsController {
         return isGameMusicOn; 
     }
     
-    public boolean getIsMusicSoundOn()
+    public boolean getIsGameSoundOn()
     {
         return isGameSoundOn; 
     }
@@ -42,31 +52,6 @@ public class SettingsController {
     public void setIsGameMusicOn(boolean gameMusicState )
     {
         isGameMusicOn = gameMusicState;
-        if ( isGameMusicOn == true)
-        {
-            String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
-        //Instantiating Media class  
-        Media media = new Media(new File(path).toURI().toString());  
-          
-        //Instantiating MediaPlayer class   
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-          
-        //by setting this property to true, the audio will be played   
-        mediaPlayer.setAutoPlay(true);  
-        }
-        else
-        {
-            String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
-          
-        //Instantiating Media class  
-        Media media = new Media(new File(path).toURI().toString());  
-          
-        //Instantiating MediaPlayer class   
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-          mediaPlayer.setVolume(0);
-        //by setting this property to true, the audio will be played   
-        mediaPlayer.setAutoPlay(true);  
-        }
     }
     
     public void setIsGameSoundOn( boolean gameSoundState)

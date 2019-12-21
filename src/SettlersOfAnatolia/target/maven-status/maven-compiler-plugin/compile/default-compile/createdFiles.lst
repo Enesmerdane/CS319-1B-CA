@@ -53,6 +53,7 @@ com\groupb\soa\business\models\Flood.class
 com\groupb\soa\business\models\TradeWithBank.class
 com\groupb\soa\presentation\GameScreen.class
 com\groupb\soa\presentation\GameScreen$12.class
+com\groupb\soa\presentation\SettingsScreen.class
 com\groupb\soa\presentation\GameScreen$6.class
 com\groupb\soa\presentation\GameScreen$PlayCardHandler.class
 com\groupb\soa\business\models\DevCard.class

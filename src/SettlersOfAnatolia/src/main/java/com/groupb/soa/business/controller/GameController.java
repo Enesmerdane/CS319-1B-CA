@@ -38,15 +38,7 @@ public class GameController {
     // Methods
     
     private void initiateMenu(Stage stage, Application mainApplication) throws IOException{
-        String path = "/musics/gameMusic.mpeg";
-        //Instantiating Media class  
-        Media media = new Media(mainApplication.getClass().getResource(path).toString());  
         
-        //Instantiating MediaPlayer class   
-        MediaPlayer mediaPlayer = new MediaPlayer(media);  
-          
-        //by setting this property to true, the audio will be played   
-        mediaPlayer.setAutoPlay(true);  
         this.stage = stage;
         
         Parent root = FXMLLoader.load(mainApplication.getClass().getResource("/fxml/MainMenuScene.fxml"));
