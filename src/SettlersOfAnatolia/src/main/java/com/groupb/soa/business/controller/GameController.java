@@ -9,6 +9,7 @@ import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.PlayerList;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -144,5 +145,90 @@ public class GameController {
     public boolean buyCard()
     {
         return gameModel.buyCard();
+    }
+    
+    public boolean startTradeWithBank()
+    {
+        return gameModel.startTradeWithBank();
+    }
+    
+    public boolean cancelTradeWithBank()
+    {
+        return gameModel.cancelTradeWithBank();
+    }
+    
+    public boolean addSourceToSelf( int sourceNo, int amount)
+    {
+        return gameModel.addSourceToSelf(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromSelf( int sourceNo, int amount)
+    {
+        return gameModel.subSourceFromSelf(sourceNo, amount);
+    }
+    
+    public boolean addSourceToBank( int sourceNo, int amount)
+    {
+        return gameModel.addSourceToBank(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromBank( int sourceNo, int amount)
+    {
+        return gameModel.subSourceFromBank( sourceNo, amount);
+    }
+    
+    public boolean isTwBValid()
+    {
+        return gameModel.isTwBValid();
+    }
+    
+    public int TwBgetBankSourceNo( int sourceNo)
+    {
+        return gameModel.TwBgetBankSourceNo(sourceNo);
+    }
+    
+    public int TwBgetPlayerSourceNo( int sourceNo)
+    {
+        return gameModel.TwBgetPlayerSourceNo( sourceNo);
+    }
+    
+    public int getTwBSourceRights()
+    {
+        return gameModel.getTwBSourceRights();
+    }
+    
+    public int getTwBUsedSourceRights()
+    {
+        return gameModel.getTwBUsedSourceRights();
+    }
+    
+    public boolean finalizeTwB()
+    {
+        return gameModel.finalizeTwB();
+    }
+    
+    public boolean addDomesticTrade( int[] offers, int[] inReturn)
+    {
+        return gameModel.addDomesticTrade(offers, inReturn);
+    }
+    
+    public int getDomesticTradeNo()
+    {
+        return gameModel.getDomesticTradeNo();
+    }
+    
+    public void getDomesticTradesInfo(List<String> offers, List<String> inReturns)
+    {
+        gameModel.getDomesticTradesInfo(offers, inReturns);
+    }
+    
+    public boolean finalizeDomesticTrade( int index)
+    {
+        return gameModel.finalizeDomesticTrade(index);
+    }
+    
+    public boolean isDomesticTradeValid(int index)
+    {
+        return gameModel.isDomesticTradeValid(index);
     }
 }

@@ -61,7 +61,8 @@ public class Player{
     public void addSource(int source, int amount){
         sources[source] = sources[source] + amount;
     }
-    public boolean subSource ( int source, int amount){
+    
+    public boolean subSource( int source, int amount){
         if ( sources[source]  >= amount  ){
             sources[source] = sources[source] - amount ;
             return true;
@@ -259,4 +260,3 @@ public class Player{
         knightCards++;
     }
 }
-
