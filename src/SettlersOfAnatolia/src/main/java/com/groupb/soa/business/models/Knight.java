@@ -21,6 +21,7 @@ public class Knight extends DevCard{
             return false;
         
         model.addRobberMove();
+        model.getCurrentPlayer().incrementKnightCards();
         return true;
     }
 }

@@ -23,7 +23,7 @@ public class Player{
     private int remRoads;
     private int remSettlements;
     private int remCities;
-    private int freeRoads;
+    private int knightCards;
     private boolean canBuyDevCard;
     private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
@@ -36,6 +36,7 @@ public class Player{
         remCities = 4;
         cards = new ArrayList<DevCard>();
         sources = new int[5];
+        knightCards = 0;
         canBuyDevCard = true;
         for( int i = 0; i < sources.length; i++)
         {
@@ -251,6 +252,11 @@ public class Player{
     public void addCard( DevCard dc)
     {
         cards.add( dc);
+    }
+    
+    public void incrementKnightCards()
+    {
+        knightCards++;
     }
 }
 
