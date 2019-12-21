@@ -190,4 +190,8 @@ public class GameController {
         return gameModel.buyCard();
     }
     
+    public boolean isBotPlaying(){
+        return gameModel.isCurrentPlayerBot();
+    }
+    
 }

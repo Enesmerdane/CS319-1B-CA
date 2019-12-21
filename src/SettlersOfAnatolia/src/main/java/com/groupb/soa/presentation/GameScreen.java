@@ -1014,31 +1014,33 @@ public class GameScreen implements Initializable {
         @Override
         public void handle( MouseEvent e)
         {
-            int[] diceNums = mainController.rollDice();
-            Image d1img, d2img;
-            switch(diceNums[0])
-            {
-                case 1: d1img = new Image("images/die_face_1.png"); break;
-                case 2: d1img = new Image("images/die_face_2.png"); break;
-                case 3: d1img = new Image("images/die_face_3.png"); break;
-                case 4: d1img = new Image("images/die_face_4.png"); break;
-                case 5: d1img = new Image("images/die_face_5.png"); break;
-                case 6: d1img = new Image("images/die_face_6.png"); break;
-                default: d1img = null; break;
+            if ( !mainController.isBotPlaying()){
+                int[] diceNums = mainController.rollDice();
+                Image d1img, d2img;
+                switch(diceNums[0])
+                {
+                    case 1: d1img = new Image("images/die_face_1.png"); break;
+                    case 2: d1img = new Image("images/die_face_2.png"); break;
+                    case 3: d1img = new Image("images/die_face_3.png"); break;
+                    case 4: d1img = new Image("images/die_face_4.png"); break;
+                    case 5: d1img = new Image("images/die_face_5.png"); break;
+                    case 6: d1img = new Image("images/die_face_6.png"); break;
+                    default: d1img = null; break;
+                }
+                switch(diceNums[1])
+                {
+                    case 1: d2img = new Image("images/die_face_1.png"); break;
+                    case 2: d2img = new Image("images/die_face_2.png"); break;
+                    case 3: d2img = new Image("images/die_face_3.png"); break;
+                    case 4: d2img = new Image("images/die_face_4.png"); break;
+                    case 5: d2img = new Image("images/die_face_5.png"); break;
+                    case 6: d2img = new Image("images/die_face_6.png"); break;
+                    default: d2img = null; break;
+                }
+                dice1.setImage(d1img);
+                dice2.setImage(d2img);
+                refreshResources();
             }
-            switch(diceNums[1])
-            {
-                case 1: d2img = new Image("images/die_face_1.png"); break;
-                case 2: d2img = new Image("images/die_face_2.png"); break;
-                case 3: d2img = new Image("images/die_face_3.png"); break;
-                case 4: d2img = new Image("images/die_face_4.png"); break;
-                case 5: d2img = new Image("images/die_face_5.png"); break;
-                case 6: d2img = new Image("images/die_face_6.png"); break;
-                default: d2img = null; break;
-            }
-            dice1.setImage(d1img);
-            dice2.setImage(d2img);
-            refreshResources();
         }
     }
     
