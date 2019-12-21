@@ -8,6 +8,7 @@ import com.groupb.soa.business.models.GameModel;
 import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.PlayerList;
 import java.io.IOException;
+import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -210,5 +211,30 @@ public class GameController {
     public boolean finalizeTwB()
     {
         return gameModel.finalizeTwB();
+    }
+    
+    public boolean addDomesticTrade( int[] offers, int[] inReturn)
+    {
+        return gameModel.addDomesticTrade(offers, inReturn);
+    }
+    
+    public int getDomesticTradeNo()
+    {
+        return gameModel.getDomesticTradeNo();
+    }
+    
+    public void getDomesticTradesInfo(List<String> offers, List<String> inReturns)
+    {
+        gameModel.getDomesticTradesInfo(offers, inReturns);
+    }
+    
+    public boolean finalizeDomesticTrade( int index)
+    {
+        return gameModel.finalizeDomesticTrade(index);
+    }
+    
+    public boolean isDomesticTradeValid(int index)
+    {
+        return gameModel.isDomesticTradeValid(index);
     }
 }

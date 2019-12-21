@@ -10,7 +10,11 @@ import com.groupb.soa.business.controller.GameController;
 import com.groupb.soa.business.models.Dice;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -96,9 +101,9 @@ public class GameScreen implements Initializable {
     @FXML
     private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
     @FXML
-    private Button buy_dev_card, trade_with_bank_button;
+    private Button buy_dev_card, trade_with_bank_button, trade_with_players_button;
     @FXML
-    private Group tradeBankGroup;
+    private Group tradeBankGroup, domesticTradeGroup;
     @FXML
     private Button grainBankIncrBtn, lumberBankIncrBtn, woolBankIncrBtn, oreBankIncrBtn, brickBankIncrBtn;
     @FXML
@@ -115,6 +120,23 @@ public class GameScreen implements Initializable {
     private Text actualSourceRights, usedSourceRights;
     @FXML
     private Button twbaccept, twbcancel;
+    
+    @FXML
+    private ListView tradeRequests;
+    @FXML
+    private Text p1grain, p1lumber, p1wool, p1ore, p1brick, playerOffers, playerInReturn, treqName;
+    @FXML
+    private Text p2grain, p2lumber, p2wool, p2ore, p2brick;
+    @FXML
+    private Button grainP1decr, lumberP1decr, woolP1decr, oreP1decr, brickP1decr;
+    @FXML
+    private Button grainP1incr, lumberP1incr, woolP1incr, oreP1incr, brickP1incr;
+    @FXML
+    private Button grainP2decr, lumberP2decr, woolP2decr, oreP2decr, brickP2decr;
+    @FXML
+    private Button grainP2incr, lumberP2incr, woolP2incr, oreP2incr, brickP2incr;
+    @FXML
+    private Button twpcreate, twpaccept, twpclose;
     private GameController mainController;
     
     
@@ -181,6 +203,11 @@ public class GameScreen implements Initializable {
     private Circle[] hexagonNumberCircles;
     private Text[] hexagonNumbers;
     
+    private int[] domesticOffers;
+    private int[] domesticInReturn;
+    
+    private int currentTradeRequest;
+    private ObservableList<Text> tradeRequestList;
     // Constructors
     /**
      * @param mainController to call build methods
@@ -200,7 +227,7 @@ public class GameScreen implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
-        
+        tradeRequestList = FXCollections.observableArrayList();
         construct_type = Construction_type.EMPTY;
         rscSet = ResourceSetting.NONE;
         verticeList = new Point[NUMBER_OF_VERTICES];
@@ -209,6 +236,9 @@ public class GameScreen implements Initializable {
         
         hexagonNumberCircles = new Circle[NUMBER_OF_HEXAGONS];
         hexagonNumbers = new Text[NUMBER_OF_HEXAGONS];
+        currentTradeRequest = -1;
+        domesticOffers = new int[5];
+        domesticInReturn = new int[5];
         
         pch = new PlayCardHandler();
         playCard.setOnMouseClicked(pch);
@@ -267,6 +297,13 @@ public class GameScreen implements Initializable {
         brickPic.setOnMouseClicked(new ResourceClickHandler("Brick"));
         
         // Button Operations
+        trade_with_players_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle( MouseEvent e)
+            {
+                toggleDomesticTradeMenu( true);
+            }
+        });
         trade_with_bank_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
             @Override
@@ -392,6 +429,7 @@ public class GameScreen implements Initializable {
         }  
         
         initializeTwBMenu();
+        initializeDomesticTradeMenu();
     }
     private void drawAllEdges(){
         int i = 0;
@@ -910,6 +948,10 @@ public class GameScreen implements Initializable {
     @FXML
     private void endTurn(ActionEvent event) throws IOException{
         System.out.println("endTurn tuşuna basıldı");
+        int[] offers = new int[5];
+        int[] inReturn = new int[5];
+        offers[0] = 4;
+        offers[1] = 4;
         mainController.nextPlayer();
         refreshResources();
         refreshCardNumbers();
@@ -1032,6 +1074,145 @@ public class GameScreen implements Initializable {
                 }
             }
         });
+        twbcancel.setOnMouseClicked( new EventHandler<MouseEvent>(){
+            @Override
+            public void handle( MouseEvent e)
+            {
+                toggleTwBMenu(false);
+                refreshResources();
+            }
+        });
+    }
+    
+    private void initializeDomesticTradeMenu()
+    {
+        grainP1decr.setOnMouseClicked( new DomesticTradeHandler(1, 1, false));
+        grainP1incr.setOnMouseClicked( new DomesticTradeHandler(1, 1, true));
+        grainP2decr.setOnMouseClicked( new DomesticTradeHandler(1, 2, false));
+        grainP2incr.setOnMouseClicked( new DomesticTradeHandler(1, 2, true));
+        
+        lumberP1decr.setOnMouseClicked( new DomesticTradeHandler(2, 1, false));
+        lumberP1incr.setOnMouseClicked( new DomesticTradeHandler(2, 1, true));
+        lumberP2decr.setOnMouseClicked( new DomesticTradeHandler(2, 2, false));
+        lumberP2incr.setOnMouseClicked( new DomesticTradeHandler(2, 2, true));
+        
+        woolP1decr.setOnMouseClicked( new DomesticTradeHandler(3, 1, false));
+        woolP1incr.setOnMouseClicked( new DomesticTradeHandler(3, 1, true));
+        woolP2decr.setOnMouseClicked( new DomesticTradeHandler(3, 2, false));
+        woolP2incr.setOnMouseClicked( new DomesticTradeHandler(3, 2, true));
+        
+        oreP1decr.setOnMouseClicked( new DomesticTradeHandler(0, 1, false));
+        oreP1incr.setOnMouseClicked( new DomesticTradeHandler(0, 1, true));
+        oreP2decr.setOnMouseClicked( new DomesticTradeHandler(0, 2, false));
+        oreP2incr.setOnMouseClicked( new DomesticTradeHandler(0, 2, true));
+        
+        brickP1decr.setOnMouseClicked( new DomesticTradeHandler(4, 1, false));
+        brickP1incr.setOnMouseClicked( new DomesticTradeHandler(4, 1, true));
+        brickP2decr.setOnMouseClicked( new DomesticTradeHandler(4, 2, false));
+        brickP2incr.setOnMouseClicked( new DomesticTradeHandler(4, 2, true));
+        
+        twpcreate.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent e)
+            {
+                boolean result = mainController.addDomesticTrade(domesticOffers, domesticInReturn);
+                if( result)
+                {
+                    for( int i = 0; i < 5; i++)
+                    {
+                        domesticOffers[i] = 0;
+                        domesticInReturn[i] = 0;
+                    }
+                }
+                refreshDomesticTradeMenu();
+                refreshResources();
+            }
+        });
+        
+        currentTradeRequest = -1;
+        twpaccept.setOnMouseClicked( new EventHandler<MouseEvent>(){
+            @Override
+            public void handle( MouseEvent e)
+            {
+                mainController.finalizeDomesticTrade(currentTradeRequest);
+                refreshDomesticTradeMenu();
+                currentTradeRequest = -1;
+                treqName.setText("Trade Request Name");
+                playerOffers.setText("");
+                playerInReturn.setText("");
+                refreshResources();
+            }
+        });
+        
+        twpclose.setOnMouseClicked( new EventHandler<MouseEvent>(){
+            
+            @Override
+            public void handle( MouseEvent e)
+            {
+                toggleDomesticTradeMenu(false);
+            }
+        });
+    }
+    
+    private void toggleDomesticTradeMenu(boolean toggle)
+    {
+        if( toggle)
+        {
+            refreshDomesticTradeMenu();
+            getTradeRequestsList();
+            domesticTradeGroup.setVisible(true);
+            domesticTradeGroup.toFront();
+        }
+        else
+        {
+            domesticTradeGroup.setVisible(false);
+            currentTradeRequest = -1;
+            for( int i = 0; i < 5; i++)
+            {
+                domesticOffers[i] = 0;
+                domesticInReturn[i] = 0;
+            }
+        }
+    }
+    private void refreshDomesticTradeMenu()
+    {
+        getTradeRequestsList();
+        p1grain.setText(domesticOffers[1] + "");
+        p1lumber.setText(domesticOffers[2] + "");
+        p1wool.setText(domesticOffers[3] + "");
+        p1ore.setText(domesticOffers[0] + "");
+        p1brick.setText(domesticOffers[4] + "");
+        
+        p2grain.setText(domesticInReturn[1] + "");
+        p2lumber.setText(domesticInReturn[2] + "");
+        p2wool.setText(domesticInReturn[3] + "");
+        p2ore.setText(domesticInReturn[0] + "");
+        p2brick.setText(domesticInReturn[4] + "");
+        currentTradeRequest = -1;
+        treqName.setText("Trade Request Name");
+        playerOffers.setText("");
+        playerInReturn.setText("");
+    }
+    private void getTradeRequestsList()
+    {
+        tradeRequestList = FXCollections.observableArrayList();
+        List<String> offers = new ArrayList<>();
+        List<String> inReturns = new ArrayList<>();
+        mainController.getDomesticTradesInfo(offers, inReturns);
+        if( offers.size() != inReturns.size())
+        {
+            System.out.println( offers.size() + " " + inReturns.size());
+            return;
+        }
+        for( int i = 0; i < offers.size(); i++)
+        {
+            System.out.println( "**" + offers.get(i) + "**" + inReturns.get(i));
+            TradeRequestText curTRT = new TradeRequestText(i + 1, offers.get(i), inReturns.get(i));
+            curTRT.setOnMouseClicked( new TradeRequestHandler(curTRT));
+            tradeRequestList.add(curTRT);
+        }
+        System.out.println( tradeRequestList.size());
+        tradeRequests.setItems(tradeRequestList);
     }
     class VertexHandler implements EventHandler<MouseEvent>
     {
@@ -1301,6 +1482,68 @@ public class GameScreen implements Initializable {
                     mainController.subSourceFromSelf(source, 1);
             }
             refreshTwBMenu();
+        }
+    }
+    
+    class DomesticTradeHandler implements EventHandler<MouseEvent>
+    {
+        int sourceType;
+        int player;
+        boolean op;
+        DomesticTradeHandler(int theSourceType, int whichPlayer, boolean theOp)
+        {
+            sourceType = theSourceType;
+            player = whichPlayer;
+            op = theOp;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            if( player == 1)
+            {
+                if( op && domesticOffers[sourceType] <= mainController.getCurrentPlayer().getSourceNo(sourceType))
+                {
+                    domesticOffers[sourceType]++;
+                }
+                if( !op && domesticOffers[sourceType] > 0)
+                {
+                    domesticOffers[sourceType]--;
+                }
+            }
+            else if( player == 2)
+            {
+                if( op )
+                {
+                    domesticInReturn[sourceType]++;
+                }
+                else if ( !op && domesticInReturn[sourceType] > 0)
+                {
+                    domesticInReturn[sourceType]--;
+                }
+            }
+            refreshDomesticTradeMenu();
+        }
+    }
+    
+    class TradeRequestHandler implements EventHandler<MouseEvent>
+    {
+        
+        TradeRequestText trt;
+        TradeRequestHandler( TradeRequestText tReq)
+        {
+            trt = tReq;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            treqName.setText( trt.getText());
+            playerOffers.setText( trt.getOffer());
+            System.out.println( trt.getOffer());            
+            playerInReturn.setText( trt.getInReturn());
+            currentTradeRequest = trt.getNumber() - 1;
+            twpaccept.setDisable( !mainController.isDomesticTradeValid( trt.getNumber() - 1));
         }
     }
 }

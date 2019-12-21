@@ -5,11 +5,13 @@
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -121,7 +123,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="trade_with_players_button" layoutX="1488.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+      <Button fx:id="trade_with_players_button" layoutX="1488.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -412,6 +414,118 @@
             <Text fx:id="usedSourceRights" layoutX="553.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
             <Text layoutX="344.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Sources you can demand:" wrappingWidth="247.4913330078125" />
             <Text fx:id="actualSourceRights" layoutX="553.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+         </children>
+      </Group>
+      <Group fx:id="domesticTradeGroup" layoutX="471.0" layoutY="200.0" visible="false">
+         <children>
+            <Rectangle fx:id="tradepl_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="621.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em;" width="748.0" />
+            <ListView fx:id="tradeRequests" editable="true" layoutX="14.0" layoutY="13.0" prefHeight="603.0" prefWidth="176.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="319.0" layoutX="202.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="538.0" />
+            <Text layoutX="201.0" layoutY="80.734375" strokeType="OUTSIDE" strokeWidth="0.0" text="The player offers:" textAlignment="CENTER" wrappingWidth="267.9570312499998">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="472.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The player wants in return:" textAlignment="CENTER" wrappingWidth="259.99999999999994">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="playerOffers" layoutX="201.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="267.95703125" />
+            <Text fx:id="playerInReturn" layoutX="472.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="259.99999999999994" />
+            <Line endX="-100.0" endY="215.0" layoutX="568.0" layoutY="87.0" startX="-100.0" startY="-20.0" />
+            <Text fx:id="treqName" layoutX="217.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trade Request Name">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="twpaccept" layoutX="425.0" layoutY="302.0" mnemonicParsing="false" text="Accept Trade" />
+            <Button fx:id="twpclose" layoutX="648.0" layoutY="565.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="92.0" text="Close Screen" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="273.0" layoutX="203.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="438.0" />
+            <Text layoutX="214.0" layoutY="378.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Trade Request">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="219.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" />
+            <Text layoutX="213.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" />
+            <Text layoutX="219.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" />
+            <Text layoutX="223.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" />
+            <Text layoutX="220.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick" />
+            <Button fx:id="grainP1decr" layoutX="260.0" layoutY="418.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="lumberP1decr" layoutX="260.0" layoutY="449.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="woolP1decr" layoutX="260.0" layoutY="483.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="oreP1decr" layoutX="260.0" layoutY="518.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="brickP1decr" layoutX="260.0" layoutY="551.0" mnemonicParsing="false" text="-" />
+            <Text fx:id="p1grain" layoutX="284.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p1lumber" layoutX="284.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p1wool" layoutX="284.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p1ore" layoutX="284.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p1brick" layoutX="284.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="grainP1incr" layoutX="297.0" layoutY="418.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="lumberP1incr" layoutX="297.0" layoutY="449.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="woolP1incr" layoutX="297.0" layoutY="482.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="oreP1incr" layoutX="297.0" layoutY="518.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="brickP1incr" layoutX="297.0" layoutY="551.0" mnemonicParsing="false" text="+" />
+            <Text layoutX="237.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are offering:" />
+            <Line endX="6.0" endY="188.0" layoutX="347.5" layoutY="410.5" startX="6.0" startY="-11.5" />
+            <Text layoutX="358.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You are asking in return:" />
+            <Button fx:id="grainP2decr" layoutX="383.0" layoutY="416.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="lumberP2decr" layoutX="383.0" layoutY="447.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="woolP2decr" layoutX="383.0" layoutY="481.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="oreP2decr" layoutX="383.0" layoutY="516.0" mnemonicParsing="false" text="-" />
+            <Button fx:id="brickP2decr" layoutX="383.0" layoutY="550.0" mnemonicParsing="false" text="-" />
+            <Text fx:id="p2grain" layoutX="408.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2lumber" layoutX="408.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2wool" layoutX="408.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2ore" layoutX="408.0" layoutY="535.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text fx:id="p2brick" layoutX="408.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="grainP2incr" layoutX="420.0" layoutY="416.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="lumberP2incr" layoutX="420.0" layoutY="447.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="woolP2incr" layoutX="420.0" layoutY="480.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="oreP2incr" layoutX="420.0" layoutY="516.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="brickP2incr" layoutX="420.0" layoutY="550.0" mnemonicParsing="false" text="+" />
+            <Button fx:id="twpcreate" layoutX="495.0" layoutY="577.0" mnemonicParsing="false" text="Create Trade Request" />
          </children>
       </Group>
    </children>

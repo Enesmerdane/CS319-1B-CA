@@ -10,6 +10,7 @@ package com.groupb.soa.business.models;
  * @author Göksu
  */
 import java.util.ArrayList;
+import java.util.List;
 import javafx.scene.paint.Color;
 
 public class GameModel {
@@ -27,6 +28,7 @@ public class GameModel {
     private boolean firstTurnRoadBuilt;
     private int robberMoves;
     private TradeWithBank currentTwB;
+    private List<DomesticTrade> domesticTrades;
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -42,6 +44,7 @@ public class GameModel {
         firstTurnRoadBuilt = false;
         robberMoves = 0;
         currentTwB = null;
+        domesticTrades = new ArrayList<>();
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
@@ -158,6 +161,7 @@ public class GameModel {
         secondTurn = (turn == 1);
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
+        currentTwB = null;
         System.out.println("Game Turn is increased " + turn);
     }
     
@@ -333,6 +337,58 @@ public class GameModel {
         if( result)
             currentTwB = null;
         return result;
+    }
+    
+    public boolean addDomesticTrade(int[] offers, int[] inReturn)
+    {
+        boolean canMakeTrade = true;
+        boolean leftAllZeroes = true;
+        boolean rightAllZeroes = true;
+        for( int i = 0; i < offers.length; i++)
+        {
+            canMakeTrade &= (playerList.getCurrentPlayer().getSourceNo(i) >= offers[i]);
+            leftAllZeroes &= offers[i] == 0;
+            rightAllZeroes &= inReturn[i] == 0;
+        }
+        if( !canMakeTrade || leftAllZeroes || rightAllZeroes)
+            return false;
+        
+        domesticTrades.add( new DomesticTrade(playerList.getCurrentPlayer(), offers, inReturn));
+        return true;
+    }
+    
+    public int getDomesticTradeNo()
+    {
+        return domesticTrades.size();
+    }
+    
+    public void getDomesticTradesInfo(List<String> offers, List<String> inReturn)
+    {
+        for( DomesticTrade dt : domesticTrades)
+        {
+            if( dt.isCreator(playerList.getCurrentPlayer()))
+            {
+                StringBuffer curOffer, curInReturn;
+                curOffer = new StringBuffer();
+                curInReturn = new StringBuffer();
+                dt.getTradeInfo(curOffer, curInReturn);
+                offers.add(curOffer.toString());
+                inReturn.add(curInReturn.toString());
+            }
+        }
+    }
+    
+    public boolean finalizeDomesticTrade( int index)
+    {
+        boolean result = domesticTrades.get(index).finalizeTrade(playerList.getCurrentPlayer());
+        if(result)
+            domesticTrades.remove(index);
+        return result;
+    }
+    
+    public boolean isDomesticTradeValid(int index)
+    {
+        return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
     }
 }
 
