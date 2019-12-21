@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -145,24 +144,6 @@
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
-      </ImageView>
-      <ImageView fx:id="next_player_1" fitHeight="78.0" fitWidth="87.0" layoutX="1243.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/next_player_indicator.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="next_player_2" fitHeight="78.0" fitWidth="87.0" layoutX="433.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/next_player_indicator.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="next_player_3" fitHeight="78.0" fitWidth="87.0" layoutX="175.0" layoutY="651.0" pickOnBounds="true" preserveRatio="true" rotate="13.0" scaleX="-1.0">
-         <image>
-            <Image url="@../images/next_player_indicator.png" />
-         </image>
-         <rotationAxis>
-            <Point3D z="-1.0" />
-         </rotationAxis>
       </ImageView>
       <ImageView fx:id="dice1" fitHeight="108.0" fitWidth="102.0" layoutX="206.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="308.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true" />

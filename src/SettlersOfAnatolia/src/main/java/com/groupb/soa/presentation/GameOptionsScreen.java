@@ -89,7 +89,6 @@ public class GameOptionsScreen implements Initializable {
         color_greenItem = new MenuItem("Green");
         color_greenItem.setStyle("-fx-font-size: 35px;");
         color_greenItem.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent event) {
                 color_picked_game_options.setText(color_greenItem.getText());
@@ -110,8 +109,12 @@ public class GameOptionsScreen implements Initializable {
         
         if(!userName.equals("") && !color_picked_game_options.getText().equals("Color")){
             MainApp.getInstance().getGameControllerObj().initateGame(); // This has to be done before loading UI because ui uses some models to display
-            
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
+            AnchorPane pane;
+            if(MainApp.getWidth() != 1920.0){
+                pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreenLR.fxml"));
+            } else {
+                pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
+            }
         
             rootPane.getChildren().setAll(pane);
         }

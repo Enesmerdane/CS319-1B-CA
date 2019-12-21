@@ -40,32 +40,32 @@
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="108.0" layoutX="597.0" layoutY="836.0" stroke="BLACK" strokeType="INSIDE" width="418.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="108.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="grainPic" fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="854.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/grain_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="" fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="854.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/woods_image.jpg" />
          </image> 
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="777.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lumberPic" fitHeight="65.0" fitWidth="56.0" layoutX="777.0" layoutY="854.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/sheep_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="857.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="woolPic" fitHeight="65.0" fitWidth="56.0" layoutX="857.0" layoutY="854.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/iron_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="937.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orePic" fitHeight="65.0" fitWidth="56.0" layoutX="937.0" layoutY="854.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/brick_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="98.0" fitWidth="91.0" layoutX="538.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="brickPic" fitHeight="98.0" fitWidth="91.0" layoutX="538.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
@@ -90,7 +90,7 @@
             <Image url="@../images/road_image.JPG" />
          </image>
       </ImageView>
-      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1540.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+      <Button id="buy_upgrade_card_button" fx:id="buy_dev_card" layoutX="1540.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -240,5 +240,25 @@
          </items>
       </MenuButton>
       <Button fx:id="playCard" layoutX="1591.0" layoutY="235.0" mnemonicParsing="false" text="Play Card" />
+      <Text layoutX="1264.0" layoutY="920.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a settlement">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="1415.0" layoutY="920.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a city">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="1542.0" layoutY="918.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a road">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
+      <Text layoutX="632.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" />
+      <Text layoutX="706.0" layoutY="912.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" />
+      <Text layoutX="794.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" />
+      <Text layoutX="877.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" />
+      <Text layoutX="956.0" layoutY="913.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick" />
    </children>
 </AnchorPane>
