@@ -260,7 +260,7 @@ public class GameScreen implements Initializable {
         game_menu_game_music.setOnMouseEntered(new EventHandler<javafx.scene.input.MouseEvent>(){
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
-                System.out.println("Enter çalıştı");
+                System.out.println("Enter- çalıştı");
                 game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             }
         });
