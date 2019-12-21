@@ -13,9 +13,9 @@ com\groupb\soa\business\models\GameTile.class
 com\groupb\soa\presentation\MainMenuScreen.class
 com\groupb\soa\business\models\WolfAttack.class
 com\groupb\soa\presentation\GameScreen$8.class
-com\groupb\soa\business\controller\SettingsController.class
 com\groupb\soa\business\models\Dice.class
 com\groupb\soa\business\models\EarthQuake.class
+com\groupb\soa\presentation\SettingsController.class
 com\groupb\soa\presentation\GameScreen$2.class
 com\groupb\soa\presentation\GameScreen$EdgeHandler.class
 com\groupb\soa\business\models\DomesticTrade.class
@@ -55,6 +55,7 @@ com\groupb\soa\business\models\TradeWithBank.class
 com\groupb\soa\presentation\GameScreen.class
 com\groupb\soa\presentation\GameScreen$12.class
 com\groupb\soa\business\models\BotPlayer.class
+com\groupb\soa\presentation\SettingsScreen.class
 com\groupb\soa\presentation\GameScreen$6.class
 com\groupb\soa\presentation\GameScreen$PlayCardHandler.class
 com\groupb\soa\business\models\DevCard.class

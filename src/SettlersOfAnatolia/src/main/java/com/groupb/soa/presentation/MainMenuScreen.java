@@ -76,64 +76,6 @@ public class MainMenuScreen implements Initializable{
         //setNewSizeButton(exit_game_button);
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    private void setNewSizeButtons(){
-        double newHeight = ( MainApp.getHeight() / 1020.0) * buttonHeight - 10;
-        double newWidth  = ( MainApp.getWidth() / 1920.0) * buttonWidth - 10;
-        double newX      = ( MainApp.getWidth() / 1920.0) * buttonx;
-        double newY;
-        int lengthOfLabel;
-        
-        newY = ( MainApp.getWidth() / 1920.0) * button1y;
-        continue_game_button.setPrefSize(newWidth, newHeight);
-        continue_game_button.setLayoutX(newX);
-        continue_game_button.setLayoutY(newY);
-        //continue_game_button.setStyle("-fx-font-size:10px;");
-        lengthOfLabel = continue_game_button.getText().length();
-        continue_game_button.setFont(new Font((int) ( 2 * lengthOfLabel))); // --> Hiçbir değişiklik yapmıyor neden :(((
-        System.out.println("leleley leleleley: " + continue_game_button.getFont());
-        System.out.println("1- " + newX);
-        System.out.println("1- " + newY);
-        
-        newY = ( MainApp.getWidth() / 1920.0) * button2y;
-        new_game_button.setPrefSize(newWidth, newHeight);
-        new_game_button.setLayoutX(newX);
-        new_game_button.setLayoutY(newY);
-        //new_game_button.setStyle("-fx-font-size:10px;");
-        lengthOfLabel = new_game_button.getText().length();
-        new_game_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("2- " + newX);
-        System.out.println("2- " + newY);
-        
-        newY = ( MainApp.getWidth() / 1920.0) * button3y;
-        settings_button.setPrefSize(newWidth, newHeight);
-        settings_button.setLayoutX(newX);
-        settings_button.setLayoutY(newY);
-        //settings_button.setStyle("-fx-font-size:10px;");
-        lengthOfLabel = settings_button.getText().length();
-        settings_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("3- " + newX);
-        System.out.println("3- " + newY);
-        
-        newY = ( MainApp.getWidth() / 1920.0) * button4y;
-        how_to_play_button.setPrefSize(newWidth, newHeight);
-        how_to_play_button.setLayoutX(newX);
-        how_to_play_button.setLayoutY(newY);
-        //how_to_play_button.setStyle("-fx-font-size:10px;");
-        lengthOfLabel = how_to_play_button.getText().length();
-        how_to_play_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("4- " + newX);
-        System.out.println("4- " + newY);
-        
-        newY = ( MainApp.getWidth() / 1920.0) * button5y;
-        exit_game_button.setPrefSize(newWidth, newHeight);
-        exit_game_button.setLayoutX(newX);
-        exit_game_button.setLayoutY(newY);
-        //exit_game_button.setStyle("-fx-font-size:10px;");
-        lengthOfLabel = exit_game_button.getText().length();
-        exit_game_button.setFont(new Font((int) ( 2*lengthOfLabel)));
-        System.out.println("5-> " + newX);
-        System.out.println("5-> " + newY);
-    }
     
     @FXML
     private void terminateGame(ActionEvent event) throws IOException{
@@ -149,5 +91,13 @@ public class MainMenuScreen implements Initializable{
         MainApp.getInstance().getGameControllerObj().initateGame();
     }
     
+    @FXML
+    private void goGameSettings() throws IOException{
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/SettingsScreen.fxml"));
+        
+        rootPane.getChildren().setAll(pane);
+        
+        MainApp.getInstance().getGameControllerObj().initateGame();
+    }
     
 }
