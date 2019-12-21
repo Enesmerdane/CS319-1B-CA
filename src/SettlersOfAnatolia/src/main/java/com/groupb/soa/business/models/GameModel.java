@@ -146,7 +146,7 @@ public class GameModel {
         // if player has the right to move the robber, stop.
         if( robberMoves > 0)
             return;
-        
+        System.out.println(" current player no:" + playerList.getCurrentPlayerNo());
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.

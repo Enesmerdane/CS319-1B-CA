@@ -1,34 +1,34 @@
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/EventManager.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/TradeWithBank.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Vertex.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/EarthQuake.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Event.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/GameModel.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Knight.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Hexagon.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/data/DataManager.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/DomesticTrade.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/Screen.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/YearOfPlenty.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/RoadBuilding.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/controller/GameController.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/Point.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/GameTile.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/LocatableObject.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/PlayerList.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/GameScreen.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Bank.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Player.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/MainApp.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/DevCard.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/controller/SoundManager.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Dice.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Edge.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/BotPlayer.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/controller/SettingsController.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Flood.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/MainMenuScreen.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/CybeleMonth.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/GameOptionsScreen.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Monopoly.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/WolfAttack.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\GameController.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\EventManager.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Flood.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Dice.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\MainApp.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Knight.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\WolfAttack.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\SoundManager.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Bank.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\RoadBuilding.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\GameOptionsScreen.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\TradeWithBank.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\data\DataManager.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\YearOfPlenty.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\CybeleMonth.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Hexagon.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\Point.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\GameModel.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\PlayerList.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Event.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\controller\SettingsController.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\MainMenuScreen.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Monopoly.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Player.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\Screen.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\DevCard.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Vertex.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\DomesticTrade.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\Edge.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\GameTile.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\EarthQuake.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\BotPlayer.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\business\models\LocatableObject.java
+C:\Users\User\IdeaProjects\319 proje\CS319-1B-CA\src\SettlersOfAnatolia\src\main\java\com\groupb\soa\presentation\GameScreen.java

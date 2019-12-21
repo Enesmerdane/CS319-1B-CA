@@ -23,17 +23,28 @@ import javafx.stage.Stage;
  */
 public class GameController {
     
-
+    // Properties
+    
+    
+    
+    private GameModel gameModel; 
+    Timer t;
+    private BotPlayer currentPlayer;
+    
+    private Stage stage;
+    
     TimerTask task = new TimerTask()
     {
         public void run()
         {
+             System.out.println ("TIMER ÇALIŞTI");
             
-            if ( gameModel.isCurrentPlayerBot() )  { 
+                if( gameModel.isCurrentPlayerBot()){
                     currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
                     currentPlayer.playTurn( gameModel );
                     
-            }
+                    
+                }
                 
                 
         }
@@ -53,7 +64,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 0 , 5000);
+         t.scheduleAtFixedRate(task, 5000 , 7000 );
     }
     
     // Methods

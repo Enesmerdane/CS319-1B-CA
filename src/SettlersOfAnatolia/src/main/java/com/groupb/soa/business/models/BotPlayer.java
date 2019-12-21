@@ -22,7 +22,7 @@ public class BotPlayer extends Player {
     }
     
     public void playTurn( GameModel model){
-        
+         System.out.println ("BEFORE IF");
         if ( model.getFirstTurn() || model.getSecondTurn()){
             int vertexIndex = (int)(Math.random() * 54);
             while ( !model.buildSettlement(vertexIndex)){
@@ -34,7 +34,9 @@ public class BotPlayer extends Player {
                 edgeIndex = (int)(Math.random() * 72);
             }
            }
+        System.out.println ("yeni oyuncu");
         model.moveNextPlayer();
+        
     }
     
   
