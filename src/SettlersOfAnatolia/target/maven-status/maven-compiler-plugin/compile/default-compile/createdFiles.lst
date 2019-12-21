@@ -20,6 +20,7 @@ com\groupb\soa\presentation\GameScreen$2.class
 com\groupb\soa\presentation\GameScreen$EdgeHandler.class
 com\groupb\soa\business\models\DomesticTrade.class
 com\groupb\soa\business\models\Player.class
+com\groupb\soa\presentation\GameScreen$15.class
 com\groupb\soa\presentation\GameScreen$HexagonHandler.class
 com\groupb\soa\business\models\Knight.class
 com\groupb\soa\presentation\GameScreen$9.class

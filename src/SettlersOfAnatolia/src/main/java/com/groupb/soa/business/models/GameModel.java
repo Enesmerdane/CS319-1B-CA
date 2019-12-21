@@ -316,6 +316,24 @@ public class GameModel {
     {
         return currentTwB.getPlayerSourceNo( sourceNo);
     }
+    
+    public int getTwBSourceRights()
+    {
+        return currentTwB.calculateSourceRights();
+    }
+    
+    public int getTwBUsedSourceRights()
+    {
+        return currentTwB.calculateUsedSourceRights();
+    }
+    
+    public boolean finalizeTwB()
+    {
+        boolean result = currentTwB.finalizeTrade();
+        if( result)
+            currentTwB = null;
+        return result;
+    }
 }
 
 

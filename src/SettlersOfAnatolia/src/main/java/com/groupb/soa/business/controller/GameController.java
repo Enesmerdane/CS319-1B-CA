@@ -196,4 +196,19 @@ public class GameController {
     {
         return gameModel.TwBgetPlayerSourceNo( sourceNo);
     }
+    
+    public int getTwBSourceRights()
+    {
+        return gameModel.getTwBSourceRights();
+    }
+    
+    public int getTwBUsedSourceRights()
+    {
+        return gameModel.getTwBUsedSourceRights();
+    }
+    
+    public boolean finalizeTwB()
+    {
+        return gameModel.finalizeTwB();
+    }
 }

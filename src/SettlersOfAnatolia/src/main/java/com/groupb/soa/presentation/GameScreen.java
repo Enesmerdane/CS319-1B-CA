@@ -111,6 +111,10 @@ public class GameScreen implements Initializable {
     private Text bankGrain, bankLumber, bankWool, bankOre, bankBrick;
     @FXML
     private Text selfGrain, selfLumber, selfWool, selfOre, selfBrick;
+    @FXML
+    private Text actualSourceRights, usedSourceRights;
+    @FXML
+    private Button twbaccept, twbcancel;
     private GameController mainController;
     
     
@@ -264,12 +268,14 @@ public class GameScreen implements Initializable {
         
         // Button Operations
         trade_with_bank_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            boolean current = false;
+
             @Override
             public void handle( MouseEvent e)
             {
-                toggleTwBMenu(!current);
-                current = !current;
+                if( !tradeBankGroup.isVisible())
+                {
+                    toggleTwBMenu(true);
+                }
             }
         });
         buy_dev_card.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -980,6 +986,11 @@ public class GameScreen implements Initializable {
         selfLumber.setText( mainController.TwBgetPlayerSourceNo(2) + "");
         selfWool.setText( mainController.TwBgetPlayerSourceNo(3) + "");
         selfBrick.setText( mainController.TwBgetPlayerSourceNo(4) + "");
+        
+        actualSourceRights.setText( mainController.getTwBSourceRights() + "");
+        usedSourceRights.setText( mainController.getTwBUsedSourceRights() + "");
+        
+        twbaccept.setDisable( !mainController.isTwBValid());
     }
     private void initializeTwBMenu()
     {
@@ -1008,6 +1019,19 @@ public class GameScreen implements Initializable {
         brickBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 4));
         brickSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 4));
         brickSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 4));
+        
+        twbaccept.setOnMouseClicked( new EventHandler<MouseEvent>(){
+            @Override
+            public void handle( MouseEvent e)
+            {
+                boolean result = mainController.finalizeTwB();
+                if( result)
+                {
+                    toggleTwBMenu(false);
+                    refreshResources();
+                }
+            }
+        });
     }
     class VertexHandler implements EventHandler<MouseEvent>
     {

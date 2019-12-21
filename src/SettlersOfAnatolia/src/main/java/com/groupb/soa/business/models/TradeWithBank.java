@@ -91,7 +91,7 @@ public class TradeWithBank {
         
         public boolean isAValidTrade()
         {
-            return calculateSourceRights() == calculateUsedSourceRights();
+            return (calculateUsedSourceRights() != 0 && calculateSourceRights() != 0 ) && (calculateSourceRights() == calculateUsedSourceRights());
         }
         
         public boolean finalizeTrade()
