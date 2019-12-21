@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="1050.0" prefWidth="1680.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.groupb.soa.presentation.GameScreen">
+    <stylesheets>
+        <URL value="@/styles/gamescreen.css" />
+    </stylesheets>
+   <children>
+      <ImageView fitHeight="1050.0" fitWidth="1680.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/wooden_background.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="exit_game_button" layoutX="13.0" layoutY="837.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="90.0" prefWidth="260.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Menu">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="end_turn_button" layoutX="292.0" layoutY="839.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#endTurn" prefHeight="90.0" prefWidth="225.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="End Turn">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="108.0" layoutX="597.0" layoutY="836.0" stroke="BLACK" strokeType="INSIDE" width="418.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="108.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/grain_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/woods_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="777.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/sheep_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="857.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/iron_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="937.0" layoutY="875.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/brick_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="91.0" layoutX="538.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" layoutX="1250.0" layoutY="705.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="427.0" />
+      <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="83.0" layoutX="1399.0" layoutY="813.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="110.0" />
+      <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="83.0" layoutX="1532.0" layoutY="813.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="117.0" />
+      <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="83.0" layoutX="1260.0" layoutY="813.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="126.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="108.0" layoutX="1031.0" layoutY="835.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <ImageView fx:id="settlement_image_button" fitHeight="60.0" fitWidth="110.0" layoutX="1269.0" layoutY="825.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settlement_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="city_image_button" fitHeight="66.0" fitWidth="107.0" layoutX="1407.0" layoutY="822.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/city_image.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="road_image_button" fitHeight="60.0" fitWidth="91.0" layoutX="1545.0" layoutY="826.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/road_image.JPG" />
+         </image>
+      </ImageView>
+      <Button id="buy_upgrade_card_button" fx:id="exit_game_button2111" layoutX="1540.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Buy&#10;Upgrade Card" textAlignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="roll_dice_button" layoutX="241.0" layoutY="591.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="98.0" prefWidth="142.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Roll Dice">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="trade_with_bank_button" layoutX="1269.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="trade_with_players_button" layoutX="1410.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#openGameMenu" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade&#10;with Players&#10;" textAlignment="CENTER">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Rectangle id="game_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="663.0" layoutX="435.0" layoutY="172.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="806.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="108.0" layoutX="1251.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <ImageView fitHeight="98.0" fitWidth="91.0" layoutX="1260.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="108.0" layoutX="47.0" layoutY="285.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
+      <ImageView fitHeight="98.0" fitWidth="91.0" layoutX="56.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="98.0" fitWidth="91.0" layoutX="1040.0" layoutY="844.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/player_default_photo.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dice1" fitHeight="108.0" fitWidth="102.0" layoutX="164.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="272.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
+      <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
+      <Rectangle fx:id="game_menu_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="700.0" layoutX="460.0" layoutY="190.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em; visibility: false" width="1000.0" />
+      <Text fx:id="grain" layoutX="628.0" layoutY="927.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="lumber" layoutX="709.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="wool" layoutX="790.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="stone" layoutX="869.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text fx:id="brick" layoutX="951.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="33.20001220703125">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MIDNIGHTBLUE" height="431.0" layoutX="1386.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="291.0" />
+      <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
+         <font>
+            <Font size="70.0" />
+         </font>
+      </Text>
+      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_back_to_main_menu" layoutX="777.0" layoutY="543.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Main Menu">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_back_to_game" layoutX="777.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackToGame" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Back to Game">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Button fx:id="game_menu_exit_game" layoutX="777.0" layoutY="743.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Exit Game">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="1407.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DEVELOPMENT CARDS" textAlignment="CENTER" wrappingWidth="249.95703125">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1416.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Knight:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1416.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Road Building:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1416.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year of Plenty:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1416.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1494.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1572.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1572.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1532.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="cardMenu" layoutX="1416.0" layoutY="234.0" mnemonicParsing="false" text="Pick a Card">
+        <items>
+          <MenuItem fx:id="knightChoice" mnemonicParsing="false" text="Knight" />
+          <MenuItem fx:id="roadChoice" mnemonicParsing="false" text="Road Building" />
+            <MenuItem fx:id="yearChoice" mnemonicParsing="false" text="Year of Plenty" />
+            <MenuItem fx:id="monoChoice" mnemonicParsing="false" text="Monopoly" />
+        </items>
+      </MenuButton>
+      <Button fx:id="playCard" layoutX="1590.0" layoutY="234.0" mnemonicParsing="false" text="Play Card" />
+      <Text fill="WHITE" layoutX="1416.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Additional Settings:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1399.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly Source or" wrappingWidth="189.5999755859375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="sourceMenu" layoutX="1566.0" layoutY="334.0" mnemonicParsing="false" text="Select Source">
+        <items>
+          <MenuItem fx:id="grainChoice" mnemonicParsing="false" text="Grain" />
+          <MenuItem fx:id="lumberChoice" mnemonicParsing="false" text="Lumber" />
+            <MenuItem fx:id="woolChoice" mnemonicParsing="false" text="Wool" />
+            <MenuItem fx:id="oreChoice" mnemonicParsing="false" text="Ore" />
+            <MenuItem fx:id="brickChoice" mnemonicParsing="false" text="Brick" />
+        </items>
+      </MenuButton>
+      <Text fill="WHITE" layoutX="1412.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YoP first Source:" wrappingWidth="189.5999755859375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1399.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YoP second Source:" wrappingWidth="189.5999755859375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <MenuButton fx:id="sourceMenu2" layoutX="1566.0" layoutY="387.0" mnemonicParsing="false" text="Select Source">
+         <items>
+            <MenuItem fx:id="grainChoice2" mnemonicParsing="false" text="Grain" />
+            <MenuItem fx:id="lumberChoice2" mnemonicParsing="false" text="Lumber" />
+            <MenuItem fx:id="woolChoice2" mnemonicParsing="false" text="Wool" />
+            <MenuItem fx:id="oreChoice2" mnemonicParsing="false" text="Ore" />
+            <MenuItem fx:id="brickChoice2" mnemonicParsing="false" text="Brick" />
+         </items>
+      </MenuButton>
+   </children>
+</AnchorPane>
