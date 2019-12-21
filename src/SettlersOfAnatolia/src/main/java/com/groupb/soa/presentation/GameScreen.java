@@ -301,7 +301,10 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( MouseEvent e)
             {
-                toggleDomesticTradeMenu( true);
+                if( !tradeBankGroup.isVisible() && !domesticTradeGroup.isVisible())
+                {
+                    toggleDomesticTradeMenu(true);
+                }
             }
         });
         trade_with_bank_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
@@ -309,7 +312,7 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( MouseEvent e)
             {
-                if( !tradeBankGroup.isVisible())
+                if( !tradeBankGroup.isVisible() && !domesticTradeGroup.isVisible())
                 {
                     toggleTwBMenu(true);
                 }
@@ -320,6 +323,9 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( MouseEvent e)
             {
+                // if one of the trade windows are open, return.
+                if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                    return;
                 System.out.println( "Buy card checkpoint" + mainController.buyCard());
                 refreshResources();
                 refreshCardNumbers();
@@ -362,6 +368,9 @@ public class GameScreen implements Initializable {
         settlement_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
+                // if one of the trade windows are open, return.
+                if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                     return;
                 settlement_selected_rectangle.setVisible(true);
                 city_selected_rectangle.setVisible(false);
                 road_selected_rectangle.setVisible(false);
@@ -374,6 +383,9 @@ public class GameScreen implements Initializable {
         city_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
+                // if one of the trade windows are open, return.
+                if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                  return;
                 settlement_selected_rectangle.setVisible(false);
                 city_selected_rectangle.setVisible(true);
                 road_selected_rectangle.setVisible(false);
@@ -386,6 +398,9 @@ public class GameScreen implements Initializable {
         road_image_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
+                // if one of the trade windows are open, return.
+                if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                    return;
                 settlement_selected_rectangle.setVisible(false);
                 city_selected_rectangle.setVisible(false);
                 road_selected_rectangle.setVisible(true);
@@ -882,6 +897,10 @@ public class GameScreen implements Initializable {
     
     @FXML
     private void openGameMenu(ActionEvent event){
+        if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+        {
+            return;
+        }
         game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
         game_menu_filter.toFront();
         game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
@@ -948,6 +967,9 @@ public class GameScreen implements Initializable {
     @FXML
     private void endTurn(ActionEvent event) throws IOException{
         System.out.println("endTurn tuşuna basıldı");
+        // if one of the trade windows are open, return.
+        if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+            return;
         int[] offers = new int[5];
         int[] inReturn = new int[5];
         offers[0] = 4;
@@ -1226,6 +1248,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle( MouseEvent e)
         {
+            // if one of the trade windows are open, return.
+            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             System.out.println("Attempt to build vertex at index " + index);
             //Circle circle = (Circle) e.getSource();
             //circle.setFill(Color.RED);
@@ -1262,6 +1287,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle( MouseEvent e)
         {
+            // if one of the trade windows are open, return.
+            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             System.out.println("Attempt to build edge at index " + index);
                 // Line l = (Line) e.getSource();
                 // l.setStroke(Color.RED);
@@ -1284,6 +1312,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle( MouseEvent e)
         {
+            // if one of the trade windows are open, return.
+            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             int[] diceNums = mainController.rollDice();
             Image d1img, d2img;
             switch(diceNums[0])
@@ -1323,6 +1354,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
+            // if one of the trade windows are open, return.
+            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             mainController.sendRobberToHexagon(index);
             refreshResources();
         }
@@ -1371,6 +1405,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
+            // if one of the trade windows are open, return.
+            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             // if no card type is specified, return.
             if( cardType.equals(""))
                 return;
