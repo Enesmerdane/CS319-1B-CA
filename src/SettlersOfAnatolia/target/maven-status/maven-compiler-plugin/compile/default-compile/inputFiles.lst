@@ -1,8 +1,9 @@
+/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/EventManager.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/TradeWithBank.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Vertex.java
+/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/EarthQuake.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Event.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/GameModel.java
-/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/IGameObject.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Knight.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Hexagon.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/data/DataManager.java
@@ -23,8 +24,11 @@
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/controller/SoundManager.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Dice.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Edge.java
+/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/BotPlayer.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/controller/SettingsController.java
+/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Flood.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/MainMenuScreen.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/CybeleMonth.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/GameOptionsScreen.java
 /Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/Monopoly.java
+/Users/goksuturan/Documents/GitHub/Cs319Bilkent/src/SettlersOfAnatolia/src/main/java/com/groupb/soa/business/models/WolfAttack.java

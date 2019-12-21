@@ -172,8 +172,24 @@ public class GameScreen implements Initializable {
      */
     public GameScreen(){
         this.mainController = MainApp.getInstance().getGameControllerObj();
+        
+        
     }
-    
+     /**TimerTask task = new TimerTask()
+    {
+        public void run()
+        {
+            
+            if ( gameModel.isCurrentPlayerBot() )  { 
+                    currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
+                    currentPlayer.playTurn( gameModel );
+                    
+            }
+                
+                
+        }
+
+    };*/
     // Methods
 
     @Override

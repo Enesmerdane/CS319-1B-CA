@@ -157,7 +157,8 @@ public class GameModel {
         secondTurn = (turn == 1);
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
-        System.out.println("Game Turn is increased " + turn);
+        System.out.println("Game Turn is increased " + turn); 
+        
     }
     
     public int[] rollDice()
@@ -264,7 +265,19 @@ public class GameModel {
     {
         return playerList.getCurrentPlayer().buyDevCard(bank);
     }
+    public boolean isCurrentPlayerBot(){
+        return getCurrentPlayer() instanceof BotPlayer;
+    }
+    
+    public boolean getFirstTurn(){
+    return firstTurn;
+    }
+    
+    public boolean getSecondTurn(){
+    return secondTurn;
+    }
 }
+
 
 
 

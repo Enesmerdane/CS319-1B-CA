@@ -20,8 +20,9 @@ public class PlayerList{
 
     PlayerList(Color playerColors[] ){
         players = new Player[4];
-        for ( int i = 0; i < 4; i++){
-                players[i] = new Player( playerColors[i]);
+        players[0] = new Player( playerColors[0]); //first player is the actual player
+        for ( int i = 1; i < 4; i++){
+                players[i] = new BotPlayer( playerColors[i]);
 
         }
         currentPlayerNo = 0;
