@@ -892,7 +892,6 @@ public class GameScreen implements Initializable {
         brick.setText( mainController.getCurrentPlayer().getSourceNo(4) + "");
     }
     
-<<<<<<< enes4
     private void setAllCircleNumbersToFront(){
         for(int i = 0; i < 19; i++){
             hexagonNumberCircles[i].toFront();
@@ -903,7 +902,6 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < 19; i++){
             hexagonNumbers[i].toFront();
         }
-=======
     }
     private void toggleResourcePickEffects(boolean toggle)
     {
