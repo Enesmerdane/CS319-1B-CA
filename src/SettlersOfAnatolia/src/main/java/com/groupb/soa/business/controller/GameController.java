@@ -7,11 +7,14 @@ package com.groupb.soa.business.controller;
 import com.groupb.soa.business.models.GameModel;
 import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.PlayerList;
+import java.io.File;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -35,16 +38,7 @@ public class GameController {
     // Methods
     
     private void initiateMenu(Stage stage, Application mainApplication) throws IOException{
-        //String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
-          
-        //Instantiating Media class  
-        //Media media = new Media(new File(path).toURI().toString());  
-          
-        //Instantiating MediaPlayer class   
-        //MediaPlayer mediaPlayer = new MediaPlayer(media);  
-          
-        //by setting this property to true, the audio will be played   
-        //mediaPlayer.setAutoPlay(true);  
+        
         this.stage = stage;
         
         Parent root = FXMLLoader.load(mainApplication.getClass().getResource("/fxml/MainMenuScene.fxml"));
