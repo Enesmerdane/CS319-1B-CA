@@ -53,11 +53,7 @@ public class GameController {
     // Properties
     
     
-    
-    private GameModel gameModel; 
-    Timer t;
-    private BotPlayer currentPlayer;
-    private Stage stage;
+   
     
     // Constructors
     public GameController(Stage stage, Application mainApplication) throws IOException
