@@ -41,7 +41,11 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
+        
     }
+    
+    
+    
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
             return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);

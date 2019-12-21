@@ -160,7 +160,7 @@ public class GameScreen implements Initializable {
     
     private Circle[] hexagonNumberCircles;
     private Text[] hexagonNumbers;
-    
+    private static GameScreen instance;
     // Constructors
     /**
      * @param mainController to call build methods
@@ -173,7 +173,7 @@ public class GameScreen implements Initializable {
     public GameScreen(){
         this.mainController = MainApp.getInstance().getGameControllerObj();
         
-        
+        instance = this;
     }
      /**TimerTask task = new TimerTask()
     {
@@ -191,7 +191,11 @@ public class GameScreen implements Initializable {
 
     };*/
     // Methods
-
+    public static GameScreen getInstance(){
+        return instance;
+    }
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         
@@ -1176,5 +1180,32 @@ public class GameScreen implements Initializable {
                 toggleResourcePickEffects(false);
             }
         }
+    }
+    public void botRollsDice(){
+        int[] diceNums = mainController.rollDice();
+            Image d1img, d2img;
+            switch(diceNums[0])
+            {
+                case 1: d1img = new Image("images/die_face_1.png"); break;
+                case 2: d1img = new Image("images/die_face_2.png"); break;
+                case 3: d1img = new Image("images/die_face_3.png"); break;
+                case 4: d1img = new Image("images/die_face_4.png"); break;
+                case 5: d1img = new Image("images/die_face_5.png"); break;
+                case 6: d1img = new Image("images/die_face_6.png"); break;
+                default: d1img = null; break;
+            }
+            switch(diceNums[1])
+            {
+                case 1: d2img = new Image("images/die_face_1.png"); break;
+                case 2: d2img = new Image("images/die_face_2.png"); break;
+                case 3: d2img = new Image("images/die_face_3.png"); break;
+                case 4: d2img = new Image("images/die_face_4.png"); break;
+                case 5: d2img = new Image("images/die_face_5.png"); break;
+                case 6: d2img = new Image("images/die_face_6.png"); break;
+                default: d2img = null; break;
+            }
+            dice1.setImage(d1img);
+            dice2.setImage(d2img);
+            refreshResources();
     }
 }
