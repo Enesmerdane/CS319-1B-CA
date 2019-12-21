@@ -890,6 +890,7 @@ public class GameScreen implements Initializable {
             hexagonNumbers[i].toFront();
         }
 =======
+    }
     private void toggleResourcePickEffects(boolean toggle)
     {
         grainEffect.setVisible(toggle);
@@ -897,7 +898,6 @@ public class GameScreen implements Initializable {
         woolEffect.setVisible(toggle);
         oreEffect.setVisible(toggle);
         brickEffect.setVisible(toggle);
->>>>>>> DevCard usage & GUI update
     }
     
     class VertexHandler implements EventHandler<MouseEvent>

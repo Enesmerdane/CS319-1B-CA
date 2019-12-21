@@ -111,7 +111,7 @@ public class GameOptionsScreen implements Initializable {
         if(!userName.equals("") && !color_picked_game_options.getText().equals("Color")){
             MainApp.getInstance().getGameControllerObj().initateGame(); // This has to be done before loading UI because ui uses some models to display
             
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreenLR.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreen.fxml"));
         
             rootPane.getChildren().setAll(pane);
         }
