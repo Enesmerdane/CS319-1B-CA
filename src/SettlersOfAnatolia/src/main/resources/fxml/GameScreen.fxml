@@ -3,6 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -112,7 +113,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="trade_with_bank_button" layoutX="1278.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+      <Button fx:id="trade_with_bank_button" layoutX="1278.0" layoutY="851.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -308,5 +309,104 @@
             <Font size="20.0" />
          </font>
       </Text>
+      <Group fx:id="tradeBankGroup" layoutX="470.0" layoutY="200.0">
+         <children>
+            <Rectangle fx:id="tradebank_background" arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="582.0" stroke="BLACK" strokeType="INSIDE" style="background-radius: 5em;" width="642.0" />
+            <Rectangle fx:id="tradebank_bankrect" arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="54.0" layoutX="14.0" layoutY="8.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="616.0" />
+            <Text fx:id="tradebank_banktext" layoutX="22.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Bank" wrappingWidth="207.99998779296925">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="200.0" layoutX="13.0" layoutY="78.0" stroke="BLACK" strokeType="INSIDE" width="618.0" />
+            <Text fx:id="tradebank_bankgrain" layoutX="82.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" wrappingWidth="36.20703125" />
+            <Text fx:id="tradebank_banklumber" layoutX="205.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" wrappingWidth="49.00701904296875" />
+            <Text fx:id="tradebank_bankwool" layoutX="325.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" wrappingWidth="49.00701904296875" />
+            <Text fx:id="tradebank_bankore" layoutX="462.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" wrappingWidth="37.8941650390625" />
+            <Text fx:id="b" layoutX="93.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="grainBankIncrBtn" layoutX="80.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="grainBankDecrBtn" layoutX="79.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text fx:id="tradebank_blumberno" layoutX="226.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="lumberBankIncrBtn" layoutX="213.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="lumberBankDecrBtn" layoutX="212.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text fx:id="tradebank_bwoolno" layoutX="339.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="woolBankIncrBtn" layoutX="326.0" layoutY="147.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="woolBankDecrBtn" layoutX="325.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text layoutX="468.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="oreBankIncrBtn" layoutX="455.0" layoutY="145.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="oreBankDecrBtn" layoutX="454.0" layoutY="186.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="54.0" layoutX="16.0" layoutY="297.0" stroke="BLACK" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" width="616.0" />
+            <Text layoutX="24.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You" wrappingWidth="207.99998779296925">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffeebc" height="200.0" layoutX="15.0" layoutY="372.0" stroke="BLACK" strokeType="INSIDE" width="618.0" />
+            <Text layoutX="84.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" wrappingWidth="29.00701904296875" />
+            <Text layoutX="207.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" wrappingWidth="49.00701904296875" />
+            <Text layoutX="327.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" wrappingWidth="49.00701904296875" />
+            <Text layoutX="438.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" />
+            <Button fx:id="grainSelfIncrBtn" layoutX="82.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="grainSelfDecrBtn" layoutX="81.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text layoutX="228.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="lumberSelfIncrBtn" layoutX="215.0" layoutY="438.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="lumberSelfDecrBtn" layoutX="214.0" layoutY="479.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text layoutX="341.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="woolSelfIncrBtn" layoutX="328.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="woolSelfDecrBtn" layoutX="327.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text layoutX="444.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="oreSelfIncrBtn" layoutX="431.0" layoutY="439.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="oreSelfDecrBtn" layoutX="430.0" layoutY="480.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text fx:id="tradebank_bankbrick" layoutX="575.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick" wrappingWidth="35.8648681640625" />
+            <Text layoutX="584.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="brickBankIncrBtn" layoutX="571.0" layoutY="146.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="brickBankDecrBtn" layoutX="570.0" layoutY="187.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+            <Text layoutX="95.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="578.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick" />
+            <Text layoutX="584.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="brickSelfIncrBtn" layoutX="571.0" layoutY="437.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="+1" />
+            <Button fx:id="brickSelfDecrBtn" layoutX="570.0" layoutY="478.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="-1" />
+         </children>
+      </Group>
    </children>
 </AnchorPane>

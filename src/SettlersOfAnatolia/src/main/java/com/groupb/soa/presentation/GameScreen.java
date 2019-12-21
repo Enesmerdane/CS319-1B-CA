@@ -16,6 +16,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -94,7 +96,9 @@ public class GameScreen implements Initializable {
     @FXML
     private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
     @FXML
-    private Button buy_dev_card;
+    private Button buy_dev_card, trade_with_bank_button;
+    @FXML
+    private Group tradeBankGroup;
     private GameController mainController;
     
     
@@ -247,6 +251,15 @@ public class GameScreen implements Initializable {
         brickPic.setOnMouseClicked(new ResourceClickHandler("Brick"));
         
         // Button Operations
+        trade_with_bank_button.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            boolean current = false;
+            @Override
+            public void handle( MouseEvent e)
+            {
+                toggleTradeMenu(!current);
+                current = !current;
+            }
+        });
         buy_dev_card.setOnMouseClicked(new EventHandler<MouseEvent>(){
             
             @Override
@@ -922,6 +935,15 @@ public class GameScreen implements Initializable {
                 " (" + mainController.getPlayerCardNo("Year of Plenty") + ")");
         monoNo.setText( mainController.getPlayerPlayableCardNo("Monopoly") + 
                 " (" + mainController.getPlayerCardNo("Monopoly") + ")");
+    }
+    
+    private void toggleTradeMenu(boolean toggle)
+    {
+        tradeBankGroup.setVisible(toggle);
+        if(toggle)
+        {
+            tradeBankGroup.toFront();
+        }
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
