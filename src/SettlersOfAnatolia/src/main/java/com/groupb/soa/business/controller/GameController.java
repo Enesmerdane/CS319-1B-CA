@@ -46,7 +46,6 @@ public class GameController {
     private GameModel gameModel; 
     Timer t;
     private BotPlayer currentPlayer;
-    
     private Stage stage;
     
     // Constructors
@@ -54,7 +53,6 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.schedule(task, 5000);
          t.scheduleAtFixedRate(task, 0 , 5000);
     }
     
