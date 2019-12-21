@@ -26,7 +26,7 @@ public class GameModel {
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private int robberMoves;
-    
+    private TradeWithBank currentTwB;
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -41,6 +41,7 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
+        currentTwB = null;
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
@@ -263,6 +264,57 @@ public class GameModel {
     public boolean buyCard()
     {
         return playerList.getCurrentPlayer().buyDevCard(bank);
+    }
+    
+    public boolean startTradeWithBank()
+    {
+        if ( currentTwB != null)
+            return false;
+        currentTwB = new TradeWithBank( playerList.getCurrentPlayer(), bank);
+        return true;
+    }
+    
+    public boolean cancelTradeWithBank()
+    {
+        if( currentTwB == null)
+            return false;
+        currentTwB = null;
+        return true;
+    }
+    
+    public boolean addSourceToSelf( int sourceNo, int amount)
+    {
+        return currentTwB.playerAddSource(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromSelf( int sourceNo, int amount)
+    {
+        return currentTwB.playerSubSource(sourceNo, amount);
+    }
+    
+    public boolean addSourceToBank( int sourceNo, int amount)
+    {
+        return currentTwB.bankAddSource(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromBank( int sourceNo, int amount)
+    {
+        return currentTwB.bankSubSource( sourceNo, amount);
+    }
+    
+    public boolean isTwBValid()
+    {
+        return currentTwB.isAValidTrade();
+    }
+    
+    public int TwBgetBankSourceNo( int sourceNo)
+    {
+        return currentTwB.getBankSourceNo(sourceNo);
+    }
+    
+    public int TwBgetPlayerSourceNo( int sourceNo)
+    {
+        return currentTwB.getPlayerSourceNo( sourceNo);
     }
 }
 

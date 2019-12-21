@@ -151,4 +151,49 @@ public class GameController {
     {
         return gameModel.buyCard();
     }
+    
+    public boolean startTradeWithBank()
+    {
+        return gameModel.startTradeWithBank();
+    }
+    
+    public boolean cancelTradeWithBank()
+    {
+        return gameModel.cancelTradeWithBank();
+    }
+    
+    public boolean addSourceToSelf( int sourceNo, int amount)
+    {
+        return gameModel.addSourceToSelf(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromSelf( int sourceNo, int amount)
+    {
+        return gameModel.subSourceFromSelf(sourceNo, amount);
+    }
+    
+    public boolean addSourceToBank( int sourceNo, int amount)
+    {
+        return gameModel.addSourceToBank(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromBank( int sourceNo, int amount)
+    {
+        return gameModel.subSourceFromBank( sourceNo, amount);
+    }
+    
+    public boolean isTwBValid()
+    {
+        return gameModel.isTwBValid();
+    }
+    
+    public int TwBgetBankSourceNo( int sourceNo)
+    {
+        return gameModel.TwBgetBankSourceNo(sourceNo);
+    }
+    
+    public int TwBgetPlayerSourceNo( int sourceNo)
+    {
+        return gameModel.TwBgetPlayerSourceNo( sourceNo);
+    }
 }

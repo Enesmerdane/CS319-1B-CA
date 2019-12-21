@@ -99,6 +99,18 @@ public class GameScreen implements Initializable {
     private Button buy_dev_card, trade_with_bank_button;
     @FXML
     private Group tradeBankGroup;
+    @FXML
+    private Button grainBankIncrBtn, lumberBankIncrBtn, woolBankIncrBtn, oreBankIncrBtn, brickBankIncrBtn;
+    @FXML
+    private Button grainBankDecrBtn, lumberBankDecrBtn, woolBankDecrBtn, oreBankDecrBtn, brickBankDecrBtn;
+    @FXML
+    private Button grainSelfIncrBtn, lumberSelfIncrBtn, woolSelfIncrBtn, oreSelfIncrBtn, brickSelfIncrBtn;
+    @FXML
+    private Button grainSelfDecrBtn, lumberSelfDecrBtn, woolSelfDecrBtn, oreSelfDecrBtn, brickSelfDecrBtn;
+    @FXML
+    private Text bankGrain, bankLumber, bankWool, bankOre, bankBrick;
+    @FXML
+    private Text selfGrain, selfLumber, selfWool, selfOre, selfBrick;
     private GameController mainController;
     
     
@@ -256,7 +268,7 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( MouseEvent e)
             {
-                toggleTradeMenu(!current);
+                toggleTwBMenu(!current);
                 current = !current;
             }
         });
@@ -372,6 +384,8 @@ public class GameScreen implements Initializable {
            hexagonList[i].setOnMouseClicked(new HexagonHandler(i));
            hexagonNumberCircles[i].setOnMouseClicked(new HexagonHandler(i));
         }  
+        
+        initializeTwBMenu();
     }
     private void drawAllEdges(){
         int i = 0;
@@ -937,15 +951,64 @@ public class GameScreen implements Initializable {
                 " (" + mainController.getPlayerCardNo("Monopoly") + ")");
     }
     
-    private void toggleTradeMenu(boolean toggle)
+    private void toggleTwBMenu(boolean toggle)
     {
-        tradeBankGroup.setVisible(toggle);
-        if(toggle)
+        if( toggle)
         {
+            mainController.startTradeWithBank();
+            refreshTwBMenu();
+            tradeBankGroup.setVisible(true);
             tradeBankGroup.toFront();
+        }
+        else
+        {
+            mainController.cancelTradeWithBank();
+            tradeBankGroup.setVisible(false);
         }
     }
     
+    private void refreshTwBMenu()
+    {
+        bankOre.setText( mainController.TwBgetBankSourceNo(0) + "");
+        bankGrain.setText( mainController.TwBgetBankSourceNo(1) + "");
+        bankLumber.setText( mainController.TwBgetBankSourceNo(2) + "");
+        bankWool.setText( mainController.TwBgetBankSourceNo(3) + "");
+        bankBrick.setText( mainController.TwBgetBankSourceNo(4) + "");
+        
+        selfOre.setText( mainController.TwBgetPlayerSourceNo(0) + "");
+        selfGrain.setText( mainController.TwBgetPlayerSourceNo(1) + "");
+        selfLumber.setText( mainController.TwBgetPlayerSourceNo(2) + "");
+        selfWool.setText( mainController.TwBgetPlayerSourceNo(3) + "");
+        selfBrick.setText( mainController.TwBgetPlayerSourceNo(4) + "");
+    }
+    private void initializeTwBMenu()
+    {
+        // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
+        grainBankIncrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", true, 1));
+        grainBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 1));
+        grainSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 1));
+        grainSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 1));
+        
+        lumberBankIncrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", true, 2));
+        lumberBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 2));
+        lumberSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 2));
+        lumberSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 2));
+        
+        oreBankIncrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", true, 0));
+        oreBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 0));
+        oreSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 0));
+        oreSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 0));
+        
+        woolBankIncrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", true, 3));
+        woolBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 3));
+        woolSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 3));
+        woolSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 3));
+        
+        brickBankIncrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", true, 4));
+        brickBankDecrBtn.setOnMouseClicked( new TradeWithBankHandler("bank", false, 4));
+        brickSelfIncrBtn.setOnMouseClicked( new TradeWithBankHandler("player", true, 4));
+        brickSelfDecrBtn.setOnMouseClicked( new TradeWithBankHandler("player", false, 4));
+    }
     class VertexHandler implements EventHandler<MouseEvent>
     {
         int index;
@@ -1181,6 +1244,39 @@ public class GameScreen implements Initializable {
                 resourceMsg.setText( "");
                 toggleResourcePickEffects(false);
             }
+        }
+    }
+    
+    class TradeWithBankHandler implements EventHandler<MouseEvent>
+    {
+        String type;
+        int source;
+        boolean op;
+        TradeWithBankHandler( String theType, boolean arithmeticOp, int theSource)
+        {
+            type = theType;
+            source = theSource;
+            op = arithmeticOp;
+        }
+        
+        @Override
+        public void handle( MouseEvent e)
+        {
+            if( type.equals("bank"))
+            {
+                if( op)
+                    mainController.addSourceToBank(source, 1);
+                else
+                    mainController.subSourceFromBank(source, 1);
+            }
+            else if( type.equals("player"))
+            {
+                if(op)
+                    mainController.addSourceToSelf(source, 1);
+                else
+                    mainController.subSourceFromSelf(source, 1);
+            }
+            refreshTwBMenu();
         }
     }
 }
