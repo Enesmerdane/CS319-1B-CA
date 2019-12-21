@@ -101,11 +101,6 @@ public class GameScreen implements Initializable {
         EMPTY, SETTLEMENT, CITY, ROAD
     }
     
-    @FXML
-    private Rectangle your_turn_rectangle;
-    
-    @FXML
-    private Text your_turn_text;
     private ResourceSetting rscSet;
     enum ResourceSetting
     {
@@ -185,7 +180,6 @@ public class GameScreen implements Initializable {
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         
         construct_type = Construction_type.EMPTY;
-        
         rscSet = ResourceSetting.NONE;
         verticeList = new Point[NUMBER_OF_VERTICES];
         circleList  = new Circle[NUMBER_OF_VERTICES];
@@ -200,8 +194,6 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( knightChoice.getText());
-                pch.setCardType(knightChoice.getText());
                 if( rscSet == ResourceSetting.NONE)
                 {
                     cardMenu.setText( knightChoice.getText());
@@ -214,8 +206,6 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( roadChoice.getText());
-                pch.setCardType( roadChoice.getText());
                 if( rscSet == ResourceSetting.NONE)
                 {
                     cardMenu.setText( roadChoice.getText());
@@ -228,8 +218,6 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( yearChoice.getText());
-                pch.setCardType( yearChoice.getText());
                 if( rscSet == ResourceSetting.NONE)
                 {
                     cardMenu.setText( yearChoice.getText());
@@ -242,53 +230,6 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent e)
             {
-                cardMenu.setText( monoChoice.getText());
-                pch.setCardType( monoChoice.getText());
-            }
-        });
-        
-        grainChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( grainChoice.getText());
-                pch.setSourceType( grainChoice.getText());
-            }
-        });
-        
-        lumberChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( lumberChoice.getText());
-                pch.setSourceType( lumberChoice.getText());
-            }
-        });
-        
-        woolChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( woolChoice.getText());
-                pch.setSourceType( woolChoice.getText());
-            }
-        });
-        
-        oreChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( oreChoice.getText());
-                pch.setSourceType( oreChoice.getText());
-            }
-        });
-        
-        brickChoice.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent e)
-            {
-                sourceMenu.setText( brickChoice.getText());
-                pch.setSourceType( brickChoice.getText());
                 if( rscSet == ResourceSetting.NONE)
                 {
                     cardMenu.setText( monoChoice.getText());
@@ -923,8 +864,6 @@ public class GameScreen implements Initializable {
     @FXML
     private void endTurn(ActionEvent event) throws IOException{
         System.out.println("endTurn tuşuna basıldı");
-        your_turn_rectangle.setStyle("visibility:false");
-        your_turn_text.setStyle("visibility:false");
         mainController.nextPlayer();
         refreshResources();
     }
@@ -939,6 +878,7 @@ public class GameScreen implements Initializable {
         brick.setText( mainController.getCurrentPlayer().getSourceNo(4) + "");
     }
     
+<<<<<<< enes4
     private void setAllCircleNumbersToFront(){
         for(int i = 0; i < 19; i++){
             hexagonNumberCircles[i].toFront();
@@ -949,6 +889,7 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < 19; i++){
             hexagonNumbers[i].toFront();
         }
+=======
     private void toggleResourcePickEffects(boolean toggle)
     {
         grainEffect.setVisible(toggle);
@@ -956,6 +897,7 @@ public class GameScreen implements Initializable {
         woolEffect.setVisible(toggle);
         oreEffect.setVisible(toggle);
         brickEffect.setVisible(toggle);
+>>>>>>> DevCard usage & GUI update
     }
     
     class VertexHandler implements EventHandler<MouseEvent>
@@ -1073,7 +1015,6 @@ public class GameScreen implements Initializable {
     
     class PlayCardHandler implements EventHandler<MouseEvent>
     {
-        String cardType, sourceType;
         String cardType, sourceType, sourceType2;
         PlayCardHandler()
         {
@@ -1115,13 +1056,9 @@ public class GameScreen implements Initializable {
         @Override
         public void handle(MouseEvent e)
         {
-            if( cardType.equals("") || (cardType.equals("Monopoly") && sourceType.equals("")))
             if( cardType.equals(""))
                 return;
             
-            System.out.println( cardType);
-            System.out.println( sourceType);
-            mainController.playCard(cardType, sourceType);
             if( !cardType.equals("Monopoly") && !cardType.equals("Year of Plenty"))
             {
                 mainController.playCard(cardType, sourceType, sourceType2);
