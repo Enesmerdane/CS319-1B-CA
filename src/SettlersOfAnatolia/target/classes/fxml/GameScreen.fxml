@@ -41,27 +41,32 @@
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="144.0" layoutX="596.0" layoutY="934.0" stroke="BLACK" strokeType="INSIDE" width="420.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle fx:id="grainEffect" fill="RED" height="52.0" layoutX="612.0" layoutY="948.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
+      <Rectangle fx:id="lumberEffect" fill="RED" height="52.0" layoutX="692.0" layoutY="949.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
+      <Rectangle fx:id="woolEffect" fill="RED" height="52.0" layoutX="773.0" layoutY="948.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
+      <Rectangle fx:id="oreEffect" fill="RED" height="52.0" layoutX="852.0" layoutY="948.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
+      <Rectangle fx:id="brickEffect" fill="RED" height="52.0" layoutX="934.0" layoutY="949.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
+      <ImageView fx:id="grainPic" fitHeight="65.0" fitWidth="56.0" layoutX="617.0" layoutY="953.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/grain_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="lumberPic" fitHeight="65.0" fitWidth="56.0" layoutX="697.0" layoutY="953.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/woods_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="777.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="woolPic" fitHeight="42.0" fitWidth="56.0" layoutX="778.0" layoutY="953.0" pickOnBounds="true">
          <image>
             <Image url="@../images/sheep_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="857.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="orePic" fitHeight="42.0" fitWidth="56.0" layoutX="857.0" layoutY="953.0" pickOnBounds="true">
          <image>
             <Image url="@../images/iron_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="65.0" fitWidth="56.0" layoutX="937.0" layoutY="958.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="brickPic" fitHeight="42.0" fitWidth="56.0" layoutX="939.0" layoutY="953.0" pickOnBounds="true">
          <image>
             <Image url="@../images/brick_image.jpg" />
          </image>
@@ -76,17 +81,17 @@
       <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1710.0" layoutY="951.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1307.0" layoutY="948.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1031.0" layoutY="926.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
-      <ImageView fx:id="settlement_image_button" fitHeight="104.0" fitWidth="130.0" layoutX="1319.0" layoutY="961.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="settlement_image_button" fitHeight="75.0" fitWidth="130.0" layoutX="1319.0" layoutY="961.0" pickOnBounds="true">
          <image>
             <Image url="@../images/settlement_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="city_image_button" fitHeight="87.0" fitWidth="130.0" layoutX="1526.0" layoutY="957.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="city_image_button" fitHeight="75.0" fitWidth="130.0" layoutX="1526.0" layoutY="961.0" pickOnBounds="true">
          <image>
             <Image url="@../images/city_image.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="road_image_button" fitHeight="96.0" fitWidth="130.0" layoutX="1721.0" layoutY="957.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="road_image_button" fitHeight="75.0" fitWidth="130.0" layoutX="1733.0" layoutY="961.0" pickOnBounds="true">
          <image>
             <Image url="@../images/road_image.JPG" />
          </image>
@@ -159,12 +164,6 @@
             <Point3D z="-1.0" />
          </rotationAxis>
       </ImageView>
-      <Rectangle fx:id="your_turn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="93.0" layoutX="624.0" layoutY="842.0" opacity="0.94" stroke="BLACK" strokeType="INSIDE" style="visibility: true;" width="361.0" />
-      <Text fx:id="your_turn_text" fill="RED" layoutX="644.0" layoutY="904.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: true;" text="It's your turn!">
-         <font>
-            <Font name="System Bold" size="50.0" />
-         </font>
-      </Text>
       <ImageView fx:id="dice1" fitHeight="108.0" fitWidth="102.0" layoutX="206.0" layoutY="586.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dice2" fitHeight="108.0" fitWidth="102.0" layoutX="308.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true" />
       <Rectangle fx:id="game_menu_filter" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1080.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" style="-fx-fill: ffffff; visibility: false" width="1920.0" />
@@ -189,7 +188,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MIDNIGHTBLUE" height="431.0" layoutX="1630.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="291.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MIDNIGHTBLUE" height="274.0" layoutX="1630.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="291.0" />
       <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
          <font>
             <Font size="70.0" />
@@ -274,43 +273,30 @@
         </items>
       </MenuButton>
       <Button fx:id="playCard" layoutX="1834.0" layoutY="234.0" mnemonicParsing="false" text="Play Card" />
-      <Text fill="WHITE" layoutX="1660.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Additional Settings:">
+      <Text layoutX="630.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" />
+      <Text layoutX="704.0" layoutY="1016.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" />
+      <Text layoutX="792.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" />
+      <Text layoutX="875.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ore" />
+      <Text layoutX="954.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brick" />
+      <Text layoutX="1333.0" layoutY="1054.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a settlement">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="1643.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monopoly Source or" wrappingWidth="189.5999755859375">
+      <Text layoutX="1560.0" layoutY="1054.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a city">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <MenuButton fx:id="sourceMenu" layoutX="1810.0" layoutY="334.0" mnemonicParsing="false" text="Select Source">
-        <items>
-          <MenuItem fx:id="grainChoice" mnemonicParsing="false" text="Grain" />
-          <MenuItem fx:id="lumberChoice" mnemonicParsing="false" text="Lumber" />
-            <MenuItem fx:id="woolChoice" mnemonicParsing="false" text="Wool" />
-            <MenuItem fx:id="oreChoice" mnemonicParsing="false" text="Ore" />
-            <MenuItem fx:id="brickChoice" mnemonicParsing="false" text="Brick" />
-        </items>
-      </MenuButton>
-      <Text fill="WHITE" layoutX="1656.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YoP first Source:" wrappingWidth="189.5999755859375">
+      <Text layoutX="1764.0" layoutY="1054.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build a road">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="1643.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="YoP second Source:" wrappingWidth="189.5999755859375">
+      <Text fx:id="resourceMsg" fill="WHITE" layoutX="596.0" layoutY="930.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="419.9999999999998">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Text>
-      <MenuButton fx:id="sourceMenu2" layoutX="1810.0" layoutY="387.0" mnemonicParsing="false" text="Select Source">
-         <items>
-            <MenuItem fx:id="grainChoice2" mnemonicParsing="false" text="Grain" />
-            <MenuItem fx:id="lumberChoice2" mnemonicParsing="false" text="Lumber" />
-            <MenuItem fx:id="woolChoice2" mnemonicParsing="false" text="Wool" />
-            <MenuItem fx:id="oreChoice2" mnemonicParsing="false" text="Ore" />
-            <MenuItem fx:id="brickChoice2" mnemonicParsing="false" text="Brick" />
-         </items>
-      </MenuButton>
    </children>
 </AnchorPane>

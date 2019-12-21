@@ -125,8 +125,10 @@ public class GameController {
     }
     
     public boolean playCard( String cardName, String sourceType)
+    public boolean playCard( String cardName, String sourceType, String sourceType2)
     {
         return gameModel.playCard( cardName, sourceType);
+        return gameModel.playCard( cardName, sourceType, sourceType2);
     }
     
     public int[] getHexagonSources(){
