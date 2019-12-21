@@ -366,7 +366,7 @@ public class GameModel {
     {
         for( DomesticTrade dt : domesticTrades)
         {
-            if( dt.isCreator(playerList.getCurrentPlayer()))
+            if( !dt.isCreator(playerList.getCurrentPlayer()))
             {
                 StringBuffer curOffer, curInReturn;
                 curOffer = new StringBuffer();

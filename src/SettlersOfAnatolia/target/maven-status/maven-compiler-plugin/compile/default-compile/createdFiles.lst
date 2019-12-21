@@ -13,10 +13,10 @@ com\groupb\soa\presentation\MainMenuScreen.class
 com\groupb\soa\business\models\WolfAttack.class
 com\groupb\soa\presentation\GameScreen$17.class
 com\groupb\soa\presentation\GameScreen$8.class
-com\groupb\soa\business\controller\SettingsController.class
 com\groupb\soa\business\models\Dice.class
 com\groupb\soa\presentation\GameScreen$14.class
 com\groupb\soa\business\models\EarthQuake.class
+com\groupb\soa\presentation\SettingsController.class
 com\groupb\soa\presentation\GameScreen$2.class
 com\groupb\soa\presentation\GameScreen$20.class
 com\groupb\soa\presentation\GameScreen$EdgeHandler.class
