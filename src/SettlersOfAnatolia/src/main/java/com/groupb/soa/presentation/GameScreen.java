@@ -175,21 +175,7 @@ public class GameScreen implements Initializable {
         
         instance = this;
     }
-     /**TimerTask task = new TimerTask()
-    {
-        public void run()
-        {
-            
-            if ( gameModel.isCurrentPlayerBot() )  { 
-                    currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
-                    currentPlayer.playTurn( gameModel );
-                    
-            }
-                
-                
-        }
 
-    };*/
     // Methods
     public static GameScreen getInstance(){
         return instance;
@@ -860,6 +846,7 @@ public class GameScreen implements Initializable {
     }
     
     
+    
     @FXML
     private void goBackToGame(ActionEvent event) throws IOException{
         game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false");
@@ -902,6 +889,14 @@ public class GameScreen implements Initializable {
         refreshCardNumbers();
     }
     
+    public void  paintVertex( int index ){
+        circleList[index].setFill( mainController.getCurrentPlayerColor());
+        
+    }
+    
+    public void paintEdge( int index){
+        edgeList[index].setStroke(mainController.getCurrentPlayerColor());
+    }
     private void refreshResources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
@@ -932,7 +927,7 @@ public class GameScreen implements Initializable {
         brickEffect.setVisible(toggle);
     }
     
-    private void refreshCardNumbers()
+    public void refreshCardNumbers()
     {
         knightNo.setText( mainController.getPlayerPlayableCardNo("Knight") + 
                 " (" + mainController.getPlayerCardNo("Knight") + ")");

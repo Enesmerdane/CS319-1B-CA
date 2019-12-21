@@ -26,6 +26,7 @@ public class GameModel {
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private int robberMoves;
+    private boolean thirdTurn;
     
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
@@ -38,12 +39,12 @@ public class GameModel {
         freeRoads = 0;
         firstTurn = true;
         secondTurn = false;
+        thirdTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
         
     }
-    
     
     
     // player rolls the dice and sources are distributed
@@ -159,6 +160,7 @@ public class GameModel {
         turn = queue / 4;
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
+        thirdTurn = ( turn == 2);
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         System.out.println("Game Turn is increased " + turn); 
@@ -280,6 +282,12 @@ public class GameModel {
     public boolean getSecondTurn(){
     return secondTurn;
     }
+    
+     public boolean getThirdTurn(){
+        return thirdTurn;
+    }
+     
+   
 }
 
 
