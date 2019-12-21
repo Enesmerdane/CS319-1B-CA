@@ -10,14 +10,13 @@ package com.groupb.soa.business.models;
  * @author goksuturan
  */
 public abstract class DevCard {
-    String name;
-    boolean recentlyBought;
-    Player owner;
+    private String name;
+    private boolean recentlyBought;
+    private Player owner;
     
-    public DevCard(String name, Player owner){
+    public DevCard(String name){
         this.name = name;
-        recentlyBought = false; //shows whether the dev card is recently bought
-        this.owner = owner;
+        recentlyBought = true; //shows whether the dev card is recently bought
     }
     
     public void setRecentlyBought(boolean recent){

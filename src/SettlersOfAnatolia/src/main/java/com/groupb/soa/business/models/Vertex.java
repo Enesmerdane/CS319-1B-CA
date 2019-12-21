@@ -18,7 +18,7 @@ import javafx.scene.shape.Circle;
  *
  * @author Alper
  */
-public class Vertex implements IGameObject{
+public class Vertex{
 
     // properties
     public static final String SETTLEMENT_IMAGE_PATH = ""; // to be added
@@ -53,12 +53,6 @@ public class Vertex implements IGameObject{
         return newEdge;
     }
     
-    @Override
-    public void render( Node n)
-    {
-        Circle crc = (Circle) n;
-        draw(crc);
-    }
     public void draw( Circle crc)
     {
         if( !occupied)

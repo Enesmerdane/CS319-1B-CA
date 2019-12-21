@@ -129,11 +129,26 @@ public class GameController {
         return gameModel.playCard( cardName, sourceType, sourceType2);
     }
     
+    public int getPlayerCardNo(String cardName)
+    {
+        return gameModel.getPlayerCardNo(cardName);
+    }
+    
+    public int getPlayerPlayableCardNo(String cardName)
+    {
+        return gameModel.getPlayerPlayableCardNo(cardName);
+    }
+    
     public int[] getHexagonSources(){
         return gameModel.getSources();
     }
     
     public int[] getNumberOfHexagons(){
         return gameModel.getNumberOfHexagons();
+    }
+    
+    public boolean buyCard()
+    {
+        return gameModel.buyCard();
     }
 }

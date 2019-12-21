@@ -11,15 +11,15 @@ package com.groupb.soa.business.models;
  */
 public class Monopoly extends DevCard{
     
-    int selectedSource;
+    private int selectedSource;
 
-    public Monopoly( String name, Player owner){
-        super(name, owner);
+    public Monopoly( String name){
+        super(name);
         selectedSource = -1;
     }
     
     public boolean play(GameModel model){
-       if ( recentlyBought)
+       if ( this.getRecentlyBought())
            return false;
        if( selectedSource == -1)
            return false;

@@ -10,14 +10,13 @@ package com.groupb.soa.business.models;
  * @author İrem Kırmacı
  */
 import javafx.scene.canvas.GraphicsContext;
-import java.util.ArrayList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-public class PlayerList implements IGameObject {
-    Player[] players;
-    int currentPlayerNo;
-    int[] colors = { 0, 1, 2, 3}; // each number will be associated with an integer -> No they wont :)) -Enes
+public class PlayerList{
+    private Player[] players;
+    private int currentPlayerNo;
+    private int[] colors = { 0, 1, 2, 3}; // each number will be associated with an integer -> No they wont :)) -Enes
 
     PlayerList(Color playerColors[] ){
         players = new Player[4];
@@ -51,6 +50,7 @@ public class PlayerList implements IGameObject {
 
     public boolean next( boolean secondTurn, boolean stay){
         getCurrentPlayer().refreshCards();
+        getCurrentPlayer().setCanBuyDevCard(true);
         if( !stay)
         {
             if( secondTurn)
@@ -82,11 +82,6 @@ public class PlayerList implements IGameObject {
             players[i].render(gc);
         }
 
-    }
-
-    @Override
-    public void render(Node n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

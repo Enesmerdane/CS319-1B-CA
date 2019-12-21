@@ -16,15 +16,16 @@ import java.util.ArrayList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 
-public class Player implements IGameObject {
-    int[] sources;
-    int score;
-    Color color;
-    int remRoads;
-    int remSettlements;
-    int remCities;
-    int freeRoads;
-    ArrayList<DevCard> cards;
+public class Player{
+    private int[] sources;
+    private int score;
+    private Color color;
+    private int remRoads;
+    private int remSettlements;
+    private int remCities;
+    private int knightCards;
+    private boolean canBuyDevCard;
+    private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
     Player( Color colour){
@@ -35,24 +36,20 @@ public class Player implements IGameObject {
         remCities = 4;
         cards = new ArrayList<DevCard>();
         sources = new int[5];
+        knightCards = 0;
+        canBuyDevCard = true;
         for( int i = 0; i < sources.length; i++)
         {
             sources[i] = 111;
         }
-        cards.add( new Monopoly("test", this));
-        cards.add( new RoadBuilding( "test", this));
-        cards.add( new YearOfPlenty( "test", this));
+        cards.add( new Monopoly("test"));
+        cards.add( new RoadBuilding( "test"));
+        cards.add( new YearOfPlenty( "test"));
+        cards.add( new Knight( "test"));
     }
     
     public boolean buyDevCard(Bank bank){
-        if(sources[0] > 0 && sources[1] > 0 && sources[3] > 0){
-            subSource(0, 1);
-            subSource(1, 1);
-            subSource(3, 1);
-            bank.drawCard();
-            return true;
-        }
-        return false;
+        return bank.drawCard(this);
     }
     
     
@@ -113,11 +110,6 @@ public class Player implements IGameObject {
         return score;
     }
 
-    @Override
-    public void render(Node n) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     public int getRemSettlements()
     {
         return remSettlements;
@@ -154,14 +146,43 @@ public class Player implements IGameObject {
         knightCards = roadCards = yearCards = monoCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
-            /*if( cards.get(i) instanceof Knight)
-            *   knightCards++
-            */
-            if( cards.get(i) instanceof Monopoly)
+            if( cards.get(i) instanceof Knight)
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly)
                 monoCards++;
             else if( cards.get(i) instanceof RoadBuilding)
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty)
+                yearCards++;
+        }
+        
+        switch (cardName) {
+            case "Knight":
+                return knightCards;
+            case "Road Building":
+                return roadCards;
+            case "Year of Plenty":
+                return yearCards;
+            case "Monopoly":
+                return monoCards;
+            default:
+                return -1;
+        }
+    }
+    
+    public int getPlayableCardNo(String cardName)
+    {
+        int knightCards, roadCards, yearCards, monoCards;
+        knightCards = roadCards = yearCards = monoCards = 0;
+        for( int i = 0; i < cards.size(); i++)
+        {
+            if( cards.get(i) instanceof Knight && !cards.get(i).getRecentlyBought())
+                knightCards++;
+            else if( cards.get(i) instanceof Monopoly && !cards.get(i).getRecentlyBought())
+                monoCards++;
+            else if( cards.get(i) instanceof RoadBuilding && !cards.get(i).getRecentlyBought())
+                roadCards++;
+            else if( cards.get(i) instanceof YearOfPlenty && !cards.get(i).getRecentlyBought())
                 yearCards++;
         }
         
@@ -187,7 +208,7 @@ public class Player implements IGameObject {
             boolean condition;
             switch (cardName) {
             case "Knight":
-                condition = false; break; //condition = cards.get(i) instanceof Knight;
+                condition = cards.get(i) instanceof Knight; break; //condition = cards.get(i) instanceof Knight;
             case "Road Building":
                 condition = cards.get(i) instanceof RoadBuilding; break;
             case "Year of Plenty":
@@ -216,6 +237,26 @@ public class Player implements IGameObject {
             if( dc.getRecentlyBought())
                 dc.setRecentlyBought(false);
         }
+    }
+    
+    public boolean getCanBuyDevCard()
+    {
+        return canBuyDevCard;
+    }
+    
+    public void setCanBuyDevCard( boolean toggle)
+    {
+        canBuyDevCard = toggle;
+    }
+    
+    public void addCard( DevCard dc)
+    {
+        cards.add( dc);
+    }
+    
+    public void incrementKnightCards()
+    {
+        knightCards++;
     }
 }
 

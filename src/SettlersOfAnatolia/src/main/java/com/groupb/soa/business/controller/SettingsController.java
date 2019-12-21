@@ -14,32 +14,29 @@ import javafx.scene.media.MediaPlayer;
  * @author Irmak
  */
 public class SettingsController {
-    boolean isGameMusicOn;
-    boolean isGameSoundOn;
-    String background; 
+    private boolean isGameMusicOn;
+    private boolean isGameSoundOn;
+    private String background; 
     public SettingsController()
     {
         isGameMusicOn = true;
         isGameSoundOn = true; 
-        String background = "wooden"; 
+        background = "wooden"; 
         
     }
     
     public boolean getIsGameMusicOn()
     {
-        boolean gameMusicState = isGameMusicOn;
-        return gameMusicState; 
+        return isGameMusicOn; 
     }
     
     public boolean getIsMusicSoundOn()
     {
-        boolean gameSoundState = isGameSoundOn;
-        return gameSoundState; 
+        return isGameSoundOn; 
     }
-    public String getBackground ()
+    public String getBackground()
     {
-        String currentBackground = background;
-        return currentBackground; 
+        return background; 
     }
     
     public void setIsGameMusicOn(boolean gameMusicState )
@@ -48,7 +45,6 @@ public class SettingsController {
         if ( isGameMusicOn == true)
         {
             String path = "C:\\Users\\User\\Downloads\\sound.mpeg";  
-          
         //Instantiating Media class  
         Media media = new Media(new File(path).toURI().toString());  
           

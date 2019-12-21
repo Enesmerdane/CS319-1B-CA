@@ -11,8 +11,8 @@ package com.groupb.soa.business.models;
  */
 
 public class LocatableObject {
-    double x;
-    double y;
+    private double x;
+    private double y;
 
     LocatableObject( double x, double y){
         x = this.x;
