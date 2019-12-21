@@ -23,22 +23,6 @@ import javafx.stage.Stage;
  */
 public class GameController {
     
-
-    TimerTask task = new TimerTask()
-    {
-        public void run()
-        {
-            
-            if ( gameModel.isCurrentPlayerBot() )  { 
-                    currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
-                    currentPlayer.playTurn( gameModel );
-                    
-            }
-                
-                
-        }
-
-    };
     // Properties
     
     
@@ -49,13 +33,30 @@ public class GameController {
     
     private Stage stage;
     
+    TimerTask task = new TimerTask()
+    {
+        public void run()
+        {
+             System.out.println ("TIMER ÇALIŞTI");
+            
+                if( gameModel.isCurrentPlayerBot()){
+                    currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
+                    currentPlayer.playTurn( gameModel );
+                    
+                    
+                }
+                
+                
+        }
+
+    };
+    
     // Constructors
     public GameController(Stage stage, Application mainApplication) throws IOException
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.schedule(task, 5000);
-         t.scheduleAtFixedRate(task, 0 , 5000);
+         t.scheduleAtFixedRate(task, 5000 , 7000 );
     }
     
     // Methods
