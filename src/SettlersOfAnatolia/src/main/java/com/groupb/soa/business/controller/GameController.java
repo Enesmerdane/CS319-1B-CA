@@ -31,7 +31,6 @@ public class GameController {
     
     // Properties
     
-    
     private GameModel gameModel; 
     Timer t;
     private BotPlayer currentPlayer;
@@ -94,7 +93,6 @@ public class GameController {
     
     public void initateGame(int mode, Color[] playerColors){ // 0 = multiplayer, 1 = bot 
         // here we set default colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
-        
         if ( mode == 0 ) //multiplayer
             gameModel = new GameModel(playerColors, false);
         else  //bot

@@ -57,6 +57,18 @@ public class GameScreen implements Initializable {
     private boolean robberIsMoving;
     private boolean robberWillMove;
     
+    @FXML
+    private Rectangle player1color; 
+    
+    @FXML
+    private Rectangle player2color;
+    
+    @FXML
+    private Rectangle player3color;
+    
+    @FXML
+    private Rectangle player4color;
+    
     // View properties
     @FXML
     private AnchorPane rootPane;
@@ -515,6 +527,11 @@ public class GameScreen implements Initializable {
         for(int i = 0; i < NUMBER_OF_HEXAGONS; i++){
             robberImageView[i].toFront();
         }
+        
+        player1color.setFill(mainController.getPlayerColors()[0]);
+        player2color.setFill(mainController.getPlayerColors()[1]);
+        player3color.setFill(mainController.getPlayerColors()[2]);
+        player4color.setFill(mainController.getPlayerColors()[3]);
     }
     private void drawAllEdges(){
         int i = 0;
@@ -1006,7 +1023,7 @@ public class GameScreen implements Initializable {
             game_menu_filter.toFront();
             game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             game_menu_background.toFront();
-            game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true; top");
+            game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true;");
             game_menu_title.toFront();
             game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
             game_menu_game_music.toFront();
