@@ -1081,7 +1081,15 @@ public class GameScreen implements Initializable {
     public void paintEdge( int index){
         edgeList[index].setStroke(mainController.getCurrentPlayerColor());
     }
-    private void refreshResources()
+    
+    public void  paintCity( int index ){
+        circleList[index].setStroke(Color.GOLD);
+        circleList[index].setStrokeWidth(3.0);
+
+        
+    }
+    
+    public void refreshResources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
         if( mainController.isCurrentPlayerBot())
