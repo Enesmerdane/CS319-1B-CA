@@ -16,3 +16,13 @@ src/SettlersOfAnatolia/target/maven-archiver/pom.properties
 *.lst
 
 *.jar
+*.class
+*.class
+*.class
+src/SettlersOfAnatolia/target/classes/com/groupb/soa/presentation/GameScreen$19.class
+src/SettlersOfAnatolia/target/classes/com/groupb/soa/presentation/GameScreen$18.class
+src/SettlersOfAnatolia/target/classes/com/groupb/soa/presentation/GameScreen$19.class
+src/SettlersOfAnatolia/target/classes/com/groupb/soa/business/models/BotPlayer.class
+src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/SettingsScreen.java
+src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/MainMenuScreen.java
+src/SettlersOfAnatolia/src/main/java/com/groupb/soa/presentation/GameOptionsScreen.java
