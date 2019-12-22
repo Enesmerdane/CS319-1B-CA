@@ -35,13 +35,13 @@ public class SettingsScreen implements Initializable {
     
     private boolean isMusicOn;
     private boolean isSoundsOn;
-    
+    SettingsController settings;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        SettingsController settings = MainApp.getInstance().getSettings();
+         settings = MainApp.getInstance().getSettings();
         
         isMusicOn  = settings.getIsGameMusicOn();
         isSoundsOn = settings.getIsGameSoundOn();
@@ -56,6 +56,7 @@ public class SettingsScreen implements Initializable {
         
         if(isSoundsOn){
             game_settings_game_sound_state.setText("Game Sounds: ON");
+            
         }else{
             game_settings_game_sound_state.setText("Game Sounds: OFF");
         }
@@ -79,10 +80,12 @@ public class SettingsScreen implements Initializable {
     private void changeMusicState(){
         if(isMusicOn){
             game_settings_game_music_state.setText("Game Music: OFF");
+            
         }else{
             game_settings_game_music_state.setText("Game Music: ON");
         }
         isMusicOn = !isMusicOn;
+         settings.setIsGameMusicOn(isMusicOn);
     }
     
     @FXML
@@ -93,5 +96,6 @@ public class SettingsScreen implements Initializable {
             game_settings_game_sound_state.setText("Game Sounds: ON");
         }
         isSoundsOn = !isSoundsOn;
+         settings.setIsGameSoundOn(isSoundsOn);
     }
 }
