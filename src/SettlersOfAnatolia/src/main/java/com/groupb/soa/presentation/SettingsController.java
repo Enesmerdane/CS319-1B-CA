@@ -65,6 +65,35 @@ public class SettingsController {
     public void setIsGameMusicOn(boolean gameMusicState )
     {
         isGameMusicOn = gameMusicState;
+        if ( isGameMusicOn == true)
+        {
+            /*String path = "/musics/gameMusic.mpeg";  
+          
+        //Instantiating Media class  
+        Media media = new Media(new File(path).toURI().toString());  
+          
+        //Instantiating MediaPlayer class   
+        MediaPlayer mediaPlayer = new MediaPlayer(media);  */
+           
+          //mediaPlayer.setVolume(10);
+        //by setting this property to true, the audio will be played   
+        mediaPlayer.setMute(false);  
+        }
+        else
+        {
+           /* String path = "/musics/gameMusic.mpeg";  
+          
+        //Instantiating Media class  
+        Media media = new Media(new File(path).toURI().toString());  
+          
+        //Instantiating MediaPlayer class   
+        MediaPlayer mediaPlayer = new MediaPlayer(media); */ 
+          //mediaPlayer.setVolume(0);
+        //by setting this property to true, the audio will be played   
+        //mediaPlayer.setAutoPlay(false); 
+        mediaPlayer.setMute(true);
+        System.out.println("hi false");
+        }
     }
     
     public void setIsGameSoundOn( boolean gameSoundState)

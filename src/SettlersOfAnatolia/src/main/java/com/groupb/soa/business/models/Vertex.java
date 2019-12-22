@@ -209,4 +209,13 @@ public class Vertex{
     {
         return edges;
     }
+    public void setColor(Color color)// added 
+    {
+        occupColor = color;
+    }
+    public void setLevel(int newLevel)// added
+    {
+        level = newLevel;
+    }
+
 }

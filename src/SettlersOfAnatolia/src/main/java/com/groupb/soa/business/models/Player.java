@@ -262,4 +262,9 @@ public class Player{
     {
         knightCards++;
     }
+    public void decreaseScore(int amount) // added new 
+    {
+        score -= amount;
+    }
+
 }

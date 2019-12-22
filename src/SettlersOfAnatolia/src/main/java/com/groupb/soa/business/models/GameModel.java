@@ -30,10 +30,12 @@ public class GameModel {
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
     private boolean thirdTurn;
+    private int []playerCityNo;
     
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
+        playerCityNo = new int [4];
         bank = new Bank();
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
@@ -415,6 +417,37 @@ public class GameModel {
     {
         return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
     }
+    public int [] destroyAllCities()
+    {
+        for ( int i = 0; i< 54; i++)
+        {
+            if ( tile.getVertexWithId(i).getLevel() == 2)
+            {
+                for(int j = 0; j < 4; j++)
+                {
+                    if(tile.getVertexWithId(i).getOccupColor().equals(playerList.getPlayer(j).getColor())){
+                        //tile.getVertexWithId(i).setColor(Color.BLACK);
+                        playerCityNo[j] = playerCityNo[j] + 1;
+                    }
+                                       
+                      
+                  //playerList.getPlayer(j).decreaseScore(2);
+                  
+                }
+               //tile.getVertexWithId(i).setLevel(0);
+               bank.addSource(0,3);
+               bank.addSource(1,2);
+            }
+        }
+        return playerCityNo; 
+    }
+    public int [] getPlayerCityNo()
+    {
+        return playerCityNo;
+                
+    }
+
+
 }
 
 
