@@ -298,4 +298,16 @@ public class Player{
         longestRoadLength = value;
         return true;
     }
+    
+    public boolean removeHalfResources()
+    {
+        if( getTotalNoOfSources() < 7)
+            return false;
+        
+        for( int i = 0; i < 5; i++)
+        {
+            sources[i] = sources[i] / 2;
+        }
+        return true;
+    }
 }

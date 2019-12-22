@@ -76,5 +76,13 @@ public class PlayerList{
         }
         return false;
     }
+    
+    public void AllRemoveHalf()
+    {
+        for( int i = 0; i < 4; i++)
+        {
+            players[i].removeHalfResources();
+        }
+    }
 }
 

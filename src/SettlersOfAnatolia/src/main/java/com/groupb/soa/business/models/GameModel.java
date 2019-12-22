@@ -64,6 +64,13 @@ public class GameModel {
     public boolean produceResources(){
             if( !diceRolled)
             {
+                if( dice.getValue() + dice2.getValue() == 7)
+                {
+                    diceRolled = true;
+                    playerList.AllRemoveHalf();
+                    robberMoves++;
+                    return true;
+                }
                 diceRolled = true;
                 return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
             }

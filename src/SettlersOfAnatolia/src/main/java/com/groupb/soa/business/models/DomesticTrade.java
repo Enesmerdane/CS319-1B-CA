@@ -12,10 +12,10 @@ import java.util.Arrays;
  * @author İrem Kırmacı
  */
 public class DomesticTrade  {
-    Player creator;
-    int[] offer;
-    int[] inReturn;
-    int lifetime;
+    private Player creator;
+    private int[] offer;
+    private int[] inReturn;
+    private int lifetime;
     private static final int[] indices = {1, 2, 3, 0, 4};
     public DomesticTrade( Player theCreator, int[] theOffer, int[] theInReturn)
     {
