@@ -137,6 +137,9 @@ public class GameScreen implements Initializable {
     private Button grainP2incr, lumberP2incr, woolP2incr, oreP2incr, brickP2incr;
     @FXML
     private Button twpcreate, twpaccept, twpclose;
+    
+    private ImageView robberImageView;
+    
     private GameController mainController;
     
     
@@ -452,6 +455,8 @@ public class GameScreen implements Initializable {
         
         initializeTwBMenu();
         initializeDomesticTradeMenu();
+        
+        robberImageView.toFront();
     }
     private void drawAllEdges(){
         int i = 0;
@@ -872,12 +877,25 @@ public class GameScreen implements Initializable {
             hexagonNumberCircles[index].setStyle("visibility:false");
         }
         
+        if(hexagonNumber == 7){
+            numberX += 15;
+            robberImageView = new ImageView();
+            robberImageView.setX(numberX);
+            robberImageView.setY(numberY);
+            String numberPath = "/images/robber.jpg";
+
+            Image image = new Image(numberPath);
+            
+            robberImageView.setImage(image);
+            robberImageView.setFitHeight(10);
+            robberImageView.setFitWidth(10);
+            
+            rootPane.getChildren().add(robberImageView);
+        }
+        
+        
+        
         rootPane.getChildren().add(hexagonNumberCircles[index]);
-        
-        //hexagonNumbers[index] = new Text(numberX, numberY, Integer.toString(hexagonNumber));
-        //hexagonNumbers[index].setFont(new Font(20));
-        
-        //rootPane.getChildren().add(hexagonNumbers[index]);
         rootPane.getChildren().add(hexagon);
         
         // DEBUG
