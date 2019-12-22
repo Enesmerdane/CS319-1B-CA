@@ -28,6 +28,8 @@ public class Player{
     private boolean hasLargestArmy;
     private boolean hasLongestRoad;
     private boolean canBuyDevCard;
+    private boolean usedAnatolianShepherdDog;
+    private int destroyedCities;
     private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
@@ -44,7 +46,8 @@ public class Player{
         hasLargestArmy = false;
         hasLongestRoad = false;
         canBuyDevCard = true;
-        
+        usedAnatolianShepherdDog = false;
+        destroyedCities = 0;
         for( int i = 0; i < sources.length; i++)
         {
             sources[i] = 20;
@@ -56,13 +59,14 @@ public class Player{
         cards.add( new Knight( "test"));
         cards.add( new Knight( "test"));
         cards.add( new Knight( "test"));
+        cards.add( new Insurance( "test"));
+        cards.add( new AnatolianShepherdDog("test"));
     }
     
     public boolean buyDevCard(Bank bank){
         
         System.out.println( "Dev card a girildi");
         return bank.drawCard(this);
-        
     }
     
 
@@ -152,8 +156,8 @@ public class Player{
     
     public int getCardNo(String cardName)
     {
-        int knightCards, roadCards, yearCards, monoCards;
-        knightCards = roadCards = yearCards = monoCards = 0;
+        int knightCards, roadCards, yearCards, monoCards, insCards, asdCards;
+        knightCards = roadCards = yearCards = monoCards = insCards = asdCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
             if( cards.get(i) instanceof Knight)
@@ -164,7 +168,11 @@ public class Player{
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty)
                 yearCards++;
-        }
+            else if( cards.get(i) instanceof Insurance)
+                insCards++;
+            else if( cards.get(i) instanceof AnatolianShepherdDog)
+                asdCards++;
+        }       
         
         switch (cardName) {
             case "Knight":
@@ -175,6 +183,10 @@ public class Player{
                 return yearCards;
             case "Monopoly":
                 return monoCards;
+            case "Insurance":
+                return insCards;
+            case "Anatolian Shepherd Dog":
+                return asdCards;
             default:
                 return -1;
         }
@@ -182,8 +194,8 @@ public class Player{
     
     public int getPlayableCardNo(String cardName)
     {
-        int knightCards, roadCards, yearCards, monoCards;
-        knightCards = roadCards = yearCards = monoCards = 0;
+        int knightCards, roadCards, yearCards, monoCards, insCards, asdCards;
+        knightCards = roadCards = yearCards = monoCards = insCards = asdCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
             if( cards.get(i) instanceof Knight && !cards.get(i).getRecentlyBought())
@@ -194,7 +206,11 @@ public class Player{
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty && !cards.get(i).getRecentlyBought())
                 yearCards++;
-        }
+            else if( cards.get(i) instanceof Insurance && !cards.get(i).getRecentlyBought())
+                insCards++;
+            else if( cards.get(i) instanceof AnatolianShepherdDog && !cards.get(i).getRecentlyBought())
+                asdCards++;
+        }       
         
         switch (cardName) {
             case "Knight":
@@ -205,6 +221,10 @@ public class Player{
                 return yearCards;
             case "Monopoly":
                 return monoCards;
+            case "Insurance":
+                return insCards;
+            case "Anatolian Shepherd Dog":
+                return asdCards;
             default:
                 return -1;
         }
@@ -218,13 +238,17 @@ public class Player{
             boolean condition;
             switch (cardName) {
             case "Knight":
-                condition = cards.get(i) instanceof Knight; break; //condition = cards.get(i) instanceof Knight;
+                condition = cards.get(i) instanceof Knight; break;
             case "Road Building":
                 condition = cards.get(i) instanceof RoadBuilding; break;
             case "Year of Plenty":
                 condition = cards.get(i) instanceof YearOfPlenty; break;
             case "Monopoly":
                 condition = cards.get(i) instanceof Monopoly; break;
+            case "Insurance":
+                condition = cards.get(i) instanceof Insurance; break;
+            case "Anatolian Shepherd Dog":
+                condition = cards.get(i) instanceof AnatolianShepherdDog; break;
             default:
                 condition = false;
             }
@@ -317,4 +341,32 @@ public class Player{
         }
         return true;
     }
+    
+    public void successfulCityDestroy()
+    {
+        remSettlements++;
+        remCities++;
+        destroyedCities++;
+    }
+    
+    public int getDestroyedCities()
+    {
+        return destroyedCities;
+    }
+    
+    public void resetDestroyedCities()
+    {
+        destroyedCities = 0;
+    }
+    
+    public boolean getUsedAnatolianShepherdDog()
+    {
+        return usedAnatolianShepherdDog;
+    }
+    
+    public void setUsedAnatolianShepherdDog(boolean value)
+    {
+        usedAnatolianShepherdDog = value;
+    }
+   
 }

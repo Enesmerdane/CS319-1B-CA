@@ -76,7 +76,7 @@ public class GameTile {
         return hexagonList;
     }
     
-    public boolean produceResources(int sum, PlayerList pl)
+    public boolean produceResources(int sum, PlayerList pl, boolean flood, boolean wolfattack, boolean cybele)
     {
         if( sum == 7)
             return false;
@@ -85,7 +85,7 @@ public class GameTile {
         {
             if( h.getNumber() == sum )
             {
-                result &= h.produceResource(pl);
+                result &= h.produceResource(pl, flood, wolfattack, cybele);
             }
         }
         return result;
@@ -138,6 +138,28 @@ public class GameTile {
                 }
             }
         }
+    }
+    
+    public int[] destroyAllCities(PlayerList pl)
+    {
+        List<Integer> destroyedIndices = new ArrayList<>();
+        
+        for( Vertex v: vertices)
+        {
+            // if current vertex is a city
+            if( v.getLevel() == 2)
+            {
+                v.destroyCity(pl);
+                destroyedIndices.add(v.getVertexNo());
+            }
+        }
+        
+        int[] result = new int[destroyedIndices.size()];
+        for( int i = 0; i < result.length; i++)
+        {
+            result[i] = destroyedIndices.get(i);
+        }
+        return result;
     }
     
     private int findLongestRoadHelper(Set<Integer> visited, Color playerColor, int index, int triVertex)

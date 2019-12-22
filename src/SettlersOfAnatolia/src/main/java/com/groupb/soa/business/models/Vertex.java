@@ -175,6 +175,19 @@ public class Vertex{
         return true;
     }
 
+    public boolean destroyCity(PlayerList pl)
+    {
+        if( level != 2)
+            return false;
+        
+        // set the proper variables back to default.
+        level = 0;
+        occupied = false;
+        
+        pl.getPlayerWithColor(occupColor).successfulCityDestroy();
+        occupColor = Color.BLACK;
+        return true;
+    }
     public int getVertexNo()
     {
         return vertexNo;

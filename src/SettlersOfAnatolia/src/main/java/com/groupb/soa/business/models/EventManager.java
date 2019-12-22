@@ -18,7 +18,6 @@ public class EventManager {
 
     public Event checkEvent(){
 
-        //creating a random value between 0 and 100
         int random = (int)(Math.random()* 100 );
         if(random >= 0 && random <= 10){
             if(random <= 2){

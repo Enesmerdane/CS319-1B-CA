@@ -172,7 +172,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MIDNIGHTBLUE" height="319.0" layoutX="1630.0" layoutY="2.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="291.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="MIDNIGHTBLUE" height="435.0" layoutX="1630.0" layoutY="2.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="291.0" />
       <Text fx:id="game_menu_title" layoutX="770.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" style="visibility: false" text="Game Menu">
          <font>
             <Font size="70.0" />
@@ -248,15 +248,17 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <MenuButton fx:id="cardMenu" layoutX="1656.0" layoutY="283.0" mnemonicParsing="false" text="Pick a Card">
+      <MenuButton fx:id="cardMenu" layoutX="1653.0" layoutY="400.0" mnemonicParsing="false" text="Pick a Card">
         <items>
           <MenuItem fx:id="knightChoice" mnemonicParsing="false" text="Knight" />
           <MenuItem fx:id="roadChoice" mnemonicParsing="false" text="Road Building" />
             <MenuItem fx:id="yearChoice" mnemonicParsing="false" text="Year of Plenty" />
             <MenuItem fx:id="monoChoice" mnemonicParsing="false" text="Monopoly" />
+            <MenuItem fx:id="insChoice" mnemonicParsing="false" text="Insurance" />
+            <MenuItem fx:id="asdChoice" mnemonicParsing="false" text="A. S. Dog" />
         </items>
       </MenuButton>
-      <Button fx:id="playCard" layoutX="1830.0" layoutY="283.0" mnemonicParsing="false" text="Play Card" />
+      <Button fx:id="playCard" layoutX="1834.0" layoutY="400.0" mnemonicParsing="false" text="Play Card" />
       <Text layoutX="630.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grain" />
       <Text layoutX="704.0" layoutY="1016.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lumber" />
       <Text layoutX="792.0" layoutY="1017.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wool" />
@@ -558,5 +560,75 @@
             </Button>
          </children>
       </Group>
+      <Text fx:id="eventText" fill="WHITE" layoutX="451.0" layoutY="858.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="787.13671875">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1660.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="insNo" fill="WHITE" layoutX="1776.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 (0)" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1653.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anatolian Shepherd" wrappingWidth="221.09130859375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="1660.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dog:" wrappingWidth="156.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="asdNo" fill="WHITE" layoutX="1713.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 (0)" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="p1Knights" fill="WHITE" layoutX="1100.0" layoutY="905.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="p2Knights" fill="WHITE" layoutX="1437.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="p3Knights" fill="WHITE" layoutX="754.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="p4knights" fill="WHITE" layoutX="122.0" layoutY="838.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="1031.0" layoutY="863.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="1368.0" layoutY="393.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="685.0" layoutY="53.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="46.0" layoutY="796.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
