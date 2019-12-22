@@ -38,7 +38,11 @@ public class GameModel {
     private List<DomesticTrade> domesticTrades;
     private boolean thirdTurn;
     private int []playerCityNo;
-    
+    private boolean isFlood; //new
+    private boolean isWolfAttacked; //new
+    private boolean isCybeleMonth; //new
+    private boolean isEarthquake;
+
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -64,6 +68,10 @@ public class GameModel {
         winner = null;
         currentTwB = null;
         domesticTrades = new ArrayList<>();
+        isFlood = false;
+        isWolfAttacked = false;
+        isCybeleMonth = false;
+        isEarthquake = false;
     }
     
     
@@ -600,6 +608,35 @@ public class GameModel {
     {
         return isOver;
     }
+    public boolean getWolfAttacked(){ //new
+        return isWolfAttacked;
+   }
+   public void setWolfAttacked(boolean wolfAttacked){ //new
+        isWolfAttacked= wolfAttacked;
+   }
+
+    public boolean getFlood(){ //new
+        return isFlood;
+    }
+    public void setFlood(boolean flood){ //new
+        isFlood= flood;
+    }
+
+
+    public boolean getCybeleMonth(){ //new
+        return isCybeleMonth;
+    }
+    public void setCybeleMonth(boolean cybele){ //new
+        isCybeleMonth= cybele;
+    }
+    //new added
+    public void setEarthquake(boolean earthquake){
+        isEarthquake = earthquake;
+    }
+    public boolean getEarthquake(){
+        return  isEarthquake;
+    }
+
 }
 
 

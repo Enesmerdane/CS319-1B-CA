@@ -7,13 +7,17 @@ package com.groupb.soa.business.models;
 
 /**
  *
- * @author Irmak Demir
+ * @author apple
  */
-public class EarthQuake implements Event {
-    public EarthQuake(){}
+public class Victory extends DevCard {
+    public Victory(String name, Player owner){
+        super(name);
 
-    public void occur(GameModel model) {
-        model.setEarthquake(true); //new
-        //model.destroyAllCities();
     }
+
+  
+    public boolean play(GameModel model) {
+        return false;
+    }
+    
 }

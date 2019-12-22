@@ -7,13 +7,8 @@ package com.groupb.soa.business.models;
 
 /**
  *
- * @author Irmak Demir
+ * @author apple
  */
-public class EarthQuake implements Event {
-    public EarthQuake(){}
-
-    public void occur(GameModel model) {
-        model.setEarthquake(true); //new
-        //model.destroyAllCities();
-    }
+public class AnatolianShepherdDog {
+    
 }
