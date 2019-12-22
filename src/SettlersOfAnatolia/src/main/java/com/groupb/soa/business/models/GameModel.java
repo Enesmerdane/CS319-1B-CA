@@ -426,15 +426,15 @@ public class GameModel {
                 for(int j = 0; j < 4; j++)
                 {
                     if(tile.getVertexWithId(i).getOccupColor().equals(playerList.getPlayer(j).getColor())){
-                        //tile.getVertexWithId(i).setColor(Color.BLACK);
+                        tile.getVertexWithId(i).setColor(Color.BLACK);
                         playerCityNo[j] = playerCityNo[j] + 1;
                     }
                                        
                       
-                  //playerList.getPlayer(j).decreaseScore(2);
+                  playerList.getPlayer(j).decreaseScore(2);
                   
                 }
-               //tile.getVertexWithId(i).setLevel(0);
+               tile.getVertexWithId(i).setLevel(0);
                bank.addSource(0,3);
                bank.addSource(1,2);
             }
