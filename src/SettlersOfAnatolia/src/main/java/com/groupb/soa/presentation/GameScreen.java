@@ -7,7 +7,6 @@ package com.groupb.soa.presentation;
 
 import com.groupb.soa.MainApp;
 import com.groupb.soa.business.controller.GameController;
-import com.groupb.soa.business.models.Dice;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,6 +54,8 @@ public class GameScreen implements Initializable {
     private static final double HEXAGONS_BASE_Y = 237.0;
     
     // Variables
+    private boolean robberIsMoving;
+    private boolean robberWillMove;
     
     // View properties
     @FXML
@@ -137,9 +139,10 @@ public class GameScreen implements Initializable {
     private Button grainP2incr, lumberP2incr, woolP2incr, oreP2incr, brickP2incr;
     @FXML
     private Button twpcreate, twpaccept, twpclose;
+    
+    private ImageView[] robberImageView;
     @FXML
     private Text p1Knights, p2Knights, p3Knights, p4Knights;
-    private ImageView robberImageView;
     
     private GameController mainController;
     
@@ -218,6 +221,7 @@ public class GameScreen implements Initializable {
     
     private int currentTradeRequest;
     private ObservableList<Text> tradeRequestList;
+    private int currentRobberHexagon;
     // Constructors
     /**
      * @param mainController to call build methods
@@ -231,6 +235,8 @@ public class GameScreen implements Initializable {
         this.mainController = MainApp.getInstance().getGameControllerObj();
         
         instance = this;
+        robberIsMoving = false; // robber check
+        robberWillMove = false;
     }
 
     // Methods
@@ -241,7 +247,7 @@ public class GameScreen implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        robberImageView = new ImageView[NUMBER_OF_HEXAGONS];
         hexagonList = new Polygon[NUMBER_OF_HEXAGONS];
         tradeRequestList = FXCollections.observableArrayList();
         construct_type = Construction_type.EMPTY;
@@ -255,7 +261,7 @@ public class GameScreen implements Initializable {
         currentTradeRequest = -1;
         domesticOffers = new int[5];
         domesticInReturn = new int[5];
-        
+        currentRobberHexagon = 7;
         pch = new PlayCardHandler();
         playCard.setOnMouseClicked(pch);
         knightChoice.setOnAction( new EventHandler<ActionEvent>() {
@@ -460,6 +466,7 @@ public class GameScreen implements Initializable {
         
         
         
+        
         double baseX = HEXAGONS_BASE_X;
         double baseY = HEXAGONS_BASE_Y;
         
@@ -488,13 +495,26 @@ public class GameScreen implements Initializable {
         initializeTwBMenu();
         initializeDomesticTradeMenu();
         
-        robberImageView.toFront();
+
+        for(int i = 0; i < NUMBER_OF_HEXAGONS; i++){
+            robberImageView[i].setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent event) {
+                    // if one of the trade windows are open, return.
+                    if( robberWillMove ){
+                        System.out.println("robber1");
+                        robberWillMove = false;
+                        robberIsMoving = true;
+                    }
+                }
+
+            });
+        }
         
-        Color[] colors = mainController.getPlayerColors();
-        player1Rect.setFill(colors[0]);
-        player2Rect.setFill(colors[1]);
-        player3Rect.setFill(colors[2]);
-        player4Rect.setFill(colors[3]);
+        
+        for(int i = 0; i < NUMBER_OF_HEXAGONS; i++){
+            robberImageView[i].toFront();
+        }
     }
     private void drawAllEdges(){
         int i = 0;
@@ -910,28 +930,36 @@ public class GameScreen implements Initializable {
             Image image = new Image(numberPath);
             hexagonNumberCircles[index].setFill(new ImagePattern(image));
             System.out.println("number path:" + numberPath);
+            
+            
         } else {
             System.out.println("index " + hexagonNumber + " is invisible");
             hexagonNumberCircles[index].setStyle("visibility:false");
+            
+            currentRobberHexagon = index;
         }
         
-        if(hexagonNumber == 7){
-            numberX += 15;
-            robberImageView = new ImageView();
-            robberImageView.setX(numberX);
-            robberImageView.setY(numberY);
-            String numberPath = "/images/robber.jpg";
+        double width = 50.0;
+        double height= 50.0;
+        numberX -= width / 2;
+        numberY -= height / 2;
+        String numberPath = "/images/robber.jpg";
+        
+        robberImageView[index] = new ImageView();
+        
+        Image image = new Image(numberPath);
+        
+        robberImageView[index].setImage(image);
+        robberImageView[index].setX(numberX);
+        robberImageView[index].setY(numberY);
+        robberImageView[index].setFitHeight(50);
+        robberImageView[index].setFitWidth(50);
 
-            Image image = new Image(numberPath);
-            
-            robberImageView.setImage(image);
-            robberImageView.setFitHeight(10);
-            robberImageView.setFitWidth(10);
-            
-            rootPane.getChildren().add(robberImageView);
+        rootPane.getChildren().add(robberImageView[index]);
+        
+        if(hexagonNumber != 7){
+            robberImageView[index].setVisible(false);
         }
-        
-        
         
         rootPane.getChildren().add(hexagonNumberCircles[index]);
         rootPane.getChildren().add(hexagon);
@@ -944,6 +972,14 @@ public class GameScreen implements Initializable {
         String image_path = "/images/" + "hexagon_" + sourceName + "_image" + ".jpg";
         Image img = new Image(image_path);
         hexagon.setFill(new ImagePattern(img));
+        
+        hexagon.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+                event.getSource();
+            }
+            
+        });
     }
     
     
@@ -1129,12 +1165,6 @@ public class GameScreen implements Initializable {
     private void setAllCircleNumbersToFront(){
         for(int i = 0; i < 19; i++){
             hexagonNumberCircles[i].toFront();
-        }
-    }
-    
-    private void setAllHexagonNumbersToFront(){
-        for(int i = 0; i < 19; i++){
-            hexagonNumbers[i].toFront();
         }
     }
     private void toggleResourcePickEffects(boolean toggle)
@@ -1517,9 +1547,15 @@ public class GameScreen implements Initializable {
         public void handle(MouseEvent e)
         {
             // if one of the trade windows are open, return.
-            if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+            if(robberIsMoving){
+                System.out.println("robber2");
+                mainController.sendRobberToHexagon(index);
+                redrawRobber(index);
+            } 
+            else if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible()){
                 return;
-            mainController.sendRobberToHexagon(index);
+            }
+            
             refreshResources();
             refreshScores();
         }
@@ -1661,31 +1697,36 @@ public class GameScreen implements Initializable {
     }
     public int botRollsDice(){
         int[] diceNums = mainController.rollDice();
-            Image d1img, d2img;
-            switch(diceNums[0])
-            {
-                case 1: d1img = new Image("images/die_face_1.png"); break;
-                case 2: d1img = new Image("images/die_face_2.png"); break;
-                case 3: d1img = new Image("images/die_face_3.png"); break;
-                case 4: d1img = new Image("images/die_face_4.png"); break;
-                case 5: d1img = new Image("images/die_face_5.png"); break;
-                case 6: d1img = new Image("images/die_face_6.png"); break;
-                default: d1img = null; break;
-            }
-            switch(diceNums[1])
-            {
-                case 1: d2img = new Image("images/die_face_1.png"); break;
-                case 2: d2img = new Image("images/die_face_2.png"); break;
-                case 3: d2img = new Image("images/die_face_3.png"); break;
-                case 4: d2img = new Image("images/die_face_4.png"); break;
-                case 5: d2img = new Image("images/die_face_5.png"); break;
-                case 6: d2img = new Image("images/die_face_6.png"); break;
-                default: d2img = null; break;
-            }
-            dice1.setImage(d1img);
-            dice2.setImage(d2img);
-            refreshResources();
-            return diceNums[0] + diceNums[1];
+        Image d1img, d2img;
+        switch(diceNums[0])
+        {
+            case 1: d1img = new Image("images/die_face_1.png"); break;
+            case 2: d1img = new Image("images/die_face_2.png"); break;
+            case 3: d1img = new Image("images/die_face_3.png"); break;
+            case 4: d1img = new Image("images/die_face_4.png"); break;
+            case 5: d1img = new Image("images/die_face_5.png"); break;
+            case 6: d1img = new Image("images/die_face_6.png"); break;
+            default: d1img = null; break;
+        }
+        switch(diceNums[1])
+        {
+            case 1: d2img = new Image("images/die_face_1.png"); break;
+            case 2: d2img = new Image("images/die_face_2.png"); break;
+            case 3: d2img = new Image("images/die_face_3.png"); break;
+            case 4: d2img = new Image("images/die_face_4.png"); break;
+            case 5: d2img = new Image("images/die_face_5.png"); break;
+            case 6: d2img = new Image("images/die_face_6.png"); break;
+            default: d2img = null; break;
+        }
+        
+        if(checkForSeven(diceNums))
+            robberWillMove = true;
+        
+        dice1.setImage(d1img);
+        dice2.setImage(d2img);
+        refreshResources();
+        
+        return diceNums[0] + diceNums[1];
     }
     
     class TradeWithBankHandler implements EventHandler<MouseEvent>
@@ -1783,4 +1824,21 @@ public class GameScreen implements Initializable {
         }
     }
     
+    public void redrawRobber(int index){
+        
+        robberImageView[currentRobberHexagon].setVisible(false);
+        robberImageView[index].setVisible(true);
+        currentRobberHexagon = index;
+        robberIsMoving = false;
+    }
+    
+    private boolean checkForSeven(int [] nums){
+        int sum = 0;
+        for(int i = 0; i < 2; i++){
+            sum += nums[i];
+        }
+        if(sum == 7)
+            return true;
+        return false;
+    }
 }
