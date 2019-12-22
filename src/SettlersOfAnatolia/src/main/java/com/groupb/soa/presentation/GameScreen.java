@@ -197,6 +197,10 @@ public class GameScreen implements Initializable {
     private Rectangle grainEffect, lumberEffect, woolEffect, oreEffect, brickEffect;
     @FXML
     private Text p1score, p2score, p3score, p4score, playerName;
+    
+    @FXML
+    private Rectangle player1Rect, player2Rect, player3Rect, player4Rect;
+    
     private boolean gameSound = true;
     private boolean gameMusic = true;
     
@@ -485,6 +489,12 @@ public class GameScreen implements Initializable {
         initializeDomesticTradeMenu();
         
         robberImageView.toFront();
+        
+        Color[] colors = mainController.getPlayerColors();
+        player1Rect.setFill(colors[0]);
+        player2Rect.setFill(colors[1]);
+        player3Rect.setFill(colors[2]);
+        player4Rect.setFill(colors[3]);
     }
     private void drawAllEdges(){
         int i = 0;

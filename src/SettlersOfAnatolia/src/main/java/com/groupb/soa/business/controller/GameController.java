@@ -31,7 +31,6 @@ public class GameController {
     // Properties
     
     
-    
     private GameModel gameModel; 
     Timer t;
     private BotPlayer currentPlayer;
@@ -65,7 +64,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 10000 , 5000 );
+         t.scheduleAtFixedRate(task, 15000 , 5000 );
     }
     
     // Methods
@@ -92,14 +91,9 @@ public class GameController {
     
     
     
-    public void initateGame(int mode){ // 0 = multiplayer, 1 = bot 
+    public void initateGame(int mode, Color[] playerColors){ // 0 = multiplayer, 1 = bot 
         // here we set default colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
         
-        Color[] playerColors = new Color[4];
-        playerColors[0] = Color.RED;
-        playerColors[1] = Color.BLUE;
-        playerColors[2] = Color.GREENYELLOW;
-        playerColors[3] = Color.PURPLE;
         if ( mode == 0 ) //multiplayer
             gameModel = new GameModel(playerColors, false);
         else  //bot
@@ -311,5 +305,9 @@ public class GameController {
     public boolean isCurrentPlayerBot()
     {
         return gameModel.isCurrentPlayerBot();
+    }
+    
+    public Color[] getPlayerColors(){
+        return gameModel.getPlayerColors();
     }
 }

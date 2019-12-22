@@ -45,12 +45,14 @@ public class GameModel {
     private boolean isEarthquake;
     private EventManager eventMgr;
     private Event event;
-
+    
     private boolean forthTurn;
     private int []playerCityNo;
     
+    private Color[] playerColors;
+    
     public GameModel(Color[] playerColors, boolean isBot) {
-        
+        this.playerColors = playerColors;
         
         playerList = new PlayerList( playerColors, isBot);
         
@@ -676,6 +678,9 @@ public class GameModel {
         return playerList.getPlayer(index).getKnights();
     }
     
+    public Color[] getPlayerColors(){
+        return playerColors;
+    }
 }
 
 
