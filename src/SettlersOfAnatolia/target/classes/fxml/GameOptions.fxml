@@ -19,12 +19,12 @@
          </image>
       </ImageView>
       <Rectangle id="game_options_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="435.0" layoutX="121.0" layoutY="322.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="806.0" />
-      <Button fx:id="new_game_button_game_options" layoutX="565.0" layoutY="609.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goNewGame" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Start Game" textFill="WHITE">
+      <Button fx:id="new_game_button_game_options" layoutX="565.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goNewGame" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Start Game" textFill="WHITE">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
       </Button>
-      <Button fx:id="main_menu_button_game_options" layoutX="187.0" layoutY="609.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Main Menu" textFill="WHITE">
+      <Button fx:id="main_menu_button_game_options" layoutX="187.0" layoutY="643.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="70.0" prefWidth="320.0" style="-fx-background-color: ffb04d; -fx-background-radius: 0.5em;" text="Main Menu" textFill="WHITE">
          <font>
             <Font name="System Bold" size="35.0" />
          </font>
@@ -34,6 +34,15 @@
         </items>
          <font>
             <Font size="35.0" />
+         </font>
+      </MenuButton>
+      <MenuButton fx:id="gameTypeOption" layoutX="580.0" layoutY="573.0" mnemonicParsing="false" text="Choose a Game Type">
+        <items>
+          <MenuItem fx:id="multiplayer" mnemonicParsing="false" text="Play with Friends" />
+          <MenuItem fx:id="withBots" mnemonicParsing="false" text="Play with Bots" />
+        </items>
+         <font>
+            <Font size="24.0" />
          </font>
       </MenuButton>
       <TextField fx:id="username_game_options" layoutX="203.0" layoutY="483.0">

@@ -51,6 +51,15 @@ public class GameOptionsScreen implements Initializable {
     @FXML
     private MenuButton color_picked_game_options;
     
+    @FXML
+    private MenuButton gameTypeOption;
+    
+    @FXML
+    private MenuItem withBots;
+    
+    @FXML
+    private MenuItem multiplayer;
+    
     /**
      * Initializes the controller class.
      */
@@ -92,6 +101,20 @@ public class GameOptionsScreen implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 color_picked_game_options.setText(color_greenItem.getText());
+            }
+        });
+        
+        withBots.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                gameTypeOption.setText(withBots.getText());
+            }
+        });
+        
+        multiplayer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                gameTypeOption.setText(multiplayer.getText());
             }
         });
         
