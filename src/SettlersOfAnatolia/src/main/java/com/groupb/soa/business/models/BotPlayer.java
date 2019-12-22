@@ -55,9 +55,11 @@ public class BotPlayer extends Player {
                 }
                 else if ( random == 1)  
                 {
+                    int counter = 0;
                     if ( model.getCurrentPlayer().getSourceNo(4) >= 1 && model.getCurrentPlayer().getSourceNo(2) >= 1){
                         int edgeIndex = (int)(Math.random() * 72);
-                        while ( !model.buildRoad( edgeIndex )){
+                        while ( !model.buildRoad( edgeIndex ) && counter < 72){
+                            counter++;
                             edgeIndex = (int)(Math.random() * 72); 
                         } 
                         GameScreen.getInstance().paintEdge(edgeIndex);
@@ -65,9 +67,11 @@ public class BotPlayer extends Player {
                         
                 }
                 else if ( random == 2){
+                    int counter = 0;
                     int vertex = (int)(Math.random() * 54);
-                     while ( !model.buildSettlement(vertex)){
-                    vertex = (int)(Math.random() * 54);
+                     while ( !model.buildSettlement(vertex) && counter < 54){
+                        counter ++;
+                        vertex = (int)(Math.random() * 54);
                     }
                      GameScreen.getInstance().paintVertex(vertex);
                      GameScreen.getInstance().refreshScores();
