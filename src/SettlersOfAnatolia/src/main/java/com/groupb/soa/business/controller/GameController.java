@@ -65,7 +65,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 5000 , 5000 );
+         t.scheduleAtFixedRate(task, 10000 , 5000 );
     }
     
     // Methods
@@ -102,7 +102,7 @@ public class GameController {
         playerColors[3] = Color.PURPLE;
         if ( mode == 0 ) //multiplayer
             gameModel = new GameModel(playerColors, false);
-        else if ( mode == 1) //bot
+        else  //bot
             gameModel = new GameModel(playerColors, true);
     }
     

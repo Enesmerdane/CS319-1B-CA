@@ -20,20 +20,22 @@ public class PlayerList{
 
     PlayerList(Color playerColors[], boolean isBot ){
         if( isBot){
-        players = new Player[4];
-        players[0] = new Player( playerColors[0]); //first player is the actual player
-        for ( int i = 1; i < 4; i++){
-                players[i] = new Player( playerColors[i]);
-        }
-        currentPlayerNo = 0;
+            System.out.println("irem");
+            players = new Player[4];
+            players[0] = new Player( playerColors[0]); //first player is the actual player
+            for ( int i = 1; i < 4; i++){
+                    players[i] = new BotPlayer( playerColors[i]);
+            }
+            currentPlayerNo = 0;
         }
         else{
+            System.out.println("göksu");
             players = new Player[4];
             players[0] = new Player( playerColors[0]); //first player is the actual player
             for ( int i = 1; i < 4; i++){
                 players[i] = new Player( playerColors[i]);
         }
-            currentPlayerNo = 0;
+        currentPlayerNo = 0;
         }
     }
 

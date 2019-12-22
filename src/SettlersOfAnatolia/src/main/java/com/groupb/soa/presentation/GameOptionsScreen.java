@@ -130,9 +130,23 @@ public class GameOptionsScreen implements Initializable {
     private void goNewGame(ActionEvent event) throws IOException{
         userName = username_game_options.getText();
         
-        if(!userName.equals("") && !color_picked_game_options.getText().equals("Color")){
-            MainApp.getInstance().getGameControllerObj().initateGame(0); // This has to be done before loading UI because ui uses some models to display
+        if(!userName.equals("") && !color_picked_game_options.getText().equals("Color") && !gameTypeOption.getText().equals("Choose a Game Type")){
             AnchorPane pane;
+            int type = 0;
+            switch(gameTypeOption.getText()){
+                case "Play with Friends":
+                    System.out.println("Playing with friends");
+                    type = 0;
+                    break;
+                case "Play with Bots":
+                    System.out.println("Playing with bots");
+                    type = 1;
+                    break;
+                default:
+                    System.out.println("Olmadı :((");
+            }
+            
+            MainApp.getInstance().getGameControllerObj().initateGame(type); // This has to be done before loading UI because ui uses some models to display
             if(MainApp.getWidth() != 1920.0){
                 pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreenLR.fxml"));
             } else {
@@ -149,6 +163,5 @@ public class GameOptionsScreen implements Initializable {
         
         rootPane.getChildren().setAll(pane);
         
-        MainApp.getInstance().getGameControllerObj().initateGame(0);
     }
 }
