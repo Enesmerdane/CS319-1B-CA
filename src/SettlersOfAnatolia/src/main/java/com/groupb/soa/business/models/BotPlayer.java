@@ -41,7 +41,12 @@ public class BotPlayer extends Player {
             GameScreen.getInstance().paintEdge(edgeIndex);
         } 
         else {
-            GameScreen.getInstance().botRollsDice();
+            int dice = GameScreen.getInstance().botRollsDice();
+            if ( dice == 7){
+                int temp = (int)(Math.random() * 19);
+                while( !model.sendRobberToHexagon(temp ))
+                    temp = (int)(Math.random() * 19);
+            }
             if ( ! model.getThirdTurn() ){
                 int random = (int)(Math.random() * 2);
                 if ( random == 0) {

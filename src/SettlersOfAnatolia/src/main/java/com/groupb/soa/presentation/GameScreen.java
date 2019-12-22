@@ -1555,7 +1555,7 @@ public class GameScreen implements Initializable {
             }
         }
     }
-    public void botRollsDice(){
+    public int botRollsDice(){
         int[] diceNums = mainController.rollDice();
             Image d1img, d2img;
             switch(diceNums[0])
@@ -1581,6 +1581,7 @@ public class GameScreen implements Initializable {
             dice1.setImage(d1img);
             dice2.setImage(d2img);
             refreshResources();
+            return diceNums[0] + diceNums[1];
     }
     
     class TradeWithBankHandler implements EventHandler<MouseEvent>
