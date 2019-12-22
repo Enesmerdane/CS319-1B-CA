@@ -408,4 +408,23 @@ public class GameTile {
         }
         return numbers;
     }
+    
+    public int getVertexLevel( int index)
+    {
+        return vertices[index].getLevel();
+    }
+    
+    public Color getVertexColor( int index)
+    {
+        return vertices[index].getOccupColor();
+    }
+    
+    public boolean firstProduce(PlayerList playerList)
+    {
+        hexagons[3].produceResource(playerList, false, false, false);
+        hexagons[7].produceResource(playerList, false, false, false);
+        hexagons[12].produceResource(playerList, false, false, false);
+        hexagons[13].produceResource(playerList, false, false, false);
+        return true;
+    }
 }

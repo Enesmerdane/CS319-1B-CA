@@ -241,6 +241,10 @@ public class GameModel {
         
         playerList.next( secondTurn, queue == 3 || queue == 7);
         queue++;
+        if( queue == 8)
+        {
+            tile.firstProduce(playerList);
+        }
         turn = queue / 4;
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
@@ -669,6 +673,15 @@ public class GameModel {
         return playerList.getPlayer(index).getKnights();
     }
     
+    public int getVertexLevel(int index)
+    {
+        return tile.getVertexLevel(index);
+    }
+    
+    public Color getVertexColor( int index)
+    {
+        return tile.getVertexColor(index);
+    }
 }
 
 

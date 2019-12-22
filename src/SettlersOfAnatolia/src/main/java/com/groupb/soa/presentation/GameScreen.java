@@ -1023,6 +1023,30 @@ public class GameScreen implements Initializable {
     }
     
     @FXML
+    private void refreshVertices()
+    {
+        for( int i = 0; i < verticeList.length; i++)
+        {
+            int level = mainController.getVertexLevel(i);
+            if( level == 0)
+            {
+                circleList[i].setFill(Color.BLACK);
+                circleList[i].setStrokeWidth(0.0);
+            }
+            else if(level == 1)
+            {
+                circleList[i].setFill( mainController.getVertexColor(i));
+                circleList[i].setStrokeWidth(0.0);
+            }
+            else if(level == 2)
+            {
+                circleList[i].setFill(mainController.getVertexColor(i));
+                circleList[i].setStrokeWidth(3.0);
+                circleList[i].setStroke(Color.GOLD);
+            }
+        }
+    }
+    @FXML
     private void endTurn(ActionEvent event) throws IOException{
         System.out.println("endTurn tuşuna basıldı");
         // if one of the trade windows are open, return.
@@ -1058,6 +1082,7 @@ public class GameScreen implements Initializable {
         else if (s.equals("Earthquake"))
         {
             message = "An earthquake has occurred. All cities are destroyed.";
+            refreshVertices();
         }
         
         else if( s.equals("Cybele"))

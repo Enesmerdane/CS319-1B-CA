@@ -310,4 +310,14 @@ public class GameController {
     {
         return gameModel.isCurrentPlayerBot();
     }
+    
+    public int getVertexLevel(int index)
+    {
+        return gameModel.getVertexLevel(index);
+    }
+    
+    public Color getVertexColor(int index)
+    {
+        return gameModel.getVertexColor(index);
+    }
 }
