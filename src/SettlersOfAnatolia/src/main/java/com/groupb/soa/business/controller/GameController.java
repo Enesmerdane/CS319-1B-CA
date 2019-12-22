@@ -8,6 +8,7 @@ import com.groupb.soa.business.models.GameModel;
 import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.BotPlayer;
 import com.groupb.soa.business.models.PlayerList;
+import com.groupb.soa.presentation.GameScreen;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -160,7 +161,11 @@ public class GameController {
     
     public boolean sendRobberToHexagon( int index)
     {
-        return gameModel.sendRobberToHexagon(index);
+        if(gameModel.sendRobberToHexagon(index)){
+            GameScreen.getInstance().redrawRobber(index);
+            return true;
+        }
+        return false;
     }
     
     public boolean playCard( String cardName, String sourceType, String sourceType2)
