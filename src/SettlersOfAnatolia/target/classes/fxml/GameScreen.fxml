@@ -560,7 +560,7 @@
             </Button>
          </children>
       </Group>
-      <Text fx:id="eventText" fill="WHITE" layoutX="451.0" layoutY="870.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="787.13671875">
+      <Text fx:id="eventText" fill="WHITE" layoutX="451.0" layoutY="858.0" strokeType="OUTSIDE" strokeWidth="0.0" text="An earthquake has occurred. All cities are destroyed." textAlignment="CENTER" wrappingWidth="787.13671875">
          <font>
             <Font size="20.0" />
          </font>
@@ -590,45 +590,45 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="1040.0" layoutY="868.0">
-         <image>
-            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="p1Knights" fill="WHITE" layoutX="1109.0" layoutY="905.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+      <Text fx:id="p1Knights" fill="WHITE" layoutX="1100.0" layoutY="905.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="1365.0" layoutY="397.0">
-         <image>
-            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="p2Knights" fill="WHITE" layoutX="1434.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+      <Text fx:id="p2Knights" fill="WHITE" layoutX="1437.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="685.0" layoutY="58.0">
-         <image>
-            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
-         </image>
-      </ImageView>
       <Text fx:id="p3Knights" fill="WHITE" layoutX="754.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="54.0" layoutY="793.0">
-         <image>
-            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="p4knights" fill="WHITE" layoutX="123.0" layoutY="830.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+      <Text fx:id="p4knights" fill="WHITE" layoutX="122.0" layoutY="838.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="1031.0" layoutY="863.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="1368.0" layoutY="393.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="685.0" layoutY="53.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="46.0" layoutY="796.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/knight.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
