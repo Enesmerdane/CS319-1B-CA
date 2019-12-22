@@ -62,11 +62,6 @@ public class Player{
         return bank.drawCard(this);
     }
     
-    
-    public void increaseScore( int amount){
-        score += amount;
-    }
-
 
     public void addSource(int source, int amount){
         sources[source] = sources[source] + amount;
@@ -110,18 +105,16 @@ public class Player{
         return sources[value];
     }
 
-    public void render(GraphicsContext gc) {
-    }
-
-    public void addScore(int score) {
-        this.score += score;
-    }
 
     public int getScore() {
+        int baseScore = 0;
+        baseScore += ( 5 - remSettlements);
+        baseScore += ( 4 - remCities);
+        if( hasLongestRoad)
+            baseScore += 2;
         if( hasLargestArmy)
-            return score + 2;
-        else
-            return score;
+            baseScore += 2;
+        return baseScore;
     }
 
     public int getRemSettlements()
@@ -281,5 +274,28 @@ public class Player{
     public void setLargestArmy( boolean value)
     {
         hasLargestArmy = value;
+    }
+    
+    public int getLongestRoad()
+    {
+        return longestRoadLength;
+    }
+    
+    public boolean getHasLongestRoad()
+    {
+        return hasLongestRoad;
+    }
+    
+    public void setHasLongestRoad(boolean value)
+    {
+        hasLongestRoad = value;
+    }
+    
+    public boolean setLongestRoad( int value)
+    {
+        if( value <= longestRoadLength)
+            return false;
+        longestRoadLength = value;
+        return true;
     }
 }

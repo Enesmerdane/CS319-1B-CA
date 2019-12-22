@@ -236,4 +236,14 @@ public class GameController {
     {
         return gameModel.getPlayerScore(index);
     }
+    
+    public Player getWinner()
+    {
+        return gameModel.getWinner();
+    }
+    
+    public boolean isGameOver()
+    {
+        return gameModel.isGameOver();
+    }
 }

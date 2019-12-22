@@ -26,9 +26,14 @@ public class GameModel {
     private boolean secondTurn;
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
+    private boolean diceRolled;
+    private boolean isOver;
     private int robberMoves;
     private int largestArmy;
+    private int longestRoad;
     private Player largestArmyHolder;
+    private Player longestRoadHolder;
+    private Player winner;
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
     public GameModel(Color[] playerColors) {
@@ -44,19 +49,31 @@ public class GameModel {
         secondTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
+        diceRolled = false;
+        isOver = false;
         robberMoves = 0;
-        largestArmy = 3; // has to be 3
+        largestArmy = 3;
+        longestRoad = 5;
         largestArmyHolder = null;
+        longestRoadHolder = null;
+        winner = null;
         currentTwB = null;
         domesticTrades = new ArrayList<>();
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
-            return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
+            if( !diceRolled)
+            {
+                diceRolled = true;
+                return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
+            }
+            return false;
     }
     
     public boolean sendRobberToHexagon( int index)
     {
+       if( firstTurn || secondTurn || !diceRolled)
+           return false;
        if( robberMoves > 0)
        {
             boolean result = tile.sendRobberToHexagon(index, playerList);
@@ -81,10 +98,14 @@ public class GameModel {
             else if( firstTurnRoadBuilt)
                 return false;
         }
+        
+        if( !firstTurn && !secondTurn && !diceRolled)
+            return false;
         boolean result = tile.buildRoad(index, playerList.getCurrentPlayer().getColor(),  playerList,  firstTurn || secondTurn || freeRoads > 0);
         if(result){
             System.out.println("GameModel: Building Road by " + playerList.getCurrentPlayer().getColor().toString() + " on the Edge " + index);
             // if it is the set-up turns, notify that the player built their free road.
+            completeLongestRoadCheck();
             if( firstTurn || secondTurn)
                 firstTurnRoadBuilt = true;
             // if it is not the set-up turns and the player built a free road, subtract 1 free road privilege.
@@ -101,10 +122,12 @@ public class GameModel {
         {
             return false;
         }
+        if( !firstTurn && !secondTurn && !diceRolled)
+            return false;
         boolean result = tile.buildVertex( index, playerList.getCurrentPlayer().getColor(),  playerList, firstTurn, secondTurn );
         if(result){
            System.out.println("GameModel: Building Settlement by " + playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index);
-           playerList.getCurrentPlayer().increaseScore( 1);
+           completeLongestRoadCheck();
            if( firstTurn || secondTurn)
                firstTurnSettBuilt = true;
         } else {
@@ -117,10 +140,12 @@ public class GameModel {
         // if it is the first turns, return false.
         if (firstTurn ||secondTurn)
             return false;
+        if( !firstTurn && !secondTurn && !diceRolled)
+            return false;
         boolean result =  tile.upgradeVertex(  index,playerList.getCurrentPlayer().getColor(), playerList);
+        completeLongestRoadCheck();
         if(result){
             System.out.println("GameModel: Building City by "+ playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index);
-            playerList.getCurrentPlayer().increaseScore(1); // This will be 1 since theres another score added while building the settlement!
         } else {
             System.out.println("GameModel: Building City by "+ playerList.getCurrentPlayer().getColor().toString() + " on the Vertex " + index + " FAILED for some reasons");
         }
@@ -155,6 +180,15 @@ public class GameModel {
         if( robberMoves > 0)
             return;
         
+        if( !firstTurn && !secondTurn && !diceRolled)
+            return;
+        
+        if( playerList.getCurrentPlayer().getScore() >= 10)
+        {
+            isOver = true;
+            winner = playerList.getCurrentPlayer();
+            return;
+        }
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
@@ -166,13 +200,14 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         currentTwB = null;
+        
         System.out.println("Game Turn is increased " + turn);
     }
     
     public int[] rollDice()
     {
         int result[] = new int[2];
-        if( firstTurn || secondTurn)
+        if( firstTurn || secondTurn || diceRolled)
         {
             result[0] = result[1] = 0;
             return result;
@@ -285,11 +320,15 @@ public class GameModel {
     
     public boolean buyCard()
     {
+        if( firstTurn || secondTurn || !diceRolled)
+            return false;
         return playerList.getCurrentPlayer().buyDevCard(bank);
     }
     
     public boolean startTradeWithBank()
     {
+        if( !diceRolled || firstTurn || secondTurn)
+            return false;
         if ( currentTwB != null)
             return false;
         currentTwB = new TradeWithBank( playerList.getCurrentPlayer(), bank);
@@ -357,6 +396,10 @@ public class GameModel {
         return result;
     }
     
+    public boolean getDiceRolled()
+    {
+        return diceRolled;
+    }
     public boolean addDomesticTrade(int[] offers, int[] inReturn)
     {
         boolean canMakeTrade = true;
@@ -412,6 +455,68 @@ public class GameModel {
     public int getPlayerScore( int index)
     {
         return playerList.getPlayer( index).getScore();
+    }
+    
+    private void changeLongestRoad( Player p, int length)
+    {
+        p.setLongestRoad( length);
+    }
+    
+    public void completeLongestRoadCheck()
+    {
+        tile.completeLongestRoadCheck(playerList);
+        int max = Integer.MIN_VALUE;
+        Player maxHolder = null;
+        for( int i = 0; i < 4; i++)
+        {
+            if( max < playerList.getPlayer(i).getLongestRoad())
+            {
+                max = playerList.getPlayer(i).getLongestRoad();
+                maxHolder = playerList.getPlayer(i);
+            }
+        }
+        
+        if( longestRoadHolder == null)
+        {
+            // this means that there hasn't been any longest road owner. So, if max => 5, we set max holder as longest road holder.
+            if( max < 5)
+                return;
+            
+            longestRoad = max;
+            longestRoadHolder = maxHolder;
+            longestRoadHolder.setHasLongestRoad(true);
+        }
+        
+        else
+        {
+            if( max < 5) // this means that no one holds the longest road. take the achievement from all.
+            {
+                for( int i = 0; i < 4; i++)
+                {
+                    playerList.getPlayer(i).setHasLongestRoad(false);
+                }
+                
+                longestRoad = 5;
+                longestRoadHolder = null;
+            }
+            else 
+            {
+                longestRoadHolder.setHasLongestRoad( false);
+                longestRoad = max;
+                longestRoadHolder = maxHolder;
+                longestRoadHolder.setHasLongestRoad( true);
+            }
+        }
+    }
+    
+    public Player getWinner()
+    {
+        return winner;
+    }
+    
+    public boolean isGameOver()
+    {
+        return isOver;
     }
 }
 

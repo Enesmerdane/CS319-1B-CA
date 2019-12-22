@@ -7,7 +7,7 @@ package com.groupb.soa.business.models;
  * and open the template in the editor.
  */
 
-import java.util.ArrayList;
+import java.util.*;
 import javafx.scene.paint.Color;
 
 /**
@@ -61,7 +61,10 @@ public class GameTile {
 
     public boolean buildRoad(int index, Color playerColor, PlayerList pl, boolean first)
     {
-        return edges[index].build(first, playerColor, pl);
+        boolean result = edges[index].build(first, playerColor, pl);
+        if( result)
+            System.out.println( "-----" + findLongestRoad(pl, playerColor, index) + "-----");
+        return result;
     }
 
     public ArrayList<Hexagon> getHexsWithValue(int value) {
@@ -102,12 +105,102 @@ public class GameTile {
         return hexagons[index].stealResource(pl, pl.getCurrentPlayer().getColor());
     }
 
-    private int findLongestRoad(PlayerList pl, Color playerColor, int index)
+    public int findLongestRoad(PlayerList pl, Color playerColor, int index)
     {
-        // TO-DO
-        return 0;
+        Set<Integer> visited = new HashSet<>();
+        return findLongestRoadHelper( visited, playerColor, index, -1);
     }
     
+    public void completeLongestRoadCheck( PlayerList pl)
+    {
+        Color[] playerColors = new Color[4];
+        playerColors[0] = pl.getPlayer(0).getColor();
+        playerColors[1] = pl.getPlayer(1).getColor();
+        playerColors[2] = pl.getPlayer(2).getColor();
+        playerColors[3] = pl.getPlayer(3).getColor();
+        Set<Integer> visited = new HashSet<>();
+        // for all edges in the game tile...
+        for( Edge e: edges)
+        {
+            // if an edge is occupied and isn't visited,
+            if( e.isOccupied() && !visited.contains( e.getEdgeNo()))
+            {
+                // run a findLongestRoadHelper from that edge, and store the number.
+                int result = findLongestRoadHelper(visited, e.getOccupColor(), e.getEdgeNo(), -1);
+                // find the player that owns this edge.
+                for( int i = 0; i < playerColors.length; i++)
+                {
+                    // update current player's longest road.
+                    if( playerColors[i].equals( e.getOccupColor()))
+                    {
+                        pl.getPlayerWithColor( playerColors[i]).setLongestRoad(result);
+                    }
+                }
+            }
+        }
+    }
+    
+    private int findLongestRoadHelper(Set<Integer> visited, Color playerColor, int index, int triVertex)
+    {
+        if( !edges[index].getOccupColor().equals(playerColor))
+            return 0;
+        visited.add( index);
+        System.out.println( "Visited edge " + index);
+        List<Integer> lengths = new ArrayList<>();
+        boolean noneVisited = true;
+        boolean lookBack = true;
+        for( Vertex v : edges[index].getVertices())
+        {
+            if( !v.isOccupied()|| (v.isOccupied() && v.getOccupColor().equals(playerColor)) && v.getVertexNo() != triVertex)
+            {
+                // if vertex has 3 neighboring edges, check if all are the player's.
+                boolean playerOwnsAll3 = false;
+                if( v.getEdges().size() == 3)
+                {
+                    // check if all are the players.
+                    playerOwnsAll3 = true;
+                    for( Edge e : v.getEdges())
+                    {
+                        if( playerOwnsAll3)
+                            playerOwnsAll3 &= e.getOccupColor().equals(playerColor);
+                    }
+                    // what we aim here is, if player owns all of the edges of that vertex, do not look into that vertex.
+                }
+                for( Edge e : v.getEdges())
+                {
+                    if( e.getOccupColor().equals(playerColor) && !visited.contains(e.getEdgeNo()))
+                    {
+                        int curLongest = findLongestRoadHelper(visited, playerColor, e.getEdgeNo(), (playerOwnsAll3 ? v.getVertexNo() : -1));
+                        System.out.println( "curLongest at edge " + index + " is " + curLongest);
+                        lengths.add(curLongest);
+                        noneVisited = false;
+                    }
+                }
+            }
+        }
+        if( noneVisited)
+        {
+            return 1;
+        }
+        else
+        {
+            int max = Integer.MIN_VALUE;
+            for( int i : lengths)
+            {
+                if( i > max)
+                    max = i;
+            }
+            if( max == Integer.MIN_VALUE)
+            {
+                return 0;
+            }
+            else
+            {
+                System.out.println( "Max at edge " + index + " is " + max);
+                return 1 + max; 
+            }
+        }
+    }
     private void distributeSources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4

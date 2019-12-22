@@ -533,5 +533,30 @@
             <Font size="24.0" />
          </font>
       </Text>
+      <Group fx:id="gameEndGroup" layoutX="603.0" layoutY="361.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb04d" height="300.0" stroke="BLACK" strokeType="INSIDE" width="438.0" />
+            <Text layoutX="9.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Game Over" textAlignment="CENTER" wrappingWidth="419.9999999999995">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+            <Text layoutX="186.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Won!">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Text fx:id="playerName" layoutX="179.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Button fx:id="game_menu_back_to_main_menu1" layoutX="36.0" layoutY="206.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#goBackMainMenu" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Back to Main Menu">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Button>
+         </children>
+      </Group>
    </children>
 </AnchorPane>
