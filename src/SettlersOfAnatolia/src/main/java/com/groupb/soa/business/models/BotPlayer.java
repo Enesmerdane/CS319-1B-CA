@@ -41,23 +41,40 @@ public class BotPlayer extends Player {
             GameScreen.getInstance().paintEdge(edgeIndex);
         } 
         else {
-            GameScreen.getInstance().botRollsDice();
+            int dice = GameScreen.getInstance().botRollsDice();
+            if ( dice == 7){
+                int temp = (int)(Math.random() * 19);
+                while( !model.sendRobberToHexagon(temp ))
+                    temp = (int)(Math.random() * 19);
+            }
             if ( ! model.getThirdTurn() ){
-                int random = (int)(Math.random() * 2);
+                int random = (int)(Math.random() * 3);
                 if ( random == 0) {
                     model.getCurrentPlayer().buyDevCard(model.getBank());
                     GameScreen.getInstance().refreshCardNumbers();
                 }
                 else if ( random == 1)  
                 {
+                    int counter = 0;
                     if ( model.getCurrentPlayer().getSourceNo(4) >= 1 && model.getCurrentPlayer().getSourceNo(2) >= 1){
                         int edgeIndex = (int)(Math.random() * 72);
-                        while ( !model.buildRoad( edgeIndex )){
+                        while ( !model.buildRoad( edgeIndex ) && counter < 72){
+                            counter++;
                             edgeIndex = (int)(Math.random() * 72); 
                         } 
                         GameScreen.getInstance().paintEdge(edgeIndex);
                     }
                         
+                }
+                else if ( random == 2){
+                    int counter = 0;
+                    int vertex = (int)(Math.random() * 54);
+                     while ( !model.buildSettlement(vertex) && counter < 54){
+                        counter ++;
+                        vertex = (int)(Math.random() * 54);
+                    }
+                     GameScreen.getInstance().paintVertex(vertex);
+                     GameScreen.getInstance().refreshScores();
                 }
                 
                    

@@ -47,7 +47,7 @@ public class Player{
         
         for( int i = 0; i < sources.length; i++)
         {
-            sources[i] = 111;
+            sources[i] = 0;
         }
         cards.add( new Monopoly("test"));
         cards.add( new RoadBuilding( "test"));

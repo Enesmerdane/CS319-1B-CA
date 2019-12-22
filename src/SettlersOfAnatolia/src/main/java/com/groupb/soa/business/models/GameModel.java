@@ -24,6 +24,7 @@ public class GameModel {
     private int freeRoads;
     private boolean firstTurn;
     private boolean secondTurn;
+    
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private boolean diceRolled;
@@ -37,6 +38,7 @@ public class GameModel {
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
     private boolean thirdTurn;
+    private boolean forthTurn;
     private int []playerCityNo;
     
     public GameModel(Color[] playerColors) {
@@ -52,6 +54,7 @@ public class GameModel {
         firstTurn = true;
         secondTurn = false;
         thirdTurn = false;
+        forthTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         diceRolled = false;
@@ -212,6 +215,7 @@ public class GameModel {
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
         thirdTurn = ( turn == 2);
+        forthTurn = ( turn == 3);
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         System.out.println("Game Turn is increased " + turn); 
