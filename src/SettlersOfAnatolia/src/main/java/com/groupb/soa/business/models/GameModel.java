@@ -29,6 +29,8 @@ public class GameModel {
     private int robberMoves;
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
+    private boolean thirdTurn;
+    
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -40,12 +42,15 @@ public class GameModel {
         freeRoads = 0;
         firstTurn = true;
         secondTurn = false;
+        thirdTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
         currentTwB = null;
         domesticTrades = new ArrayList<>();
     }
+    
+    
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
             return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
@@ -150,7 +155,7 @@ public class GameModel {
         // if player has the right to move the robber, stop.
         if( robberMoves > 0)
             return;
-        
+        System.out.println(" current player no:" + playerList.getCurrentPlayerNo());
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
@@ -159,8 +164,11 @@ public class GameModel {
         turn = queue / 4;
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
+        thirdTurn = ( turn == 2);
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
+        System.out.println("Game Turn is increased " + turn); 
+        
         currentTwB = null;
         System.out.println("Game Turn is increased " + turn);
     }
@@ -269,6 +277,23 @@ public class GameModel {
     {
         return playerList.getCurrentPlayer().buyDevCard(bank);
     }
+    public boolean isCurrentPlayerBot(){
+        return getCurrentPlayer() instanceof BotPlayer;
+    }
+    
+    public boolean getFirstTurn(){
+    return firstTurn;
+    }
+    
+    public boolean getSecondTurn(){
+    return secondTurn;
+    }
+    
+     public boolean getThirdTurn(){
+        return thirdTurn;
+    }
+     
+   
     
     public boolean startTradeWithBank()
     {
@@ -391,6 +416,7 @@ public class GameModel {
         return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
     }
 }
+
 
 
 

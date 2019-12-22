@@ -1,13 +1,18 @@
 .vscode/*
-<<<<<<< HEAD
 /target/
-=======
 .md/*
->>>>>>> 2aae1b11fe9a7cd728e276ce73581d960abad70b
-.class/*
 *.class
 *.properties
 *.properties
 *.lst
 *.lst
+
+*.class
+
 src/SettlersOfAnatolia/target/maven-archiver/pom.properties
+
+*.properties
+
+*.lst
+
+*.jar
