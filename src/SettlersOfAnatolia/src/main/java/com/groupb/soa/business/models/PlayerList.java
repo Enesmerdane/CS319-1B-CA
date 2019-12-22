@@ -18,13 +18,23 @@ public class PlayerList{
     private int currentPlayerNo;
     private int[] colors = { 0, 1, 2, 3}; // each number will be associated with an integer -> No they wont :)) -Enes
 
-    PlayerList(Color playerColors[] ){
+    PlayerList(Color playerColors[], boolean isBot ){
+        if( isBot){
         players = new Player[4];
         players[0] = new Player( playerColors[0]); //first player is the actual player
         for ( int i = 1; i < 4; i++){
                 players[i] = new Player( playerColors[i]);
         }
         currentPlayerNo = 0;
+        }
+        else{
+            players = new Player[4];
+            players[0] = new Player( playerColors[0]); //first player is the actual player
+            for ( int i = 1; i < 4; i++){
+                players[i] = new Player( playerColors[i]);
+        }
+            currentPlayerNo = 0;
+        }
     }
 
     public Player getCurrentPlayer(){

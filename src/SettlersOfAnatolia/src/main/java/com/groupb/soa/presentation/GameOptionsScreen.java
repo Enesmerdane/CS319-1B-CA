@@ -51,6 +51,15 @@ public class GameOptionsScreen implements Initializable {
     @FXML
     private MenuButton color_picked_game_options;
     
+    @FXML
+    private MenuButton gameTypeOption;
+    
+    @FXML
+    private MenuItem withBots;
+    
+    @FXML
+    private MenuItem multiplayer;
+    
     /**
      * Initializes the controller class.
      */
@@ -95,6 +104,20 @@ public class GameOptionsScreen implements Initializable {
             }
         });
         
+        withBots.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                gameTypeOption.setText(withBots.getText());
+            }
+        });
+        
+        multiplayer.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                gameTypeOption.setText(multiplayer.getText());
+            }
+        });
+        
         color_picked_game_options.getItems().add(color_blueItem);
         color_picked_game_options.getItems().add(color_redItem);
         color_picked_game_options.getItems().add(color_orangeItem);
@@ -108,7 +131,7 @@ public class GameOptionsScreen implements Initializable {
         userName = username_game_options.getText();
         
         if(!userName.equals("") && !color_picked_game_options.getText().equals("Color")){
-            MainApp.getInstance().getGameControllerObj().initateGame(); // This has to be done before loading UI because ui uses some models to display
+            MainApp.getInstance().getGameControllerObj().initateGame(0); // This has to be done before loading UI because ui uses some models to display
             AnchorPane pane;
             if(MainApp.getWidth() != 1920.0){
                 pane = FXMLLoader.load(getClass().getResource("/fxml/GameScreenLR.fxml"));
@@ -126,6 +149,6 @@ public class GameOptionsScreen implements Initializable {
         
         rootPane.getChildren().setAll(pane);
         
-        MainApp.getInstance().getGameControllerObj().initateGame();
+        MainApp.getInstance().getGameControllerObj().initateGame(0);
     }
 }

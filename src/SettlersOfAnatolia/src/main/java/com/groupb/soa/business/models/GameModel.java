@@ -7,7 +7,7 @@ package com.groupb.soa.business.models;
 
 /**
  *
- * @author Göksu
+ * @author Göksu, İrem
  */
 import java.util.ArrayList;
 import java.util.List;
@@ -49,9 +49,15 @@ public class GameModel {
     private boolean forthTurn;
     private int []playerCityNo;
     
-    public GameModel(Color[] playerColors) {
+    public GameModel(Color[] playerColors, boolean isBot) {
+        if ( isBot ){
+            playerList = new PlayerList(playerColors, isBot);
+            }
+        else{
+            playerList = new PlayerList( playerColors, isBot);
+        }
+            
         tile = new GameTile();
-        playerList = new PlayerList(playerColors);
         bank = new Bank();
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
@@ -81,6 +87,9 @@ public class GameModel {
         isEarthquake = false;
         eventMgr = new EventManager(this);
         event = null;
+        
+        
+        
     }
     
     
