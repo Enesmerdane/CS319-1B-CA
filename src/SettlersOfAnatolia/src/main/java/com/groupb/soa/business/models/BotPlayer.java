@@ -48,7 +48,7 @@ public class BotPlayer extends Player {
                     temp = (int)(Math.random() * 19);
             }
             if ( ! model.getThirdTurn() ){
-                int random = (int)(Math.random() * 2);
+                int random = (int)(Math.random() * 3);
                 if ( random == 0) {
                     model.getCurrentPlayer().buyDevCard(model.getBank());
                     GameScreen.getInstance().refreshCardNumbers();
@@ -63,6 +63,14 @@ public class BotPlayer extends Player {
                         GameScreen.getInstance().paintEdge(edgeIndex);
                     }
                         
+                }
+                else if ( random == 2){
+                    int vertex = (int)(Math.random() * 54);
+                     while ( !model.buildSettlement(vertex)){
+                    vertex = (int)(Math.random() * 54);
+                    }
+                     GameScreen.getInstance().paintVertex(vertex);
+                     GameScreen.getInstance().refreshScores();
                 }
                 
                    

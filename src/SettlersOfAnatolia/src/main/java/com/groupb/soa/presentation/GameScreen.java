@@ -1288,7 +1288,7 @@ public class GameScreen implements Initializable {
         tradeRequests.setItems(tradeRequestList);
     }
     
-    private void refreshScores()
+    public void refreshScores()
     {
         p1score.setText( mainController.getPlayerScore(0) + "");
         p2score.setText( mainController.getPlayerScore(1) + "");
