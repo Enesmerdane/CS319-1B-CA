@@ -19,7 +19,7 @@ import com.groupb.soa.presentation.GameScreen;
 public class BotPlayer extends Player {
     
     
-    ArrayList<Integer> vertices;
+    private ArrayList<Integer> vertices;
    
     BotPlayer( Color color){
         super(color);
@@ -51,7 +51,7 @@ public class BotPlayer extends Player {
             if ( dice == 7){
                 int temp = (int)(Math.random() * 19);
                 while( !model.sendRobberToHexagon( temp ))
-                    temp = (int)(Math.random() * 19);
+                    temp = (int)(Math.random() * 19 );
             }
             if ( ! model.getThirdTurn() ){
                 int random = (int)(Math.random() * 4);
@@ -69,7 +69,9 @@ public class BotPlayer extends Player {
                             counter++;
                             edgeIndex = (int)(Math.random() * 72); 
                         } 
+                        if ( counter < 25){
                         GameScreen.getInstance().paintEdge(edgeIndex);
+                        }
                     }
                         
                 }
@@ -82,15 +84,16 @@ public class BotPlayer extends Player {
                     }
                      if ( counter < 25 ){
                          vertices.add(vertex);
+                         GameScreen.getInstance().paintVertex(vertex);
                      }
-                     GameScreen.getInstance().paintVertex(vertex);
+                    
                      GameScreen.getInstance().refreshScores();
                 }
                 else if (random == 3) 
                 {
                     if( !vertices.isEmpty())
                     {
-                        if ( model.buildCity(vertices.get(0)) ){ 
+                        if ( model.buildCity( vertices.get(0)) ){ 
                             GameScreen.getInstance().paintCity( vertices.get(0) );
                             GameScreen.getInstance().refreshScores();
                         }   

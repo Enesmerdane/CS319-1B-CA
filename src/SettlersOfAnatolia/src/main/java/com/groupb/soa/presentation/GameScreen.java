@@ -954,22 +954,26 @@ public class GameScreen implements Initializable {
         {
             return;
         }
-        game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_filter.toFront();
-        game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_background.toFront();
-        game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true; top");
-        game_menu_title.toFront();
-        game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_game_music.toFront();
-        game_menu_game_sound.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_game_sound.toFront();
-        game_menu_back_to_main_menu.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_back_to_main_menu.toFront();
-        game_menu_back_to_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_back_to_game.toFront();
-        game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
-        game_menu_exit_game.toFront();
+        if(!mainController.isBotPlaying())
+        {
+            game_menu_filter.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_filter.toFront();
+            game_menu_background.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_background.toFront();
+            game_menu_title.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true; top");
+            game_menu_title.toFront();
+            game_menu_game_music.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_game_music.toFront();
+            game_menu_game_sound.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_game_sound.toFront();
+            game_menu_back_to_main_menu.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_back_to_main_menu.toFront();
+            game_menu_back_to_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_back_to_game.toFront();
+            game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+            game_menu_exit_game.toFront();
+        }
+        
     }
     
     @FXML

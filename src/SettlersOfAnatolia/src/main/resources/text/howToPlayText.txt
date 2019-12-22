@@ -1,0 +1,59 @@
+Buildings
+
+	There are three types of buildings, two that can be built on vertices of the map, and one that can be built on the edges of the map. 
+First type of building is the settlement, which requires 1 brick, 1 lumber, 1 wool and 1 grain to build, and must be connected to at least one of the player’s roads. Another requirement for building a settlement is not to have another settlement in the neighbor vertices. In other words, a settlement cannot have neighbour settlements.  Building a settlement gives one victory point. 
+The second type of building is the city, which requires 3 ore and 2 grain to build. A city is built on where the player already has a settlement, or in other words, a settlement is upgraded to a city. Upgrading a settlement to a city gives one extra point, or two in total.
+	The last type of building is the road, which is built on the edges of the map. The road requires 1 brick and 1 lumber to build, and must be connected to at least one of the player’s settlements, cities or roads. Building a road by itself awards no points, but making a chain of roads with length equal to 5 grants gives the “Longest Road” card which is worth 2 victory points. If another player builds a longer road than the player currently holding the achievement for the longest road, then the card and the 2 victory points pass to the new holder.
+
+Tiles
+
+In our map, tiles are shaped like hexagons and there are six different types of tiles. The main types are forest, hills, fields, mountains and pasture which generate lumber, brick, grain, stone and wool respectively. There is also a desert tile, which does not produce any resources. At the start of the game, all tiles except the desert tile are given a number from 2 to 12 as such: Numbers 2 and 12 are only given to one tile each, number 7 is not given to any tile, and the rest of the numbers in that range are given to two tiles each. When the result of a dice roll is the number of a tile, if the robber is not on that tile, the tile will produce a resource to players that have buildings in its vertices. For each settlement, the tile produces one of its resource to the player that owns it. For each city, the tile produces two of its resource. When 7 is rolled, each player with 7 or more cards must discard the floor of half their number of cards. Afterwards, the player that rolled 7 chooses another tile for the robber to go to, and steals one random resource from a player that has a building on the vertices of the new tile.
+
+Trading
+
+	The players can trade among themselves, or trade with the bank.
+
+	To trade with other players, a player must send out a trade request during their turn. This trade request is shown to every other player to accept or decline. The trade is made with the player that first accepts the trade.
+To trade with the bank, one must provide 4 of a type of resource in exchange for one of another resource.
+ 
+Cards
+
+	There are 25 development cards placed randomly in a deck, which can be bought by players during their turns using resources, and can be used in their turns one turn after buying. These cards must stay hidden until their time of usage. The different types of cards are as follows:
+
+	Knight Cards:
+	These cards allow the player to move the robber and steal one random resource from one player that has a building in the vertices of the new hexagon, similar to the case of rolling a 7. After using knight cards, they are revealed and placed in front of the player. Also, any player that reaches 3 knight cards gets a card named “Largest Army” which is worth 2 victory points. This card is passed to other players once they reach a greater number of knights than the current holder. 
+
+	Victory Point Cards:
+	These cards give the player one victory point each. They can only be revealed and used once the player has the potential to reach 10 points with them, or in other words, once the player can win.
+
+	Progress Cards: 
+	There are different types of progress cards that have different effects. They are as follows:
+
+	Road Building:
+	These cards allow those who use them to construct 2 roads free of charge.
+
+	Year of Plenty:
+	You can use these cards to draw 2 resources. These resources can be used to build in the turn that this card is used. 
+
+	Monopoly: 
+	After using this card, you select one type of resource. All players must give all they have of this type of resource to you.
+
+Turns
+
+	In the first turn, each player rolls the dice and the one who gets the highest result becomes the starting player and begins. The starting player places their settlement on a vertex and places a road adjacent to the settlement. Then, in the clockwise direction other players also set their settlements and roads. 
+
+	In the second turn, the last person who placed his/her settlement places his/her settlement and road. Then other players place their settlements and roads in the counterclockwise direction. In the second turn, players do not have to place their roads or settlements connected to their other roads or settlements. In the second turn, players, right after placing their settlements, they gain their first resources for each hexagon terrain adjacent to the second settlement they have placed.
+
+	After these turns, starting player starts turn by rolling dice. After that, according to the total of dice values, players who has a settlement adjacent to the hexagon with the same number, gains one resource from that hexagon, and the player who has city gains two resources. Then, current player can trade with players or bank, buy an upgrade card, build settlements, upgrade settlements to cities, play upgrade cards or declare victory.
+
+Crazy Mode
+
+	Our game will also include a Crazy Mode which includes new cards and mechanics that make the game more interesting.
+	
+	One main feature of this new mode is the Events, which are Disasters and the Cybele Month. There are 3 Disasters: Flood, Earthquake and Wolf Attacks. At the start of every round (4 turns), there is a random chance of an event occurring. When the Flood event occurs, the first hexagon to produce Grain will not produce anything. When the Earthquake event occurs, all the cities are destroyed. When a Wolf Attack event occurs, the first hexagon to produce wool will not produce anything instead. When a Cybele Month event occurs, all hexagons produce double their resources.
+
+	Another addition of this new mode is new development cards. There are 2 new cards: Insurance and Anatolian Shepherd Dog. If a player plays the Insurance card, they will get back the resources they spent to build their cities which were previously destroyed by an Earthquake event. This resource is the sum of settlement building cost and the city building cost for each city destroyed. If a player plays the Anatolian Shepherd Dog, they will not suffer the effects of the Wolf Attack event.
+
+Ending
+
+	The first player to achieve 10 victory points in the classic mode, or 20 points in the crazy mode during their turn is declared the winner and the game ends. If it is another player’s turn, then they have to wait to win the game.
