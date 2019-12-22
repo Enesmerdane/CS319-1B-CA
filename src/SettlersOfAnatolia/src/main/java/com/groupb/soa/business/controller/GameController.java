@@ -8,6 +8,7 @@ import com.groupb.soa.business.models.GameModel;
 import com.groupb.soa.business.models.Player;
 import com.groupb.soa.business.models.BotPlayer;
 import com.groupb.soa.business.models.PlayerList;
+import com.groupb.soa.presentation.GameScreen;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +30,6 @@ import javafx.stage.Stage;
 public class GameController {
     
     // Properties
-    
     
     
     private GameModel gameModel; 
@@ -65,7 +65,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 10000 , 5000 );
+         t.scheduleAtFixedRate(task, 15000 , 5000 );
     }
     
     // Methods
@@ -92,14 +92,9 @@ public class GameController {
     
     
     
-    public void initateGame(int mode){ // 0 = multiplayer, 1 = bot 
+    public void initateGame(int mode, Color[] playerColors){ // 0 = multiplayer, 1 = bot 
         // here we set default colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
         
-        Color[] playerColors = new Color[4];
-        playerColors[0] = Color.RED;
-        playerColors[1] = Color.BLUE;
-        playerColors[2] = Color.GREENYELLOW;
-        playerColors[3] = Color.PURPLE;
         if ( mode == 0 ) //multiplayer
             gameModel = new GameModel(playerColors, false);
         else  //bot
@@ -162,7 +157,11 @@ public class GameController {
     
     public boolean sendRobberToHexagon( int index)
     {
-        return gameModel.sendRobberToHexagon(index);
+        if(gameModel.sendRobberToHexagon(index)){
+            GameScreen.getInstance().redrawRobber(index);
+            return true;
+        }
+        return false;
     }
     
     public boolean playCard( String cardName, String sourceType, String sourceType2)
@@ -321,5 +320,8 @@ public class GameController {
     public Color getVertexColor(int index)
     {
         return gameModel.getVertexColor(index);
+    }
+    public Color[] getPlayerColors(){
+        return gameModel.getPlayerColors();
     }
 }

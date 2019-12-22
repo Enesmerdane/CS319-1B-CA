@@ -42,7 +42,7 @@
          </opaqueInsets>
       </Button>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff2e2" height="144.0" layoutX="596.0" layoutY="934.0" stroke="BLACK" strokeType="INSIDE" width="420.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle fx:id="player3Rect" arcHeight="5.0" arcWidth="5.0" fill="#1fff46" height="156.0" layoutX="529.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <Rectangle fx:id="grainEffect" fill="RED" height="52.0" layoutX="612.0" layoutY="948.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
       <Rectangle fx:id="lumberEffect" fill="RED" height="52.0" layoutX="692.0" layoutY="949.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
       <Rectangle fx:id="woolEffect" fill="RED" height="52.0" layoutX="773.0" layoutY="948.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" visible="false" width="66.0" />
@@ -82,7 +82,7 @@
       <Rectangle fx:id="city_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1510.0" layoutY="951.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="road_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1710.0" layoutY="951.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
       <Rectangle fx:id="settlement_selected_rectangle" arcHeight="5.0" arcWidth="5.0" fill="#ff1f1f" height="99.0" layoutX="1307.0" layoutY="948.0" opacity="0.34" stroke="BLACK" strokeType="INSIDE" style="visibility: false;" width="153.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1031.0" layoutY="926.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle fx:id="player1Rect" arcHeight="5.0" arcWidth="5.0" fill="#cd0606" height="156.0" layoutX="1031.0" layoutY="926.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <ImageView fx:id="settlement_image_button" fitHeight="75.0" fitWidth="130.0" layoutX="1319.0" layoutY="961.0" pickOnBounds="true">
          <image>
             <Image url="@../images/settlement_image.jpg" />
@@ -131,13 +131,13 @@
          </opaqueInsets>
       </Button>
       <Rectangle id="game_board" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="663.0" layoutX="435.0" layoutY="172.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" width="806.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1332.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle fx:id="player2Rect" arcHeight="5.0" arcWidth="5.0" fill="#4392f2" height="156.0" layoutX="1332.0" layoutY="240.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="1341.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="156.0" layoutX="22.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
+      <Rectangle fx:id="player4Rect" arcHeight="5.0" arcWidth="5.0" fill="#b121ff" height="156.0" layoutX="22.0" layoutY="640.0" stroke="BLACK" strokeType="INSIDE" width="156.0" />
       <ImageView fitHeight="140.0" fitWidth="200.0" layoutX="31.0" layoutY="649.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/player_default_photo.jpg" />
@@ -178,12 +178,12 @@
             <Font size="70.0" />
          </font>
       </Text>
-      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
+      <Button fx:id="game_menu_game_music" layoutX="777.0" layoutY="343.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#changeMusicState" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Music: ON">
          <font>
             <Font size="35.0" />
          </font>
       </Button>
-      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
+      <Button fx:id="game_menu_game_sound" layoutX="777.0" layoutY="443.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" onAction="#changeSoundState" prefWidth="361.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: false" text="Game Sound: ON">
          <font>
             <Font size="35.0" />
          </font>

@@ -106,7 +106,7 @@
             <Insets />
          </opaqueInsets>
       </Button>
-      <Button fx:id="trade_with_bank_button" layoutX="1269.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#terminateGame" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
+      <Button fx:id="trade_with_bank_button" layoutX="1269.0" layoutY="720.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="45.0" prefWidth="100.0" style="-fx-background-color: fff2e2; -fx-background-radius: 0.5em;" text="Trade &#10;with Bank" textAlignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

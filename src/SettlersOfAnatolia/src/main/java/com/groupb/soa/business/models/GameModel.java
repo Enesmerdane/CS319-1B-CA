@@ -45,12 +45,14 @@ public class GameModel {
     private boolean isEarthquake;
     private EventManager eventMgr;
     private Event event;
-
+    
     private boolean forthTurn;
     private int []playerCityNo;
     
+    private Color[] playerColors;
+    
     public GameModel(Color[] playerColors, boolean isBot) {
-        
+        this.playerColors = playerColors;
         
         playerList = new PlayerList( playerColors, isBot);
         
@@ -688,6 +690,9 @@ public class GameModel {
     public Color getVertexColor( int index)
     {
         return tile.getVertexColor(index);
+    }
+    public Color[] getPlayerColors(){
+        return playerColors;
     }
 }
 
