@@ -223,6 +223,7 @@ public class GameTile {
         hexagons[16].setSourceType(4); // brick
         hexagons[17].setSourceType(1); // grain
         hexagons[18].setSourceType(3); // wool
+        hexagons[9].moveRobber(); // this is the desert tile.
     }
     private void distributeDiceNumbers()
     {

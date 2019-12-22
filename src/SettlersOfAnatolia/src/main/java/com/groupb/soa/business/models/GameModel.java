@@ -331,7 +331,7 @@ public class GameModel {
         return tile.getResources();
     }
     
-    public int [] getNumberOfHexagons(){
+    public int[] getNumberOfHexagons(){
         return tile.getNumbersofHexagons();
     }
     
