@@ -14,7 +14,7 @@ public class CybeleMonth implements Event{
 
     @Override
     public void occur(GameModel model) {
-        //model.setCybeleMonth(true);
+        model.setCybeleMonth(true);
     }
 }
 

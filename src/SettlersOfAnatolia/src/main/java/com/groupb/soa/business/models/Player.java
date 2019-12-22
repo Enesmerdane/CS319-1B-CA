@@ -24,7 +24,12 @@ public class Player{
     private int remSettlements;
     private int remCities;
     private int knightCards;
+    private int longestRoadLength;
+    private boolean hasLargestArmy;
+    private boolean hasLongestRoad;
     private boolean canBuyDevCard;
+    private boolean usedAnatolianShepherdDog;
+    private int destroyedCities;
     private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
 
@@ -37,29 +42,33 @@ public class Player{
         cards = new ArrayList<DevCard>();
         sources = new int[5];
         knightCards = 0;
+        longestRoadLength = 0;
+        hasLargestArmy = false;
+        hasLongestRoad = false;
         canBuyDevCard = true;
+        usedAnatolianShepherdDog = false;
+        destroyedCities = 0;
         for( int i = 0; i < sources.length; i++)
         {
-            sources[i] = 111;
+            sources[i] = 20;
         }
         cards.add( new Monopoly("test"));
         cards.add( new RoadBuilding( "test"));
         cards.add( new YearOfPlenty( "test"));
         cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Insurance( "test"));
+        cards.add( new AnatolianShepherdDog("test"));
     }
     
     public boolean buyDevCard(Bank bank){
         
         System.out.println( "Dev card a girildi");
         return bank.drawCard(this);
-        
     }
     
-    
-    public void increaseScore( int amount){
-        score += amount;
-    }
-
 
     public void addSource(int source, int amount){
         sources[source] = sources[source] + amount;
@@ -103,15 +112,16 @@ public class Player{
         return sources[value];
     }
 
-    public void render(GraphicsContext gc) {
-    }
-
-    public void addScore(int score) {
-        this.score += score;
-    }
 
     public int getScore() {
-        return score;
+        int baseScore = 0;
+        baseScore += ( 5 - remSettlements);
+        baseScore += ( 4 - remCities);
+        if( hasLongestRoad)
+            baseScore += 2;
+        if( hasLargestArmy)
+            baseScore += 2;
+        return baseScore;
     }
 
     public int getRemSettlements()
@@ -146,8 +156,8 @@ public class Player{
     
     public int getCardNo(String cardName)
     {
-        int knightCards, roadCards, yearCards, monoCards;
-        knightCards = roadCards = yearCards = monoCards = 0;
+        int knightCards, roadCards, yearCards, monoCards, insCards, asdCards;
+        knightCards = roadCards = yearCards = monoCards = insCards = asdCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
             if( cards.get(i) instanceof Knight)
@@ -158,7 +168,11 @@ public class Player{
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty)
                 yearCards++;
-        }
+            else if( cards.get(i) instanceof Insurance)
+                insCards++;
+            else if( cards.get(i) instanceof AnatolianShepherdDog)
+                asdCards++;
+        }       
         
         switch (cardName) {
             case "Knight":
@@ -169,6 +183,10 @@ public class Player{
                 return yearCards;
             case "Monopoly":
                 return monoCards;
+            case "Insurance":
+                return insCards;
+            case "Anatolian Shepherd Dog":
+                return asdCards;
             default:
                 return -1;
         }
@@ -176,8 +194,8 @@ public class Player{
     
     public int getPlayableCardNo(String cardName)
     {
-        int knightCards, roadCards, yearCards, monoCards;
-        knightCards = roadCards = yearCards = monoCards = 0;
+        int knightCards, roadCards, yearCards, monoCards, insCards, asdCards;
+        knightCards = roadCards = yearCards = monoCards = insCards = asdCards = 0;
         for( int i = 0; i < cards.size(); i++)
         {
             if( cards.get(i) instanceof Knight && !cards.get(i).getRecentlyBought())
@@ -188,7 +206,11 @@ public class Player{
                 roadCards++;
             else if( cards.get(i) instanceof YearOfPlenty && !cards.get(i).getRecentlyBought())
                 yearCards++;
-        }
+            else if( cards.get(i) instanceof Insurance && !cards.get(i).getRecentlyBought())
+                insCards++;
+            else if( cards.get(i) instanceof AnatolianShepherdDog && !cards.get(i).getRecentlyBought())
+                asdCards++;
+        }       
         
         switch (cardName) {
             case "Knight":
@@ -199,6 +221,10 @@ public class Player{
                 return yearCards;
             case "Monopoly":
                 return monoCards;
+            case "Insurance":
+                return insCards;
+            case "Anatolian Shepherd Dog":
+                return asdCards;
             default:
                 return -1;
         }
@@ -212,13 +238,17 @@ public class Player{
             boolean condition;
             switch (cardName) {
             case "Knight":
-                condition = cards.get(i) instanceof Knight; break; //condition = cards.get(i) instanceof Knight;
+                condition = cards.get(i) instanceof Knight; break;
             case "Road Building":
                 condition = cards.get(i) instanceof RoadBuilding; break;
             case "Year of Plenty":
                 condition = cards.get(i) instanceof YearOfPlenty; break;
             case "Monopoly":
                 condition = cards.get(i) instanceof Monopoly; break;
+            case "Insurance":
+                condition = cards.get(i) instanceof Insurance; break;
+            case "Anatolian Shepherd Dog":
+                condition = cards.get(i) instanceof AnatolianShepherdDog; break;
             default:
                 condition = false;
             }
@@ -262,4 +292,81 @@ public class Player{
     {
         knightCards++;
     }
+    public void decreaseScore(int amount) // added new 
+    {
+        score -= amount;
+    }
+    
+    public int getKnights()
+    {
+        return knightCards;
+    }
+    
+    public void setLargestArmy( boolean value)
+    {
+        hasLargestArmy = value;
+    }
+    
+    public int getLongestRoad()
+    {
+        return longestRoadLength;
+    }
+    
+    public boolean getHasLongestRoad()
+    {
+        return hasLongestRoad;
+    }
+    
+    public void setHasLongestRoad(boolean value)
+    {
+        hasLongestRoad = value;
+    }
+    
+    public boolean setLongestRoad( int value)
+    {
+        if( value <= longestRoadLength)
+            return false;
+        longestRoadLength = value;
+        return true;
+    }
+    
+    public boolean removeHalfResources()
+    {
+        if( getTotalNoOfSources() < 7)
+            return false;
+        
+        for( int i = 0; i < 5; i++)
+        {
+            sources[i] -= sources[i] / 2;
+        }
+        return true;
+    }
+    
+    public void successfulCityDestroy()
+    {
+        remSettlements++;
+        remCities++;
+        destroyedCities++;
+    }
+    
+    public int getDestroyedCities()
+    {
+        return destroyedCities;
+    }
+    
+    public void resetDestroyedCities()
+    {
+        destroyedCities = 0;
+    }
+    
+    public boolean getUsedAnatolianShepherdDog()
+    {
+        return usedAnatolianShepherdDog;
+    }
+    
+    public void setUsedAnatolianShepherdDog(boolean value)
+    {
+        usedAnatolianShepherdDog = value;
+    }
+   
 }

@@ -13,6 +13,7 @@ public class EarthQuake implements Event {
     public EarthQuake(){}
 
     public void occur(GameModel model) {
-        //model.destroyAllCities();
+        model.setEarthquake(true); //new
+        model.destroyAllCities();
     }
 }

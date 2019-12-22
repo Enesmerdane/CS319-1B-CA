@@ -12,7 +12,7 @@ package com.groupb.soa.business.models;
 public class WolfAttack implements Event{
     public WolfAttack(){}
     public void occur(GameModel model) {
-         //model.setWolfAttacked(true);
+         model.setWolfAttacked(true);
     }
 }
 

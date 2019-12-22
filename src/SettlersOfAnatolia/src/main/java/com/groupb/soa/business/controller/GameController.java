@@ -66,7 +66,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 5000 , 7000 );
+         t.scheduleAtFixedRate(task, 5000 , 5000 );
     }
     
     // Methods
@@ -284,5 +284,35 @@ public class GameController {
     public boolean isDomesticTradeValid(int index)
     {
         return gameModel.isDomesticTradeValid(index);
+    }
+    
+    public int getPlayerScore( int index)
+    {
+        return gameModel.getPlayerScore(index);
+    }
+    
+    public Player getWinner()
+    {
+        return gameModel.getWinner();
+    }
+    
+    public boolean isGameOver()
+    {
+        return gameModel.isGameOver();
+    }
+    
+    public String getEventName()
+    {
+        return gameModel.getEventName();
+    }
+    
+    public int getKnights( int index)
+    {
+        return gameModel.getKnights( index);
+    }
+    
+    public boolean isCurrentPlayerBot()
+    {
+        return gameModel.isCurrentPlayerBot();
     }
 }
