@@ -68,7 +68,7 @@ public class SettingsScreen implements Initializable {
         
         rootPane.getChildren().setAll(pane);
         
-        MainApp.getInstance().getGameControllerObj().initateGame();
+        MainApp.getInstance().getGameControllerObj().initateGame(0);
     }
     
     @FXML
