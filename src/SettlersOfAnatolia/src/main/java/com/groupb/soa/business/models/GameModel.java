@@ -50,12 +50,10 @@ public class GameModel {
     private int []playerCityNo;
     
     public GameModel(Color[] playerColors, boolean isBot) {
-        if ( isBot ){
-            playerList = new PlayerList(playerColors, isBot);
-            }
-        else{
-            playerList = new PlayerList( playerColors, isBot);
-        }
+        
+        
+        playerList = new PlayerList( playerColors, isBot);
+        
             
         tile = new GameTile();
         bank = new Bank();

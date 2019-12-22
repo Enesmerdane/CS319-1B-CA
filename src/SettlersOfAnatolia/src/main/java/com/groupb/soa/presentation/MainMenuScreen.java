@@ -105,6 +105,5 @@ public class MainMenuScreen implements Initializable{
         
         rootPane.getChildren().setAll(pane);
         
-        MainApp.getInstance().getGameControllerObj().initateGame();
     }
 }
