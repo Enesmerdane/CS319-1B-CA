@@ -54,7 +54,7 @@ public class BotPlayer extends Player {
                     temp = (int)(Math.random() * 19);
             }
             if ( ! model.getThirdTurn() ){
-                int random = (int)(Math.random() * 3);
+                int random = (int)(Math.random() * 4);
                 if ( random == 0) {
                     model.getCurrentPlayer().buyDevCard(model.getBank());
                     GameScreen.getInstance().refreshCardNumbers();
