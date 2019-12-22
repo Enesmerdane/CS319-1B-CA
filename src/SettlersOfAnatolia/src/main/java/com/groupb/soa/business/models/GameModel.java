@@ -200,6 +200,23 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         currentTwB = null;
+        diceRolled = false;
+        List<DomesticTrade> tradesToDelete = new ArrayList<>();
+        for( int i = 0; i < domesticTrades.size(); i++)
+        {
+            DomesticTrade dt = domesticTrades.get(i);
+            dt.addLifetime();
+            if( dt.getLifetime() >= 8)
+            {
+                dt.cancelTrade();
+                tradesToDelete.add( dt);
+            }
+        }
+        
+        for( DomesticTrade dt: tradesToDelete)
+        {
+            domesticTrades.remove(dt);
+        }
         
         System.out.println("Game Turn is increased " + turn);
     }
