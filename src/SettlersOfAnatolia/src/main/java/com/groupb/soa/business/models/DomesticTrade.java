@@ -12,15 +12,17 @@ import java.util.Arrays;
  * @author İrem Kırmacı
  */
 public class DomesticTrade  {
-    Player creator;
-    int[] offer;
-    int[] inReturn;
+    private Player creator;
+    private int[] offer;
+    private int[] inReturn;
+    private int lifetime;
     private static final int[] indices = {1, 2, 3, 0, 4};
     public DomesticTrade( Player theCreator, int[] theOffer, int[] theInReturn)
     {
         creator = theCreator;
         offer = Arrays.copyOf(theOffer, 5);
         inReturn = Arrays.copyOf(theInReturn, 5);
+        lifetime = 0;
         for( int i = 0; i< offer.length; i++)
         {
             creator.subSource(i, offer[i]);
@@ -99,5 +101,23 @@ public class DomesticTrade  {
     public boolean isCreator( Player p)
     {
         return p.equals(creator);
+    }
+    
+    public int getLifetime()
+    {
+        return lifetime;
+    }
+    
+    public void addLifetime()
+    {
+        lifetime++;
+    }
+    
+    public void cancelTrade()
+    {
+        for( int i = 0; i< offer.length; i++)
+        {
+            creator.addSource(i, offer[i]);
+        }
     }
 }
