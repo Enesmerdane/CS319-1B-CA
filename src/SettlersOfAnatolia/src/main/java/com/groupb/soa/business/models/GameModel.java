@@ -668,6 +668,7 @@ public class GameModel {
     {
         return playerList.getPlayer(index).getKnights();
     }
+    
 }
 
 

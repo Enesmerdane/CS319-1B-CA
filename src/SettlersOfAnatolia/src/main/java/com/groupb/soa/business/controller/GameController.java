@@ -305,4 +305,9 @@ public class GameController {
     {
         return gameModel.getKnights( index);
     }
+    
+    public boolean isCurrentPlayerBot()
+    {
+        return gameModel.isCurrentPlayerBot();
+    }
 }

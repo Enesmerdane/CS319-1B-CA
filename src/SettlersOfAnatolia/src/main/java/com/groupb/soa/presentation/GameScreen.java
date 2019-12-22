@@ -306,8 +306,8 @@ public class GameScreen implements Initializable {
             @Override
             public void handle( ActionEvent event)
             {
-                cardMenu.setText( monoChoice.getText());
-                pch.setCardType( monoChoice.getText());
+                cardMenu.setText( insChoice.getText());
+                pch.setCardType( insChoice.getText());
             }
         });
         
@@ -1084,6 +1084,15 @@ public class GameScreen implements Initializable {
     private void refreshResources()
     {
         // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
+        if( mainController.isCurrentPlayerBot())
+        {
+            stone.setText( "X");
+            grain.setText( "X");
+            lumber.setText( "X");
+            wool.setText( "X");
+            brick.setText( "X");
+            return;
+        }
         stone.setText( mainController.getCurrentPlayer().getSourceNo(0) + "");
         grain.setText( mainController.getCurrentPlayer().getSourceNo(1) + "");
         lumber.setText( mainController.getCurrentPlayer().getSourceNo(2) + "");
