@@ -100,4 +100,13 @@ public class MainMenuScreen implements Initializable{
         MainApp.getInstance().getGameControllerObj().initateGame();
     }
     
+    @FXML
+    private void goHowToPlay() throws IOException
+    {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/HowToPlayScreen.fxml"));
+        
+        rootPane.getChildren().setAll(pane);
+        
+        MainApp.getInstance().getGameControllerObj().initateGame();
+    }
 }
