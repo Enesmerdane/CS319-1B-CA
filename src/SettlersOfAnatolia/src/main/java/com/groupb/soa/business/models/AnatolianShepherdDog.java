@@ -9,6 +9,20 @@ package com.groupb.soa.business.models;
  *
  * @author apple
  */
-public class AnatolianShepherdDog {
+public class AnatolianShepherdDog extends DevCard{
+    
+    AnatolianShepherdDog(String name)
+    {
+        super(name);
+    }
+    
+    public boolean play( GameModel model)
+    {
+        if( getRecentlyBought())
+            return false;
+        
+        model.getCurrentPlayer().setUsedAnatolianShepherdDog(true);
+        return true;
+    }
     
 }

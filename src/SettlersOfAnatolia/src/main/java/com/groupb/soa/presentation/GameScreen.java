@@ -95,11 +95,11 @@ public class GameScreen implements Initializable {
     private MenuButton sourceMenu;
     
     @FXML
-    private MenuItem knightChoice, roadChoice, yearChoice, monoChoice;
+    private MenuItem knightChoice, roadChoice, yearChoice, monoChoice, insChoice, asdChoice;
     @FXML
     private MenuItem grainChoice, lumberChoice, woolChoice, oreChoice, brickChoice;
     @FXML
-    private Text resourceMsg, knightNo, rbNo, yearNo, monoNo;
+    private Text resourceMsg, knightNo, rbNo, yearNo, monoNo, insNo, asdNo;
     @FXML
     private Button buy_dev_card, trade_with_bank_button, trade_with_players_button;
     @FXML
@@ -298,6 +298,24 @@ public class GameScreen implements Initializable {
                     cardMenu.setText( monoChoice.getText());
                     pch.setCardType( monoChoice.getText());
                 }
+            }
+        });
+        
+        insChoice.setOnAction( new EventHandler<ActionEvent>(){
+            @Override
+            public void handle( ActionEvent event)
+            {
+                cardMenu.setText( monoChoice.getText());
+                pch.setCardType( monoChoice.getText());
+            }
+        });
+        
+        asdChoice.setOnAction( new EventHandler<ActionEvent>(){
+            @Override
+            public void handle( ActionEvent event)
+            {
+                cardMenu.setText( asdChoice.getText());
+                pch.setCardType( "Anatolian Shepherd Dog");
             }
         });
         
@@ -1070,6 +1088,10 @@ public class GameScreen implements Initializable {
                 " (" + mainController.getPlayerCardNo("Year of Plenty") + ")");
         monoNo.setText( mainController.getPlayerPlayableCardNo("Monopoly") + 
                 " (" + mainController.getPlayerCardNo("Monopoly") + ")");
+        insNo.setText( mainController.getPlayerPlayableCardNo("Insurance") + 
+                " (" + mainController.getPlayerCardNo("Insurance") + ")");
+        asdNo.setText( mainController.getPlayerPlayableCardNo("Anatolian Shepherd Dog") + 
+                " (" + mainController.getPlayerCardNo("Anatolian Shepherd Dog") + ")");
     }
     
     private void toggleTwBMenu(boolean toggle)
@@ -1488,6 +1510,10 @@ public class GameScreen implements Initializable {
                     count = yearNo.getText().charAt(0) - '0'; break;
                 case "Monopoly":
                     count = monoNo.getText().charAt(0) - '0'; break;
+                case "Insurance":
+                    count = insNo.getText().charAt(0) - '0'; break;
+                case "Anatolian Shepherd Dog":
+                    count = asdNo.getText().charAt(0) - '0'; break;
                 default:
                     count = -1; break;
             }

@@ -14,6 +14,6 @@ public class EarthQuake implements Event {
 
     public void occur(GameModel model) {
         model.setEarthquake(true); //new
-        //model.destroyAllCities();
+        model.destroyAllCities();
     }
 }

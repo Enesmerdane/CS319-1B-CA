@@ -22,6 +22,7 @@ public class GameModel {
     private int queue;
     private int turn;
     private int freeRoads;
+    private int eventStart;
     private boolean firstTurn;
     private boolean secondTurn;
     private boolean firstTurnSettBuilt;
@@ -37,21 +38,21 @@ public class GameModel {
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
     private boolean thirdTurn;
-    private int []playerCityNo;
     private boolean isFlood; //new
     private boolean isWolfAttacked; //new
     private boolean isCybeleMonth; //new
     private boolean isEarthquake;
+    private EventManager eventMgr;
 
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
-        playerCityNo = new int [4];
         bank = new Bank();
         dice = new Dice(0.0,0.0);
         dice2 = new Dice(0.0,0.0);
         turn = 0;
         queue = 0;
+        eventStart = 0;
         freeRoads = 0;
         firstTurn = true;
         secondTurn = false;
@@ -72,6 +73,7 @@ public class GameModel {
         isWolfAttacked = false;
         isCybeleMonth = false;
         isEarthquake = false;
+        eventMgr = new EventManager(this);
     }
     
     
@@ -87,7 +89,7 @@ public class GameModel {
                     return true;
                 }
                 diceRolled = true;
-                return tile.produceResources(dice.getValue() + dice2.getValue() , playerList);
+                return tile.produceResources(dice.getValue() + dice2.getValue() , playerList, isFlood, isWolfAttacked, isCybeleMonth);
             }
             return false;
     }
@@ -214,6 +216,22 @@ public class GameModel {
         // playerList.next()'s stay parameter is set to 'true'
         // when queue == 3 or 7. This is because in the first 2 rounds,
         // one player gets to play twice at the end.
+        if( eventStart == 4)
+        {
+            isFlood = false;
+            isWolfAttacked = false;
+            isCybeleMonth = false;
+            isEarthquake = false;
+        }
+        if( queue % 4 == 0)
+        {
+            Event e = eventMgr.checkEvent();
+            eventMgr.handleEvent(e);
+            
+            eventStart = queue;
+        }
+        
+        
         playerList.next( secondTurn, queue == 3 || queue == 7);
         queue++;
         turn = queue / 4;
@@ -221,6 +239,7 @@ public class GameModel {
         secondTurn = (turn == 1);
         thirdTurn = ( turn == 2);
         firstTurnSettBuilt = false;
+        eventStart++;
         firstTurnRoadBuilt = false;
         System.out.println("Game Turn is increased " + turn); 
         
@@ -270,6 +289,7 @@ public class GameModel {
             return false;
         }
         
+        System.out.println( "asdasd" + cardName);
         // if the player has the card...
         // play it
         DevCard curCard = playerList.getCurrentPlayer().getCard(cardName);
@@ -322,6 +342,20 @@ public class GameModel {
             yop.setSelectedSource2(sourceName2);
             isPlayed = yop.play( this);
         }
+        
+        else if( cardName.equals("Anatolian Shepherd Dog"))
+        {
+            System.out.println( "asdcheck");
+            AnatolianShepherdDog asd = (AnatolianShepherdDog) curCard;
+            isPlayed = asd.play(this);
+        }
+        
+        else if( cardName.equals("Insurance"))
+        {
+            Insurance ins = (Insurance) curCard;
+            isPlayed = ins.play(this);
+        }
+
         if( isPlayed)
         {
             playerList.getCurrentPlayer().removeCard(curCard);
@@ -510,38 +544,11 @@ public class GameModel {
     {
         return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
     }
-    public int [] destroyAllCities()
+    public int[] destroyAllCities()
     {
-        for ( int i = 0; i< 54; i++)
-        {
-            if ( tile.getVertexWithId(i).getLevel() == 2)
-            {
-                for(int j = 0; j < 4; j++)
-                {
-                    if(tile.getVertexWithId(i).getOccupColor().equals(playerList.getPlayer(j).getColor())){
-                        tile.getVertexWithId(i).setColor(Color.BLACK);
-                        playerCityNo[j] = playerCityNo[j] + 1;
-                    }
-                                       
-                      
-                  playerList.getPlayer(j).decreaseScore(2);
-                  
-                }
-               tile.getVertexWithId(i).setLevel(0);
-               bank.addSource(0,3);
-               bank.addSource(1,2);
-            }
-        }
-        return playerCityNo; 
-    }
-    public int [] getPlayerCityNo()
-    {
-        return playerCityNo;
-                
+        return tile.destroyAllCities(playerList);
     }
 
-
-    
     public int getPlayerScore( int index)
     {
         return playerList.getPlayer( index).getScore();
@@ -621,7 +628,6 @@ public class GameModel {
     public void setFlood(boolean flood){ //new
         isFlood= flood;
     }
-
 
     public boolean getCybeleMonth(){ //new
         return isCybeleMonth;

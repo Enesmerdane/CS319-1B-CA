@@ -101,7 +101,7 @@ public class Hexagon {
         return number;
     }
 
-    public boolean produceResource(PlayerList playerList)
+    public boolean produceResource(PlayerList playerList, boolean flood, boolean wolfattack, boolean cybele)
     {
         if( number == 7)
             return false;
@@ -112,7 +112,18 @@ public class Hexagon {
         {
             if( v.isOccupied())
             {
-                playerList.getPlayerWithColor( v.getOccupColor()).addSource(sourceType, v.getLevel());
+                // Wolf Attack check
+                if( sourceType != 3 || (sourceType == 3 && !wolfattack) || (sourceType == 3 && wolfattack && playerList.getPlayerWithColor( v.getOccupColor()).getUsedAnatolianShepherdDog()))
+                {
+                    if( sourceType != 1 || (sourceType == 1 && !flood))
+                    {
+                        playerList.getPlayerWithColor( v.getOccupColor()).addSource(sourceType, v.getLevel() * (cybele ? 2 : 1)); // if cybele, produce double resources
+                        if( sourceType == 3 && wolfattack)
+                        {
+                            playerList.getPlayerWithColor( v.getOccupColor()).setUsedAnatolianShepherdDog(false);
+                        }
+                    }
+                }
             }
         }
         return true;
