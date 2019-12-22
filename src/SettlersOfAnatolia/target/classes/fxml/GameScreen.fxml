@@ -562,7 +562,7 @@
       </Group>
       <Text fx:id="eventText" fill="WHITE" layoutX="451.0" layoutY="870.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="787.13671875">
          <font>
-            <Font size="32.0" />
+            <Font size="20.0" />
          </font>
       </Text>
       <Text fill="WHITE" layoutX="1660.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Insurance:" wrappingWidth="156.0">
@@ -586,6 +586,46 @@
          </font>
       </Text>
       <Text fx:id="asdNo" fill="WHITE" layoutX="1713.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 (0)" wrappingWidth="102.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="1040.0" layoutY="868.0">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="p1Knights" fill="WHITE" layoutX="1109.0" layoutY="905.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="1365.0" layoutY="397.0">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="p2Knights" fill="WHITE" layoutX="1434.0" layoutY="434.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="685.0" layoutY="58.0">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="p3Knights" fill="WHITE" layoutX="754.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="56.0" fitWidth="62.0" layoutX="54.0" layoutY="793.0">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/kisspng-knight-logo-clip-art-5b20e5a6221655.3409512015288825981396.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="p4knights" fill="WHITE" layoutX="123.0" layoutY="830.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x0">
          <font>
             <Font size="24.0" />
          </font>

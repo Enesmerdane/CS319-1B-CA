@@ -44,6 +44,7 @@ public class GameModel {
     private boolean isCybeleMonth; //new
     private boolean isEarthquake;
     private EventManager eventMgr;
+    private Event event;
 
     private boolean forthTurn;
     private int []playerCityNo;
@@ -79,6 +80,7 @@ public class GameModel {
         isCybeleMonth = false;
         isEarthquake = false;
         eventMgr = new EventManager(this);
+        event = null;
     }
     
     
@@ -230,8 +232,8 @@ public class GameModel {
         }
         if( queue % 4 == 0)
         {
-            Event e = eventMgr.checkEvent();
-            eventMgr.handleEvent(e);
+            event = eventMgr.checkEvent();
+            eventMgr.handleEvent(event);
             
             eventStart = queue;
         }
@@ -648,7 +650,24 @@ public class GameModel {
     public boolean getEarthquake(){
         return  isEarthquake;
     }
-
+    public String getEventName()
+    {
+        if( event instanceof Flood)
+            return "Flood";
+        else if (event instanceof EarthQuake)
+            return "Earthquake";
+        else if( event instanceof CybeleMonth)
+            return "Cybele";
+        else if( event instanceof WolfAttack)
+            return "Wolf";
+        else
+            return "None";
+    }
+    
+    public int getKnights(int index)
+    {
+        return playerList.getPlayer(index).getKnights();
+    }
 }
 
 

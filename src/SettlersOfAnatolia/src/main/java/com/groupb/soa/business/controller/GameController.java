@@ -295,4 +295,14 @@ public class GameController {
     {
         return gameModel.isGameOver();
     }
+    
+    public String getEventName()
+    {
+        return gameModel.getEventName();
+    }
+    
+    public int getKnights( int index)
+    {
+        return gameModel.getKnights( index);
+    }
 }
