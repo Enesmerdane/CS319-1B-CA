@@ -103,7 +103,7 @@ public class GameScreen implements Initializable {
     @FXML
     private Button buy_dev_card, trade_with_bank_button, trade_with_players_button;
     @FXML
-    private Group tradeBankGroup, domesticTradeGroup;
+    private Group tradeBankGroup, domesticTradeGroup, gameEndGroup;
     @FXML
     private Button grainBankIncrBtn, lumberBankIncrBtn, woolBankIncrBtn, oreBankIncrBtn, brickBankIncrBtn;
     @FXML
@@ -194,7 +194,8 @@ public class GameScreen implements Initializable {
     private ImageView brickPic;
     @FXML
     private Rectangle grainEffect, lumberEffect, woolEffect, oreEffect, brickEffect;
-    
+    @FXML
+    private Text p1score, p2score, p3score, p4score, playerName;
     private boolean gameSound = true;
     private boolean gameMusic = true;
     
@@ -371,6 +372,14 @@ public class GameScreen implements Initializable {
             @Override
             public void handle(javafx.scene.input.MouseEvent event) {
                 game_menu_exit_game.setStyle("-fx-background-color: fff2e2; -fx-background-radius: 0.5em; visibility: true");
+                try
+                {
+                terminateGame(null);
+                }
+                catch( Exception e)
+                {
+                    System.out.println( "Unexpected error");
+                }
             }
         });
         
@@ -1001,6 +1010,14 @@ public class GameScreen implements Initializable {
         offers[0] = 4;
         offers[1] = 4;
         mainController.nextPlayer();
+        if( mainController.isGameOver())
+        {
+            playerName.setFill( mainController.getCurrentPlayerColor());
+            gameEndGroup.setVisible(true);
+            game_menu_filter.setVisible(true);
+            game_menu_filter.toFront();
+            gameEndGroup.toFront();
+        }
         refreshResources();
         refreshCardNumbers();
     }
@@ -1270,6 +1287,14 @@ public class GameScreen implements Initializable {
         System.out.println( tradeRequestList.size());
         tradeRequests.setItems(tradeRequestList);
     }
+    
+    private void refreshScores()
+    {
+        p1score.setText( mainController.getPlayerScore(0) + "");
+        p2score.setText( mainController.getPlayerScore(1) + "");
+        p3score.setText( mainController.getPlayerScore(2) + "");
+        p4score.setText( mainController.getPlayerScore(3) + "");
+    }
     class VertexHandler implements EventHandler<MouseEvent>
     {
         int index;
@@ -1296,6 +1321,7 @@ public class GameScreen implements Initializable {
                     Circle circle = (Circle) e.getSource();
                     circle.setFill( mainController.getCurrentPlayerColor());
                     refreshResources();
+                    refreshScores();
                 }
             }
             else if(construct_type == Construction_type.CITY){
@@ -1304,6 +1330,7 @@ public class GameScreen implements Initializable {
                     circle.setStroke(Color.GOLD);
                     circle.setStrokeWidth(3.0);
                     refreshResources();
+                    refreshScores();
                 }
             }
         }
@@ -1333,6 +1360,7 @@ public class GameScreen implements Initializable {
                     Line l = (Line) e.getSource();
                     l.setStroke(mainController.getCurrentPlayerColor());
                     refreshResources();
+                    refreshScores();
                 }
             }
             
@@ -1394,6 +1422,7 @@ public class GameScreen implements Initializable {
                 return;
             mainController.sendRobberToHexagon(index);
             refreshResources();
+            refreshScores();
         }
     }
     
@@ -1470,6 +1499,7 @@ public class GameScreen implements Initializable {
                 mainController.playCard(cardType, sourceType, sourceType2);
                 refreshResources();
                 refreshCardNumbers();
+                refreshScores();
             }
             else
             {
@@ -1508,6 +1538,7 @@ public class GameScreen implements Initializable {
                     resourceMsg.setText( "");
                     toggleResourcePickEffects(false);
                     refreshCardNumbers();
+                    refreshScores();
                 }
             }
             else if( rscSet == ResourceSetting.SOURCE2)
@@ -1518,6 +1549,7 @@ public class GameScreen implements Initializable {
                 rscSet = ResourceSetting.NONE;
                 refreshResources();
                 refreshCardNumbers();
+                refreshScores();
                 resourceMsg.setText( "");
                 toggleResourcePickEffects(false);
             }
@@ -1645,4 +1677,5 @@ public class GameScreen implements Initializable {
             twpaccept.setDisable( !mainController.isDomesticTradeValid( trt.getNumber() - 1));
         }
     }
+    
 }

@@ -76,12 +76,13 @@ public class PlayerList{
         }
         return false;
     }
-
-    public void render(GraphicsContext gc) {
-        for ( int i = 0; i < 4; i++){
-            players[i].render(gc);
+    
+    public void AllRemoveHalf()
+    {
+        for( int i = 0; i < 4; i++)
+        {
+            players[i].removeHalfResources();
         }
-
     }
 }
 

@@ -10,11 +10,11 @@ package com.groupb.soa.business.models;
  * @author İrem Kırmacı, Irmak Demir
  */
 public class TradeWithBank {
-        Player player;
-        Bank bank;
-        int[] playerSources;
-        int[] bankSources;
-        int sourceRights;
+        private Player player;
+        private Bank bank;
+        private int[] playerSources;
+        private int[] bankSources;
+        private int sourceRights;
         public TradeWithBank( Player pl, Bank b)
         {
             player = pl;

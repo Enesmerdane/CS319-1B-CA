@@ -280,4 +280,19 @@ public class GameController {
     {
         return gameModel.isDomesticTradeValid(index);
     }
+    
+    public int getPlayerScore( int index)
+    {
+        return gameModel.getPlayerScore(index);
+    }
+    
+    public Player getWinner()
+    {
+        return gameModel.getWinner();
+    }
+    
+    public boolean isGameOver()
+    {
+        return gameModel.isGameOver();
+    }
 }

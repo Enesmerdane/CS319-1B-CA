@@ -36,14 +36,10 @@ public class Edge {
 
     // methods
     
-    public boolean isAdjacentVerticesOccupied(){
-        if(adjVertices[0].isOccupied()) 
-            return true;
-        if(adjVertices[1].isOccupied()) 
-            return true;
-        return false;
+    public Vertex[] getVertices()
+    {
+        return adjVertices;
     }
-    
     public Color getOccupColor()
     {
         return occupColor;
@@ -54,6 +50,10 @@ public class Edge {
         return occupied;
     }
 
+    public int getEdgeNo()
+    {
+        return edgeNo;
+    }
     public boolean build( boolean first, Color playerColor, PlayerList pl)
     {
         // condition check

@@ -24,6 +24,9 @@ public class Player{
     private int remSettlements;
     private int remCities;
     private int knightCards;
+    private int longestRoadLength;
+    private boolean hasLargestArmy;
+    private boolean hasLongestRoad;
     private boolean canBuyDevCard;
     private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
@@ -37,7 +40,11 @@ public class Player{
         cards = new ArrayList<DevCard>();
         sources = new int[5];
         knightCards = 0;
+        longestRoadLength = 0;
+        hasLargestArmy = false;
+        hasLongestRoad = false;
         canBuyDevCard = true;
+        
         for( int i = 0; i < sources.length; i++)
         {
             sources[i] = 111;
@@ -45,6 +52,9 @@ public class Player{
         cards.add( new Monopoly("test"));
         cards.add( new RoadBuilding( "test"));
         cards.add( new YearOfPlenty( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
         cards.add( new Knight( "test"));
     }
     
@@ -55,11 +65,6 @@ public class Player{
         
     }
     
-    
-    public void increaseScore( int amount){
-        score += amount;
-    }
-
 
     public void addSource(int source, int amount){
         sources[source] = sources[source] + amount;
@@ -103,15 +108,16 @@ public class Player{
         return sources[value];
     }
 
-    public void render(GraphicsContext gc) {
-    }
-
-    public void addScore(int score) {
-        this.score += score;
-    }
 
     public int getScore() {
-        return score;
+        int baseScore = 0;
+        baseScore += ( 5 - remSettlements);
+        baseScore += ( 4 - remCities);
+        if( hasLongestRoad)
+            baseScore += 2;
+        if( hasLargestArmy)
+            baseScore += 2;
+        return baseScore;
     }
 
     public int getRemSettlements()
@@ -266,5 +272,49 @@ public class Player{
     {
         score -= amount;
     }
-
+    
+    public int getKnights()
+    {
+        return knightCards;
+    }
+    
+    public void setLargestArmy( boolean value)
+    {
+        hasLargestArmy = value;
+    }
+    
+    public int getLongestRoad()
+    {
+        return longestRoadLength;
+    }
+    
+    public boolean getHasLongestRoad()
+    {
+        return hasLongestRoad;
+    }
+    
+    public void setHasLongestRoad(boolean value)
+    {
+        hasLongestRoad = value;
+    }
+    
+    public boolean setLongestRoad( int value)
+    {
+        if( value <= longestRoadLength)
+            return false;
+        longestRoadLength = value;
+        return true;
+    }
+    
+    public boolean removeHalfResources()
+    {
+        if( getTotalNoOfSources() < 7)
+            return false;
+        
+        for( int i = 0; i < 5; i++)
+        {
+            sources[i] -= sources[i] / 2;
+        }
+        return true;
+    }
 }
