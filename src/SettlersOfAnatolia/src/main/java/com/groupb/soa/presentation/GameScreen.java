@@ -1328,6 +1328,8 @@ public class GameScreen implements Initializable {
         @Override
         public void handle( MouseEvent e)
         {
+            if(tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
+                return;
             if ( !mainController.isBotPlaying()){
                 int[] diceNums = mainController.rollDice();
                 Image d1img, d2img;
