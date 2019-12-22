@@ -306,7 +306,7 @@ public class Player{
         
         for( int i = 0; i < 5; i++)
         {
-            sources[i] = sources[i] / 2;
+            sources[i] -= sources[i] / 2;
         }
         return true;
     }
