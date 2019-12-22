@@ -26,7 +26,14 @@ public class GameModel {
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private int robberMoves;
-    
+
+    private TradeWithBank currentTwB;
+    private List<DomesticTrade> domesticTrades;
+     private boolean isFlood; //new
+    private boolean isWolfAttacked; //new
+    private boolean isCybeleMonth; //new
+    private boolean isEarthquake;
+
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -41,6 +48,14 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
+
+        currentTwB = null;
+        domesticTrades = new ArrayList<>();
+        isFlood = false;
+        isWolfAttacked = false;
+        isCybeleMonth = false;
+        isEarthquake = false;
+
     }
     // player rolls the dice and sources are distributed
     public boolean produceResources(){
@@ -264,6 +279,157 @@ public class GameModel {
     {
         return playerList.getCurrentPlayer().buyDevCard(bank);
     }
+
+    
+    public boolean startTradeWithBank()
+    {
+        if ( currentTwB != null)
+            return false;
+        currentTwB = new TradeWithBank( playerList.getCurrentPlayer(), bank);
+        return true;
+    }
+    
+    public boolean cancelTradeWithBank()
+    {
+        if( currentTwB == null)
+            return false;
+        currentTwB = null;
+        return true;
+    }
+    
+    public boolean addSourceToSelf( int sourceNo, int amount)
+    {
+        return currentTwB.playerAddSource(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromSelf( int sourceNo, int amount)
+    {
+        return currentTwB.playerSubSource(sourceNo, amount);
+    }
+    
+    public boolean addSourceToBank( int sourceNo, int amount)
+    {
+        return currentTwB.bankAddSource(sourceNo, amount);
+    }
+    
+    public boolean subSourceFromBank( int sourceNo, int amount)
+    {
+        return currentTwB.bankSubSource( sourceNo, amount);
+    }
+    
+    public boolean isTwBValid()
+    {
+        return currentTwB.isAValidTrade();
+    }
+    
+    public int TwBgetBankSourceNo( int sourceNo)
+    {
+        return currentTwB.getBankSourceNo(sourceNo);
+    }
+    
+    public int TwBgetPlayerSourceNo( int sourceNo)
+    {
+        return currentTwB.getPlayerSourceNo( sourceNo);
+    }
+    
+    public int getTwBSourceRights()
+    {
+        return currentTwB.calculateSourceRights();
+    }
+    
+    public int getTwBUsedSourceRights()
+    {
+        return currentTwB.calculateUsedSourceRights();
+    }
+    
+    public boolean finalizeTwB()
+    {
+        boolean result = currentTwB.finalizeTrade();
+        if( result)
+            currentTwB = null;
+        return result;
+    }
+    
+    public boolean addDomesticTrade(int[] offers, int[] inReturn)
+    {
+        boolean canMakeTrade = true;
+        boolean leftAllZeroes = true;
+        boolean rightAllZeroes = true;
+        for( int i = 0; i < offers.length; i++)
+        {
+            canMakeTrade &= (playerList.getCurrentPlayer().getSourceNo(i) >= offers[i]);
+            leftAllZeroes &= offers[i] == 0;
+            rightAllZeroes &= inReturn[i] == 0;
+        }
+        if( !canMakeTrade || leftAllZeroes || rightAllZeroes)
+            return false;
+        
+        domesticTrades.add( new DomesticTrade(playerList.getCurrentPlayer(), offers, inReturn));
+        return true;
+    }
+    
+    public int getDomesticTradeNo()
+    {
+        return domesticTrades.size();
+    }
+    
+    public void getDomesticTradesInfo(List<String> offers, List<String> inReturn)
+    {
+        for( DomesticTrade dt : domesticTrades)
+        {
+            if( !dt.isCreator(playerList.getCurrentPlayer()))
+            {
+                StringBuffer curOffer, curInReturn;
+                curOffer = new StringBuffer();
+                curInReturn = new StringBuffer();
+                dt.getTradeInfo(curOffer, curInReturn);
+                offers.add(curOffer.toString());
+                inReturn.add(curInReturn.toString());
+            }
+        }
+    }
+    
+    public boolean finalizeDomesticTrade( int index)
+    {
+        boolean result = domesticTrades.get(index).finalizeTrade(playerList.getCurrentPlayer());
+        if(result)
+            domesticTrades.remove(index);
+        return result;
+    }
+    
+    public boolean isDomesticTradeValid(int index)
+    {
+        return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
+    }
+    public boolean getWolfAttacked(){ //new
+        return isWolfAttacked;
+   }
+   public void setWolfAttacked(boolean wolfAttacked){ //new
+        isWolfAttacked= wolfAttacked;
+   }
+
+    public boolean getFlood(){ //new
+        return isFlood;
+    }
+    public void setFlood(boolean flood){ //new
+        isFlood= flood;
+    }
+
+
+    public boolean getCybeleMonth(){ //new
+        return isCybeleMonth;
+    }
+    public void setCybeleMonth(boolean cybele){ //new
+        isCybeleMonth= cybele;
+    }
+    //new added
+    public void setEarthquake(boolean earthquake){
+        isEarthquake = earthquake;
+    }
+    public boolean getEarthquake(){
+        return  isEarthquake;
+    }
+
 }
 
 
