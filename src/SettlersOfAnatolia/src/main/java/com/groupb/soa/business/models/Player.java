@@ -49,7 +49,10 @@ public class Player{
     }
     
     public boolean buyDevCard(Bank bank){
+        
+        System.out.println( "Dev card a girildi");
         return bank.drawCard(this);
+        
     }
     
     

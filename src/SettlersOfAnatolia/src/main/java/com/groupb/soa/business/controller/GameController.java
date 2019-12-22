@@ -6,10 +6,13 @@
 package com.groupb.soa.business.controller;
 import com.groupb.soa.business.models.GameModel;
 import com.groupb.soa.business.models.Player;
+import com.groupb.soa.business.models.BotPlayer;
 import com.groupb.soa.business.models.PlayerList;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,16 +27,45 @@ import javafx.stage.Stage;
  * @author Irmak
  */
 public class GameController {
+    
     // Properties
     
+    
+    
     private GameModel gameModel; 
+    Timer t;
+    private BotPlayer currentPlayer;
     
     private Stage stage;
+    
+    TimerTask task = new TimerTask()
+    {
+        public void run()
+        {
+             System.out.println ("TIMER ÇALIŞTI");
+            
+                if( gameModel.isCurrentPlayerBot()){
+                    currentPlayer = (BotPlayer) ( gameModel.getCurrentPlayer() );
+                    currentPlayer.playTurn( gameModel );
+                    
+                    
+                }
+                
+                
+        }
+
+    };
+    // Properties
+    
+    
+   
     
     // Constructors
     public GameController(Stage stage, Application mainApplication) throws IOException
     {
         initiateMenu(stage, mainApplication);
+         t = new Timer();
+         t.scheduleAtFixedRate(task, 5000 , 7000 );
     }
     
     // Methods
@@ -58,6 +90,8 @@ public class GameController {
         return this;
     }
     
+    
+    
     public void initateGame(){
         // here we set default colors, later it will be regulated in a way that the GameController takes colors from the GameOption Menu
         
@@ -70,6 +104,7 @@ public class GameController {
         
     }
     
+   
     public void startGame()
     {
         //GameModel newGame = new GameModel (Color[] playerColors); 
@@ -78,17 +113,24 @@ public class GameController {
     
     public boolean buildRoad( int index)
     {
-        return gameModel.buildRoad(index);
+        if ( ! gameModel.isCurrentPlayerBot() )
+            return gameModel.buildRoad(index);
+        return false;
     }
     
     public boolean upgradeCity( int index)
     {
-        return gameModel.buildCity(index);
+        if ( ! gameModel.isCurrentPlayerBot() )
+            return gameModel.buildCity(index);
+        return false;
     }
     public boolean buildSettlement(int index)
     {
-        System.out.println("Game controller a ulaştık");
-        return gameModel.buildSettlement(index);
+        if ( ( ! gameModel.isCurrentPlayerBot() )  ){
+            //System.out.println("Game controller a ulaştık");
+             return gameModel.buildSettlement(index);  
+        }
+        return false;
     }
     public void render()
     {
@@ -111,7 +153,9 @@ public class GameController {
     }
     
     public void nextPlayer(){
-        gameModel.moveNextPlayer();
+        if ( ( ! gameModel.isCurrentPlayerBot() )  ){
+            gameModel.moveNextPlayer();
+        }
     }
     
     public boolean sendRobberToHexagon( int index)
@@ -146,6 +190,11 @@ public class GameController {
     {
         return gameModel.buyCard();
     }
+    
+    public boolean isBotPlaying(){
+        return gameModel.isCurrentPlayerBot();
+    }
+    
     
     public boolean startTradeWithBank()
     {
