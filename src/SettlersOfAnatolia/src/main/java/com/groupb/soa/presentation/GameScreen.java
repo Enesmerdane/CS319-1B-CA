@@ -949,7 +949,7 @@ public class GameScreen implements Initializable {
     }
     
     @FXML
-    private void openGameMenu(ActionEvent event){
+    private void openGameMenu(ActionEvent event)throws IOException{
         if( tradeBankGroup.isVisible() || domesticTradeGroup.isVisible())
         {
             return;
