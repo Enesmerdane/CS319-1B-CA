@@ -16,3 +16,6 @@ src/SettlersOfAnatolia/target/maven-archiver/pom.properties
 *.lst
 
 *.jar
+*.jar
+src/SettlersOfAnatolia/target/SettlersOfAnatolia-1.0.jar
+src/SettlersOfAnatolia/target/SettlersOfAnatolia-1.0.jar
