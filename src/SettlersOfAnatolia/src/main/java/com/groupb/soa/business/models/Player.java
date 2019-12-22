@@ -24,6 +24,9 @@ public class Player{
     private int remSettlements;
     private int remCities;
     private int knightCards;
+    private int longestRoadLength;
+    private boolean hasLargestArmy;
+    private boolean hasLongestRoad;
     private boolean canBuyDevCard;
     private ArrayList<DevCard> cards;
     // ore = 0, grain = 1, lumber = 2, wool = 3, brick = 4
@@ -37,7 +40,11 @@ public class Player{
         cards = new ArrayList<DevCard>();
         sources = new int[5];
         knightCards = 0;
+        longestRoadLength = 0;
+        hasLargestArmy = false;
+        hasLongestRoad = false;
         canBuyDevCard = true;
+        
         for( int i = 0; i < sources.length; i++)
         {
             sources[i] = 111;
@@ -45,6 +52,9 @@ public class Player{
         cards.add( new Monopoly("test"));
         cards.add( new RoadBuilding( "test"));
         cards.add( new YearOfPlenty( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
+        cards.add( new Knight( "test"));
         cards.add( new Knight( "test"));
     }
     
@@ -108,7 +118,10 @@ public class Player{
     }
 
     public int getScore() {
-        return score;
+        if( hasLargestArmy)
+            return score + 2;
+        else
+            return score;
     }
 
     public int getRemSettlements()
@@ -258,5 +271,15 @@ public class Player{
     public void incrementKnightCards()
     {
         knightCards++;
+    }
+    
+    public int getKnights()
+    {
+        return knightCards;
+    }
+    
+    public void setLargestArmy( boolean value)
+    {
+        hasLargestArmy = value;
     }
 }

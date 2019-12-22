@@ -27,6 +27,8 @@ public class GameModel {
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private int robberMoves;
+    private int largestArmy;
+    private Player largestArmyHolder;
     private TradeWithBank currentTwB;
     private List<DomesticTrade> domesticTrades;
     public GameModel(Color[] playerColors) {
@@ -43,6 +45,8 @@ public class GameModel {
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         robberMoves = 0;
+        largestArmy = 3; // has to be 3
+        largestArmyHolder = null;
         currentTwB = null;
         domesticTrades = new ArrayList<>();
     }
@@ -202,6 +206,20 @@ public class GameModel {
             System.out.println( "Knight checkpoint");
             Knight knight = (Knight) curCard;
             isPlayed = knight.play(this);
+            if( isPlayed)
+            {
+                int curArmy = playerList.getCurrentPlayer().getKnights();
+                if( curArmy > largestArmy)
+                {
+                    if( largestArmyHolder != null)
+                    {
+                        largestArmyHolder.setLargestArmy(false);
+                    }
+                        largestArmyHolder = playerList.getCurrentPlayer();
+                        playerList.getCurrentPlayer().setLargestArmy(true);
+                    
+                }
+            }
         }
         
         else if( cardName.equals("Road Building"))
@@ -389,6 +407,11 @@ public class GameModel {
     public boolean isDomesticTradeValid(int index)
     {
         return domesticTrades.get(index).isTradeValid(playerList.getCurrentPlayer());
+    }
+    
+    public int getPlayerScore( int index)
+    {
+        return playerList.getPlayer( index).getScore();
     }
 }
 

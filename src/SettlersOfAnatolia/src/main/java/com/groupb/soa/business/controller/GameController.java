@@ -231,4 +231,9 @@ public class GameController {
     {
         return gameModel.isDomesticTradeValid(index);
     }
+    
+    public int getPlayerScore( int index)
+    {
+        return gameModel.getPlayerScore(index);
+    }
 }
