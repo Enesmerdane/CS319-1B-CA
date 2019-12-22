@@ -1005,9 +1005,11 @@ public class GameScreen implements Initializable {
         if(gameSound){
             game_menu_game_sound.setText("Game Sound: OFF");
             gameSound = false;
+            MainApp.getInstance().getSettings().setIsGameSoundOn(gameSound);
         } else {
             game_menu_game_sound.setText("Game Sound: ON");
             gameSound = true;
+            MainApp.getInstance().getSettings().setIsGameSoundOn(gameSound);
         }
     }
     
@@ -1016,9 +1018,11 @@ public class GameScreen implements Initializable {
         if(gameMusic){
             game_menu_game_music.setText("Game Music: OFF");
             gameMusic = false;
+            MainApp.getInstance().getSettings().setIsGameMusicOn(gameMusic);
         } else {
             game_menu_game_music.setText("Game Music: ON");
             gameMusic = true;
+            MainApp.getInstance().getSettings().setIsGameMusicOn(gameMusic);
         }
     }
     

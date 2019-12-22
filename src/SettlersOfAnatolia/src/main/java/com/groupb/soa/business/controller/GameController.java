@@ -65,7 +65,7 @@ public class GameController {
     {
         initiateMenu(stage, mainApplication);
          t = new Timer();
-         t.scheduleAtFixedRate(task, 10000 , 5000 );
+         t.scheduleAtFixedRate(task, 17000 , 5000 );
     }
     
     // Methods
