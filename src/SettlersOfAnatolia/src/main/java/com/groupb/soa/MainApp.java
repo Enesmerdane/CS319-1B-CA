@@ -59,7 +59,6 @@ public class MainApp extends Application {
         HEIGHT = screenSize.getHeight();
         System.out.println(HEIGHT);
         instance = this;
-        
         settingsController = new SettingsController();
         game = new GameController(stage, this);
     }
