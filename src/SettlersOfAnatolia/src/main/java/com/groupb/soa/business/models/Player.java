@@ -50,7 +50,7 @@ public class Player{
         destroyedCities = 0;
         for( int i = 0; i < sources.length; i++)
         {
-            sources[i] = 0;
+            sources[i] = 20;
         }
         cards.add( new Monopoly("test"));
         cards.add( new RoadBuilding( "test"));
