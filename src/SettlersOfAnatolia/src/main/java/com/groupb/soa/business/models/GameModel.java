@@ -25,6 +25,7 @@ public class GameModel {
     private int eventStart;
     private boolean firstTurn;
     private boolean secondTurn;
+    
     private boolean firstTurnSettBuilt;
     private boolean firstTurnRoadBuilt;
     private boolean diceRolled;
@@ -44,6 +45,9 @@ public class GameModel {
     private boolean isEarthquake;
     private EventManager eventMgr;
 
+    private boolean forthTurn;
+    private int []playerCityNo;
+    
     public GameModel(Color[] playerColors) {
         tile = new GameTile();
         playerList = new PlayerList(playerColors);
@@ -57,6 +61,7 @@ public class GameModel {
         firstTurn = true;
         secondTurn = false;
         thirdTurn = false;
+        forthTurn = false;
         firstTurnSettBuilt = false;
         firstTurnRoadBuilt = false;
         diceRolled = false;
@@ -238,6 +243,7 @@ public class GameModel {
         firstTurn = (turn == 0);
         secondTurn = (turn == 1);
         thirdTurn = ( turn == 2);
+        forthTurn = ( turn == 3);
         firstTurnSettBuilt = false;
         eventStart++;
         firstTurnRoadBuilt = false;
