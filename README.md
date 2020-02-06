@@ -12,18 +12,3 @@ The player who reaches 10 points wins the game and the game ends. Settlements aw
 
 We will implement this game using Java. 
 
-Google Docs Links:
-
-Meeting Schedule: https://docs.google.com/document/d/1mj6myGd8StsufM98sZFAz4_Zc0bZ1pyuhizUyIXhvSA/edit?usp=sharing
-
-First Iteration Analysis Report: https://docs.google.com/document/d/1Yc3Le2G_wbUrfOFEBRwgip0ZqssVStf_yGCa4HaIYz8/edit?usp=sharing
-
-First Iteration Design Report: https://docs.google.com/document/d/1La8ZJmjDJ1zAeAooHwfchlnUS4Im3YWjVi3eOngd8C4/edit?usp=sharing
-
-First Iteration Final Report: https://docs.google.com/document/d/1OT_sgwwoGJjsx5mmJic7XMXNt4qIcMH0dces7yWS5Cs/edit?usp=sharing
-
-Second Iteration Analysis Report: https://docs.google.com/document/d/1rkJcHOuT_Qr5FuOtkvlTWYi-c7FLy9S6c0Hbwgd0_cA/edit?usp=sharing
-
-Second Iteration Design Report: https://docs.google.com/document/d/1aS0_vMeRcvDhhMvgSivTKm8-kbIQNpuOwgNkI0r7CbY/edit?usp=sharing
-
-Second Iteration Final Report: https://docs.google.com/document/d/1lEYn9lhsQ6P1PBETY7k8Y8ujy9bmU3vWpGwxzMkp1MY/edit
